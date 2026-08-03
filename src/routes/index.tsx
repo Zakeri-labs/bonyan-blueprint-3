@@ -4,6 +4,12 @@ import { HomePage } from "@/components/site/pages/HomePage";
 
 export const Route = createFileRoute("/")({
   head: () =>
-    seoMeta({ ...dictionaries.en.seo.home, description: dictionaries.en.seo.home.desc, locale: "en", path: "/" }),
+    seoMeta({
+      title: dictionaries.en.seo.home.title,
+      description: dictionaries.en.seo.home.desc,
+      locale: "en",
+      path: "/",
+    }),
   component: HomePage,
 });
+
