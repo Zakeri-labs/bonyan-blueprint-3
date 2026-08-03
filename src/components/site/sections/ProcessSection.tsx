@@ -36,7 +36,7 @@ export function ProcessSection() {
                     </span>
                     <span
                       aria-hidden="true"
-                      className="hidden h-px flex-1 bg-linear-to-e from-primary/50 to-transparent lg:block"
+                      className="hidden h-px flex-1 bg-linear-to-r from-primary/50 to-transparent rtl:bg-linear-to-l lg:block"
                     />
                   </div>
                   <h3 className="mt-5 font-display text-base font-bold leading-snug">{s.title}</h3>
