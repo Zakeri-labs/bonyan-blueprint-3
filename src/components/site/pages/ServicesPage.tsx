@@ -1,0 +1,108 @@
+import { useT } from "@/i18n";
+import { SiteLayout } from "../SiteLayout";
+import { IMAGES, SERVICE_IMAGES } from "../assets";
+import { Btn, Reveal, SectionLabel } from "../ui";
+import { SERVICE_ICONS, ServiceCard } from "../sections/ServicesSection";
+
+export function ServicesPage() {
+  const { t, lp } = useT();
+
+  return (
+    <SiteLayout>
+      <section className="relative overflow-hidden pt-32 md:pt-40">
+        <img
+          src={IMAGES.drawings}
+          alt=""
+          aria-hidden="true"
+          width={1200}
+          height={800}
+          className="absolute inset-0 size-full object-cover opacity-20"
+        />
+        <div
+          aria-hidden="true"
+          className="absolute inset-0 bg-linear-to-b from-background/80 via-background/90 to-background"
+        />
+        <div className="container-site relative pb-16 md:pb-24">
+          <SectionLabel>{t.pages.services.eyebrow}</SectionLabel>
+          <h1 className="max-w-3xl font-display text-4xl font-extrabold leading-tight md:text-6xl">
+            {t.pages.services.title}
+          </h1>
+          <p className="mt-6 max-w-2xl text-base leading-relaxed text-muted-foreground">
+            {t.pages.services.lead}
+          </p>
+        </div>
+      </section>
+
+      <section aria-labelledby="all-services" className="bg-panel">
+        <div className="container-site py-20 md:py-24">
+          <h2 id="all-services" className="sr-only">
+            {t.services.label}
+          </h2>
+          <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+            {t.services.items.map((s, i) => (
+              <Reveal key={s.id} delay={(i % 3) * 70}>
+                <ServiceCard index={i} compact />
+              </Reveal>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      <section aria-labelledby="service-details" className="bg-background">
+        <div className="container-site py-20 md:py-24">
+          <h2 id="service-details" className="sr-only">
+            {t.pages.services.title}
+          </h2>
+          <div className="grid gap-14">
+            {t.services.items.map((s, i) => {
+              const Icon = SERVICE_ICONS[i]!;
+              return (
+                <Reveal key={s.id}>
+                  <article
+                    id={s.id}
+                    className="grid items-center gap-8 border-t border-border pt-10 lg:grid-cols-2 lg:gap-14"
+                  >
+                    <div className={i % 2 === 1 ? "lg:order-2" : undefined}>
+                      <Icon aria-hidden="true" className="size-8 text-primary" />
+                      <h3 className="mt-5 font-display text-2xl font-extrabold leading-tight">
+                        {s.title}
+                      </h3>
+                      <p className="mt-4 text-sm leading-relaxed text-muted-foreground md:text-base">
+                        {s.detail}
+                      </p>
+                      <p className="mt-6 text-[0.6875rem] font-bold uppercase tracking-widest text-primary">
+                        {t.pages.services.relevant}
+                      </p>
+                      <ul className="mt-3 flex flex-wrap gap-2">
+                        {s.types.map((ty) => (
+                          <li
+                            key={ty}
+                            className="border border-border px-3 py-1.5 text-xs text-muted-foreground"
+                          >
+                            {ty}
+                          </li>
+                        ))}
+                      </ul>
+                    </div>
+                    <img
+                      src={SERVICE_IMAGES[i]}
+                      alt={s.title}
+                      loading="lazy"
+                      width={1200}
+                      height={800}
+                      className="aspect-16/10 w-full border border-border object-cover"
+                    />
+                  </article>
+                </Reveal>
+              );
+            })}
+          </div>
+
+          <Btn to={lp("/contact")} className="mt-14" arrow>
+            {t.pages.services.cta}
+          </Btn>
+        </div>
+      </section>
+    </SiteLayout>
+  );
+}
