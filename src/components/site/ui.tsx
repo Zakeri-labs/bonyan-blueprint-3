@@ -19,6 +19,7 @@ const variants: Record<BtnVariant, string> = {
 
 export function Btn({
   to,
+  hash,
   href,
   variant = "primary",
   children,
@@ -27,6 +28,7 @@ export function Btn({
   ...rest
 }: {
   to?: string;
+  hash?: string;
   href?: string;
   variant?: BtnVariant;
   children: ReactNode;
@@ -48,18 +50,12 @@ export function Btn({
 
   if (to) {
     return (
-      <L to={to} className={cls}>
+      <L to={to} hash={hash} className={cls}>
         {content}
       </L>
     );
   }
-  if (href) {
-    return (
-      <a href={href} className={cls}>
-        {content}
-      </a>
-    );
-  }
+
   return (
     <button className={cls} {...rest}>
       {content}
