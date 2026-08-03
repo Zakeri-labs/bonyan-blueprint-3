@@ -1,11 +1,11 @@
-import { ArrowRight, Box, Calculator, ClipboardCheck, HardHat, Map, PenRuler } from "lucide-react";
+import { ArrowRight, Box, Calculator, ClipboardCheck, HardHat, Map, PencilRuler } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { useT } from "@/i18n";
 import { SERVICE_IMAGES } from "../assets";
 import { Btn, GhostNumber, Reveal, SectionLabel } from "../ui";
 import { L } from "../L";
 
-export const SERVICE_ICONS = [HardHat, PenRuler, ClipboardCheck, Calculator, Map, Box];
+export const SERVICE_ICONS = [HardHat, PencilRuler, ClipboardCheck, Calculator, Map, Box];
 /** Visually prioritized services: supervision, drawings, quantity surveying. */
 const PRIORITY = new Set(["supervision", "drawings", "quantity"]);
 
