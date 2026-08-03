@@ -293,6 +293,6 @@ export const en = {
       desc: "Contact Bonyan Engineering Consultancy in Al Mabelah, Al Seeb, Muscat by phone, WhatsApp, or email, or send a project inquiry.",
     },
   },
-} as const;
+};
 
 export type Dict = typeof en;
