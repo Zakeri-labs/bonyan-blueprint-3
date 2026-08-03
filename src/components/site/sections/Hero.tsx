@@ -17,12 +17,13 @@ export function Hero() {
       />
       <div
         aria-hidden="true"
-        className="absolute inset-0 bg-linear-to-b from-background/92 via-background/70 to-background"
+        className="absolute inset-0 bg-linear-to-b from-background/75 via-background/35 to-background"
       />
       <div
         aria-hidden="true"
-        className="absolute inset-0 bg-linear-to-e from-background/90 via-background/30 to-transparent"
+        className="absolute inset-0 bg-linear-to-r from-background/90 via-background/25 to-transparent rtl:bg-linear-to-l"
       />
+
 
       <div className="container-site relative flex min-h-[92vh] flex-col justify-end pb-16 pt-32 md:justify-center md:pb-28 md:pt-40">
         <div className="max-w-3xl">
