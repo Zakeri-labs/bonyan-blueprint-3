@@ -1,18 +1,19 @@
-import { Link } from "@tanstack/react-router";
 import { ArrowRight } from "lucide-react";
 import { useEffect, useRef, useState, type ReactNode } from "react";
 import { cn } from "@/lib/utils";
+import { L } from "./L";
 
-type BtnVariant = "primary" | "outline" | "ghost";
+type BtnVariant = "primary" | "outline" | "ghost" | "light";
 
 const base =
   "group inline-flex min-h-11 items-center justify-center gap-2 px-6 py-3 text-sm font-semibold tracking-wide transition-all duration-300 rounded-xs";
 
 const variants: Record<BtnVariant, string> = {
   primary:
-    "bg-primary text-primary-foreground hover:brightness-110 hover:-translate-y-0.5 shadow-[0_8px_24px_-12px_var(--primary)]",
+    "bg-primary text-primary-foreground hover:brightness-110 hover:-translate-y-0.5 shadow-[0_8px_24px_-14px_var(--primary)]",
   outline:
     "border border-border text-foreground hover:border-primary hover:text-primary bg-transparent",
+  light: "border border-ink/20 text-ink hover:border-primary hover:text-primary bg-transparent",
   ghost: "text-primary hover:opacity-80 px-0",
 };
 
@@ -47,9 +48,9 @@ export function Btn({
 
   if (to) {
     return (
-      <Link to={to} className={cls}>
+      <L to={to} className={cls}>
         {content}
-      </Link>
+      </L>
     );
   }
   if (href) {
@@ -70,12 +71,10 @@ export function Reveal({
   children,
   className,
   delay = 0,
-  as: Tag = "div",
 }: {
   children: ReactNode;
   className?: string;
   delay?: number;
-  as?: "div" | "section" | "li" | "article";
 }) {
   const ref = useRef<HTMLDivElement>(null);
   const [shown, setShown] = useState(false);
@@ -90,20 +89,20 @@ export function Reveal({
           io.disconnect();
         }
       },
-      { threshold: 0.12, rootMargin: "0px 0px -40px 0px" },
+      { threshold: 0.1, rootMargin: "0px 0px -40px 0px" },
     );
     io.observe(el);
     return () => io.disconnect();
   }, []);
 
   return (
-    <Tag
-      ref={ref as never}
+    <div
+      ref={ref}
       className={cn("reveal", shown && "reveal-in", className)}
       style={{ transitionDelay: `${delay}ms` }}
     >
       {children}
-    </Tag>
+    </div>
   );
 }
 
@@ -112,7 +111,7 @@ export function GhostNumber({ value, light = false }: { value: string; light?: b
     <span
       aria-hidden="true"
       className={cn(
-        "pointer-events-none absolute top-6 select-none font-display text-[5rem] font-extrabold leading-none end-6 md:text-[7rem]",
+        "pointer-events-none absolute top-6 end-6 select-none font-display text-[4.5rem] font-extrabold leading-none md:text-[7rem]",
         light ? "text-ink/5" : "text-foreground/5",
       )}
     >
@@ -124,7 +123,7 @@ export function GhostNumber({ value, light = false }: { value: string; light?: b
 export function SectionLabel({ children, light = false }: { children: ReactNode; light?: boolean }) {
   return (
     <p className={cn("eyebrow mb-4", light && "text-ink-muted")}>
-      <span className="me-3 inline-block h-px w-8 align-middle bg-primary" />
+      <span aria-hidden="true" className="me-3 inline-block h-px w-8 bg-primary align-middle" />
       {children}
     </p>
   );

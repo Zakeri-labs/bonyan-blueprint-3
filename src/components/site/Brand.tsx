@@ -1,16 +1,16 @@
-import { Link, useRouterState } from "@tanstack/react-router";
+import { useRouterState } from "@tanstack/react-router";
 import { Compass } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { basePath, localizedPath, useT } from "@/i18n";
+import { L } from "./L";
 
 export function LanguageSwitcher({ className }: { className?: string }) {
   const pathname = useRouterState({ select: (s) => s.location.pathname });
-  const { locale } = useT();
+  const { locale, t } = useT();
   const base = basePath(pathname);
 
   const item = (code: "en" | "ar", label: string) => (
-    <Link
-      key={code}
+    <L
       to={localizedPath(code, base)}
       hrefLang={code}
       aria-current={locale === code ? "true" : undefined}
@@ -20,14 +20,14 @@ export function LanguageSwitcher({ className }: { className?: string }) {
       )}
     >
       {label}
-    </Link>
+    </L>
   );
 
   return (
     <div
       className={cn("flex items-center rounded-xs border border-border", className)}
       role="group"
-      aria-label={useT().t.nav.langLabel}
+      aria-label={t.nav.langLabel}
     >
       {item("en", "EN")}
       <span aria-hidden="true" className="h-4 w-px bg-border" />
@@ -39,8 +39,8 @@ export function LanguageSwitcher({ className }: { className?: string }) {
 export function Brand({ compact = false }: { compact?: boolean }) {
   const { t, lp } = useT();
   return (
-    <Link to={lp("/")} className="flex items-center gap-3" aria-label={t.meta.brandFull}>
-      <span className="flex size-9 shrink-0 items-center justify-center border border-primary/60 bg-primary/10 rounded-xs">
+    <L to={lp("/")} className="flex items-center gap-3" aria-label={t.meta.brandFull}>
+      <span className="flex size-9 shrink-0 items-center justify-center rounded-xs border border-primary/60 bg-primary/10">
         <Compass aria-hidden="true" className="size-5 text-primary" />
       </span>
       <span className="flex flex-col leading-none">
@@ -51,6 +51,6 @@ export function Brand({ compact = false }: { compact?: boolean }) {
           </span>
         )}
       </span>
-    </Link>
+    </L>
   );
 }
