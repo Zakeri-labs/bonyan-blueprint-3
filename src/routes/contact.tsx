@@ -5,9 +5,9 @@ import { ContactPage } from "@/components/site/pages/ContactPage";
 export const Route = createFileRoute("/contact")({
   head: () =>
     seoMeta({
-      title: dictionaries.en.seo.contact.title,
-      description: dictionaries.en.seo.contact.desc,
-      locale: "en",
+      title: dictionaries.ar.seo.contact.title,
+      description: dictionaries.ar.seo.contact.desc,
+      locale: "ar",
       path: "/contact",
     }),
   component: ContactPage,

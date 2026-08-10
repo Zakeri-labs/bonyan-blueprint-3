@@ -5,9 +5,9 @@ import { ServicesPage } from "@/components/site/pages/ServicesPage";
 export const Route = createFileRoute("/services")({
   head: () =>
     seoMeta({
-      title: dictionaries.en.seo.services.title,
-      description: dictionaries.en.seo.services.desc,
-      locale: "en",
+      title: dictionaries.ar.seo.services.title,
+      description: dictionaries.ar.seo.services.desc,
+      locale: "ar",
       path: "/services",
     }),
   component: ServicesPage,

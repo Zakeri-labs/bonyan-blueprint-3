@@ -24,17 +24,19 @@ export const CONTACT = {
 } as const;
 
 export function localeFromPath(pathname: string): Locale {
-  return pathname === "/ar" || pathname.startsWith("/ar/") ? "ar" : "en";
+  return pathname === "/en" || pathname.startsWith("/en/") ? "en" : "ar";
 }
 
-/** Build a locale-aware path. `path` is the English path, e.g. "/about" or "/". */
+/** Build a locale-aware path. `path` is the base path, e.g. "/about" or "/". */
 export function localizedPath(locale: Locale, path: string): string {
-  if (locale === "en") return path;
-  return path === "/" ? "/ar" : `/ar${path}`;
+  if (locale === "ar") return path;
+  return path === "/" ? "/en" : `/en${path}`;
 }
 
-/** Strip the /ar prefix from a pathname to get the base English path. */
+/** Strip the /en or /ar prefix from a pathname to get the base path. */
 export function basePath(pathname: string): string {
+  if (pathname === "/en") return "/";
+  if (pathname.startsWith("/en/")) return pathname.slice(3);
   if (pathname === "/ar") return "/";
   if (pathname.startsWith("/ar/")) return pathname.slice(3);
   return pathname;

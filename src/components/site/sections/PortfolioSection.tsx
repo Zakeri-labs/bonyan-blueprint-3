@@ -48,25 +48,25 @@ export function PortfolioSection() {
               )}
             >
               <Reveal delay={(i % 3) * 70}>
-                <article className="group relative h-full overflow-hidden border border-border">
+                <article className="group relative h-full overflow-hidden border border-border transition-all duration-500 hover:-translate-y-1.5 hover:border-primary/80 hover:shadow-xl hover:shadow-primary/10">
                   <img
                     src={PORTFOLIO_IMAGES[i]}
                     alt={`${p.title} — ${p.scope}, ${t.portfolio.location}`}
                     loading="lazy"
                     width={1200}
                     height={800}
-                    className="aspect-4/3 w-full object-cover transition-transform duration-700 group-hover:scale-105"
+                    className="aspect-4/3 w-full object-cover transition-transform duration-700 group-hover:scale-108"
                   />
                   <div
                     aria-hidden="true"
-                    className="absolute inset-0 bg-linear-to-t from-background via-background/40 to-transparent"
+                    className="absolute inset-0 bg-linear-to-t from-background via-background/50 to-transparent transition-opacity duration-500 group-hover:opacity-90"
                   />
-                  <div className="absolute inset-x-0 bottom-0 p-5">
+                  <div className="absolute inset-x-0 bottom-0 p-5 transition-transform duration-300 group-hover:-translate-y-1">
                     <span className="eyebrow">{p.tag}</span>
-                    <h3 className="mt-2 font-display text-lg font-bold leading-snug">{p.title}</h3>
+                    <h3 className="mt-2 font-display text-lg font-bold leading-snug transition-colors duration-300 group-hover:text-primary">{p.title}</h3>
                     <p className="mt-1 text-xs text-primary">{p.scope}</p>
                     <p className="mt-2 flex items-center gap-1.5 text-xs text-muted-foreground">
-                      <MapPin aria-hidden="true" className="size-3.5" />
+                      <MapPin aria-hidden="true" className="size-3.5 text-primary transition-transform duration-300 group-hover:scale-125" />
                       {t.portfolio.location}
                     </p>
                   </div>

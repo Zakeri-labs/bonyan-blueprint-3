@@ -59,10 +59,10 @@ export function TestimonialsSection() {
               {visible.map((slot) => (
                 <li
                   key={slot}
-                  className="flex h-full flex-col border border-ivory-border bg-background/3 p-6"
+                  className="group flex h-full flex-col border border-ivory-border bg-background/3 p-6 transition-all duration-300 hover:-translate-y-1.5 hover:border-primary/60 hover:bg-background/8 hover:shadow-xl"
                 >
-                  <Quote aria-hidden="true" className="size-6 text-primary" />
-                  <p className="mt-4 flex-1 text-sm leading-relaxed text-ink-muted">
+                  <Quote aria-hidden="true" className="animate-float-gentle size-6 text-primary transition-transform duration-300 group-hover:scale-110" />
+                  <p className="mt-4 flex-1 text-sm leading-relaxed text-ink-muted transition-colors duration-300 group-hover:text-ink">
                     {t.testimonials.quote}
                   </p>
                   <div
@@ -71,18 +71,18 @@ export function TestimonialsSection() {
                     aria-label={t.testimonials.ratingNote}
                   >
                     {[0, 1, 2, 3, 4].map((s) => (
-                      <Star aria-hidden="true" key={s} className="size-4 text-primary/50" />
+                      <Star aria-hidden="true" key={s} className="size-4 fill-primary/80 text-primary transition-transform duration-300 group-hover:scale-110" style={{ transitionDelay: `${s * 40}ms` }} />
                     ))}
                   </div>
                   <p className="mt-1 text-[0.625rem] uppercase tracking-widest text-ink-muted">
                     {t.testimonials.ratingNote}
                   </p>
                   <div className="mt-5 border-t border-ivory-border pt-4">
-                    <p className="font-display text-sm font-bold text-ink">
+                    <p className="font-display text-sm font-bold text-ink transition-colors duration-300 group-hover:text-primary">
                       {t.testimonials.name}
                     </p>
                     <p className="text-xs text-ink-muted">{t.testimonials.type}</p>
-                    <p className="mt-2 text-[0.625rem] uppercase tracking-widest text-primary">
+                    <p className="mt-2 text-[0.625rem] uppercase tracking-widest text-primary font-semibold">
                       {t.testimonials.replace}
                     </p>
                   </div>

@@ -14,7 +14,7 @@ export function InquiryForm({ light = false }: { light?: boolean }) {
   const [status, setStatus] = useState<"idle" | "sending" | "done">("idle");
 
   const inputCls = cn(
-    "min-h-11 w-full rounded-xs border bg-transparent px-4 py-3 text-sm outline-none transition-colors placeholder:text-muted-foreground focus:border-primary",
+    "min-h-11 w-full rounded-xs border bg-transparent px-4 py-3 text-sm outline-none transition-all duration-300 placeholder:text-muted-foreground focus:border-primary focus:ring-2 focus:ring-primary/20",
     light ? "border-ivory-border text-ink placeholder:text-ink-muted" : "border-input text-foreground",
   );
   const labelCls = cn(

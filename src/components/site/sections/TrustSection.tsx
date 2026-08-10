@@ -59,16 +59,16 @@ export function TrustSection() {
           </Reveal>
 
           <Reveal delay={140} className="lg:col-span-3">
-            <article className="mx-auto w-full max-w-[17rem] overflow-hidden rounded-xl border border-primary/70 bg-panel shadow-[0_28px_70px_-38px_var(--primary)] lg:ms-auto lg:me-0">
+            <article className="animate-frame-glow mx-auto w-full max-w-[17rem] overflow-hidden rounded-xl border border-primary/70 bg-panel shadow-2xl transition-transform duration-500 hover:scale-[1.02] lg:ms-auto lg:me-0">
               <img
                 src={IMAGES.managingDirector}
                 alt={t.trust.directorImageAlt}
                 loading="lazy"
                 width={900}
                 height={1124}
-                className="aspect-4/5 w-full object-cover object-top"
+                className="aspect-4/5 w-full object-cover object-top transition-transform duration-700 hover:scale-105"
               />
-              <div className="border-t border-primary/30 px-5 py-4 text-center">
+              <div className="border-t border-primary/30 bg-card/60 px-5 py-4 text-center backdrop-blur-xs">
                 <h3 className="font-display text-sm font-bold md:text-base">
                   {t.trust.directorName}
                 </h3>
@@ -84,9 +84,9 @@ export function TrustSection() {
           {t.trust.signals.map((s, i) => {
             const Icon = signalIcons[i] ?? ShieldCheck;
             return (
-              <li key={s} className="min-h-36 bg-background/95 p-5 md:p-6">
-                <Icon aria-hidden="true" className="size-6 text-primary" />
-                <p className="mt-4 text-sm font-medium leading-snug">{s}</p>
+              <li key={s} className="group min-h-36 bg-background/95 p-5 transition-colors duration-300 hover:bg-card md:p-6">
+                <Icon aria-hidden="true" className="size-6 text-primary transition-transform duration-300 group-hover:scale-115 group-hover:rotate-3" />
+                <p className="mt-4 text-sm font-medium leading-snug transition-colors duration-300 group-hover:text-foreground">{s}</p>
               </li>
             );
           })}
