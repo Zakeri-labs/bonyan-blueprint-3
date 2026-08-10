@@ -194,10 +194,10 @@ export const ar: Dict = {
     whatsapp: "واتساب",
     email: "البريد الإلكتروني",
     location: "الموقع",
-    address: "المعبيلة، السيب، مسقط، عُمان",
+    address: "Al Seeb Al Mobela Sultanate of Oman",
     hours: "ساعات العمل",
     hoursValue: "[BUSINESS HOURS]",
-    mapNote: "موقع الخريطة — المعبيلة، السيب، مسقط",
+    mapNote: "Al Seeb Al Mobela Sultanate of Oman",
     viewMap: "عرض على الخريطة",
   },
   form: {

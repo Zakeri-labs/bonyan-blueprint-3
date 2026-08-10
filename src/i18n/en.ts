@@ -206,10 +206,10 @@ export const en = {
     whatsapp: "WhatsApp",
     email: "Email",
     location: "Location",
-    address: "Al Mabelah, Al Seeb, Muscat, Oman",
+    address: "Al Seeb Al Mobela Sultanate of Oman",
     hours: "Business Hours",
     hoursValue: "[BUSINESS HOURS]",
-    mapNote: "Map placeholder — Al Mabelah, Al Seeb, Muscat",
+    mapNote: "Al Seeb Al Mobela Sultanate of Oman",
     viewMap: "View on map",
   },
   form: {

@@ -6,7 +6,13 @@ export function ContactCards({ light = false }: { light?: boolean }) {
   const { t } = useT();
 
   const cards = [
-    { icon: Phone, label: t.contact.phone, value: CONTACT.phone, href: `tel:${CONTACT.phone}`, ltr: true },
+    {
+      icon: Phone,
+      label: t.contact.phone,
+      value: CONTACT.phone,
+      href: CONTACT.phoneHref,
+      ltr: true,
+    },
     {
       icon: MessageCircle,
       label: t.contact.whatsapp,
@@ -14,7 +20,13 @@ export function ContactCards({ light = false }: { light?: boolean }) {
       href: CONTACT.whatsappHref,
       ltr: true,
     },
-    { icon: Mail, label: t.contact.email, value: CONTACT.email, href: `mailto:${CONTACT.email}`, ltr: true },
+    {
+      icon: Mail,
+      label: t.contact.email,
+      value: CONTACT.email,
+      href: `mailto:${CONTACT.email}`,
+      ltr: true,
+    },
     {
       icon: MapPin,
       label: t.contact.location,

@@ -84,7 +84,7 @@ export function Footer() {
           <ul className="mt-5 space-y-4 text-sm text-muted-foreground">
             <li className="flex items-start gap-3">
               <Phone aria-hidden="true" className="mt-0.5 size-4 shrink-0 text-primary" />
-              <a href={`tel:${CONTACT.phone}`} dir="ltr">
+              <a href={CONTACT.phoneHref} dir="ltr">
                 {CONTACT.phone}
               </a>
             </li>
@@ -96,7 +96,7 @@ export function Footer() {
             </li>
             <li className="flex items-start gap-3">
               <MapPin aria-hidden="true" className="mt-0.5 size-4 shrink-0 text-primary" />
-              <span>{t.contact.address}</span>
+              <a href={CONTACT.mapHref}>{t.contact.address}</a>
             </li>
           </ul>
           <Btn to={lp("/contact")} className="mt-6 w-full" arrow>

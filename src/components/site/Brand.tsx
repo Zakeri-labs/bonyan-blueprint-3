@@ -1,5 +1,5 @@
 import { useRouterState } from "@tanstack/react-router";
-import { Compass } from "lucide-react";
+import bonyanLogo from "@/assets/bonyan-logo.png";
 import { cn } from "@/lib/utils";
 import { basePath, localizedPath, useT } from "@/i18n";
 import { L } from "./L";
@@ -36,20 +36,16 @@ export function LanguageSwitcher({ className }: { className?: string }) {
   );
 }
 
-export function Brand({ compact = false }: { compact?: boolean }) {
+export function Brand({ compact: _compact = false }: { compact?: boolean }) {
   const { t, lp } = useT();
   return (
-    <L to={lp("/")} className="flex items-center gap-3" aria-label={t.meta.brandFull}>
-      <span className="flex size-9 shrink-0 items-center justify-center rounded-xs border border-primary/60 bg-primary/10">
-        <Compass aria-hidden="true" className="size-5 text-primary" />
-      </span>
-      <span className="flex flex-col leading-none">
-        <span className="font-display text-base font-extrabold tracking-wide">{t.meta.brand}</span>
-        {!compact && (
-          <span className="mt-1 text-[0.5625rem] uppercase tracking-[0.2em] text-muted-foreground">
-            {t.meta.descriptor}
-          </span>
-        )}
+    <L to={lp("/")} className="block" aria-label={t.meta.brandFull}>
+      <span className="relative block h-14 w-[154px] shrink-0 overflow-hidden">
+        <img
+          src={bonyanLogo}
+          alt={t.meta.brandFull}
+          className="absolute left-[-9px] top-[-26px] h-auto w-[170px] max-w-none"
+        />
       </span>
     </L>
   );

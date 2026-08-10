@@ -1,0 +1,18 @@
+{
+  "collection": "ms_bonyan_bluprint_3_23db2ac6",
+  "failed_files": [],
+  "indexed_chunks": 1,
+  "indexed_files": 1,
+  "last_completed_at": "2026-08-10T07:10:58.036775Z",
+  "last_started_at": "2026-08-10T07:10:56.267398Z",
+  "last_success_at": "2026-08-10T07:10:58.036775Z",
+  "milvus_uri": "~/.memsearch/milvus.db",
+  "operation": "index",
+  "paths": [
+    "/Users/farzan/Workspace/Projects/bonyan-bluprint-3/.memsearch/memory"
+  ],
+  "schema_version": 1,
+  "status": "ok",
+  "total_files": 1,
+  "updated_at": "2026-08-10T07:10:58.036775Z"
+}

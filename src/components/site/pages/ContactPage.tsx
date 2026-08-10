@@ -1,4 +1,4 @@
-import { Clock, MapPin } from "lucide-react";
+import { Clock } from "lucide-react";
 import { CONTACT, useT } from "@/i18n";
 import { SiteLayout } from "../SiteLayout";
 import { IMAGES } from "../assets";
@@ -62,16 +62,25 @@ export function ContactPage() {
               </div>
             </div>
 
-            {/* Map placeholder */}
-            <div className="mt-6 flex aspect-16/9 flex-col items-center justify-center gap-3 border border-dashed border-border bg-card text-center">
-              <MapPin aria-hidden="true" className="size-7 text-primary" />
-              <p className="px-6 text-sm text-muted-foreground">{t.contact.mapNote}</p>
-              <a
-                href={CONTACT.mapHref}
-                className="text-xs font-bold uppercase tracking-widest text-primary"
-              >
-                {t.contact.viewMap}
-              </a>
+            <div className="mt-6 overflow-hidden border border-border bg-card">
+              <iframe
+                title={t.contact.location}
+                src={CONTACT.mapEmbedHref}
+                className="aspect-16/9 w-full border-0"
+                loading="lazy"
+                allowFullScreen
+                referrerPolicy="no-referrer-when-downgrade"
+              />
+              <div className="p-4 text-center">
+                <a
+                  href={CONTACT.mapHref}
+                  target="_blank"
+                  rel="noreferrer"
+                  className="text-xs font-bold uppercase tracking-widest text-primary"
+                >
+                  {t.contact.address} — {t.contact.viewMap}
+                </a>
+              </div>
             </div>
           </Reveal>
 

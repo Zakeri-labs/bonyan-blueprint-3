@@ -8,11 +8,15 @@ export type Locale = "en" | "ar";
 export const dictionaries: Record<Locale, Dict> = { en, ar };
 
 export const CONTACT = {
-  phone: "[PHONE]",
-  whatsapp: "[WHATSAPP]",
-  email: "[EMAIL]",
-  whatsappHref: "https://wa.me/",
-  mapHref: "https://maps.google.com/?q=Al+Mabelah,+Al+Seeb,+Muscat,+Oman",
+  phone: "+968 9511 4511",
+  phoneHref: "tel:+96895114511",
+  whatsapp: "+968 9511 4511",
+  email: "Bonyanec.com",
+  whatsappHref: "https://wa.me/96895114511",
+  mapHref:
+    "https://www.google.com/maps/search/?api=1&query=Al%20Seeb%20Al%20Mobela%20Sultanate%20of%20Oman",
+  mapEmbedHref:
+    "https://www.google.com/maps?q=Al%20Seeb%20Al%20Mobela%20Sultanate%20of%20Oman&output=embed",
   social: [
     { label: "Facebook", href: "#" },
     { label: "LinkedIn", href: "#" },
