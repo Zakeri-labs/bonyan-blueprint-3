@@ -225,7 +225,7 @@ export const en = {
     phone: "Phone",
     phonePh: "e.g. +968 0000 0000",
     email: "Email",
-    emailPh: "name@example.com",
+    emailPh: "info@bonyamec.com",
     type: "Project Type",
     typePh: "Select a project type",
     message: "Message",

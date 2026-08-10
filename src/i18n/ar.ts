@@ -213,7 +213,7 @@ export const ar: Dict = {
     phone: "رقم الهاتف",
     phonePh: "مثال: +968 0000 0000",
     email: "البريد الإلكتروني",
-    emailPh: "name@example.com",
+    emailPh: "info@bonyamec.com",
     type: "نوع المشروع",
     typePh: "اختر نوع المشروع",
     message: "الرسالة",
