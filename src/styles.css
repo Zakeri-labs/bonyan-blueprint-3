@@ -176,3 +176,13 @@
 .no-scrollbar {
   scrollbar-width: none;
 }
+
+.trust-dots {
+  background-image: radial-gradient(
+    color-mix(in oklch, var(--primary) 45%, transparent) 1px,
+    transparent 1px
+  );
+  background-size: 16px 16px;
+  opacity: 0.22;
+  mask-image: radial-gradient(ellipse at center, black 0%, transparent 72%);
+}

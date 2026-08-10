@@ -3,65 +3,88 @@ import {
   Building2,
   CalendarCheck,
   ClipboardCheck,
-  Coins,
-  Compass,
   Layers,
   MapPin,
-  Ruler,
   ShieldCheck,
-  Timer,
+  UsersRound,
 } from "lucide-react";
 import { useT } from "@/i18n";
+import { IMAGES } from "../assets";
 import { Btn, Reveal } from "../ui";
 
-const stripIcons = [Compass, Ruler, Coins, Timer];
 const signalIcons = [CalendarCheck, MapPin, Layers, ClipboardCheck, Building2, ShieldCheck, Award];
 
 export function TrustSection() {
   const { t, lp } = useT();
 
   return (
-    <section aria-labelledby="trust-heading" className="relative bg-background">
-      {/* slim proof strip */}
-      <div className="border-y border-primary/20 bg-panel">
-        <ul className="container-site grid grid-cols-2 gap-x-6 gap-y-4 py-5 md:grid-cols-4">
-          {t.strip.map((s, i) => {
-            const Icon = stripIcons[i] ?? Compass;
-            return (
-              <li key={s} className="flex items-center gap-3">
-                <Icon aria-hidden="true" className="size-5 shrink-0 text-primary" />
-                <span className="text-xs font-semibold tracking-wide md:text-sm">{s}</span>
-              </li>
-            );
-          })}
-        </ul>
-      </div>
+    <section
+      aria-labelledby="trust-heading"
+      className="relative overflow-hidden border-y border-primary/10 bg-background"
+    >
+      <div aria-hidden="true" className="trust-dots absolute inset-y-0 end-0 w-2/5" />
 
-      <div className="container-site py-20 md:py-28">
-        <div className="grid gap-10 lg:grid-cols-2 lg:items-start lg:gap-16">
-          <Reveal>
+      <div className="container-site relative py-20 md:py-28">
+        <div className="grid items-center gap-12 lg:grid-cols-12 lg:gap-8 xl:gap-12">
+          <Reveal className="lg:col-span-5">
             <h2
               id="trust-heading"
-              className="font-display text-3xl font-extrabold leading-tight md:text-5xl"
+              className="max-w-2xl font-display text-4xl font-extrabold leading-[1.12] md:text-5xl xl:text-[3.4rem]"
             >
               {t.trust.heading1}
               <br />
               <span className="text-primary">{t.trust.heading2}</span>
             </h2>
+            <span aria-hidden="true" className="mt-8 block h-1 w-20 rounded-full bg-primary" />
           </Reveal>
-          <Reveal delay={80}>
+
+          <Reveal delay={80} className="lg:col-span-4">
             <p className="text-base leading-relaxed text-muted-foreground">{t.trust.body}</p>
-            <Btn to={lp("/about")} className="mt-6" arrow>
+
+            <div className="mt-8 flex items-start gap-4">
+              <span className="flex size-12 shrink-0 items-center justify-center rounded-full border border-primary text-primary">
+                <UsersRound aria-hidden="true" className="size-5" />
+              </span>
+              <div>
+                <h3 className="font-display text-base font-bold">{t.trust.teamTitle}</h3>
+                <p className="mt-1 text-sm leading-relaxed text-muted-foreground">
+                  {t.trust.teamBody}
+                </p>
+              </div>
+            </div>
+
+            <Btn to={lp("/about")} className="mt-8 min-w-48" arrow>
               {t.trust.cta}
             </Btn>
           </Reveal>
+
+          <Reveal delay={140} className="lg:col-span-3">
+            <article className="mx-auto w-full max-w-[17rem] overflow-hidden rounded-xl border border-primary/70 bg-panel shadow-[0_28px_70px_-38px_var(--primary)] lg:ms-auto lg:me-0">
+              <img
+                src={IMAGES.managingDirector}
+                alt={t.trust.directorImageAlt}
+                loading="lazy"
+                width={900}
+                height={1124}
+                className="aspect-4/5 w-full object-cover object-top"
+              />
+              <div className="border-t border-primary/30 px-5 py-4 text-center">
+                <h3 className="font-display text-sm font-bold md:text-base">
+                  {t.trust.directorName}
+                </h3>
+                <p className="mt-1 text-xs font-medium text-primary md:text-sm">
+                  {t.trust.directorRole}
+                </p>
+              </div>
+            </article>
+          </Reveal>
         </div>
 
-        <ul className="mt-14 grid grid-cols-2 gap-px overflow-hidden border border-border bg-border md:grid-cols-3 lg:grid-cols-6">
+        <ul className="mt-16 grid grid-cols-2 gap-px overflow-hidden rounded-md border border-border bg-border md:grid-cols-3 lg:grid-cols-6">
           {t.trust.signals.map((s, i) => {
             const Icon = signalIcons[i] ?? ShieldCheck;
             return (
-              <li key={s} className="bg-background p-6">
+              <li key={s} className="min-h-36 bg-background/95 p-5 md:p-6">
                 <Icon aria-hidden="true" className="size-6 text-primary" />
                 <p className="mt-4 text-sm font-medium leading-snug">{s}</p>
               </li>

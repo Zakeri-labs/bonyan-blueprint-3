@@ -33,8 +33,13 @@ export const en = {
   trust: {
     heading1: "Built on Local Knowledge",
     heading2: "and Technical Discipline",
-    body: "A Muscat-based consultancy bringing design, cost awareness, and site supervision together.",
-    cta: "Learn More About Us",
+    body: "A Muscat-based consultancy bringing design, cost awareness, and site supervision together to deliver practical, lasting results.",
+    teamTitle: "People Behind the Projects",
+    teamBody: "Meet the leadership and specialists shaping every Bonyan project.",
+    cta: "Meet Our Team",
+    directorName: "Yasir Salim Hamed Al Aufi",
+    directorRole: "Managing Director",
+    directorImageAlt: "Yasir Salim Hamed Al Aufi, Managing Director of Bonyan",
     signals: [
       "Founded in Oman in 2021",
       "Muscat-Based Consultancy",

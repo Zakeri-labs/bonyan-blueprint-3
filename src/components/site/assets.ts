@@ -6,6 +6,7 @@ import projCompound from "@/assets/proj-compound.jpg";
 import projCommercial from "@/assets/proj-commercial.jpg";
 import detailDrawings from "@/assets/detail-drawings.jpg";
 import detailFacade from "@/assets/detail-facade.jpg";
+import managingDirector from "@/assets/managing-director.jpg";
 
 /** Replace any image here to swap it everywhere it is used. */
 export const IMAGES = {
@@ -18,6 +19,7 @@ export const IMAGES = {
   drawings: detailDrawings,
   facade: detailFacade,
   villa: heroVilla,
+  managingDirector,
 };
 
 /** Service card imagery, in the same order as the six services. */
