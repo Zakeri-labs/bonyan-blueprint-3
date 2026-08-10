@@ -77,8 +77,8 @@ export function Hero() {
             <div className="animate-float-slow relative ms-auto max-w-xs overflow-hidden rounded-xl border border-primary/40 bg-card/60 p-6 shadow-2xl backdrop-blur-md">
               <div aria-hidden="true" className="absolute -end-10 -top-10 size-32 rounded-full bg-primary/20 blur-2xl" />
               <div className="flex items-start gap-4">
-                <div className="flex size-12 shrink-0 items-center justify-center rounded-lg border border-primary/50 bg-primary/10 text-primary">
-                  <span className="font-display text-xl font-bold">100%</span>
+                <div className="flex h-12 min-w-[3.75rem] shrink-0 items-center justify-center rounded-lg border border-primary/50 bg-primary/10 px-2.5 text-primary">
+                  <span className="font-display text-lg font-extrabold tracking-tight">100%</span>
                 </div>
                 <div>
                   <h3 className="font-display text-sm font-bold text-foreground">
