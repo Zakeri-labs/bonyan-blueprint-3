@@ -647,7 +647,7 @@ Supporting text:
 
 Credibility signals:
 
-* Founded in Oman in 2021
+* Founded in Oman in 2016
 
 * Muscat-Based Consultancy
 
@@ -669,7 +669,7 @@ Supporting text:
 
 Credibility signals:
 
-* تأسست في عُمان عام 2021
+* تأسست في عُمان عام 2016
 
 * مكتب استشاري في مسقط
 
@@ -793,11 +793,11 @@ Use a replaceable image showing one of the following:
 
 English supporting copy:
 
-**Established in Oman in 2021, Bonyan combines technical design, engineering documentation, cost awareness, and site supervision under one consultancy.**
+**Established in Oman in 2016, Bonyan combines technical design, engineering documentation, cost awareness, and site supervision under one consultancy.**
 
 Highlight:
 
-* Oman-Based Since 2021
+* Oman-Based Since 2016
 
 * Integrated Design and Supervision
 
@@ -835,7 +835,7 @@ Arabic supporting copy:
 
 Highlight:
 
-* خبرة محلية في عُمان منذ عام 2021
+* خبرة محلية في عُمان منذ عام 2016
 
 * تكامل التصميم والإشراف
 
@@ -1183,7 +1183,7 @@ Include:
 
 2. Company overview
 
-3. Founding in Oman in 2021
+3. Founding in Oman in 2016
 
 4. Local market positioning
 

@@ -41,7 +41,7 @@ export const en = {
     directorRole: "Managing Director",
     directorImageAlt: "Yasir Salim Hamed Al Aufi, Managing Director of Bonyan",
     signals: [
-      "Founded in Oman in 2021",
+      "Founded in Oman in 2016",
       "Muscat-Based Consultancy",
       "Multidisciplinary Engineering",
       "Design to Site Supervision",
@@ -110,13 +110,13 @@ export const en = {
     label: "About Bonyan",
     heading1: "Local Understanding.",
     heading2: "Multidisciplinary Expertise.",
-    body: "Established in Oman in 2021, Bonyan combines technical design, engineering documentation, cost awareness, and site supervision under one consultancy.",
+    body: "Established in Oman in 2016, Bonyan combines technical design, engineering documentation, cost awareness, and site supervision under one consultancy.",
     body2:
       "We work with villa owners, property developers, educational institutions, mosque projects, residential compounds, and commercial developments across Oman.",
     cta: "Learn About Bonyan",
     imageAlt: "Engineers reviewing technical drawings during a site coordination meeting",
     highlights: [
-      "Oman-Based Since 2021",
+      "Oman-Based Since 2016",
       "Integrated Design and Supervision",
       "Client-Focused Coordination",
       "Quality and Accountability",
@@ -287,7 +287,7 @@ export const en = {
     },
     about: {
       title: "About Bonyan | Engineering Consultancy in Oman",
-      desc: "Founded in Oman in 2021, Bonyan brings design, engineering documentation, cost awareness, and site supervision together in one consultancy.",
+      desc: "Founded in Oman in 2016, Bonyan brings design, engineering documentation, cost awareness, and site supervision together in one consultancy.",
     },
     services: {
       title: "Engineering Services | Bonyan Consultancy Muscat",
