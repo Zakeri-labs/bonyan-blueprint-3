@@ -1,7 +1,6 @@
 import { useRouterState } from "@tanstack/react-router";
 import { en, type Dict } from "./en";
 import { ar } from "./ar";
-import ogImage from "@/assets/hero-villa.jpg";
 
 export type Locale = "en" | "ar";
 
@@ -56,9 +55,6 @@ export function useT(): { t: Dict; locale: Locale; dir: "ltr" | "rtl"; lp: (p: s
   };
 }
 
-const SITE_URL = "https://bonyan-oman.lovable.app";
-const OG_IMAGE = `${SITE_URL}${ogImage}`;
-
 export function seoMeta(opts: {
   title: string;
   description: string;
@@ -66,26 +62,7 @@ export function seoMeta(opts: {
   locale: Locale;
   path: string;
 }) {
-  const url = `${SITE_URL}${localizedPath(opts.locale, opts.path)}`;
   return {
-    meta: [
-      { title: opts.title },
-      { name: "description", content: opts.description },
-      { property: "og:title", content: opts.title },
-      { property: "og:description", content: opts.description },
-      { property: "og:type", content: "website" },
-      { property: "og:url", content: url },
-      { property: "og:locale", content: opts.locale === "ar" ? "ar_OM" : "en_OM" },
-      { property: "og:image", content: OG_IMAGE },
-      { property: "og:image:alt", content: opts.title },
-      { name: "twitter:card", content: "summary_large_image" },
-      { name: "twitter:image", content: OG_IMAGE },
-    ],
-    links: [
-      { rel: "canonical", href: url },
-      { rel: "alternate", hrefLang: "en", href: `${SITE_URL}${opts.path}` },
-      { rel: "alternate", hrefLang: "ar", href: `${SITE_URL}${localizedPath("ar", opts.path)}` },
-      { rel: "alternate", hrefLang: "x-default", href: `${SITE_URL}${opts.path}` },
-    ],
+    meta: [{ title: opts.title }, { name: "description", content: opts.description }],
   };
 }
