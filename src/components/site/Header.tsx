@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { useRouterState } from "@tanstack/react-router";
-import { Menu, X } from "lucide-react";
+import { Mail, MapPin, Menu, Phone, X } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { CONTACT, useT } from "@/i18n";
 import { Brand, LanguageSwitcher } from "./Brand";
@@ -51,6 +51,35 @@ export function Header() {
           : "border-b border-transparent bg-transparent",
       )}
     >
+      <div className="hidden border-b border-border/70 bg-background/75 lg:block">
+        <div className="container-site flex h-9 items-center justify-between gap-6 text-[0.6875rem] font-medium text-muted-foreground">
+          <a
+            href={`mailto:${CONTACT.email}`}
+            className="flex items-center gap-2 transition-colors hover:text-primary"
+          >
+            <Mail aria-hidden="true" className="size-3.5 text-primary" />
+            <span dir="ltr">{CONTACT.email}</span>
+          </a>
+
+          <div className="flex items-center gap-7">
+            <a
+              href={CONTACT.phoneHref}
+              className="flex items-center gap-2 transition-colors hover:text-primary"
+            >
+              <Phone aria-hidden="true" className="size-3.5 text-primary" />
+              <span dir="ltr">{CONTACT.phone}</span>
+            </a>
+            <a
+              href={CONTACT.mapHref}
+              className="flex items-center gap-2 transition-colors hover:text-primary"
+            >
+              <MapPin aria-hidden="true" className="size-3.5 text-primary" />
+              <span>{t.portfolio.location}</span>
+            </a>
+          </div>
+        </div>
+      </div>
+
       <div className="container-site flex h-20 items-center justify-between gap-4">
         <Brand />
 
@@ -106,7 +135,7 @@ export function Header() {
           aria-modal={open}
           aria-label={t.nav.menu}
           className={cn(
-            "absolute inset-y-0 end-0 flex w-[86%] max-w-sm flex-col border-s border-border bg-card px-6 py-6 transition-transform duration-300",
+            "absolute inset-y-0 end-0 flex w-[86%] max-w-sm flex-col overflow-y-auto border-s border-border bg-card px-6 py-6 transition-transform duration-300",
             open
               ? "translate-x-0"
               : locale === "ar"
@@ -140,17 +169,62 @@ export function Header() {
             ))}
           </nav>
 
+          <ul className="mt-6 space-y-1 border-t border-border pt-5">
+            <li>
+              <a
+                href={`mailto:${CONTACT.email}`}
+                className="group flex min-h-12 items-center gap-3 rounded-xs px-2 transition-colors hover:bg-background/40"
+              >
+                <Mail aria-hidden="true" className="size-4 shrink-0 text-primary" />
+                <span className="min-w-0">
+                  <span className="block text-[0.625rem] uppercase tracking-widest text-muted-foreground">
+                    {t.contact.email}
+                  </span>
+                  <span dir="ltr" className="block text-start text-sm font-medium text-foreground">
+                    {CONTACT.email}
+                  </span>
+                </span>
+              </a>
+            </li>
+            <li>
+              <a
+                href={CONTACT.phoneHref}
+                className="group flex min-h-12 items-center gap-3 rounded-xs px-2 transition-colors hover:bg-background/40"
+              >
+                <Phone aria-hidden="true" className="size-4 shrink-0 text-primary" />
+                <span className="min-w-0">
+                  <span className="block text-[0.625rem] uppercase tracking-widest text-muted-foreground">
+                    {t.contact.phone}
+                  </span>
+                  <span dir="ltr" className="block text-start text-sm font-medium text-foreground">
+                    {CONTACT.phone}
+                  </span>
+                </span>
+              </a>
+            </li>
+            <li>
+              <a
+                href={CONTACT.mapHref}
+                className="group flex min-h-12 items-center gap-3 rounded-xs px-2 transition-colors hover:bg-background/40"
+              >
+                <MapPin aria-hidden="true" className="size-4 shrink-0 text-primary" />
+                <span className="min-w-0">
+                  <span className="block text-[0.625rem] uppercase tracking-widest text-muted-foreground">
+                    {t.contact.location}
+                  </span>
+                  <span className="block text-sm font-medium text-foreground">
+                    {t.portfolio.location}
+                  </span>
+                </span>
+              </a>
+            </li>
+          </ul>
+
           <div className="mt-auto space-y-4 pt-8">
             <LanguageSwitcher className="w-fit" />
             <Btn to={lp("/contact")} className="w-full" arrow>
               {t.nav.cta}
             </Btn>
-            <a
-              href={CONTACT.whatsappHref}
-              className="block text-center text-sm text-muted-foreground hover:text-primary"
-            >
-              {t.nav.whatsapp} — {CONTACT.whatsapp}
-            </a>
           </div>
         </div>
       </div>
