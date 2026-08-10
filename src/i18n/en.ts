@@ -264,9 +264,9 @@ export const en = {
     location: "Location",
     address: "Al Seeb Al Mobela Sultanate of Oman",
     hours: "Business Hours",
-    hoursValue: "[BUSINESS HOURS]",
-    mapNote: "Al Seeb Al Mobela Sultanate of Oman",
-    viewMap: "View on map",
+    hoursValue: "Sun – Thu: 8:00 AM – 1:00 PM | 4:00 PM – 8:00 PM (Fri & Sat Closed)",
+    mapNote: "Al Mabelah, Al Seeb, Sultanate of Oman",
+    viewMap: "View on Google Maps",
   },
   form: {
     title: "Project Inquiry",

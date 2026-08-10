@@ -252,9 +252,9 @@ export const ar: Dict = {
     location: "الموقع",
     address: "Al Seeb Al Mobela Sultanate of Oman",
     hours: "ساعات العمل",
-    hoursValue: "[BUSINESS HOURS]",
-    mapNote: "Al Seeb Al Mobela Sultanate of Oman",
-    viewMap: "عرض على الخريطة",
+    hoursValue: "الأحد – الخميس: ٨:٠٠ ص – ١:٠٠ م | ٤:٠٠ م – ٨:٠٠ م (الجمعة والسبت عطلة)",
+    mapNote: "المعبيلة، ولاية السيب، سلطنة عُمان",
+    viewMap: "عرض على خرائط جوجل",
   },
   form: {
     title: "طلب استشارة",

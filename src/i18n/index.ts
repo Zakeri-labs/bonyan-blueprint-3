@@ -12,10 +12,9 @@ export const CONTACT = {
   whatsapp: "+968 9511 4511",
   email: "info@bonyamec.com",
   whatsappHref: "https://wa.me/96895114511",
-  mapHref:
-    "https://www.google.com/maps/search/?api=1&query=Al%20Seeb%20Al%20Mobela%20Sultanate%20of%20Oman",
+  mapHref: "https://maps.app.goo.gl/4AxbGEUzUykvfwCEA",
   mapEmbedHref:
-    "https://www.google.com/maps?q=Al%20Seeb%20Al%20Mobela%20Sultanate%20of%20Oman&output=embed",
+    "https://maps.google.com/maps?q=Al%20Seeb%20Al%20Mobela%20Sultanate%20of%20Oman&z=14&output=embed",
   social: [
     { label: "Facebook", href: "#" },
     { label: "LinkedIn", href: "#" },
