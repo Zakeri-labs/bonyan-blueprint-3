@@ -13,9 +13,9 @@ export const CONTACT = {
   email: "info@bonyamec.com",
   whatsappHref: "https://wa.me/96895114511",
   mapHref:
-    "https://www.google.com/maps/search/?api=1&query=Al%20Seeb%20Al%20Mobela%20Sultanate%20of%20Oman",
+    "https://www.google.com/maps/place/Bonyan+Engineering+consultancy/@23.658274,58.113365,17z",
   mapEmbedHref:
-    "https://www.google.com/maps?q=Al%20Seeb%20Al%20Mobela%20Sultanate%20of%20Oman&output=embed",
+    "https://maps.google.com/maps?q=23.658274,58.113365&z=17&output=embed",
   social: [
     { label: "Facebook", href: "#" },
     { label: "LinkedIn", href: "#" },
@@ -24,17 +24,19 @@ export const CONTACT = {
 } as const;
 
 export function localeFromPath(pathname: string): Locale {
-  return pathname === "/ar" || pathname.startsWith("/ar/") ? "ar" : "en";
+  return pathname === "/en" || pathname.startsWith("/en/") ? "en" : "ar";
 }
 
-/** Build a locale-aware path. `path` is the English path, e.g. "/about" or "/". */
+/** Build a locale-aware path. `path` is the base path, e.g. "/about" or "/". */
 export function localizedPath(locale: Locale, path: string): string {
-  if (locale === "en") return path;
-  return path === "/" ? "/ar" : `/ar${path}`;
+  if (locale === "ar") return path;
+  return path === "/" ? "/en" : `/en${path}`;
 }
 
-/** Strip the /ar prefix from a pathname to get the base English path. */
+/** Strip the /en or /ar prefix from a pathname to get the base path. */
 export function basePath(pathname: string): string {
+  if (pathname === "/en") return "/";
+  if (pathname.startsWith("/en/")) return pathname.slice(3);
   if (pathname === "/ar") return "/";
   if (pathname.startsWith("/ar/")) return pathname.slice(3);
   return pathname;

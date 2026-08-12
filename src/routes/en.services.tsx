@@ -2,12 +2,12 @@ import { createFileRoute } from "@tanstack/react-router";
 import { dictionaries, seoMeta } from "@/i18n";
 import { ServicesPage } from "@/components/site/pages/ServicesPage";
 
-export const Route = createFileRoute("/services")({
+export const Route = createFileRoute("/en/services")({
   head: () =>
     seoMeta({
-      title: dictionaries.ar.seo.services.title,
-      description: dictionaries.ar.seo.services.desc,
-      locale: "ar",
+      title: dictionaries.en.seo.services.title,
+      description: dictionaries.en.seo.services.desc,
+      locale: "en",
       path: "/services",
     }),
   component: ServicesPage,

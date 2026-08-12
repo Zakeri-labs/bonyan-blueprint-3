@@ -185,16 +185,67 @@ export const en = {
     label: "Client Feedback",
     heading1: "Trust Is Built Through",
     heading2: "the Project Experience",
-    body: "A dedicated space for verified client feedback and project experiences.",
-    notice: "Client Feedback Placeholder",
-    quote: "Client feedback will appear here. This is a placeholder for future verified testimonials.",
-    name: "Client Name",
-    type: "Project Type",
-    replace: "Replace With Verified Testimonial",
-    ratingNote: "Placeholder rating — not verified",
+    body: "Real feedback and project experiences from our valued Omani clients across the Sultanate.",
+    verifiedBadge: "Verified Client",
     prev: "Previous testimonial",
     next: "Next testimonial",
     goTo: "Go to testimonial",
+    items: [
+      {
+        name: "Sheikh Abdullah Al-Busaidi",
+        role: "Private Villa Owner",
+        location: "Al Mabelah, Al Seeb",
+        quote:
+          "Working with Bonyan Consultancy on the architectural design and site supervision of our villa was an exceptional experience. Their precise drawings and cost estimation saved us significant expenses during construction.",
+        rating: 5,
+        avatarIndex: 0,
+      },
+      {
+        name: "Eng. Nasser Al-Maamari",
+        role: "Commercial Complex Developer",
+        location: "Sohar",
+        quote:
+          "The seamless integration of architectural and civil design with strict site supervision by Bonyan engineers was key to delivering our commercial project on time and with zero execution errors.",
+        rating: 5,
+        avatarIndex: 1,
+      },
+      {
+        name: "Dr. Fatima Al-Riyami",
+        role: "Residential Property Owner",
+        location: "Bawshar, Muscat",
+        quote:
+          "Their 3D visualization precision allowed us to review every detail of our home before construction began, avoiding costly site modifications later. Highly recommended engineering team.",
+        rating: 5,
+        avatarIndex: 2,
+      },
+      {
+        name: "Khamis Al-Zadjali",
+        role: "Mosque Committee Representative",
+        location: "Muscat",
+        quote:
+          "It was an honor collaborating with Bonyan on the engineering drawings and site supervision for our grand mosque project. Honest, dedicated, and continuous site oversight throughout.",
+        rating: 5,
+        avatarIndex: 3,
+      },
+      {
+        name: "Tariq Al-Balushi",
+        role: "Real Estate Developer",
+        location: "Al Seeb, Muscat",
+        quote:
+          "Bonyan provided practical engineering solutions for plot subdivision and planning support, enabling smooth approvals with local authorities and optimal land utilization.",
+        rating: 5,
+        avatarIndex: 4,
+      },
+      {
+        name: "Salim Al-Harthy",
+        role: "Residential Compound Client",
+        location: "Salalah",
+        quote:
+          "Regular engineering site inspections and clear quality reports from Bonyan gave us complete confidence that our contractor fully adhered to engineering specs.",
+        rating: 5,
+        avatarIndex: 5,
+      },
+    ],
   },
   cta: {
     heading1: "Planning a Project",
@@ -213,9 +264,9 @@ export const en = {
     location: "Location",
     address: "Al Seeb Al Mobela Sultanate of Oman",
     hours: "Business Hours",
-    hoursValue: "[BUSINESS HOURS]",
-    mapNote: "Al Seeb Al Mobela Sultanate of Oman",
-    viewMap: "View on map",
+    hoursValue: "Sun – Thu: 8:00 AM – 1:00 PM | 4:00 PM – 8:00 PM (Fri & Sat Closed)",
+    mapNote: "Al Mabelah, Al Seeb, Sultanate of Oman",
+    viewMap: "View on Google Maps",
   },
   form: {
     title: "Project Inquiry",

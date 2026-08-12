@@ -39,12 +39,12 @@ export function LanguageSwitcher({ className }: { className?: string }) {
 export function Brand({ compact: _compact = false }: { compact?: boolean }) {
   const { t, lp } = useT();
   return (
-    <L to={lp("/")} className="block" aria-label={t.meta.brandFull}>
-      <span className="relative block h-14 w-[154px] shrink-0 overflow-hidden">
+    <L to={lp("/")} className="group block" aria-label={t.meta.brandFull}>
+      <span className="relative block h-14 w-[154px] shrink-0 overflow-hidden transition-transform duration-300 group-hover:scale-[1.02]">
         <img
           src={bonyanLogo}
           alt={t.meta.brandFull}
-          className="absolute left-[-9px] top-[-26px] h-auto w-[170px] max-w-none"
+          className="absolute left-[-9px] top-[-26px] h-auto w-[170px] max-w-none transition-opacity duration-300 group-hover:opacity-95"
         />
       </span>
     </L>

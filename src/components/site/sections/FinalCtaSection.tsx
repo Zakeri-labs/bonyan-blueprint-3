@@ -22,6 +22,10 @@ export function FinalCtaSection() {
         aria-hidden="true"
         className="absolute inset-0 bg-linear-to-b from-background via-background/95 to-background"
       />
+      <div
+        aria-hidden="true"
+        className="animate-ambient-pulse pointer-events-none absolute -bottom-20 -start-20 size-96 rounded-full bg-primary/10 blur-3xl"
+      />
 
       <div className="container-site relative py-20 md:py-28">
         <GhostNumber value="08" />

@@ -55,27 +55,37 @@ export function Header() {
         <div className="container-site flex h-9 items-center justify-between gap-6 text-[0.6875rem] font-medium text-muted-foreground">
           <a
             href={`mailto:${CONTACT.email}`}
-            className="flex items-center gap-2 transition-colors hover:text-primary"
+            className="group flex items-center gap-2 transition-colors hover:text-primary"
           >
-            <Mail aria-hidden="true" className="size-3.5 text-primary" />
+            <Mail aria-hidden="true" className="size-3.5 text-primary transition-transform duration-300 group-hover:scale-110" />
             <span dir="ltr">{CONTACT.email}</span>
           </a>
 
           <div className="flex items-center gap-7">
             <a
               href={CONTACT.phoneHref}
-              className="flex items-center gap-2 transition-colors hover:text-primary"
+              className="group flex items-center gap-2 transition-colors hover:text-primary"
             >
-              <Phone aria-hidden="true" className="size-3.5 text-primary" />
+              <Phone aria-hidden="true" className="size-3.5 text-primary transition-transform duration-300 group-hover:scale-110" />
               <span dir="ltr">{CONTACT.phone}</span>
             </a>
             <a
               href={CONTACT.mapHref}
-              className="flex items-center gap-2 transition-colors hover:text-primary"
+              className="group flex items-center gap-2 transition-colors hover:text-primary"
             >
-              <MapPin aria-hidden="true" className="size-3.5 text-primary" />
+              <MapPin aria-hidden="true" className="size-3.5 text-primary transition-transform duration-300 group-hover:scale-110" />
               <span>{t.portfolio.location}</span>
             </a>
+
+            <div className="flex items-center gap-2 border-s border-border/70 ps-4 text-xs font-semibold text-primary">
+              <span className="relative flex size-2 shrink-0">
+                <span className="status-ping" />
+                <span className="relative inline-flex size-2 rounded-full bg-primary" />
+              </span>
+              <span className="text-[0.625rem] font-bold uppercase tracking-wider opacity-90">
+                {locale === "ar" ? "استشارات نَشِطة" : "Active Consultancy"}
+              </span>
+            </div>
           </div>
         </div>
       </div>
