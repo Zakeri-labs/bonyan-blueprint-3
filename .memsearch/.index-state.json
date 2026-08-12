@@ -1,11 +1,11 @@
 {
   "collection": "ms_bonyan_bluprint_3_23db2ac6",
   "failed_files": [],
-  "indexed_chunks": 3,
-  "indexed_files": 1,
-  "last_completed_at": "2026-08-10T08:57:23.195239Z",
-  "last_started_at": "2026-08-10T08:57:20.789742Z",
-  "last_success_at": "2026-08-10T08:57:23.195239Z",
+  "indexed_chunks": 1,
+  "indexed_files": 2,
+  "last_completed_at": "2026-08-12T07:30:25.199237Z",
+  "last_started_at": "2026-08-12T07:30:23.637146Z",
+  "last_success_at": "2026-08-12T07:30:25.199237Z",
   "milvus_uri": "~/.memsearch/milvus.db",
   "operation": "index",
   "paths": [
@@ -13,6 +13,6 @@
   ],
   "schema_version": 1,
   "status": "ok",
-  "total_files": 1,
-  "updated_at": "2026-08-10T08:57:23.195239Z"
+  "total_files": 2,
+  "updated_at": "2026-08-12T07:30:25.199237Z"
 }
