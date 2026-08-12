@@ -225,7 +225,7 @@ export const en = {
         quote:
           "It was an honor collaborating with Bonyan on the engineering drawings and site supervision for our grand mosque project. Honest, dedicated, and continuous site oversight throughout.",
         rating: 5,
-        avatarIndex: 0,
+        avatarIndex: 3,
       },
       {
         name: "Tariq Al-Balushi",
@@ -234,7 +234,7 @@ export const en = {
         quote:
           "Bonyan provided practical engineering solutions for plot subdivision and planning support, enabling smooth approvals with local authorities and optimal land utilization.",
         rating: 5,
-        avatarIndex: 1,
+        avatarIndex: 4,
       },
       {
         name: "Salim Al-Harthy",
@@ -243,7 +243,7 @@ export const en = {
         quote:
           "Regular engineering site inspections and clear quality reports from Bonyan gave us complete confidence that our contractor fully adhered to engineering specs.",
         rating: 5,
-        avatarIndex: 2,
+        avatarIndex: 5,
       },
     ],
   },
