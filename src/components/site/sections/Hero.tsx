@@ -1,9 +1,21 @@
+import { useEffect, useState } from "react";
 import { useT } from "@/i18n";
 import { IMAGES } from "../assets";
 import { Btn } from "../ui";
 
 export function Hero() {
   const { t, lp } = useT();
+  const [showVideo, setShowVideo] = useState(false);
+
+  useEffect(() => {
+    const reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)");
+    const updateVideoVisibility = () => setShowVideo(!reducedMotion.matches);
+
+    updateVideoVisibility();
+    reducedMotion.addEventListener("change", updateVideoVisibility);
+
+    return () => reducedMotion.removeEventListener("change", updateVideoVisibility);
+  }, []);
 
   return (
     <section className="relative min-h-[92vh] w-full overflow-hidden">
@@ -15,6 +27,19 @@ export function Hero() {
         fetchPriority="high"
         className="absolute inset-0 size-full object-cover"
       />
+      {showVideo && (
+        <video
+          aria-hidden="true"
+          autoPlay
+          muted
+          loop
+          playsInline
+          poster={IMAGES.hero}
+          className="absolute inset-0 size-full object-cover object-center"
+        >
+          <source src="/videos/bonyan-hero-loop.mp4" type="video/mp4" />
+        </video>
+      )}
       <div
         aria-hidden="true"
         className="absolute inset-0 bg-linear-to-b from-background/75 via-background/35 to-background"
@@ -23,7 +48,6 @@ export function Hero() {
         aria-hidden="true"
         className="absolute inset-0 bg-linear-to-r from-background/90 via-background/25 to-transparent rtl:bg-linear-to-l"
       />
-
 
       <div className="container-site relative flex min-h-[92vh] flex-col justify-end pb-16 pt-32 md:justify-center md:pb-28 md:pt-40">
         <div className="max-w-3xl">
