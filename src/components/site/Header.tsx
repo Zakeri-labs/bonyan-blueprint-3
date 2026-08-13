@@ -138,7 +138,7 @@ export function Header() {
       <div
         className={cn(
           "fixed inset-0 z-50 lg:hidden",
-          open ? "pointer-events-auto" : "pointer-events-none",
+          open ? "visible pointer-events-auto" : "invisible pointer-events-none",
         )}
         aria-hidden={!open}
       >
