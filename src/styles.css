@@ -130,6 +130,8 @@
   margin-inline: auto;
   max-width: 80rem;
   padding-inline: 1.25rem;
+  padding-inline-start: max(1.25rem, env(safe-area-inset-left));
+  padding-inline-end: max(1.25rem, env(safe-area-inset-right));
 }
 
 @utility eyebrow {
@@ -313,4 +315,3 @@
   background-color: var(--primary);
   animation: status-pulse 2.2s cubic-bezier(0, 0, 0.2, 1) infinite;
 }
-

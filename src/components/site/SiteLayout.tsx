@@ -10,7 +10,10 @@ export function SiteLayout({ children }: { children: ReactNode }) {
       <main className="flex-1">{children}</main>
       <Footer />
       {/* keeps content clear of the fixed mobile bar */}
-      <div aria-hidden="true" className="h-14 lg:hidden" />
+      <div
+        aria-hidden="true"
+        className="h-[calc(3.5rem+env(safe-area-inset-bottom))] shrink-0 lg:hidden"
+      />
       <MobileBottomNav />
     </div>
   );

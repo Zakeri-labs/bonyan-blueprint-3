@@ -45,7 +45,7 @@ export function Header() {
   return (
     <header
       className={cn(
-        "fixed inset-x-0 top-0 z-50 transition-all duration-500",
+        "fixed inset-x-0 top-0 z-50 pt-[env(safe-area-inset-top)] transition-all duration-500",
         scrolled
           ? "border-b border-border bg-background/92 backdrop-blur-md"
           : "border-b border-transparent bg-transparent",
@@ -57,7 +57,10 @@ export function Header() {
             href={`mailto:${CONTACT.email}`}
             className="group flex items-center gap-2 transition-colors hover:text-primary"
           >
-            <Mail aria-hidden="true" className="size-3.5 text-primary transition-transform duration-300 group-hover:scale-110" />
+            <Mail
+              aria-hidden="true"
+              className="size-3.5 text-primary transition-transform duration-300 group-hover:scale-110"
+            />
             <span dir="ltr">{CONTACT.email}</span>
           </a>
 
@@ -66,14 +69,20 @@ export function Header() {
               href={CONTACT.phoneHref}
               className="group flex items-center gap-2 transition-colors hover:text-primary"
             >
-              <Phone aria-hidden="true" className="size-3.5 text-primary transition-transform duration-300 group-hover:scale-110" />
+              <Phone
+                aria-hidden="true"
+                className="size-3.5 text-primary transition-transform duration-300 group-hover:scale-110"
+              />
               <span dir="ltr">{CONTACT.phone}</span>
             </a>
             <a
               href={CONTACT.mapHref}
               className="group flex items-center gap-2 transition-colors hover:text-primary"
             >
-              <MapPin aria-hidden="true" className="size-3.5 text-primary transition-transform duration-300 group-hover:scale-110" />
+              <MapPin
+                aria-hidden="true"
+                className="size-3.5 text-primary transition-transform duration-300 group-hover:scale-110"
+              />
               <span>{t.portfolio.location}</span>
             </a>
 
@@ -146,11 +155,7 @@ export function Header() {
           aria-label={t.nav.menu}
           className={cn(
             "absolute inset-y-0 end-0 flex w-[86%] max-w-sm flex-col overflow-y-auto border-s border-border bg-card px-6 py-6 transition-transform duration-300",
-            open
-              ? "translate-x-0"
-              : locale === "ar"
-                ? "-translate-x-full rtl:translate-x-full"
-                : "translate-x-full",
+            open ? "translate-x-0" : locale === "ar" ? "-translate-x-full" : "translate-x-full",
           )}
         >
           <div className="flex items-center justify-between">
