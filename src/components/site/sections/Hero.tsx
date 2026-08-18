@@ -49,8 +49,6 @@ export function Hero() {
         className="absolute inset-0 bg-linear-to-r from-background/90 via-background/25 to-transparent rtl:bg-linear-to-l"
       />
 
-
-
       {/* Ambient background light orbs */}
       <div
         aria-hidden="true"
@@ -113,9 +111,6 @@ export function Hero() {
               ))}
             </ul>
           </div>
-<<<<<<< HEAD
-=======
-
           {/* Floating architectural badge accent for desktop */}
           <div className="hidden lg:col-span-4 lg:block">
             <div className="animate-float-slow relative ms-auto max-w-xs overflow-hidden rounded-xl border border-primary/40 bg-card/60 p-6 shadow-2xl backdrop-blur-md">
@@ -138,7 +133,6 @@ export function Hero() {
               </div>
             </div>
           </div>
->>>>>>> d8531a3 (Fix: Unbalanced JSX tags in CalendarPage)
         </div>
       </div>
     </section>

@@ -6,7 +6,7 @@ import { CONTACT, useT } from "@/i18n";
 import { Brand, LanguageSwitcher } from "./Brand";
 import { Btn } from "./ui";
 import { L } from "./L";
-import { Sheet, SheetContent, SheetHeader, SheetTitle } from "@/components/ui/sheet";
+import { Sheet, SheetContent, SheetHeader, SheetTitle, SheetTrigger } from "@/components/ui/sheet";
 
 export function useNavItems() {
   const { t, lp } = useT();
@@ -116,57 +116,17 @@ export function Header() {
           <Btn to={lp("/contact")} className="hidden lg:inline-flex">
             {t.nav.cta}
           </Btn>
-<<<<<<< HEAD
-          <button
-            type="button"
-            onClick={() => setOpen(true)}
-            aria-label={t.nav.menu}
-            aria-expanded={open}
-            className="flex size-11 items-center justify-center rounded-xs border border-border text-foreground lg:hidden"
-          >
-            <Menu aria-hidden="true" className="size-5" />
-          </button>
-        </div>
-      </div>
-
-      {/* Mobile drawer — slides in from the inline-end side (right in EN, left in AR) */}
-      <div
-        className={cn(
-          "fixed inset-0 z-50 lg:hidden",
-          open ? "visible pointer-events-auto" : "invisible pointer-events-none",
-        )}
-        aria-hidden={!open}
-      >
-        <div
-          className={cn(
-            "absolute inset-0 bg-background/80 transition-opacity duration-300",
-            open ? "opacity-100" : "opacity-0",
-          )}
-          onClick={() => setOpen(false)}
-        />
-        <div
-          role="dialog"
-          aria-modal={open}
-          aria-label={t.nav.menu}
-          className={cn(
-            "absolute inset-y-0 end-0 flex w-[86%] max-w-sm flex-col overflow-y-auto border-s border-border bg-card px-6 py-6 transition-transform duration-300",
-            open ? "translate-x-0" : locale === "ar" ? "-translate-x-full" : "translate-x-full",
-          )}
-        >
-          <div className="flex items-center justify-between">
-            <Brand compact />
-=======
           <Sheet open={open} onOpenChange={setOpen}>
->>>>>>> d8531a3 (Fix: Unbalanced JSX tags in CalendarPage)
-            <button
-              type="button"
-              onClick={() => setOpen(true)}
-              aria-label={t.nav.menu}
-              aria-expanded={open}
-              className="flex size-11 items-center justify-center rounded-xs border border-border text-foreground lg:hidden"
-            >
-              <Menu aria-hidden="true" className="size-5" />
-            </button>
+            <SheetTrigger asChild>
+              <button
+                type="button"
+                aria-label={t.nav.menu}
+                aria-expanded={open}
+                className="flex size-11 items-center justify-center rounded-xs border border-border text-foreground lg:hidden cursor-pointer"
+              >
+                <Menu aria-hidden="true" className="size-5" />
+              </button>
+            </SheetTrigger>
             <SheetContent
               side={locale === "ar" ? "right" : "right"}
               className="flex w-[86%] max-w-sm flex-col overflow-y-auto border-s border-border bg-card px-6 py-6"
