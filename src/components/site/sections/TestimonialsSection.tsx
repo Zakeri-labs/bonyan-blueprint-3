@@ -71,7 +71,8 @@ export function TestimonialsSection() {
           <div>
             <ul className="grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
               {visibleItems.map((item, idx) => {
-                const avatar = CLIENT_AVATARS[item.avatarIndex % CLIENT_AVATARS.length] ?? CLIENT_AVATARS[0];
+                const avatar =
+                  CLIENT_AVATARS[item.avatarIndex % CLIENT_AVATARS.length] ?? CLIENT_AVATARS[0];
                 return (
                   <li
                     key={item.name + idx}

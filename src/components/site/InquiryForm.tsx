@@ -15,7 +15,9 @@ export function InquiryForm({ light = false }: { light?: boolean }) {
 
   const inputCls = cn(
     "min-h-11 w-full rounded-xs border bg-transparent px-4 py-3 text-sm outline-none transition-all duration-300 placeholder:text-muted-foreground focus:border-primary focus:ring-2 focus:ring-primary/20",
-    light ? "border-ivory-border text-ink placeholder:text-ink-muted" : "border-input text-foreground",
+    light
+      ? "border-ivory-border text-ink placeholder:text-ink-muted"
+      : "border-input text-foreground",
   );
   const labelCls = cn(
     "mb-2 block text-[0.6875rem] font-bold uppercase tracking-widest",

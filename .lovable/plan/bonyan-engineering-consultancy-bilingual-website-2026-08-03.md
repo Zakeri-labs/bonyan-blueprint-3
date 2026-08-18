@@ -21,6 +21,7 @@ A premium, conversion-focused bilingual (EN/AR) site for Bonyan Construction for
 ## Pages
 
 Homepage — exactly 8 sections, in order:
+
 1. Hero — full-bleed architectural image behind the transparent header, eyebrow, split-color headline, subheadline, two CTAs, capability labels.
 2. Trust bar — slim dark band with four icon+label proof signals, then the "Built on trust" credibility row (6 signals, founded 2021, Muscat-based, etc.).
 3. Services — six cards with image tops, icons, titles, short copy, direction-aware "Learn more" arrow linking to the matching Services-page anchor; three prioritized cards get stronger emphasis.

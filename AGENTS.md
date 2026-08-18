@@ -1,5 +1,18 @@
 # Repository Guidelines
 
+<<<<<<< HEAD
+=======
+<!-- LOVABLE:BEGIN -->
+
+> [!IMPORTANT]
+> This project is connected to [Lovable](https://lovable.dev). Avoid rewriting
+> published git history—do not force-push, rebase, amend, or squash commits that
+> are already pushed. Pushed commits sync back to Lovable, so keep the connected
+> branch in a working state.
+
+<!-- LOVABLE:END -->
+
+>>>>>>> d8531a3 (Fix: Unbalanced JSX tags in CalendarPage)
 ## Project Structure & Module Organization
 
 This is a React 19, TypeScript, and TanStack Start site. File-based routes live in `src/routes/`; English pages use names such as `about.tsx`, while Arabic equivalents use `ar.about.tsx`. Shared page composition belongs in `src/components/site/`, reusable primitives in `src/components/ui/`, translations in `src/i18n/`, and helpers in `src/lib/` or `src/hooks/`. Store imported images in `src/assets/` and static files in `public/`. Do not edit `src/routeTree.gen.ts`; TanStack Router regenerates it.

@@ -8,9 +8,7 @@
   "last_success_at": "2026-08-13T09:42:10.927451Z",
   "milvus_uri": "~/.memsearch/milvus.db",
   "operation": "index",
-  "paths": [
-    "/Users/farzan/Workspace/Projects/bonyan-bluprint-3/.memsearch/memory"
-  ],
+  "paths": ["/Users/farzan/Workspace/Projects/bonyan-bluprint-3/.memsearch/memory"],
   "schema_version": 1,
   "status": "ok",
   "total_files": 3,

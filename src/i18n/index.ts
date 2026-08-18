@@ -14,8 +14,7 @@ export const CONTACT = {
   whatsappHref: "https://wa.me/96895114511",
   mapHref:
     "https://www.google.com/maps/place/Bonyan+Engineering+consultancy/@23.658274,58.113365,17z",
-  mapEmbedHref:
-    "https://maps.google.com/maps?q=23.658274,58.113365&z=17&output=embed",
+  mapEmbedHref: "https://maps.google.com/maps?q=23.658274,58.113365&z=17&output=embed",
   social: [
     { label: "Facebook", href: "#" },
     { label: "LinkedIn", href: "#" },

@@ -128,7 +128,10 @@ export const en = {
       { title: "Accountability", desc: "We take responsibility for our work and results." },
       { title: "Client Focus", desc: "Your goals drive our decisions and solutions." },
       { title: "Innovation", desc: "We apply practical, modern engineering thinking." },
-      { title: "Sustainability", desc: "We consider long-term value and responsible use of resources." },
+      {
+        title: "Sustainability",
+        desc: "We consider long-term value and responsible use of resources.",
+      },
     ],
     expertiseTitle: "Areas of Expertise",
     expertise: [
@@ -151,10 +154,18 @@ export const en = {
     location: "Muscat, Oman",
     items: [
       { title: "Luxury Villas", scope: "Design & Supervision", tag: "Residential" },
-      { title: "Schools & Educational Facilities", scope: "Design, Drawings & Supervision", tag: "Institutional" },
+      {
+        title: "Schools & Educational Facilities",
+        scope: "Design, Drawings & Supervision",
+        tag: "Institutional",
+      },
       { title: "Mosques", scope: "Design & Supervision", tag: "Community" },
       { title: "Residential Compounds", scope: "Master Planning & Design", tag: "Development" },
-      { title: "Commercial & Residential Buildings", scope: "Design, Drawings & Supervision", tag: "Mixed-Use" },
+      {
+        title: "Commercial & Residential Buildings",
+        scope: "Design, Drawings & Supervision",
+        tag: "Mixed-Use",
+      },
     ],
   },
   process: {
