@@ -40,7 +40,7 @@ export function Brand({ compact: _compact = false }: { compact?: boolean }) {
   const { t, lp } = useT();
   return (
     <L to={lp("/")} className="group block" aria-label={t.meta.brandFull}>
-      <span className="relative block h-14 w-[154px] shrink-0 overflow-hidden transition-transform duration-300 group-hover:scale-[1.02]">
+      <span className="relative block h-14 w-[164px] shrink-0 overflow-hidden transition-transform duration-300 group-hover:scale-[1.02]">
         <img
           src={bonyanLogo}
           alt={t.meta.brandFull}
