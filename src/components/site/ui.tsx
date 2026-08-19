@@ -116,7 +116,13 @@ export function GhostNumber({ value, light = false }: { value: string; light?: b
   );
 }
 
-export function SectionLabel({ children, light = false }: { children: ReactNode; light?: boolean }) {
+export function SectionLabel({
+  children,
+  light = false,
+}: {
+  children: ReactNode;
+  light?: boolean;
+}) {
   return (
     <p className={cn("eyebrow mb-4", light && "text-ink-muted")}>
       <span aria-hidden="true" className="me-3 inline-block h-px w-8 bg-primary align-middle" />

@@ -5,13 +5,7 @@ import { PORTFOLIO_IMAGES } from "../assets";
 import { Btn, GhostNumber, Reveal, SectionLabel } from "../ui";
 
 /** Asymmetric editorial grid: 3 across the top row, 2 wider items below. */
-const SPANS = [
-  "lg:col-span-4",
-  "lg:col-span-4",
-  "lg:col-span-4",
-  "lg:col-span-5",
-  "lg:col-span-7",
-];
+const SPANS = ["lg:col-span-4", "lg:col-span-4", "lg:col-span-4", "lg:col-span-5", "lg:col-span-7"];
 
 export function PortfolioSection() {
   const { t, lp } = useT();
@@ -63,10 +57,15 @@ export function PortfolioSection() {
                   />
                   <div className="absolute inset-x-0 bottom-0 p-5 transition-transform duration-300 group-hover:-translate-y-1">
                     <span className="eyebrow">{p.tag}</span>
-                    <h3 className="mt-2 font-display text-lg font-bold leading-snug transition-colors duration-300 group-hover:text-primary">{p.title}</h3>
+                    <h3 className="mt-2 font-display text-lg font-bold leading-snug transition-colors duration-300 group-hover:text-primary">
+                      {p.title}
+                    </h3>
                     <p className="mt-1 text-xs text-primary">{p.scope}</p>
                     <p className="mt-2 flex items-center gap-1.5 text-xs text-muted-foreground">
-                      <MapPin aria-hidden="true" className="size-3.5 text-primary transition-transform duration-300 group-hover:scale-125" />
+                      <MapPin
+                        aria-hidden="true"
+                        className="size-3.5 text-primary transition-transform duration-300 group-hover:scale-125"
+                      />
                       {t.portfolio.location}
                     </p>
                   </div>

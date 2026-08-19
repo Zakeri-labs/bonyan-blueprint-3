@@ -42,10 +42,4 @@ export const SERVICE_IMAGES = [
 ];
 
 /** Portfolio imagery, in the same order as the five portfolio categories. */
-export const PORTFOLIO_IMAGES = [
-  heroVilla,
-  projSchool,
-  projMosque,
-  projCompound,
-  projCommercial,
-];
+export const PORTFOLIO_IMAGES = [heroVilla, projSchool, projMosque, projCompound, projCommercial];

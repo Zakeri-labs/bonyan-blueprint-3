@@ -84,9 +84,17 @@ export function TrustSection() {
           {t.trust.signals.map((s, i) => {
             const Icon = signalIcons[i] ?? ShieldCheck;
             return (
-              <li key={s} className="group min-h-36 bg-background/95 p-5 transition-colors duration-300 hover:bg-card md:p-6">
-                <Icon aria-hidden="true" className="size-6 text-primary transition-transform duration-300 group-hover:scale-115 group-hover:rotate-3" />
-                <p className="mt-4 text-sm font-medium leading-snug transition-colors duration-300 group-hover:text-foreground">{s}</p>
+              <li
+                key={s}
+                className="group min-h-36 bg-background/95 p-5 transition-colors duration-300 hover:bg-card md:p-6"
+              >
+                <Icon
+                  aria-hidden="true"
+                  className="size-6 text-primary transition-transform duration-300 group-hover:scale-115 group-hover:rotate-3"
+                />
+                <p className="mt-4 text-sm font-medium leading-snug transition-colors duration-300 group-hover:text-foreground">
+                  {s}
+                </p>
               </li>
             );
           })}

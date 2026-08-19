@@ -6,21 +6,21 @@ Build a fast, premium, bilingual website for **Bonyan Construction for Engineeri
 
 Bonyan provides:
 
-* Engineering and construction consultancy
+- Engineering and construction consultancy
 
-* Architectural and civil drawings
+- Architectural and civil drawings
 
-* Quantity surveying and cost control
+- Quantity surveying and cost control
 
-* Plot subdivision and planning support
+- Plot subdivision and planning support
 
-* 3D perspectives and architectural models
+- 3D perspectives and architectural models
 
-* Project supervision and inspection
+- Project supervision and inspection
 
-* Construction quality oversight
+- Construction quality oversight
 
-* Technical coordination from design to execution
+- Technical coordination from design to execution
 
 The company serves villa owners, property developers, educational institutions, mosque projects, residential compounds, and commercial or mixed-use developments across Oman.
 
@@ -32,17 +32,17 @@ Create a premium, technically credible, conversion-focused website that position
 
 The website should help visitors quickly understand:
 
-* What Bonyan does
+- What Bonyan does
 
-* Where the company operates
+- Where the company operates
 
-* Which project types it supports
+- Which project types it supports
 
-* Why clients should trust the consultancy
+- Why clients should trust the consultancy
 
-* How to request a consultation
+- How to request a consultation
 
-* How to contact the company through WhatsApp, phone, email, or a project inquiry form
+- How to contact the company through WhatsApp, phone, email, or a project inquiry form
 
 This is a polished demo website intended to create a strong first impression and support a sales conversation.
 
@@ -64,23 +64,23 @@ Build:
 
 Do not build:
 
-* A blog
+- A blog
 
-* A dashboard
+- A dashboard
 
-* A client portal
+- A client portal
 
-* A project management system
+- A project management system
 
-* Additional service-detail pages
+- Additional service-detail pages
 
-* Individual project pages
+- Individual project pages
 
-* Complex animations
+- Complex animations
 
-* Heavy interactive experiences
+- Heavy interactive experiences
 
-* Unnecessary placeholder pages
+- Unnecessary placeholder pages
 
 The homepage must remain the main experience and contain all essential positioning, services, project capabilities, credibility elements, process information, testimonials structure, and contact conversion paths.
 
@@ -99,71 +99,71 @@ Use it as the **main source of truth for the website’s visual appearance and U
 
 Closely reproduce the reference image’s:
 
-* Overall visual style
+- Overall visual style
 
-* Design mood
+- Design mood
 
-* Page composition
+- Page composition
 
-* Header appearance
+- Header appearance
 
-* Navigation treatment
+- Navigation treatment
 
-* Hero composition
+- Hero composition
 
-* Content positioning
+- Content positioning
 
-* Section proportions
+- Section proportions
 
-* Grid structure
+- Grid structure
 
-* Container widths
+- Container widths
 
-* Whitespace
+- Whitespace
 
-* Vertical rhythm
+- Vertical rhythm
 
-* Typography hierarchy
+- Typography hierarchy
 
-* Heading scale
+- Heading scale
 
-* Body-text scale
+- Body-text scale
 
-* Button shapes
+- Button shapes
 
-* CTA hierarchy
+- CTA hierarchy
 
-* Border radius
+- Border radius
 
-* Card appearance
+- Card appearance
 
-* Image proportions
+- Image proportions
 
-* Image cropping
+- Image cropping
 
-* Image overlays
+- Image overlays
 
-* Background treatments
+- Background treatments
 
-* Section transitions
+- Section transitions
 
-* Alignment
+- Alignment
 
-* Decorative lines
+- Decorative lines
 
-* Icon style
+- Icon style
 
-* Shadow intensity
+- Shadow intensity
 
-* Border treatments
+- Border treatments
 
-* Portfolio presentation
+- Portfolio presentation
 
-* Service-card design
+- Service-card design
 
-* Mobile visual behavior
+- Mobile visual behavior
 
-* Premium level of polish
+- Premium level of polish
 
 The final website should immediately feel as though it belongs to the same design system as the uploaded reference image.
 
@@ -191,9 +191,9 @@ Do not copy the original company name, logo, text, contact information, project 
 
 The website must be fully bilingual:
 
-* English
+- English
 
-* Arabic
+- Arabic
 
 English must be the default language on the first visit.
 
@@ -201,33 +201,33 @@ Arabic must be the only secondary language.
 
 Add a compact and clearly visible:
 
-* EN
+- EN
 
-* AR
+- AR
 
 language switcher in the desktop header, mobile header, and footer.
 
 The selected language must persist across:
 
-* Navigation
+- Navigation
 
-* Homepage sections
+- Homepage sections
 
-* Skeleton pages
+- Skeleton pages
 
-* Forms
+- Forms
 
-* Buttons
+- Buttons
 
-* Validation messages
+- Validation messages
 
-* Confirmation messages
+- Confirmation messages
 
-* Footer content
+- Footer content
 
-* Image alt text
+- Image alt text
 
-* Metadata
+- Metadata
 
 Use complete translation objects or structured translation files. Do not scatter untranslated strings throughout individual components.
 
@@ -236,11 +236,7 @@ Use complete translation objects or structured translation files. Do not scatter
 Use:
 
 ```html
-
-lang="en"
-
-dir="ltr"
-
+lang="en" dir="ltr"
 ```
 
 English content should use natural left-to-right alignment.
@@ -250,40 +246,36 @@ English content should use natural left-to-right alignment.
 Use:
 
 ```html
-
-lang="ar"
-
-dir="rtl"
-
+lang="ar" dir="rtl"
 ```
 
 Arabic must use complete RTL behavior.
 
 Do not only right-align the text. Properly mirror:
 
-* Navigation order
+- Navigation order
 
-* Grid direction
+- Grid direction
 
-* Card flow
+- Card flow
 
-* Icon placement
+- Icon placement
 
-* Button icons
+- Button icons
 
-* Arrow direction
+- Arrow direction
 
-* Timeline direction
+- Timeline direction
 
-* Slider controls
+- Slider controls
 
-* Form alignment
+- Form alignment
 
-* Menu drawer behavior
+- Menu drawer behavior
 
-* Image-and-text layouts
+- Image-and-text layouts
 
-* Previous and next controls
+- Previous and next controls
 
 Keep phone numbers, email addresses, URLs, and usernames unchanged when switching languages.
 
@@ -297,59 +289,59 @@ When extending its style, use a premium architectural-consultancy identity with 
 
 The website should feel:
 
-* Precise
+- Precise
 
-* Technical
+- Technical
 
-* Established
+- Established
 
-* Architectural
+- Architectural
 
-* Premium
+- Premium
 
-* Calm
+- Calm
 
-* Professional
+- Professional
 
-* Conversion-focused
+- Conversion-focused
 
-* Appropriate for the Oman market
+- Appropriate for the Oman market
 
 It should not feel:
 
-* Decorative
+- Decorative
 
-* Overly luxurious
+- Overly luxurious
 
-* Industrial
+- Industrial
 
-* Construction-heavy
+- Construction-heavy
 
-* Generic
+- Generic
 
-* Like a prebuilt corporate template
+- Like a prebuilt corporate template
 
-* Like a real-estate listing website
+- Like a real-estate listing website
 
-* Like a contracting-company website
+- Like a contracting-company website
 
 ## Suggested color system
 
 Adapt these colors to the uploaded UI reference image. If the image has a clearly defined palette, preserve its visual balance while integrating these brand-compatible tones where appropriate:
 
-* Warm Ivory: `#F4F0E8`
+- Warm Ivory: `#F4F0E8`
 
-* Limestone Beige: `#D8C8AE`
+- Limestone Beige: `#D8C8AE`
 
-* Charcoal: `#202321`
+- Charcoal: `#202321`
 
-* Dark Graphite: `#111311`
+- Dark Graphite: `#111311`
 
-* Muted Bronze: `#A98455`
+- Muted Bronze: `#A98455`
 
-* Deep Olive: `#4A5547`
+- Deep Olive: `#4A5547`
 
-* Soft Concrete Grey: `#C9CAC5`
+- Soft Concrete Grey: `#C9CAC5`
 
 Bronze and olive must remain restrained accent colors rather than dominant page colors.
 
@@ -359,83 +351,83 @@ Follow the typography scale and editorial feeling of the reference image.
 
 Suggested font pairing:
 
-* English: Manrope or Inter
+- English: Manrope or Inter
 
-* Arabic: IBM Plex Sans Arabic or Noto Kufi Arabic
+- Arabic: IBM Plex Sans Arabic or Noto Kufi Arabic
 
 Requirements:
 
-* Strong compatibility between English and Arabic
+- Strong compatibility between English and Arabic
 
-* Large editorial headings
+- Large editorial headings
 
-* Clean geometric body text
+- Clean geometric body text
 
-* Readable Arabic typography
+- Readable Arabic typography
 
-* Generous line height
+- Generous line height
 
-* Clear hierarchy
+- Clear hierarchy
 
-* No overly decorative fonts
+- No overly decorative fonts
 
-* No condensed construction-style fonts
+- No condensed construction-style fonts
 
 ## Image treatment
 
 Use premium, replaceable architectural images showing:
 
-* Contemporary Omani villas
+- Contemporary Omani villas
 
-* Mosques
+- Mosques
 
-* Schools and educational facilities
+- Schools and educational facilities
 
-* Residential compounds
+- Residential compounds
 
-* Commercial or mixed-use developments
+- Commercial or mixed-use developments
 
-* Architectural details
+- Architectural details
 
-* Technical meetings
+- Technical meetings
 
-* Site inspections
+- Site inspections
 
-* Engineering drawings
+- Engineering drawings
 
 Image direction:
 
-* Cinematic architectural photography
+- Cinematic architectural photography
 
-* Warm natural light
+- Warm natural light
 
-* Refined and slightly desaturated grading
+- Refined and slightly desaturated grading
 
-* Strong geometry
+- Strong geometry
 
-* Structural details
+- Structural details
 
-* Stone, concrete, glass, and natural materials
+- Stone, concrete, glass, and natural materials
 
-* Dark, sand-toned, or charcoal overlays
+- Dark, sand-toned, or charcoal overlays
 
-* Occasional technical-drawing or blueprint textures
+- Occasional technical-drawing or blueprint textures
 
 Avoid:
 
-* Generic corporate office photography
+- Generic corporate office photography
 
-* Repeated images
+- Repeated images
 
-* Generic stock images of people wearing hard hats
+- Generic stock images of people wearing hard hats
 
-* Bright construction-yellow imagery
+- Bright construction-yellow imagery
 
-* Artificial futuristic buildings
+- Artificial futuristic buildings
 
-* Unrealistic megaprojects
+- Unrealistic megaprojects
 
-* Images unrelated to Oman or Gulf architecture
+- Images unrelated to Oman or Gulf architecture
 
 Every major image placeholder must be easy to replace later.
 
@@ -449,11 +441,11 @@ The header should become sticky after scrolling.
 
 After scrolling, it may transition to:
 
-* A warm ivory background
+- A warm ivory background
 
-* A charcoal background
+- A charcoal background
 
-* A subtle translucent background
+- A subtle translucent background
 
 Choose the option that most closely matches the reference image.
 
@@ -463,27 +455,27 @@ Add only a restrained blur, border, or shadow where needed.
 
 Include:
 
-* Minimal modern logo placeholder
+- Minimal modern logo placeholder
 
-* Business name
+- Business name
 
-* Short business descriptor
+- Short business descriptor
 
-* Home
+- Home
 
-* About
+- About
 
-* Services
+- Services
 
-* Portfolio
+- Portfolio
 
-* Testimonials
+- Testimonials
 
-* Contact
+- Contact
 
-* EN / AR language switcher
+- EN / AR language switcher
 
-* Primary consultation CTA
+- Primary consultation CTA
 
 English CTA:
 
@@ -499,31 +491,31 @@ Use anchor links for homepage sections where appropriate.
 
 Include:
 
-* Logo
+- Logo
 
-* Business name
+- Business name
 
-* Short tagline if space allows
+- Short tagline if space allows
 
-* EN / AR switcher
+- EN / AR switcher
 
-* Right-side hamburger control in English
+- Right-side hamburger control in English
 
-* Properly mirrored menu behavior in Arabic
+- Properly mirrored menu behavior in Arabic
 
 The mobile drawer must include all navigation links and the main consultation CTA.
 
 Also add a fixed mobile bottom navigation containing:
 
-* Home
+- Home
 
-* Services
+- Services
 
-* Portfolio
+- Portfolio
 
-* Contact
+- Contact
 
-* WhatsApp
+- WhatsApp
 
 Mirror the order and icon directions correctly in Arabic.
 
@@ -573,13 +565,13 @@ Secondary CTA:
 
 Optional short capability labels:
 
-* Design
+- Design
 
-* Technical Drawings
+- Technical Drawings
 
-* Quantity Surveying
+- Quantity Surveying
 
-* Project Supervision
+- Project Supervision
 
 ### Arabic content
 
@@ -605,13 +597,13 @@ Secondary CTA:
 
 Optional capability labels:
 
-* التصميم
+- التصميم
 
-* المخططات الفنية
+- المخططات الفنية
 
-* حصر الكميات
+- حصر الكميات
 
-* الإشراف الهندسي
+- الإشراف الهندسي
 
 English text must be positioned and aligned according to the LTR composition.
 
@@ -625,13 +617,13 @@ Create a compact credibility section immediately after the hero.
 
 Follow the visual treatment of the reference image. It may appear as:
 
-* A slim proof strip
+- A slim proof strip
 
-* A restrained marquee
+- A restrained marquee
 
-* A structured row of credibility signals
+- A structured row of credibility signals
 
-* A compact icon-and-text band
+- A compact icon-and-text band
 
 Use a very slow and professional movement only if it matches the reference image.
 
@@ -647,17 +639,17 @@ Supporting text:
 
 Credibility signals:
 
-* Founded in Oman in 2016
+- Founded in Oman in 2016
 
-* Muscat-Based Consultancy
+- Muscat-Based Consultancy
 
-* Multidisciplinary Engineering
+- Multidisciplinary Engineering
 
-* Design to Site Supervision
+- Design to Site Supervision
 
-* Diverse Project Experience
+- Diverse Project Experience
 
-* Integrity and Technical Precision
+- Integrity and Technical Precision
 
 ### Arabic section heading
 
@@ -669,17 +661,17 @@ Supporting text:
 
 Credibility signals:
 
-* تأسست في عُمان عام 2016
+- تأسست في عُمان عام 2016
 
-* مكتب استشاري في مسقط
+- مكتب استشاري في مسقط
 
-* خبرات هندسية متعددة التخصصات
+- خبرات هندسية متعددة التخصصات
 
-* من التصميم إلى الإشراف الميداني
+- من التصميم إلى الإشراف الميداني
 
-* خبرة في مشاريع متنوعة
+- خبرة في مشاريع متنوعة
 
-* نزاهة ودقة فنية
+- نزاهة ودقة فنية
 
 No CTA is required in this section.
 
@@ -707,23 +699,23 @@ Show exactly six services:
 
 Visually prioritize:
 
-* Project Supervision & Inspection
+- Project Supervision & Inspection
 
-* Architectural & Civil Drawings
+- Architectural & Civil Drawings
 
-* Quantity Surveying & Cost Control
+- Quantity Surveying & Cost Control
 
 Each service card should include:
 
-* Minimal technical icon
+- Minimal technical icon
 
-* Service title
+- Service title
 
-* Concise description
+- Concise description
 
-* Learn More link
+- Learn More link
 
-* Direction-aware arrow
+- Direction-aware arrow
 
 Do not add long paragraphs.
 
@@ -757,15 +749,15 @@ Main CTA:
 
 In Arabic, reverse:
 
-* Card direction
+- Card direction
 
-* Text alignment
+- Text alignment
 
-* Icon location
+- Icon location
 
-* Link-arrow direction
+- Link-arrow direction
 
-* Grid reading order where appropriate
+- Grid reading order where appropriate
 
 ---
 
@@ -777,15 +769,15 @@ Follow the image-to-text ratio and composition of the uploaded UI reference.
 
 Use a replaceable image showing one of the following:
 
-* Engineering meeting
+- Engineering meeting
 
-* Architectural review
+- Architectural review
 
-* Site inspection
+- Site inspection
 
-* Technical drawing review
+- Technical drawing review
 
-* Project coordination
+- Project coordination
 
 ### English heading
 
@@ -797,29 +789,29 @@ English supporting copy:
 
 Highlight:
 
-* Oman-Based Since 2016
+- Oman-Based Since 2016
 
-* Integrated Design and Supervision
+- Integrated Design and Supervision
 
-* Client-Focused Coordination
+- Client-Focused Coordination
 
-* Quality and Accountability
+- Quality and Accountability
 
-* Practical and Sustainable Solutions
+- Practical and Sustainable Solutions
 
 Values:
 
-* Integrity
+- Integrity
 
-* Quality
+- Quality
 
-* Accountability
+- Accountability
 
-* Client Focus
+- Client Focus
 
-* Innovation
+- Innovation
 
-* Sustainability
+- Sustainability
 
 CTA:
 
@@ -835,15 +827,15 @@ Arabic supporting copy:
 
 Highlight:
 
-* خبرة محلية في عُمان منذ عام 2016
+- خبرة محلية في عُمان منذ عام 2016
 
-* تكامل التصميم والإشراف
+- تكامل التصميم والإشراف
 
-* تنسيق يركز على احتياجات العميل
+- تنسيق يركز على احتياجات العميل
 
-* الجودة والمسؤولية
+- الجودة والمسؤولية
 
-* حلول عملية ومستدامة
+- حلول عملية ومستدامة
 
 CTA:
 
@@ -873,43 +865,43 @@ Include five project categories:
 
 Each portfolio item must contain only:
 
-* Replaceable project image
+- Replaceable project image
 
-* Project category
+- Project category
 
-* Location placeholder
+- Location placeholder
 
-* Service-scope placeholder
+- Service-scope placeholder
 
-* Optional short category tag
+- Optional short category tag
 
 Examples of safe placeholders:
 
-* Location: Muscat, Oman
+- Location: Muscat, Oman
 
-* Scope: Design & Technical Drawings
+- Scope: Design & Technical Drawings
 
-* Scope: Quantity Surveying
+- Scope: Quantity Surveying
 
-* Scope: Project Supervision
+- Scope: Project Supervision
 
 Do not invent:
 
-* Project names
+- Project names
 
-* Client names
+- Client names
 
-* Project budgets
+- Project budgets
 
-* Completion dates
+- Completion dates
 
-* Results
+- Results
 
-* Performance statistics
+- Performance statistics
 
-* Testimonials
+- Testimonials
 
-* Awards
+- Awards
 
 ### English heading
 
@@ -1003,25 +995,25 @@ Therefore, all testimonial content must be clearly presented as replaceable plac
 
 Each card should include:
 
-* Editable quote placeholder
+- Editable quote placeholder
 
-* Client-name placeholder
+- Client-name placeholder
 
-* Project-type placeholder
+- Project-type placeholder
 
-* Rating-interface placeholder
+- Rating-interface placeholder
 
-* Previous and next controls
+- Previous and next controls
 
 Use labels such as:
 
-* Client Feedback Placeholder
+- Client Feedback Placeholder
 
-* Client Name
+- Client Name
 
-* Project Type
+- Project Type
 
-* Replace With Verified Testimonial
+- Replace With Verified Testimonial
 
 Do not create realistic fake client names, fake companies, or fake project reviews.
 
@@ -1053,13 +1045,13 @@ All carousel controls must work correctly in both LTR and RTL.
 
 Create a strong closing section using either:
 
-* A premium architectural background
+- A premium architectural background
 
-* A dark engineering-material panel
+- A dark engineering-material panel
 
-* A technical-drawing background
+- A technical-drawing background
 
-* A layout derived from the final CTA section in the reference image
+- A layout derived from the final CTA section in the reference image
 
 This section should be visually strong but not crowded.
 
@@ -1097,77 +1089,77 @@ Secondary CTA:
 
 Include contact cards for:
 
-* Phone: `[PHONE]`
+- Phone: `[PHONE]`
 
-* WhatsApp: `[WHATSAPP]`
+- WhatsApp: `[WHATSAPP]`
 
-* Email: `[EMAIL]`
+- Email: `[EMAIL]`
 
-* Location: Al Mabelah, Al Seeb, Muscat, Oman
+- Location: Al Mabelah, Al Seeb, Muscat, Oman
 
 Add a compact project inquiry form.
 
 English fields:
 
-* Name
+- Name
 
-* Phone
+- Phone
 
-* Email
+- Email
 
-* Project Type
+- Project Type
 
-* Message
+- Message
 
-* Submit
+- Submit
 
 Arabic fields:
 
-* الاسم
+- الاسم
 
-* رقم الهاتف
+- رقم الهاتف
 
-* البريد الإلكتروني
+- البريد الإلكتروني
 
-* نوع المشروع
+- نوع المشروع
 
-* الرسالة
+- الرسالة
 
-* إرسال
+- إرسال
 
 Project-type options may include:
 
-* Villa
+- Villa
 
-* Educational Facility
+- Educational Facility
 
-* Mosque
+- Mosque
 
-* Residential Compound
+- Residential Compound
 
-* Commercial Building
+- Commercial Building
 
-* Engineering Drawings
+- Engineering Drawings
 
-* Quantity Surveying
+- Quantity Surveying
 
-* Project Supervision
+- Project Supervision
 
-* Other
+- Other
 
 Translate:
 
-* Form labels
+- Form labels
 
-* Placeholders
+- Placeholders
 
-* Validation messages
+- Validation messages
 
-* Error messages
+- Error messages
 
-* Loading states
+- Loading states
 
-* Success confirmation
+- Success confirmation
 
 Keep the contact process direct and low-friction.
 
@@ -1221,17 +1213,17 @@ Include:
 
 Services:
 
-* Engineering & Construction Consultancy
+- Engineering & Construction Consultancy
 
-* Architectural & Civil Drawings
+- Architectural & Civil Drawings
 
-* Project Supervision & Inspection
+- Project Supervision & Inspection
 
-* Quantity Surveying & Cost Control
+- Quantity Surveying & Cost Control
 
-* Plot Subdivision & Planning Support
+- Plot Subdivision & Planning Support
 
-* 3D Perspectives & Models
+- 3D Perspectives & Models
 
 Do not create six separate service pages.
 
@@ -1265,13 +1257,13 @@ Include:
 
 Use editable placeholders:
 
-* `[PHONE]`
+- `[PHONE]`
 
-* `[WHATSAPP]`
+- `[WHATSAPP]`
 
-* `[EMAIL]`
+- `[EMAIL]`
 
-* `[BUSINESS HOURS]`
+- `[BUSINESS HOURS]`
 
 Do not invent contact details.
 
@@ -1283,31 +1275,31 @@ Create a premium footer consistent with the uploaded UI reference image.
 
 Include:
 
-* Logo placeholder
+- Logo placeholder
 
-* Business name
+- Business name
 
-* Short descriptor
+- Short descriptor
 
-* Social links
+- Social links
 
-* Homepage links
+- Homepage links
 
-* About link
+- About link
 
-* Services link
+- Services link
 
-* Contact link
+- Contact link
 
-* WhatsApp link
+- WhatsApp link
 
-* Location
+- Location
 
-* EN / AR switcher
+- EN / AR switcher
 
-* Consultation CTA
+- Consultation CTA
 
-* Copyright
+- Copyright
 
 English slogan:
 
@@ -1329,37 +1321,37 @@ Match button dimensions, border radius, typography, and interaction behavior to 
 
 Where the image does not define them clearly, use:
 
-* Medium-height rectangular buttons
+- Medium-height rectangular buttons
 
-* Modest border radius
+- Modest border radius
 
-* Strong primary CTA
+- Strong primary CTA
 
-* Bordered secondary CTA
+- Bordered secondary CTA
 
-* Subtle hover elevation
+- Subtle hover elevation
 
-* Small arrow movement
+- Small arrow movement
 
-* Smooth but restrained transitions
+- Smooth but restrained transitions
 
 All arrows and directional animations must reverse in Arabic.
 
 Avoid:
 
-* Excessive pill-shaped buttons
+- Excessive pill-shaped buttons
 
-* Large glowing effects
+- Large glowing effects
 
-* Heavy glassmorphism
+- Heavy glassmorphism
 
-* Bouncy animations
+- Bouncy animations
 
-* Large parallax effects
+- Large parallax effects
 
-* Decorative cursor effects
+- Decorative cursor effects
 
-* Excessive motion
+- Excessive motion
 
 ---
 
@@ -1369,37 +1361,37 @@ Design mobile layouts intentionally rather than shrinking the desktop design.
 
 Requirements:
 
-* Fully responsive from mobile to large desktop
+- Fully responsive from mobile to large desktop
 
-* No horizontal page overflow
+- No horizontal page overflow
 
-* Minimum 44px touch targets
+- Minimum 44px touch targets
 
-* Readable Arabic typography
+- Readable Arabic typography
 
-* Safe text wrapping
+- Safe text wrapping
 
-* Mobile-specific spacing
+- Mobile-specific spacing
 
-* One-column service cards where needed
+- One-column service cards where needed
 
-* Swipeable portfolio cards where appropriate
+- Swipeable portfolio cards where appropriate
 
-* Swipeable testimonial cards
+- Swipeable testimonial cards
 
-* Large WhatsApp CTA
+- Large WhatsApp CTA
 
-* Proper RTL mirroring
+- Proper RTL mirroring
 
-* Sticky mobile contact navigation
+- Sticky mobile contact navigation
 
-* Correct spacing above the fixed bottom bar
+- Correct spacing above the fixed bottom bar
 
-* Responsive image crops
+- Responsive image crops
 
-* Clear CTA hierarchy
+- Clear CTA hierarchy
 
-* No compressed desktop layouts
+- No compressed desktop layouts
 
 The mobile version should preserve the premium visual identity of the reference image.
 
@@ -1411,33 +1403,33 @@ Use only restrained and lightweight interactions.
 
 Allowed:
 
-* Subtle scroll reveals
+- Subtle scroll reveals
 
-* Gentle fade and translate effects
+- Gentle fade and translate effects
 
-* Small image zoom on hover
+- Small image zoom on hover
 
-* Card-border transitions
+- Card-border transitions
 
-* Button-arrow movement
+- Button-arrow movement
 
-* Smooth header transition
+- Smooth header transition
 
-* Direction-aware marquee movement
+- Direction-aware marquee movement
 
-* Lightweight portfolio interactions
+- Lightweight portfolio interactions
 
 Animations must:
 
-* Work in LTR and RTL
+- Work in LTR and RTL
 
-* Respect reduced-motion preferences
+- Respect reduced-motion preferences
 
-* Avoid delaying content
+- Avoid delaying content
 
-* Avoid harming performance
+- Avoid harming performance
 
-* Avoid making the site feel like a template demo
+- Avoid making the site feel like a template demo
 
 ---
 
@@ -1447,51 +1439,51 @@ Prepare localized SEO for English and Arabic.
 
 Create separate and natural:
 
-* Page titles
+- Page titles
 
-* Meta descriptions
+- Meta descriptions
 
-* Open Graph titles
+- Open Graph titles
 
-* Open Graph descriptions
+- Open Graph descriptions
 
-* Headings
+- Headings
 
-* Alt text
+- Alt text
 
-* Form labels
+- Form labels
 
-* Structured content
+- Structured content
 
 Do not place English and Arabic keywords together inside one metadata field.
 
 Prepare:
 
-* `hreflang="en"`
+- `hreflang="en"`
 
-* `hreflang="ar"`
+- `hreflang="ar"`
 
-* Proper canonical structure
+- Proper canonical structure
 
-* Localized routes or a scalable language-routing structure
+- Localized routes or a scalable language-routing structure
 
 Suggested route structure:
 
-* `/`
+- `/`
 
-* `/about`
+- `/about`
 
-* `/services`
+- `/services`
 
-* `/contact`
+- `/contact`
 
-* `/ar`
+- `/ar`
 
-* `/ar/about`
+- `/ar/about`
 
-* `/ar/services`
+- `/ar/services`
 
-* `/ar/contact`
+- `/ar/contact`
 
 English must always load as the default language.
 
@@ -1505,27 +1497,27 @@ Each page should contain only one main H1.
 
 Include:
 
-* Accessible color contrast
+- Accessible color contrast
 
-* Keyboard-friendly navigation
+- Keyboard-friendly navigation
 
-* Visible focus states
+- Visible focus states
 
-* Proper form labels
+- Proper form labels
 
-* ARIA labels where necessary
+- ARIA labels where necessary
 
-* Semantic buttons and links
+- Semantic buttons and links
 
-* Descriptive editable image alt text
+- Descriptive editable image alt text
 
-* Accessible mobile drawer
+- Accessible mobile drawer
 
-* Accessible language switcher
+- Accessible language switcher
 
-* Reduced-motion support
+- Reduced-motion support
 
-* Logical tab order in both LTR and RTL
+- Logical tab order in both LTR and RTL
 
 Do not rely only on color to communicate status or actions.
 
@@ -1537,29 +1529,29 @@ Build the website for fast loading and smooth mobile use.
 
 Requirements:
 
-* Use WebP or AVIF images
+- Use WebP or AVIF images
 
-* Lazy-load below-the-fold images
+- Lazy-load below-the-fold images
 
-* Preload only essential hero assets
+- Preload only essential hero assets
 
-* Avoid oversized image files
+- Avoid oversized image files
 
-* Avoid heavy video backgrounds
+- Avoid heavy video backgrounds
 
-* Avoid unnecessary JavaScript
+- Avoid unnecessary JavaScript
 
-* Avoid large animation libraries where CSS is sufficient
+- Avoid large animation libraries where CSS is sufficient
 
-* Keep component structure clean and reusable
+- Keep component structure clean and reusable
 
-* Prevent layout shifts
+- Prevent layout shifts
 
-* Use responsive image sizing
+- Use responsive image sizing
 
-* Optimize fonts
+- Optimize fonts
 
-* Keep the skeleton pages lightweight
+- Keep the skeleton pages lightweight
 
 ---
 
@@ -1569,37 +1561,37 @@ Do not invent or present unsupported information.
 
 Do not fabricate:
 
-* Project names
+- Project names
 
-* Client names
+- Client names
 
-* Customer testimonials
+- Customer testimonials
 
-* Awards
+- Awards
 
-* Certifications
+- Certifications
 
-* Government approvals
+- Government approvals
 
-* Memberships
+- Memberships
 
-* Project counts
+- Project counts
 
-* Staff counts
+- Staff counts
 
-* Revenue
+- Revenue
 
-* Budgets
+- Budgets
 
-* Completion dates
+- Completion dates
 
-* Performance statistics
+- Performance statistics
 
-* Business hours
+- Business hours
 
-* Contact details
+- Contact details
 
-* Social links
+- Social links
 
 Use clearly editable placeholders where verified data is unavailable.
 
@@ -1613,33 +1605,33 @@ Use meaningful, industry-specific placeholder copy.
 
 Build reusable components for:
 
-* Header
+- Header
 
-* Mobile drawer
+- Mobile drawer
 
-* Language switcher
+- Language switcher
 
-* Hero
+- Hero
 
-* Trust signals
+- Trust signals
 
-* Service cards
+- Service cards
 
-* About split section
+- About split section
 
-* Portfolio cards
+- Portfolio cards
 
-* Process steps
+- Process steps
 
-* Testimonial cards
+- Testimonial cards
 
-* Contact cards
+- Contact cards
 
-* Inquiry form
+- Inquiry form
 
-* Footer
+- Footer
 
-* Mobile bottom navigation
+- Mobile bottom navigation
 
 Keep English and Arabic content inside complete, editable translation objects or files.
 
@@ -1651,57 +1643,57 @@ Do not duplicate entire page components for each language unless technically nec
 
 The finished website must:
 
-* Closely match the uploaded reference image’s UI appearance
+- Closely match the uploaded reference image’s UI appearance
 
-* Feel specifically designed for Bonyan
+- Feel specifically designed for Bonyan
 
-* Feel appropriate for an engineering consultancy in Oman
+- Feel appropriate for an engineering consultancy in Oman
 
-* Be fully bilingual in English and Arabic
+- Be fully bilingual in English and Arabic
 
-* Load in English by default
+- Load in English by default
 
-* Support proper RTL behavior
+- Support proper RTL behavior
 
-* Contain exactly eight homepage sections
+- Contain exactly eight homepage sections
 
-* Include only lightweight About, Services, and Contact pages
+- Include only lightweight About, Services, and Contact pages
 
-* Make consultation and WhatsApp actions highly visible
+- Make consultation and WhatsApp actions highly visible
 
-* Avoid fabricated credibility claims
+- Avoid fabricated credibility claims
 
-* Be visually premium but restrained
+- Be visually premium but restrained
 
-* Be responsive and fast
+- Be responsive and fast
 
-* Be implementation-ready
+- Be implementation-ready
 
-* Avoid generic Lovable or corporate-template styling
+- Avoid generic Lovable or corporate-template styling
 
 Before completing the website, compare the result against the uploaded reference image and refine any major differences in:
 
-* Typography
+- Typography
 
-* Spacing
+- Spacing
 
-* Hero composition
+- Hero composition
 
-* Header style
+- Header style
 
-* Card design
+- Card design
 
-* Image presentation
+- Image presentation
 
-* Grid structure
+- Grid structure
 
-* Color balance
+- Color balance
 
-* Section rhythm
+- Section rhythm
 
-* CTA styling
+- CTA styling
 
-* Overall premium appearance
+- Overall premium appearance
 
 Do not finish with a generic design if the uploaded image establishes a more specific visual system.
 

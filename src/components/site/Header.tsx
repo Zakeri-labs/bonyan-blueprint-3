@@ -1,11 +1,12 @@
 import { useEffect, useState } from "react";
 import { useRouterState } from "@tanstack/react-router";
-import { Mail, MapPin, Menu, Phone, X } from "lucide-react";
+import { Mail, MapPin, Menu, Phone } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { CONTACT, useT } from "@/i18n";
 import { Brand, LanguageSwitcher } from "./Brand";
 import { Btn } from "./ui";
 import { L } from "./L";
+import { Sheet, SheetContent, SheetHeader, SheetTitle, SheetTrigger } from "@/components/ui/sheet";
 
 export function useNavItems() {
   const { t, lp } = useT();
@@ -34,13 +35,6 @@ export function Header() {
   }, []);
 
   useEffect(() => setOpen(false), [pathname]);
-
-  useEffect(() => {
-    document.body.style.overflow = open ? "hidden" : "";
-    return () => {
-      document.body.style.overflow = "";
-    };
-  }, [open]);
 
   return (
     <header
@@ -122,125 +116,108 @@ export function Header() {
           <Btn to={lp("/contact")} className="hidden lg:inline-flex">
             {t.nav.cta}
           </Btn>
-          <button
-            type="button"
-            onClick={() => setOpen(true)}
-            aria-label={t.nav.menu}
-            aria-expanded={open}
-            className="flex size-11 items-center justify-center rounded-xs border border-border text-foreground lg:hidden"
-          >
-            <Menu aria-hidden="true" className="size-5" />
-          </button>
-        </div>
-      </div>
-
-      {/* Mobile drawer — slides in from the inline-end side (right in EN, left in AR) */}
-      <div
-        className={cn(
-          "fixed inset-0 z-50 lg:hidden",
-          open ? "visible pointer-events-auto" : "invisible pointer-events-none",
-        )}
-        aria-hidden={!open}
-      >
-        <div
-          className={cn(
-            "absolute inset-0 bg-background/80 transition-opacity duration-300",
-            open ? "opacity-100" : "opacity-0",
-          )}
-          onClick={() => setOpen(false)}
-        />
-        <div
-          role="dialog"
-          aria-modal={open}
-          aria-label={t.nav.menu}
-          className={cn(
-            "absolute inset-y-0 end-0 flex w-[86%] max-w-sm flex-col overflow-y-auto border-s border-border bg-card px-6 py-6 transition-transform duration-300",
-            open ? "translate-x-0" : locale === "ar" ? "-translate-x-full" : "translate-x-full",
-          )}
-        >
-          <div className="flex items-center justify-between">
-            <Brand compact />
-            <button
-              type="button"
-              onClick={() => setOpen(false)}
-              aria-label={t.nav.close}
-              className="flex size-11 items-center justify-center rounded-xs border border-border"
+          <Sheet open={open} onOpenChange={setOpen}>
+            <SheetTrigger asChild>
+              <button
+                type="button"
+                aria-label={t.nav.menu}
+                aria-expanded={open}
+                className="flex size-11 items-center justify-center rounded-xs border border-border text-foreground lg:hidden cursor-pointer"
+              >
+                <Menu aria-hidden="true" className="size-5" />
+              </button>
+            </SheetTrigger>
+            <SheetContent
+              side={locale === "ar" ? "right" : "right"}
+              className="flex w-[86%] max-w-sm flex-col overflow-y-auto border-s border-border bg-card px-6 py-6"
             >
-              <X aria-hidden="true" className="size-5" />
-            </button>
-          </div>
+              <SheetHeader className="sr-only">
+                <SheetTitle>{t.nav.menu}</SheetTitle>
+              </SheetHeader>
 
-          <nav className="mt-8 flex flex-col" aria-label={t.nav.menu}>
-            {items.map((item) => (
-              <L
-                key={item.label}
-                to={item.to}
-                hash={item.hash}
-                onClick={() => setOpen(false)}
-                className="border-b border-border py-4 font-display text-lg font-semibold text-foreground transition-colors hover:text-primary"
-              >
-                {item.label}
-              </L>
-            ))}
-          </nav>
+              <div className="flex items-center justify-between pe-10">
+                <Brand compact />
+              </div>
 
-          <ul className="mt-6 space-y-1 border-t border-border pt-5">
-            <li>
-              <a
-                href={`mailto:${CONTACT.email}`}
-                className="group flex min-h-12 items-center gap-3 rounded-xs px-2 transition-colors hover:bg-background/40"
-              >
-                <Mail aria-hidden="true" className="size-4 shrink-0 text-primary" />
-                <span className="min-w-0">
-                  <span className="block text-[0.625rem] uppercase tracking-widest text-muted-foreground">
-                    {t.contact.email}
-                  </span>
-                  <span dir="ltr" className="block text-start text-sm font-medium text-foreground">
-                    {CONTACT.email}
-                  </span>
-                </span>
-              </a>
-            </li>
-            <li>
-              <a
-                href={CONTACT.phoneHref}
-                className="group flex min-h-12 items-center gap-3 rounded-xs px-2 transition-colors hover:bg-background/40"
-              >
-                <Phone aria-hidden="true" className="size-4 shrink-0 text-primary" />
-                <span className="min-w-0">
-                  <span className="block text-[0.625rem] uppercase tracking-widest text-muted-foreground">
-                    {t.contact.phone}
-                  </span>
-                  <span dir="ltr" className="block text-start text-sm font-medium text-foreground">
-                    {CONTACT.phone}
-                  </span>
-                </span>
-              </a>
-            </li>
-            <li>
-              <a
-                href={CONTACT.mapHref}
-                className="group flex min-h-12 items-center gap-3 rounded-xs px-2 transition-colors hover:bg-background/40"
-              >
-                <MapPin aria-hidden="true" className="size-4 shrink-0 text-primary" />
-                <span className="min-w-0">
-                  <span className="block text-[0.625rem] uppercase tracking-widest text-muted-foreground">
-                    {t.contact.location}
-                  </span>
-                  <span className="block text-sm font-medium text-foreground">
-                    {t.portfolio.location}
-                  </span>
-                </span>
-              </a>
-            </li>
-          </ul>
+              <nav className="mt-8 flex flex-col" aria-label={t.nav.menu}>
+                {items.map((item) => (
+                  <L
+                    key={item.label}
+                    to={item.to}
+                    hash={item.hash}
+                    onClick={() => setOpen(false)}
+                    className="border-b border-border py-4 font-display text-lg font-semibold text-foreground transition-colors hover:text-primary"
+                  >
+                    {item.label}
+                  </L>
+                ))}
+              </nav>
 
-          <div className="mt-auto space-y-4 pt-8">
-            <LanguageSwitcher className="w-fit" />
-            <Btn to={lp("/contact")} className="w-full" arrow>
-              {t.nav.cta}
-            </Btn>
-          </div>
+              <ul className="mt-6 space-y-1 border-t border-border pt-5">
+                <li>
+                  <a
+                    href={`mailto:${CONTACT.email}`}
+                    className="group flex min-h-12 items-center gap-3 rounded-xs px-2 transition-colors hover:bg-background/40"
+                  >
+                    <Mail aria-hidden="true" className="size-4 shrink-0 text-primary" />
+                    <span className="min-w-0">
+                      <span className="block text-[0.625rem] uppercase tracking-widest text-muted-foreground">
+                        {t.contact.email}
+                      </span>
+                      <span
+                        dir="ltr"
+                        className="block text-start text-sm font-medium text-foreground"
+                      >
+                        {CONTACT.email}
+                      </span>
+                    </span>
+                  </a>
+                </li>
+                <li>
+                  <a
+                    href={CONTACT.phoneHref}
+                    className="group flex min-h-12 items-center gap-3 rounded-xs px-2 transition-colors hover:bg-background/40"
+                  >
+                    <Phone aria-hidden="true" className="size-4 shrink-0 text-primary" />
+                    <span className="min-w-0">
+                      <span className="block text-[0.625rem] uppercase tracking-widest text-muted-foreground">
+                        {t.contact.phone}
+                      </span>
+                      <span
+                        dir="ltr"
+                        className="block text-start text-sm font-medium text-foreground"
+                      >
+                        {CONTACT.phone}
+                      </span>
+                    </span>
+                  </a>
+                </li>
+                <li>
+                  <a
+                    href={CONTACT.mapHref}
+                    className="group flex min-h-12 items-center gap-3 rounded-xs px-2 transition-colors hover:bg-background/40"
+                  >
+                    <MapPin aria-hidden="true" className="size-4 shrink-0 text-primary" />
+                    <span className="min-w-0">
+                      <span className="block text-[0.625rem] uppercase tracking-widest text-muted-foreground">
+                        {t.contact.location}
+                      </span>
+                      <span className="block text-sm font-medium text-foreground">
+                        {t.portfolio.location}
+                      </span>
+                    </span>
+                  </a>
+                </li>
+              </ul>
+
+              <div className="mt-auto space-y-4 pt-8">
+                <LanguageSwitcher className="w-fit" />
+                <Btn to={lp("/contact")} className="w-full" arrow onClick={() => setOpen(false)}>
+                  {t.nav.cta}
+                </Btn>
+              </div>
+            </SheetContent>
+          </Sheet>
         </div>
       </div>
     </header>
