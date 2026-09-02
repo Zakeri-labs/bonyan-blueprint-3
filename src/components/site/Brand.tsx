@@ -40,11 +40,14 @@ export function Brand({ compact: _compact = false }: { compact?: boolean }) {
   const { t, lp } = useT();
   return (
     <L to={lp("/")} className="group block" aria-label={t.meta.brandFull}>
-      <span className="relative block h-14 w-[164px] shrink-0 overflow-hidden transition-transform duration-300 group-hover:scale-[1.02]">
+      {/* The source PNG (1448x1086) has large transparent margins; the artwork's
+          bounding box is x 93-1390, y 261-706. This window crops to it with a
+          few px of breathing room so nothing (esp. "CONSTRUCTION") is clipped. */}
+      <span className="relative block h-[52px] w-[141px] shrink-0 overflow-hidden transition-transform duration-300 group-hover:scale-[1.02]">
         <img
           src={bonyanLogo}
           alt={t.meta.brandFull}
-          className="absolute left-[-9px] top-[-26px] h-auto w-[170px] max-w-none transition-opacity duration-300 group-hover:opacity-95"
+          className="absolute left-[-7px] top-[-24px] h-auto w-[150px] max-w-none transition-opacity duration-300 group-hover:opacity-95"
         />
       </span>
     </L>

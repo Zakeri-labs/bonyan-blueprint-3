@@ -286,6 +286,22 @@
   }
 }
 
+@keyframes text-glow {
+  0%,
+  100% {
+    text-shadow: 0 0 6px color-mix(in oklch, var(--primary) 22%, transparent);
+  }
+  50% {
+    text-shadow:
+      0 0 18px color-mix(in oklch, var(--primary) 65%, transparent),
+      0 0 5px color-mix(in oklch, var(--primary) 45%, transparent);
+  }
+}
+
+@utility animate-text-glow {
+  animation: text-glow 3s ease-in-out infinite;
+}
+
 @utility animate-float-gentle {
   animation: float-gentle 5s ease-in-out infinite;
 }

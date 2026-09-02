@@ -1,8 +1,35 @@
+import { useState } from "react";
 import { Linkedin, Mail, Phone, UserRound } from "lucide-react";
 import { useT } from "@/i18n";
 import { SiteLayout } from "../SiteLayout";
-import { IMAGES } from "../assets";
+import { IMAGES, TEAM_PHOTOS } from "../assets";
 import { Reveal, SectionLabel } from "../ui";
+
+/** Portrait with a graceful fallback to the placeholder if the file is missing. */
+function TeamPhoto({ src, name, pending }: { src: string; name: string; pending: string }) {
+  const [failed, setFailed] = useState(false);
+
+  if (!src || failed) {
+    return (
+      <span className="flex size-full flex-col items-center justify-center gap-3 text-muted-foreground">
+        <UserRound aria-hidden="true" className="size-12 text-primary/40" />
+        <span className="text-[0.625rem] uppercase tracking-widest">{pending}</span>
+      </span>
+    );
+  }
+
+  return (
+    <img
+      src={src}
+      alt={name}
+      loading="lazy"
+      width={900}
+      height={1124}
+      onError={() => setFailed(true)}
+      className="size-full object-cover object-center"
+    />
+  );
+}
 
 export function TeamPage() {
   const { t } = useT();
@@ -46,34 +73,19 @@ export function TeamPage() {
             {t.team.note}
           </p>
 
-          <div className="mt-10 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+          <div className="mt-10 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
             {t.team.members.map((m, i) => {
-              // Only the CEO has an approved photo today; the rest use a uniform
-              // placeholder until Bonyan supplies matching-style images.
-              const photo = i === 0 ? IMAGES.managingDirector : null;
               const hasContact = Boolean(m.email || m.phone || m.linkedin);
 
               return (
-                <Reveal key={m.name} delay={(i % 3) * 70}>
+                <Reveal key={m.name} delay={(i % 4) * 70}>
                   <article className="flex h-full flex-col overflow-hidden border border-border bg-card">
                     <div className="relative aspect-4/5 w-full overflow-hidden border-b border-border bg-panel">
-                      {photo ? (
-                        <img
-                          src={photo}
-                          alt={m.name}
-                          loading="lazy"
-                          width={900}
-                          height={1124}
-                          className="size-full object-cover object-top"
-                        />
-                      ) : (
-                        <span className="flex size-full flex-col items-center justify-center gap-3 text-muted-foreground">
-                          <UserRound aria-hidden="true" className="size-12 text-primary/40" />
-                          <span className="text-[0.625rem] uppercase tracking-widest">
-                            {t.team.photoPending}
-                          </span>
-                        </span>
-                      )}
+                      <TeamPhoto
+                        src={TEAM_PHOTOS[i] ?? ""}
+                        name={m.name}
+                        pending={t.team.photoPending}
+                      />
                     </div>
 
                     <div className="flex flex-1 flex-col p-5">

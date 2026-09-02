@@ -14,7 +14,7 @@ import {
 import { cn } from "@/lib/utils";
 import { useT } from "@/i18n";
 import { SERVICE_IMAGES } from "../assets";
-import { Btn, GhostNumber, Reveal, SectionLabel } from "../ui";
+import { Btn, GhostNumber, H_SCROLL_ITEM, H_SCROLL_STRIP, Reveal, SectionLabel } from "../ui";
 import { L } from "../L";
 
 /** Same order as `services.items` in `en.ts`. */
@@ -155,7 +155,7 @@ export function ServiceCarousel({
     if (!el) return;
     const rtl = dir === "rtl";
     const card = el.querySelector<HTMLElement>("[data-card]");
-    const amount = (card?.offsetWidth ?? el.clientWidth * 0.8) + 24; // gap-6
+    const amount = (card?.offsetWidth ?? el.clientWidth * 0.85) + 16; // card + gap-4
     const maxAbs = el.scrollWidth - el.clientWidth;
     const cur = el.scrollLeft;
     const nearEnd = Math.abs(cur) >= maxAbs - 8;
@@ -238,20 +238,10 @@ export function ServiceCarousel({
         onMouseEnter={pause}
         onMouseLeave={resume}
         onTouchStart={pause}
-        className={cn(
-          // vertical padding + matching negative margin gives the hover lift/shadow
-          // room to breathe inside the horizontal scroll container without clipping
-          "no-scrollbar -mx-5 -my-4 flex snap-x snap-proximity gap-6 overflow-x-auto px-5 py-4",
-          "md:m-0 md:grid md:gap-6 md:overflow-visible md:p-0",
-          gridClass,
-        )}
+        className={cn(H_SCROLL_STRIP, gridClass)}
       >
         {indices.map((i) => (
-          <div
-            key={t.services.items[i]!.id}
-            data-card
-            className="w-[80%] shrink-0 snap-start sm:w-[46%] md:w-auto md:shrink"
-          >
+          <div key={t.services.items[i]!.id} data-card className={H_SCROLL_ITEM}>
             <ServiceCard index={i} compact={compact} />
           </div>
         ))}
@@ -288,11 +278,11 @@ export function ServicesSection() {
           const { core, rest } = splitServiceIndices(t.services.items);
           return (
             <>
-              {/* Core services — framed and set apart */}
-              <div className="mt-12 rounded-xl border border-primary/25 bg-background/40 p-5 md:p-8">
+              {/* Core services — framed and set apart (frame is desktop-only) */}
+              <div className="mt-12 md:rounded-xl md:border md:border-primary/25 md:bg-background/40 md:p-8">
                 <p className="eyebrow flex items-center gap-3">
                   <span aria-hidden="true" className="inline-block h-px w-8 bg-primary" />
-                  {t.services.coreLabel}
+                  <span className="animate-text-glow">{t.services.coreLabel}</span>
                 </p>
                 <div className="mt-6">
                   <ServiceCarousel indices={core} gridClass="md:grid-cols-3" />

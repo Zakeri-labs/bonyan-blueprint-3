@@ -44,3 +44,14 @@ export const SERVICE_IMAGES = [
 
 /** Portfolio imagery, in the same order as the five portfolio categories. */
 export const PORTFOLIO_IMAGES = [heroVilla, projSchool, projMosque, projCompound, projCommercial];
+
+/**
+ * Leadership portraits, in the same order as `team.members` in the dictionaries.
+ * Files live in `/public/team/`; an empty string falls back to a placeholder.
+ */
+export const TEAM_PHOTOS = [
+  "/team/yaser-al-aufi.jpg", // Yaser Salim Hamed Al Aufi — Founder & CEO
+  "/team/agha-shahid.jpg", // Agha Shahid — Technical Manager
+  "/team/atheesh-nadesan.jpg", // Atheesh Nadesan — General Manager
+  "/team/mohammadreza-zakeri.jpg", // Mohammadreza Zakeri — IT Manager
+];

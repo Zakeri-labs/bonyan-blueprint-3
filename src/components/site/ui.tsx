@@ -3,6 +3,19 @@ import { useEffect, useRef, useState, type ReactNode } from "react";
 import { cn } from "@/lib/utils";
 import { L } from "./L";
 
+/**
+ * Mobile horizontal-scroll strip — shared by every swipeable section so the
+ * edge margins line up. `-mx-5` bleeds the strip to the viewport edge (cancelling
+ * `container-site`'s 1.25rem gutter), `px-5` re-insets the first/last card, and
+ * `-my-4 py-4` gives the card hover lift + shadow room so it isn't clipped by
+ * the scroll container. Reverts to a normal grid at `md`.
+ */
+export const H_SCROLL_STRIP =
+  "no-scrollbar -mx-5 -my-4 flex snap-x snap-proximity gap-4 overflow-x-auto px-5 py-4 md:m-0 md:grid md:gap-6 md:overflow-visible md:p-0";
+
+/** A card inside `H_SCROLL_STRIP`: near-full width on phones with a small peek of the next. */
+export const H_SCROLL_ITEM = "w-full shrink-0 snap-start sm:w-[62%] md:w-auto md:shrink";
+
 type BtnVariant = "primary" | "outline" | "ghost" | "light";
 
 const base =

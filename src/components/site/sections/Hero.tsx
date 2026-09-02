@@ -77,7 +77,8 @@ export function Hero() {
               </span>
             </h1>
             <p className="mt-6 max-w-2xl text-base leading-relaxed text-muted-foreground md:text-lg">
-              {t.hero.subtitle}
+              <span className="block">{t.hero.subtitle}</span>
+              <span className="mt-1 block">{t.hero.subtitle2}</span>
             </p>
 
             <div className="mt-9 flex flex-wrap gap-3">
@@ -126,10 +127,10 @@ export function Hero() {
                 </div>
                 <div>
                   <h3 className="font-display text-sm font-bold text-foreground">
-                    {t.trust.heading2}
+                    {t.hero.badgeTitle}
                   </h3>
                   <p className="mt-1 text-xs leading-relaxed text-muted-foreground">
-                    {t.trust.signals[5]}
+                    {t.hero.badgeText}
                   </p>
                 </div>
               </div>

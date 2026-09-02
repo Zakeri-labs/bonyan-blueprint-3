@@ -43,10 +43,10 @@ export function ServicesPage() {
             const { core, rest } = splitServiceIndices(t.services.items);
             return (
               <>
-                <div className="rounded-xl border border-primary/25 bg-background/40 p-5 md:p-8">
+                <div className="md:rounded-xl md:border md:border-primary/25 md:bg-background/40 md:p-8">
                   <p className="eyebrow flex items-center gap-3">
                     <span aria-hidden="true" className="inline-block h-px w-8 bg-primary" />
-                    {t.services.coreLabel}
+                    <span className="animate-text-glow">{t.services.coreLabel}</span>
                   </p>
                   <div className="mt-6">
                     <ServiceCarousel indices={core} gridClass="md:grid-cols-3" compact />
