@@ -1,6 +1,6 @@
 import { CONTACT, useT } from "@/i18n";
 import { IMAGES } from "../assets";
-import { Btn, GhostNumber, Reveal } from "../ui";
+import { Btn, GhostNumber, Reveal, SectionLabel } from "../ui";
 import { ContactCards } from "../ContactCards";
 import { InquiryForm } from "../InquiryForm";
 
@@ -31,6 +31,7 @@ export function FinalCtaSection() {
         <GhostNumber value="08" />
         <div className="grid gap-12 lg:grid-cols-2 lg:gap-16">
           <Reveal>
+            <SectionLabel>{t.contact.label}</SectionLabel>
             <h2
               id="final-cta-heading"
               className="font-display text-3xl font-extrabold leading-tight md:text-5xl"

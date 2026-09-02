@@ -13,9 +13,10 @@ export const CONTACT = {
   email: "info@bonyamec.com",
   applyEmail: "apply@bonyanec.com",
   whatsappHref: "https://wa.me/96895114511",
-  mapHref:
-    "https://www.google.com/maps/place/Bonyan+Engineering+consultancy/@23.658274,58.113365,17z",
-  mapEmbedHref: "https://maps.google.com/maps?q=23.658274,58.113365&z=17&output=embed",
+  /** Exact office location provided by the client (Google Maps short link). */
+  mapHref: "https://maps.app.goo.gl/QH2wMhHbD71WDPY58",
+  mapEmbedHref:
+    "https://maps.google.com/maps?q=Bonyan%20Engineering%20consultancy,%20Mabela,%20Sanaya%20Muscat%20OM,%20811&z=16&output=embed",
   social: [
     { label: "Facebook", href: "#" },
     { label: "LinkedIn", href: "#" },

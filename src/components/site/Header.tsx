@@ -51,7 +51,7 @@ export function Header() {
         <div className="container-site flex h-9 items-center justify-between gap-6 text-[0.6875rem] font-medium text-muted-foreground">
           <a
             href={`mailto:${CONTACT.email}`}
-            className="group flex items-center gap-2 transition-colors hover:text-primary"
+            className="group flex items-center gap-2 text-link transition-colors hover:underline"
           >
             <Mail
               aria-hidden="true"
@@ -73,6 +73,8 @@ export function Header() {
             </a>
             <a
               href={CONTACT.mapHref}
+              target="_blank"
+              rel="noreferrer"
               className="group flex items-center gap-2 transition-colors hover:text-primary"
             >
               <MapPin
@@ -168,7 +170,7 @@ export function Header() {
                       </span>
                       <span
                         dir="ltr"
-                        className="block text-start text-sm font-medium text-foreground"
+                        className="block text-start text-sm font-medium text-link underline"
                       >
                         {CONTACT.email}
                       </span>
@@ -197,6 +199,8 @@ export function Header() {
                 <li>
                   <a
                     href={CONTACT.mapHref}
+                    target="_blank"
+                    rel="noreferrer"
                     className="group flex min-h-12 items-center gap-3 rounded-xs px-2 transition-colors hover:bg-background/40"
                   >
                     <MapPin aria-hidden="true" className="size-4 shrink-0 text-primary" />

@@ -1,6 +1,6 @@
 import { MapPin } from "lucide-react";
 import { cn } from "@/lib/utils";
-import { useT } from "@/i18n";
+import { CONTACT, useT } from "@/i18n";
 import { PORTFOLIO_IMAGES } from "../assets";
 import { Btn, GhostNumber, Reveal, SectionLabel } from "../ui";
 
@@ -61,13 +61,18 @@ export function PortfolioSection() {
                       {p.title}
                     </h3>
                     <p className="mt-1 text-xs text-primary">{p.scope}</p>
-                    <p className="mt-2 flex items-center gap-1.5 text-xs text-muted-foreground">
+                    <a
+                      href={CONTACT.mapHref}
+                      target="_blank"
+                      rel="noreferrer"
+                      className="mt-2 flex w-fit items-center gap-1.5 text-xs text-muted-foreground transition-colors hover:text-primary"
+                    >
                       <MapPin
                         aria-hidden="true"
                         className="size-3.5 text-primary transition-transform duration-300 group-hover:scale-125"
                       />
                       {t.portfolio.location}
-                    </p>
+                    </a>
                   </div>
                 </article>
               </Reveal>

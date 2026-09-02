@@ -38,9 +38,10 @@ export function ContactPage() {
       <section aria-labelledby="contact-details" className="bg-background">
         <div className="container-site grid gap-12 py-16 lg:grid-cols-2 lg:gap-16 md:py-20">
           <Reveal>
+            <SectionLabel>{t.contact.whereLabel}</SectionLabel>
             <h2
               id="contact-details"
-              className="font-display text-2xl font-extrabold leading-tight md:text-3xl"
+              className="font-display text-2xl font-extrabold leading-tight text-primary md:text-3xl"
             >
               {t.contact.heading}
             </h2>
@@ -50,6 +51,34 @@ export function ContactPage() {
 
             <div className="mt-8">
               <ContactCards />
+            </div>
+
+            <div className="mt-6 border border-border p-5">
+              <p className="text-[0.625rem] uppercase tracking-widest text-primary">
+                {t.contact.emailsTitle}
+              </p>
+              <ul className="mt-3 space-y-2 text-sm">
+                <li className="flex flex-wrap items-baseline gap-x-2">
+                  <span className="font-medium">{t.contact.generalLabel}</span>
+                  <a
+                    href={`mailto:${CONTACT.email}`}
+                    dir="ltr"
+                    className="text-link underline transition-colors hover:text-link/80"
+                  >
+                    {CONTACT.email}
+                  </a>
+                </li>
+                <li className="flex flex-wrap items-baseline gap-x-2">
+                  <span className="font-medium">{t.contact.careersLabel}</span>
+                  <a
+                    href={`mailto:${CONTACT.applyEmail}`}
+                    dir="ltr"
+                    className="text-link underline transition-colors hover:text-link/80"
+                  >
+                    {CONTACT.applyEmail}
+                  </a>
+                </li>
+              </ul>
             </div>
 
             <div className="mt-6 flex items-start gap-4 border border-border p-5">

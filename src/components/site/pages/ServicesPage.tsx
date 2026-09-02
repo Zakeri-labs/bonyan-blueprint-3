@@ -2,7 +2,7 @@ import { useT } from "@/i18n";
 import { SiteLayout } from "../SiteLayout";
 import { IMAGES, SERVICE_IMAGES } from "../assets";
 import { Btn, Reveal, SectionLabel } from "../ui";
-import { SERVICE_ICONS, ServiceCard } from "../sections/ServicesSection";
+import { SERVICE_ICONS, ServiceCarousel, splitServiceIndices } from "../sections/ServicesSection";
 
 export function ServicesPage() {
   const { t, lp } = useT();
@@ -38,13 +38,35 @@ export function ServicesPage() {
           <h2 id="all-services" className="sr-only">
             {t.services.label}
           </h2>
-          <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-            {t.services.items.map((s, i) => (
-              <Reveal key={s.id} delay={(i % 3) * 70}>
-                <ServiceCard index={i} compact />
-              </Reveal>
-            ))}
-          </div>
+
+          {(() => {
+            const { core, rest } = splitServiceIndices(t.services.items);
+            return (
+              <>
+                <div className="rounded-xl border border-primary/25 bg-background/40 p-5 md:p-8">
+                  <p className="eyebrow flex items-center gap-3">
+                    <span aria-hidden="true" className="inline-block h-px w-8 bg-primary" />
+                    {t.services.coreLabel}
+                  </p>
+                  <div className="mt-6">
+                    <ServiceCarousel indices={core} gridClass="md:grid-cols-3" compact />
+                  </div>
+                </div>
+
+                <div className="mt-14 flex items-center gap-4">
+                  <span aria-hidden="true" className="h-px flex-1 bg-border" />
+                  <span className="text-[0.6875rem] font-bold uppercase tracking-[0.2em] text-muted-foreground">
+                    {t.services.moreLabel}
+                  </span>
+                  <span aria-hidden="true" className="h-px flex-1 bg-border" />
+                </div>
+
+                <div className="mt-8">
+                  <ServiceCarousel indices={rest} gridClass="md:grid-cols-2" compact />
+                </div>
+              </>
+            );
+          })()}
         </div>
       </section>
 
@@ -54,7 +76,11 @@ export function ServicesPage() {
             {t.pages.services.title}
           </h2>
           <div className="grid gap-14">
-            {t.services.items.map((s, i) => {
+            {(() => {
+              const { core, rest } = splitServiceIndices(t.services.items);
+              return [...core, ...rest];
+            })().map((i, order) => {
+              const s = t.services.items[i]!;
               const Icon = SERVICE_ICONS[i]!;
               return (
                 <Reveal key={s.id}>
@@ -62,7 +88,7 @@ export function ServicesPage() {
                     id={s.id}
                     className="grid items-center gap-8 border-t border-border pt-10 lg:grid-cols-2 lg:gap-14"
                   >
-                    <div className={i % 2 === 1 ? "lg:order-2" : undefined}>
+                    <div className={order % 2 === 1 ? "lg:order-2" : undefined}>
                       <Icon aria-hidden="true" className="size-8 text-primary" />
                       <h3 className="mt-5 font-display text-2xl font-extrabold leading-tight">
                         {s.title}

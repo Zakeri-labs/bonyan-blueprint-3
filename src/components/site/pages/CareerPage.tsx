@@ -91,7 +91,7 @@ export function CareerPage() {
                 <a
                   href={`mailto:${CONTACT.applyEmail}`}
                   dir="ltr"
-                  className="mt-1 block break-words text-start text-sm font-medium text-foreground"
+                  className="mt-1 block break-words text-start text-sm font-medium text-link underline transition-colors hover:text-link/80"
                 >
                   {CONTACT.applyEmail}
                 </a>

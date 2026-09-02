@@ -12,6 +12,8 @@ export function ContactCards({ light = false }: { light?: boolean }) {
       value: CONTACT.phone,
       href: CONTACT.phoneHref,
       ltr: true,
+      external: false,
+      link: false,
     },
     {
       icon: MessageCircle,
@@ -19,6 +21,8 @@ export function ContactCards({ light = false }: { light?: boolean }) {
       value: CONTACT.whatsapp,
       href: CONTACT.whatsappHref,
       ltr: true,
+      external: true,
+      link: false,
     },
     {
       icon: Mail,
@@ -26,6 +30,8 @@ export function ContactCards({ light = false }: { light?: boolean }) {
       value: CONTACT.email,
       href: `mailto:${CONTACT.email}`,
       ltr: true,
+      external: false,
+      link: true,
     },
     {
       icon: MapPin,
@@ -33,6 +39,8 @@ export function ContactCards({ light = false }: { light?: boolean }) {
       value: t.contact.address,
       href: CONTACT.mapHref,
       ltr: false,
+      external: true,
+      link: false,
     },
   ];
 
@@ -42,6 +50,7 @@ export function ContactCards({ light = false }: { light?: boolean }) {
         <li key={c.label}>
           <a
             href={c.href}
+            {...(c.external ? { target: "_blank", rel: "noreferrer" } : {})}
             className={cn(
               "flex h-full min-h-11 items-start gap-4 border p-5 transition-colors",
               light
@@ -58,7 +67,13 @@ export function ContactCards({ light = false }: { light?: boolean }) {
                 {...(c.ltr ? { dir: "ltr" as const } : {})}
                 className={cn(
                   "mt-1 block break-words text-sm font-medium",
-                  light ? "text-ink" : "text-foreground",
+                  c.link
+                    ? light
+                      ? "text-link-ink underline"
+                      : "text-link underline"
+                    : light
+                      ? "text-ink"
+                      : "text-foreground",
                   c.ltr && "text-start",
                 )}
               >

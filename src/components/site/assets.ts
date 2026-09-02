@@ -31,14 +31,15 @@ export const IMAGES = {
 
 export const CLIENT_AVATARS = [client1, client2, client3, client4, client5, client6];
 
-/** Service card imagery, in the same order as the six services. */
+/** Service card imagery, in the same order as the services in `en.ts`. */
 export const SERVICE_IMAGES = [
-  detailFacade,
-  detailDrawings,
-  aboutReview,
-  projCompound,
-  projSchool,
-  projCommercial,
+  detailDrawings, // design
+  detailFacade, // mep
+  aboutReview, // supervision
+  heroVilla, // construction
+  projCompound, // management
+  projCommercial, // quantity
+  projSchool, // planning
 ];
 
 /** Portfolio imagery, in the same order as the five portfolio categories. */

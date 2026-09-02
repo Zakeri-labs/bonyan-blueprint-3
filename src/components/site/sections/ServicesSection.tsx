@@ -1,11 +1,15 @@
+import { useEffect, useRef } from "react";
 import {
   ArrowRight,
-  Box,
   Calculator,
+  ChevronLeft,
+  ChevronRight,
   ClipboardCheck,
+  DraftingCompass,
   HardHat,
   Map,
-  PencilRuler,
+  Network,
+  Wrench,
 } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { useT } from "@/i18n";
@@ -13,20 +17,37 @@ import { SERVICE_IMAGES } from "../assets";
 import { Btn, GhostNumber, Reveal, SectionLabel } from "../ui";
 import { L } from "../L";
 
-export const SERVICE_ICONS = [HardHat, PencilRuler, ClipboardCheck, Calculator, Map, Box];
-/** Visually prioritized services: supervision, drawings, quantity surveying. */
-const PRIORITY = new Set(["supervision", "drawings", "quantity"]);
+/** Same order as `services.items` in `en.ts`. */
+export const SERVICE_ICONS = [
+  DraftingCompass, // design
+  Wrench, // mep
+  ClipboardCheck, // supervision
+  HardHat, // construction
+  Network, // management
+  Calculator, // quantity
+  Map, // planning
+];
+/** Visually prioritized services (task 5 pillars): design, supervision, construction. */
+export const CORE_SERVICE_IDS = new Set(["design", "supervision", "construction"]);
+
+/** Split the service list into core vs. the rest, preserving original indices. */
+export function splitServiceIndices(items: ReadonlyArray<{ id: string }>) {
+  const core: number[] = [];
+  const rest: number[] = [];
+  items.forEach((s, i) => (CORE_SERVICE_IDS.has(s.id) ? core : rest).push(i));
+  return { core, rest };
+}
 
 export function ServiceCard({ index, compact = false }: { index: number; compact?: boolean }) {
   const { t, lp } = useT();
   const s = t.services.items[index]!;
   const Icon = SERVICE_ICONS[index] ?? HardHat;
-  const priority = PRIORITY.has(s.id);
+  const priority = CORE_SERVICE_IDS.has(s.id);
 
   return (
     <article
       className={cn(
-        "group relative flex h-full flex-col overflow-hidden border bg-card transition-all duration-500 hover:-translate-y-2 hover:shadow-2xl hover:shadow-primary/10",
+        "group relative flex h-full flex-col overflow-hidden border bg-card transition-all duration-500 hover:-translate-y-1 hover:shadow-lg hover:shadow-primary/20",
         priority
           ? "border-primary/40 hover:border-primary"
           : "border-border hover:border-primary/70",
@@ -64,7 +85,7 @@ export function ServiceCard({ index, compact = false }: { index: number; compact
           </span>
           {priority && (
             <span className="rounded-full border border-primary/40 bg-primary/10 px-2.5 py-0.5 text-[0.625rem] font-bold uppercase tracking-wider text-primary">
-              {t.hero.capabilities[0]}
+              {t.services.priorityBadge}
             </span>
           )}
         </div>
@@ -85,6 +106,157 @@ export function ServiceCard({ index, compact = false }: { index: number; compact
         </L>
       </div>
     </article>
+  );
+}
+
+/**
+ * Renders a set of service cards.
+ * - `< md`: a snap, auto-scrolling horizontal strip with prev/next controls at the top-right.
+ * - `>= md`: a static grid (`gridClass` controls the column count).
+ */
+export function ServiceCarousel({
+  indices,
+  gridClass,
+  compact = false,
+}: {
+  indices: number[];
+  gridClass: string;
+  compact?: boolean;
+}) {
+  const { t, dir } = useT();
+  const scrollerRef = useRef<HTMLDivElement>(null);
+  const pausedRef = useRef(false);
+  const animRef = useRef<number>(0);
+
+  // Self-driven easing — reliable regardless of `scroll-behavior` support.
+  const animateScroll = (el: HTMLElement, target: number, ms = 380) => {
+    cancelAnimationFrame(animRef.current);
+    const start = el.scrollLeft;
+    const dist = target - start;
+    if (Math.abs(dist) < 1) return;
+    const noAnim =
+      document.visibilityState === "hidden" ||
+      window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    if (noAnim) {
+      el.scrollLeft = target;
+      return;
+    }
+    const t0 = performance.now();
+    const tick = (now: number) => {
+      const p = Math.min(1, (now - t0) / ms);
+      el.scrollLeft = start + dist * (1 - Math.pow(1 - p, 3));
+      if (p < 1) animRef.current = requestAnimationFrame(tick);
+    };
+    animRef.current = requestAnimationFrame(tick);
+  };
+
+  const step = (backward: boolean) => {
+    const el = scrollerRef.current;
+    if (!el) return;
+    const rtl = dir === "rtl";
+    const card = el.querySelector<HTMLElement>("[data-card]");
+    const amount = (card?.offsetWidth ?? el.clientWidth * 0.8) + 24; // gap-6
+    const maxAbs = el.scrollWidth - el.clientWidth;
+    const cur = el.scrollLeft;
+    const nearEnd = Math.abs(cur) >= maxAbs - 8;
+    const nearStart = Math.abs(cur) <= 8;
+
+    let target: number;
+    if (!backward && nearEnd) target = 0;
+    else if (backward && nearStart) target = rtl ? -maxAbs : maxAbs;
+    else target = cur + (backward ? -1 : 1) * amount * (rtl ? -1 : 1);
+
+    const lo = rtl ? -maxAbs : 0;
+    const hi = rtl ? 0 : maxAbs;
+    animateScroll(el, Math.max(lo, Math.min(hi, target)));
+  };
+
+  useEffect(() => {
+    const isMobile = window.matchMedia("(max-width: 767px)");
+    const reduce = window.matchMedia("(prefers-reduced-motion: reduce)");
+    let timer: number | undefined;
+
+    const stop = () => {
+      if (timer) window.clearInterval(timer);
+      timer = undefined;
+    };
+    const start = () => {
+      stop();
+      if (!isMobile.matches || reduce.matches) return;
+      timer = window.setInterval(() => {
+        if (!pausedRef.current) step(false);
+      }, 4000);
+    };
+
+    start();
+    isMobile.addEventListener("change", start);
+    return () => {
+      stop();
+      cancelAnimationFrame(animRef.current);
+      isMobile.removeEventListener("change", start);
+    };
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [dir]);
+
+  const pause = () => {
+    pausedRef.current = true;
+  };
+  const resume = () => {
+    pausedRef.current = false;
+  };
+
+  return (
+    <div>
+      <div className="mb-4 flex justify-end gap-2 md:hidden">
+        <button
+          type="button"
+          onClick={() => {
+            pause();
+            step(true);
+          }}
+          aria-label={t.services.prev}
+          className="flex size-10 items-center justify-center rounded-xs border border-border text-foreground transition-colors hover:border-primary hover:text-primary"
+        >
+          <ChevronLeft aria-hidden="true" className="size-5 rtl:rotate-180" />
+        </button>
+        <button
+          type="button"
+          onClick={() => {
+            pause();
+            step(false);
+          }}
+          aria-label={t.services.next}
+          className="flex size-10 items-center justify-center rounded-xs border border-border text-foreground transition-colors hover:border-primary hover:text-primary"
+        >
+          <ChevronRight aria-hidden="true" className="size-5 rtl:rotate-180" />
+        </button>
+      </div>
+
+      <div
+        ref={scrollerRef}
+        onPointerDown={pause}
+        onMouseEnter={pause}
+        onMouseLeave={resume}
+        onTouchStart={pause}
+        className={cn(
+          // vertical padding + matching negative margin gives the hover lift/shadow
+          // room to breathe inside the horizontal scroll container without clipping
+          "no-scrollbar -mx-5 -my-4 flex snap-x snap-proximity gap-6 overflow-x-auto px-5 py-4",
+          "md:m-0 md:grid md:gap-6 md:overflow-visible md:p-0",
+          gridClass,
+        )}
+      >
+        {indices.map((i) => (
+          <div
+            key={t.services.items[i]!.id}
+            data-card
+            className="w-[80%] shrink-0 snap-start sm:w-[46%] md:w-auto md:shrink"
+          >
+            <ServiceCard index={i} compact={compact} />
+          </div>
+        ))}
+      </div>
+    </div>
   );
 }
 
@@ -112,13 +284,37 @@ export function ServicesSection() {
           </Reveal>
         </div>
 
-        <div className="mt-12 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-          {t.services.items.map((s, i) => (
-            <Reveal key={s.id} delay={(i % 3) * 80}>
-              <ServiceCard index={i} />
-            </Reveal>
-          ))}
-        </div>
+        {(() => {
+          const { core, rest } = splitServiceIndices(t.services.items);
+          return (
+            <>
+              {/* Core services — framed and set apart */}
+              <div className="mt-12 rounded-xl border border-primary/25 bg-background/40 p-5 md:p-8">
+                <p className="eyebrow flex items-center gap-3">
+                  <span aria-hidden="true" className="inline-block h-px w-8 bg-primary" />
+                  {t.services.coreLabel}
+                </p>
+                <div className="mt-6">
+                  <ServiceCarousel indices={core} gridClass="md:grid-cols-3" />
+                </div>
+              </div>
+
+              {/* Divider between core and the rest */}
+              <div className="mt-14 flex items-center gap-4">
+                <span aria-hidden="true" className="h-px flex-1 bg-border" />
+                <span className="text-[0.6875rem] font-bold uppercase tracking-[0.2em] text-muted-foreground">
+                  {t.services.moreLabel}
+                </span>
+                <span aria-hidden="true" className="h-px flex-1 bg-border" />
+              </div>
+
+              {/* The remaining services — 2 x 2 grid on desktop */}
+              <div className="mt-8">
+                <ServiceCarousel indices={rest} gridClass="md:grid-cols-2" />
+              </div>
+            </>
+          );
+        })()}
 
         <div className="mt-12">
           <Btn to={lp("/contact")} arrow>

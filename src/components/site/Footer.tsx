@@ -92,13 +92,24 @@ export function Footer() {
             </li>
             <li className="flex items-start gap-3">
               <Mail aria-hidden="true" className="mt-0.5 size-4 shrink-0 text-primary" />
-              <a href={`mailto:${CONTACT.email}`} dir="ltr">
+              <a
+                href={`mailto:${CONTACT.email}`}
+                dir="ltr"
+                className="text-link transition-colors hover:underline"
+              >
                 {CONTACT.email}
               </a>
             </li>
             <li className="flex items-start gap-3">
               <MapPin aria-hidden="true" className="mt-0.5 size-4 shrink-0 text-primary" />
-              <a href={CONTACT.mapHref}>{t.contact.address}</a>
+              <a
+                href={CONTACT.mapHref}
+                target="_blank"
+                rel="noreferrer"
+                className="transition-colors hover:text-primary"
+              >
+                {t.contact.address}
+              </a>
             </li>
           </ul>
           <Btn to={lp("/contact")} className="mt-6 w-full" arrow>

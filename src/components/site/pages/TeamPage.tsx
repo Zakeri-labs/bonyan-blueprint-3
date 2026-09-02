@@ -89,7 +89,7 @@ export function TeamPage() {
                             <a
                               href={`mailto:${m.email}`}
                               dir="ltr"
-                              className="truncate text-start text-foreground"
+                              className="truncate text-start text-link underline transition-colors hover:text-link/80"
                             >
                               {m.email}
                             </a>
