@@ -53,7 +53,7 @@ export function TrustSection() {
               </div>
             </div>
 
-            <Btn to={lp("/about")} className="mt-8 min-w-48" arrow>
+            <Btn to={lp("/team")} className="mt-8 min-w-48" arrow>
               {t.trust.cta}
             </Btn>
           </Reveal>

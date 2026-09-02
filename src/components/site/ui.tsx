@@ -56,6 +56,14 @@ export function Btn({
     );
   }
 
+  if (href) {
+    return (
+      <a href={href} className={cls}>
+        {content}
+      </a>
+    );
+  }
+
   return (
     <button className={cls} {...rest}>
       {content}

@@ -50,6 +50,9 @@ export function AboutPage() {
             <p className="mt-4 text-sm leading-relaxed text-muted-foreground md:text-base">
               {t.about.body2}
             </p>
+            <p className="mt-6 border-s-2 border-primary/60 ps-4 font-display text-sm font-semibold text-foreground md:text-base">
+              {t.about.mission}
+            </p>
             <ul className="mt-8 grid gap-3">
               {t.about.highlights.map((h) => (
                 <li key={h} className="flex items-start gap-3 text-sm">
@@ -104,6 +107,17 @@ export function AboutPage() {
                 </li>
               ))}
             </ul>
+            <h3 className="mt-10 font-display text-lg font-bold">{t.about.registrationsTitle}</h3>
+            <ul className="mt-5 flex flex-wrap gap-2">
+              {t.about.registrations.map((r) => (
+                <li
+                  key={r}
+                  className="border border-border px-3 py-1.5 text-xs text-muted-foreground"
+                >
+                  {r}
+                </li>
+              ))}
+            </ul>
           </Reveal>
         </div>
       </section>
@@ -116,7 +130,7 @@ export function AboutPage() {
             id="values-heading"
             className="font-display text-2xl font-extrabold leading-tight md:text-3xl"
           >
-            {t.about.expertiseTitle}
+            {t.about.valuesTitle}
           </h2>
           <ul className="mt-10 grid gap-px overflow-hidden border border-border bg-border sm:grid-cols-2 lg:grid-cols-3">
             {t.about.values.map((v) => (

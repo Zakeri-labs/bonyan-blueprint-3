@@ -12,8 +12,10 @@ export function Footer() {
   const quick = [
     { label: t.nav.home, to: lp("/") },
     { label: t.nav.about, to: lp("/about") },
+    { label: t.nav.team, to: lp("/team") },
     { label: t.nav.services, to: lp("/services") },
     { label: t.nav.portfolio, to: lp("/"), hash: "portfolio" },
+    { label: t.nav.career, to: lp("/career") },
     { label: t.nav.contact, to: lp("/contact") },
   ];
 

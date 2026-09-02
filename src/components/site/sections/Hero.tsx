@@ -72,7 +72,9 @@ export function Hero() {
             </div>
             <h1 className="mt-6 font-display text-4xl font-extrabold leading-[1.05] sm:text-5xl md:text-6xl lg:text-7xl">
               <span className="block">{t.hero.title1}</span>
-              <span className="mt-2 block text-primary">{t.hero.title2}</span>
+              <span className="mt-3 block text-xl font-bold leading-snug text-primary sm:text-2xl md:text-[1.75rem] lg:text-3xl">
+                {t.hero.title2}
+              </span>
             </h1>
             <p className="mt-6 max-w-2xl text-base leading-relaxed text-muted-foreground md:text-lg">
               {t.hero.subtitle}

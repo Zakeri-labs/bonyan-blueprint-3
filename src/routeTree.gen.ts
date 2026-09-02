@@ -11,16 +11,22 @@
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as AboutRouteImport } from './routes/about'
+import { Route as CareerRouteImport } from './routes/career'
 import { Route as ContactRouteImport } from './routes/contact'
 import { Route as ServicesRouteImport } from './routes/services'
+import { Route as TeamRouteImport } from './routes/team'
 import { Route as ArIndexRouteImport } from './routes/ar.index'
 import { Route as ArAboutRouteImport } from './routes/ar.about'
+import { Route as ArCareerRouteImport } from './routes/ar.career'
 import { Route as ArContactRouteImport } from './routes/ar.contact'
 import { Route as ArServicesRouteImport } from './routes/ar.services'
+import { Route as ArTeamRouteImport } from './routes/ar.team'
 import { Route as EnIndexRouteImport } from './routes/en.index'
 import { Route as EnAboutRouteImport } from './routes/en.about'
+import { Route as EnCareerRouteImport } from './routes/en.career'
 import { Route as EnContactRouteImport } from './routes/en.contact'
 import { Route as EnServicesRouteImport } from './routes/en.services'
+import { Route as EnTeamRouteImport } from './routes/en.team'
 
 const IndexRoute = IndexRouteImport.update({
   id: '/',
@@ -30,6 +36,11 @@ const IndexRoute = IndexRouteImport.update({
 const AboutRoute = AboutRouteImport.update({
   id: '/about',
   path: '/about',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const CareerRoute = CareerRouteImport.update({
+  id: '/career',
+  path: '/career',
   getParentRoute: () => rootRouteImport,
 } as any)
 const ContactRoute = ContactRouteImport.update({
@@ -42,6 +53,11 @@ const ServicesRoute = ServicesRouteImport.update({
   path: '/services',
   getParentRoute: () => rootRouteImport,
 } as any)
+const TeamRoute = TeamRouteImport.update({
+  id: '/team',
+  path: '/team',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const ArIndexRoute = ArIndexRouteImport.update({
   id: '/ar/',
   path: '/ar/',
@@ -50,6 +66,11 @@ const ArIndexRoute = ArIndexRouteImport.update({
 const ArAboutRoute = ArAboutRouteImport.update({
   id: '/ar/about',
   path: '/ar/about',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ArCareerRoute = ArCareerRouteImport.update({
+  id: '/ar/career',
+  path: '/ar/career',
   getParentRoute: () => rootRouteImport,
 } as any)
 const ArContactRoute = ArContactRouteImport.update({
@@ -62,6 +83,11 @@ const ArServicesRoute = ArServicesRouteImport.update({
   path: '/ar/services',
   getParentRoute: () => rootRouteImport,
 } as any)
+const ArTeamRoute = ArTeamRouteImport.update({
+  id: '/ar/team',
+  path: '/ar/team',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const EnIndexRoute = EnIndexRouteImport.update({
   id: '/en/',
   path: '/en/',
@@ -70,6 +96,11 @@ const EnIndexRoute = EnIndexRouteImport.update({
 const EnAboutRoute = EnAboutRouteImport.update({
   id: '/en/about',
   path: '/en/about',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const EnCareerRoute = EnCareerRouteImport.update({
+  id: '/en/career',
+  path: '/en/career',
   getParentRoute: () => rootRouteImport,
 } as any)
 const EnContactRoute = EnContactRouteImport.update({
@@ -82,32 +113,49 @@ const EnServicesRoute = EnServicesRouteImport.update({
   path: '/en/services',
   getParentRoute: () => rootRouteImport,
 } as any)
+const EnTeamRoute = EnTeamRouteImport.update({
+  id: '/en/team',
+  path: '/en/team',
+  getParentRoute: () => rootRouteImport,
+} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/about': typeof AboutRoute
+  '/career': typeof CareerRoute
   '/contact': typeof ContactRoute
   '/services': typeof ServicesRoute
+  '/team': typeof TeamRoute
   '/ar/about': typeof ArAboutRoute
+  '/ar/career': typeof ArCareerRoute
   '/ar/contact': typeof ArContactRoute
   '/ar/services': typeof ArServicesRoute
+  '/ar/team': typeof ArTeamRoute
   '/en/about': typeof EnAboutRoute
+  '/en/career': typeof EnCareerRoute
   '/en/contact': typeof EnContactRoute
   '/en/services': typeof EnServicesRoute
+  '/en/team': typeof EnTeamRoute
   '/ar/': typeof ArIndexRoute
   '/en/': typeof EnIndexRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/about': typeof AboutRoute
+  '/career': typeof CareerRoute
   '/contact': typeof ContactRoute
   '/services': typeof ServicesRoute
+  '/team': typeof TeamRoute
   '/ar/about': typeof ArAboutRoute
+  '/ar/career': typeof ArCareerRoute
   '/ar/contact': typeof ArContactRoute
   '/ar/services': typeof ArServicesRoute
+  '/ar/team': typeof ArTeamRoute
   '/en/about': typeof EnAboutRoute
+  '/en/career': typeof EnCareerRoute
   '/en/contact': typeof EnContactRoute
   '/en/services': typeof EnServicesRoute
+  '/en/team': typeof EnTeamRoute
   '/ar': typeof ArIndexRoute
   '/en': typeof EnIndexRoute
 }
@@ -115,14 +163,20 @@ export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
   '/about': typeof AboutRoute
+  '/career': typeof CareerRoute
   '/contact': typeof ContactRoute
   '/services': typeof ServicesRoute
+  '/team': typeof TeamRoute
   '/ar/about': typeof ArAboutRoute
+  '/ar/career': typeof ArCareerRoute
   '/ar/contact': typeof ArContactRoute
   '/ar/services': typeof ArServicesRoute
+  '/ar/team': typeof ArTeamRoute
   '/en/about': typeof EnAboutRoute
+  '/en/career': typeof EnCareerRoute
   '/en/contact': typeof EnContactRoute
   '/en/services': typeof EnServicesRoute
+  '/en/team': typeof EnTeamRoute
   '/ar/': typeof ArIndexRoute
   '/en/': typeof EnIndexRoute
 }
@@ -131,42 +185,60 @@ export interface FileRouteTypes {
   fullPaths:
     | '/'
     | '/about'
+    | '/career'
     | '/contact'
     | '/services'
+    | '/team'
     | '/ar/about'
+    | '/ar/career'
     | '/ar/contact'
     | '/ar/services'
+    | '/ar/team'
     | '/en/about'
+    | '/en/career'
     | '/en/contact'
     | '/en/services'
+    | '/en/team'
     | '/ar/'
     | '/en/'
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/'
     | '/about'
+    | '/career'
     | '/contact'
     | '/services'
+    | '/team'
     | '/ar/about'
+    | '/ar/career'
     | '/ar/contact'
     | '/ar/services'
+    | '/ar/team'
     | '/en/about'
+    | '/en/career'
     | '/en/contact'
     | '/en/services'
+    | '/en/team'
     | '/ar'
     | '/en'
   id:
     | '__root__'
     | '/'
     | '/about'
+    | '/career'
     | '/contact'
     | '/services'
+    | '/team'
     | '/ar/about'
+    | '/ar/career'
     | '/ar/contact'
     | '/ar/services'
+    | '/ar/team'
     | '/en/about'
+    | '/en/career'
     | '/en/contact'
     | '/en/services'
+    | '/en/team'
     | '/ar/'
     | '/en/'
   fileRoutesById: FileRoutesById
@@ -174,14 +246,20 @@ export interface FileRouteTypes {
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   AboutRoute: typeof AboutRoute
+  CareerRoute: typeof CareerRoute
   ContactRoute: typeof ContactRoute
   ServicesRoute: typeof ServicesRoute
+  TeamRoute: typeof TeamRoute
   ArAboutRoute: typeof ArAboutRoute
+  ArCareerRoute: typeof ArCareerRoute
   ArContactRoute: typeof ArContactRoute
   ArServicesRoute: typeof ArServicesRoute
+  ArTeamRoute: typeof ArTeamRoute
   EnAboutRoute: typeof EnAboutRoute
+  EnCareerRoute: typeof EnCareerRoute
   EnContactRoute: typeof EnContactRoute
   EnServicesRoute: typeof EnServicesRoute
+  EnTeamRoute: typeof EnTeamRoute
   ArIndexRoute: typeof ArIndexRoute
   EnIndexRoute: typeof EnIndexRoute
 }
@@ -202,6 +280,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof AboutRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/career': {
+      id: '/career'
+      path: '/career'
+      fullPath: '/career'
+      preLoaderRoute: typeof CareerRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/contact': {
       id: '/contact'
       path: '/contact'
@@ -214,6 +299,13 @@ declare module '@tanstack/react-router' {
       path: '/services'
       fullPath: '/services'
       preLoaderRoute: typeof ServicesRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/team': {
+      id: '/team'
+      path: '/team'
+      fullPath: '/team'
+      preLoaderRoute: typeof TeamRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/ar/': {
@@ -230,6 +322,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof ArAboutRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/ar/career': {
+      id: '/ar/career'
+      path: '/ar/career'
+      fullPath: '/ar/career'
+      preLoaderRoute: typeof ArCareerRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/ar/contact': {
       id: '/ar/contact'
       path: '/ar/contact'
@@ -242,6 +341,13 @@ declare module '@tanstack/react-router' {
       path: '/ar/services'
       fullPath: '/ar/services'
       preLoaderRoute: typeof ArServicesRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/ar/team': {
+      id: '/ar/team'
+      path: '/ar/team'
+      fullPath: '/ar/team'
+      preLoaderRoute: typeof ArTeamRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/en/': {
@@ -258,6 +364,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof EnAboutRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/en/career': {
+      id: '/en/career'
+      path: '/en/career'
+      fullPath: '/en/career'
+      preLoaderRoute: typeof EnCareerRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/en/contact': {
       id: '/en/contact'
       path: '/en/contact'
@@ -272,20 +385,33 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof EnServicesRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/en/team': {
+      id: '/en/team'
+      path: '/en/team'
+      fullPath: '/en/team'
+      preLoaderRoute: typeof EnTeamRouteImport
+      parentRoute: typeof rootRouteImport
+    }
   }
 }
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   AboutRoute: AboutRoute,
+  CareerRoute: CareerRoute,
   ContactRoute: ContactRoute,
   ServicesRoute: ServicesRoute,
+  TeamRoute: TeamRoute,
   ArAboutRoute: ArAboutRoute,
+  ArCareerRoute: ArCareerRoute,
   ArContactRoute: ArContactRoute,
   ArServicesRoute: ArServicesRoute,
+  ArTeamRoute: ArTeamRoute,
   EnAboutRoute: EnAboutRoute,
+  EnCareerRoute: EnCareerRoute,
   EnContactRoute: EnContactRoute,
   EnServicesRoute: EnServicesRoute,
+  EnTeamRoute: EnTeamRoute,
   ArIndexRoute: ArIndexRoute,
   EnIndexRoute: EnIndexRoute,
 }

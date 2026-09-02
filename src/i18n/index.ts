@@ -11,6 +11,7 @@ export const CONTACT = {
   phoneHref: "tel:+96895114511",
   whatsapp: "+968 9511 4511",
   email: "info@bonyamec.com",
+  applyEmail: "apply@bonyanec.com",
   whatsappHref: "https://wa.me/96895114511",
   mapHref:
     "https://www.google.com/maps/place/Bonyan+Engineering+consultancy/@23.658274,58.113365,17z",
