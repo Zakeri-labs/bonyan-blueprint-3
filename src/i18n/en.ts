@@ -47,9 +47,9 @@ export const en = {
     directorRole: "Founder & CEO",
     directorImageAlt: "Yaser Salim Hamed Al Aufi, Founder and CEO of Bonyan",
     signals: [
-      "Founded in Oman in 2017",
+      "Founded in Oman in 2016",
       "Engineering Consultancy Since 2021",
-      "Team of 26 Professionals",
+      "Team of 50 Professionals",
       "Design to Site Supervision",
       "Ministry & Private Projects",
       "Integrity and Technical Precision",
@@ -127,19 +127,19 @@ export const en = {
   },
   about: {
     label: "About Bonyan",
-    heading1: "Omani-Owned Since 2017.",
+    heading1: "Omani-Owned Since 2016.",
     heading2: "Design, Engineering & Supervision.",
-    body: "Bonyan was founded in 2017 as a 100% Omani-owned construction company under Omani entrepreneur Yaser Salim Hamed Al Aufi. In 2021 we expanded our commercial registration to include engineering consultancy, and since mid-2023 we have delivered ministry and government projects alongside our private work.",
+    body: "Bonyan was founded in 2016 as a 100% Omani-owned construction company under Omani entrepreneur Yaser Salim Hamed Al Aufi. In 2021 we expanded our commercial registration to include engineering consultancy, and since mid-2023 we have delivered ministry and government projects alongside our private work.",
     body2:
-      "From a team of three at the start, Bonyan has grown to 26 professionals across architecture, structural and MEP engineering, supervision, and quantity surveying. We work with ministries, governorates, universities, and private clients on schools, mosques, courts, sports and community facilities, villas, and commercial buildings across the Sultanate of Oman.",
+      "From a team of three at the start, Bonyan's consultant team has grown to 26 professionals across architecture, structural and MEP engineering, supervision, and quantity surveying — part of a total workforce of 50. We work with ministries, governorates, universities, and private clients on schools, mosques, courts, sports and community facilities, villas, and commercial buildings across the Sultanate of Oman.",
     mission:
       "Our mission is to provide a full range of professional design, consultancy, and supervision services with skill, responsibility, and integrity.",
     cta: "Learn About Bonyan",
     imageAlt: "Engineers reviewing technical drawings during a site coordination meeting",
     highlights: [
-      "100% Omani-Owned, Founded in 2017",
+      "100% Omani-Owned, Founded in 2016",
       "Engineering Consultancy Since 2021",
-      "Team of 26 Across Design & Supervision",
+      "Team of 50 Across Design & Supervision",
       "Ministry, Governorate & Private Projects",
       "Design, Engineering, Supervision & Construction",
     ],
@@ -163,6 +163,7 @@ export const en = {
       "Construction and project management",
       "Master planning, feasibility and value engineering",
       "Tender documentation, BOQ and authority approvals",
+      "Contact Us",
     ],
     registrationsTitle: "Registrations & Memberships",
     registrations: [
@@ -171,7 +172,10 @@ export const en = {
       "Tender Board Registration",
       "SME Registration",
       "VAT Registration",
-      "Municipality Registration",
+      "Municipalities Registration",
+      "Oman Society of Engineers",
+      "Oman Housing Bank",
+      "Other Banks",
     ],
     marketTitle: "Positioned for the Omani Market",
     marketBody:
@@ -316,7 +320,7 @@ export const en = {
   },
   career: {
     intro:
-      "Bonyan has grown from three people at our founding in 2017 to a team of 26 across design, engineering, and supervision. When we open new roles, they will be listed here.",
+      "Bonyan has grown from three people at our founding in 2016 to a team of 50 across design, engineering, and supervision. When we open new roles, they will be listed here.",
     openingsTitle: "Current Openings",
     noOpenings:
       "We have no open positions at the moment. We are always glad to hear from talented professionals — send us your CV and we will keep it on file for future opportunities.",
@@ -437,7 +441,7 @@ export const en = {
     about: {
       eyebrow: "About Us",
       title: "A Construction and Engineering Partner Built on Precision",
-      lead: "Founded in 2017 and delivering engineering consultancy since 2021, Bonyan brings design, engineering, cost control, supervision, and construction together in one Muscat-based team.",
+      lead: "Founded in 2016 and delivering engineering consultancy since 2021, Bonyan brings design, engineering, cost control, supervision, and construction together in one Muscat-based team.",
     },
     team: {
       eyebrow: "Our Team",
@@ -469,7 +473,7 @@ export const en = {
     },
     about: {
       title: "About Bonyan | Construction & Engineering in Muscat, Oman",
-      desc: "Founded in Oman in 2017 and an engineering consultancy since 2021, Bonyan delivers design, engineering, supervision, and construction for ministry and private projects across Oman.",
+      desc: "Founded in Oman in 2016 and an engineering consultancy since 2021, Bonyan delivers design, engineering, supervision, and construction for ministry and private projects across Oman.",
     },
     team: {
       title: "Our Team | Bonyan Construction & Engineering, Muscat",
