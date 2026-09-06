@@ -163,7 +163,6 @@ export const en = {
       "Construction and project management",
       "Master planning, feasibility and value engineering",
       "Tender documentation, BOQ and authority approvals",
-      "Contact Us",
     ],
     registrationsTitle: "Registrations & Memberships",
     registrations: [
