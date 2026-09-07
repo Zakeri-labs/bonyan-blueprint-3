@@ -43,9 +43,9 @@ export const en = {
     teamTitle: "People Behind the Projects",
     teamBody: "Meet the leadership and specialists shaping every Bonyan project.",
     cta: "Meet Our Team",
-    directorName: "Yaser Salim Hamed Al Aufi",
+    directorName: "Yasir Salim Hamed Al Aufi",
     directorRole: "Founder & CEO",
-    directorImageAlt: "Yaser Salim Hamed Al Aufi, Founder and CEO of Bonyan",
+    directorImageAlt: "Yasir Salim Hamed Al Aufi, Founder and CEO of Bonyan",
     signals: [
       "Founded in Oman in 2016",
       "Engineering Consultancy Since 2021",
@@ -129,7 +129,7 @@ export const en = {
     label: "About Bonyan",
     heading1: "Omani-Owned Since 2016.",
     heading2: "Design, Engineering & Supervision.",
-    body: "Bonyan was founded in 2016 as a 100% Omani-owned construction company under Omani entrepreneur Yaser Salim Hamed Al Aufi. In 2021 we expanded our commercial registration to include engineering consultancy, and since mid-2023 we have delivered ministry and government projects alongside our private work.",
+    body: "Bonyan was founded in 2016 as a 100% Omani-owned construction company under Omani entrepreneur Yasir Salim Hamed Al Aufi. In 2021 we expanded our commercial registration to include engineering consultancy, and since mid-2023 we have delivered ministry and government projects alongside our private work.",
     body2:
       "From a team of three at the start, Bonyan's consultant team has grown to 26 professionals across architecture, structural and MEP engineering, supervision, and quantity surveying — part of a total workforce of 50. We work with ministries, governorates, universities, and private clients on schools, mosques, courts, sports and community facilities, villas, and commercial buildings across the Sultanate of Oman.",
     mission:
@@ -172,7 +172,7 @@ export const en = {
       "SME Registration",
       "VAT Registration",
       "Municipalities Registration",
-      "Oman Society of Engineers",
+      "Oman Society of Engineering",
       "Oman Housing Bank",
       "Other Banks",
     ],
@@ -350,7 +350,7 @@ export const en = {
     contactPending: "Contact details to be added",
     members: [
       {
-        name: "Yaser Salim Hamed Al Aufi",
+        name: "Yasir Salim Hamed Al Aufi",
         role: "Founder & Chief Executive Officer",
         email: "yaufi@bonyanec.com",
         phone: "",
@@ -371,26 +371,58 @@ export const en = {
         linkedin: "",
       },
       {
-        name: "Mohammadreza Zakeri",
-        role: "IT Manager",
-        email: "Zakeri1993@gmail.com",
-        phone: "+968 7171 3260",
+        name: "Ajil Kunnar Mathias",
+        role: "Construction Manager",
+        email: "",
+        phone: "",
         linkedin: "",
       },
     ],
-    compositionTitle: "Our Team at a Glance",
-    compositionIntro:
-      "A team of 26 professionals across design, engineering, supervision, and support.",
-    departments: [
-      { label: "Architectural Engineers", count: "3" },
-      { label: "Structural Engineers", count: "3" },
-      { label: "MEP Engineers", count: "2" },
-      { label: "Draughtsmen", count: "3" },
-      { label: "Supervision Team", count: "6" },
-      { label: "Quantity Surveyors", count: "2" },
-      { label: "Technical Support", count: "2" },
-      { label: "Administration", count: "2" },
-    ],
+    org: {
+      heading: "Organizational Chart",
+      intro: "How Bonyan is organised — from leadership through every department.",
+      ceo: { id: "yasir", name: "Yasir Salim Hamed Al Aufi", role: "CEO & Founder" },
+      construction: { id: "ajil", name: "Ajil Kunnar Mathias", role: "Construction Manager" },
+      gm: { id: "athesh", name: "Athesh Nadesan", role: "General Manager" },
+      managers: [
+        {
+          id: "agha",
+          name: "Agha Shahid Yazdeb",
+          role: "Technical Manager / QA & QC",
+          reports: [],
+        },
+        { id: "jefrin", name: "Jefrin Monish", role: "Drafting Head", reports: [] },
+        { id: "ahsan", name: "Ahsan Ali", role: "MEP Head", reports: [] },
+        {
+          id: "amir",
+          name: "Amir Pareeb",
+          role: "Lead Architect",
+          reports: [{ id: "riyan", name: "Riyan (name pending)", role: "Architect / Team Member" }],
+        },
+        { id: "puvanesh", name: "Puvanesh Ravi", role: "QS Head", reports: [] },
+        { id: "rajesh", name: "Rajesh Asirvatham", role: "Supervision Manager", reports: [] },
+        {
+          id: "ibrahim",
+          name: "Mohammad Ibrahim Mirkar",
+          role: "Structure Head",
+          reports: [],
+        },
+        { id: "salman", name: "Salman Kh", role: "Projects Manager", reports: [] },
+        {
+          id: "siva",
+          name: "Siva Murukesan",
+          role: "HR / Accounts Manager",
+          reports: [{ id: "emas", name: "Emas (name pending)", role: "Public Relations Manager" }],
+        },
+        { id: "ummer", name: "Ummer Farva", role: "Branch Head", reports: [] },
+        {
+          id: "pramodh",
+          name: "Pramodh Sasi Vaasukuttan",
+          role: "Branch Head",
+          reports: [],
+        },
+      ],
+    },
   },
   form: {
     title: "Talk to Bonyan",
@@ -488,7 +520,7 @@ export const en = {
     },
     career: {
       title: "Careers at Bonyan | Engineering & Construction in Muscat, Oman",
-      desc: "Explore career opportunities at Bonyan in Muscat, Oman. Send your CV to apply@bonyanec.com for design, engineering, supervision, and construction roles.",
+      desc: "Explore career opportunities at Bonyan in Muscat, Oman. Send your CV to info@bonyamec.com for design, engineering, supervision, and construction roles.",
     },
   },
 };

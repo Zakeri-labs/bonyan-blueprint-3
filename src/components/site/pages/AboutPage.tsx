@@ -118,9 +118,6 @@ export function AboutPage() {
                 </li>
               ))}
             </ul>
-            <Btn to={lp("/contact")} className="mt-8" arrow>
-              {t.nav.cta}
-            </Btn>
           </Reveal>
         </div>
       </section>

@@ -1,9 +1,23 @@
-import { useState } from "react";
-import { Linkedin, Mail, Phone, UserRound } from "lucide-react";
+import { type CSSProperties, useState } from "react";
+import { Mail, UserRound } from "lucide-react";
 import { useT } from "@/i18n";
 import { SiteLayout } from "../SiteLayout";
-import { IMAGES, TEAM_PHOTOS } from "../assets";
+import { IMAGES, ORG_PHOTOS, TEAM_PHOTOS } from "../assets";
 import { Reveal, SectionLabel } from "../ui";
+
+/** Org-chart email addresses, keyed by person id. Fill in as they are confirmed. */
+const ORG_EMAILS: Record<string, string> = {
+  yasir: "yaufi@bonyanec.com",
+  athesh: "atheesh.n@bonyanec.com",
+  agha: "agha.sh@bonyanec.com",
+  jefrin: "jefrin.m@bonyanec.com",
+  ahsan: "ahsan.a@bonyanec.com",
+  puvanesh: "puvanesh.r@bonyanec.com",
+  rajesh: "rajesh.a@bonyanec.com",
+  ibrahim: "mohammed.m@bonyanec.com",
+  salman: "salman.kh@bonyanec.com",
+  siva: "siva.m@bonyanec.com",
+};
 
 /** Portrait with a graceful fallback to the placeholder if the file is missing. */
 function TeamPhoto({ src, name, pending }: { src: string; name: string; pending: string }) {
@@ -31,8 +45,94 @@ function TeamPhoto({ src, name, pending }: { src: string; name: string; pending:
   );
 }
 
+/** Slim portrait for the org chart: the photo, or a quiet icon until one is added. */
+function OrgPortrait({ src, name }: { src: string; name: string }) {
+  const [failed, setFailed] = useState(false);
+
+  if (!src || failed) {
+    return (
+      <span className="flex size-full items-center justify-center bg-panel">
+        <UserRound aria-hidden="true" className="size-9 text-primary/30" />
+      </span>
+    );
+  }
+
+  return (
+    <img
+      src={src}
+      alt={name}
+      loading="lazy"
+      width={400}
+      height={400}
+      onError={() => setFailed(true)}
+      className="size-full object-cover object-center"
+    />
+  );
+}
+
+/**
+ * One person in the org chart. The card shows only the portrait; name, role and
+ * the person's email are revealed on hover / focus. The email is a mailto: link
+ * once it is present in `ORG_EMAILS`.
+ */
+function OrgNode({
+  id,
+  name,
+  role,
+  size = "sm",
+}: {
+  id: string;
+  name: string;
+  role: string;
+  size?: "lg" | "sm";
+}) {
+  const email = ORG_EMAILS[id] ?? "";
+  const lg = size === "lg";
+
+  return (
+    <figure
+      tabIndex={0}
+      className="group relative aspect-square w-full overflow-hidden border border-border bg-panel outline-none transition-colors hover:border-primary focus-visible:border-primary"
+    >
+      <OrgPortrait src={ORG_PHOTOS[id] ?? ""} name={name} />
+      <figcaption
+        className={`absolute inset-0 flex flex-col justify-end bg-linear-to-t from-background/80 via-background/40 to-transparent opacity-0 transition-opacity duration-300 group-hover:opacity-100 group-focus:opacity-100 group-focus-within:opacity-100 ${
+          lg ? "gap-1 p-3" : "gap-0.5 p-2"
+        }`}
+      >
+        <span
+          className={`font-display font-bold leading-tight text-foreground ${
+            lg ? "text-xs" : "text-[0.5rem]"
+          }`}
+        >
+          {name}
+        </span>
+        <span
+          className={`font-medium uppercase leading-tight tracking-wide text-primary ${
+            lg ? "text-[0.5625rem] tracking-wider" : "text-[0.4375rem]"
+          }`}
+        >
+          {role}
+        </span>
+        {email && (
+          <a
+            href={`mailto:${email}`}
+            dir="ltr"
+            className={`mt-1 self-start break-all font-medium text-link underline transition-colors hover:text-link/80 ${
+              lg ? "text-[0.5625rem]" : "text-[0.4375rem]"
+            }`}
+          >
+            {email}
+          </a>
+        )}
+      </figcaption>
+    </figure>
+  );
+}
+
 export function TeamPage() {
   const { t } = useT();
+  const org = t.team.org;
 
   return (
     <SiteLayout>
@@ -75,7 +175,7 @@ export function TeamPage() {
 
           <div className="mt-10 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
             {t.team.members.map((m, i) => {
-              const hasContact = Boolean(m.email || m.phone || m.linkedin);
+              const hasContact = Boolean(m.email);
 
               return (
                 <Reveal key={m.name} delay={(i % 4) * 70}>
@@ -109,35 +209,6 @@ export function TeamPage() {
                             <span className="text-muted-foreground">{t.team.emailLabel} —</span>
                           )}
                         </li>
-                        <li className="flex items-center gap-2.5">
-                          <Phone aria-hidden="true" className="size-4 shrink-0 text-primary" />
-                          {m.phone ? (
-                            <a
-                              href={`tel:${m.phone.replace(/\s+/g, "")}`}
-                              dir="ltr"
-                              className="text-start text-foreground"
-                            >
-                              {m.phone}
-                            </a>
-                          ) : (
-                            <span className="text-muted-foreground">{t.team.phoneLabel} —</span>
-                          )}
-                        </li>
-                        <li className="flex items-center gap-2.5">
-                          <Linkedin aria-hidden="true" className="size-4 shrink-0 text-primary" />
-                          {m.linkedin ? (
-                            <a
-                              href={m.linkedin}
-                              target="_blank"
-                              rel="noreferrer"
-                              className="text-foreground"
-                            >
-                              {t.team.linkedinCta}
-                            </a>
-                          ) : (
-                            <span className="text-muted-foreground">{t.team.linkedinLabel} —</span>
-                          )}
-                        </li>
                       </ul>
 
                       {!hasContact && (
@@ -155,27 +226,67 @@ export function TeamPage() {
       </section>
 
       <section aria-labelledby="team-composition" className="bg-panel">
-        <div className="container-site py-16 md:py-24">
+        <div className="container-site pt-16 md:pt-24">
           <SectionLabel>{t.pages.team.eyebrow}</SectionLabel>
           <h2
             id="team-composition"
             className="font-display text-2xl font-extrabold leading-tight md:text-3xl"
           >
-            {t.team.compositionTitle}
+            {org.heading}
           </h2>
           <p className="mt-4 max-w-2xl text-sm leading-relaxed text-muted-foreground md:text-base">
-            {t.team.compositionIntro}
+            {org.intro}
           </p>
-
-          <ul className="mt-10 grid gap-px overflow-hidden border border-border bg-border sm:grid-cols-2 lg:grid-cols-4">
-            {t.team.departments.map((d) => (
-              <li key={d.label} className="bg-background p-6">
-                <p className="font-display text-3xl font-extrabold text-primary">{d.count}</p>
-                <p className="mt-2 text-sm leading-snug text-muted-foreground">{d.label}</p>
-              </li>
-            ))}
-          </ul>
         </div>
+
+        <Reveal>
+          <div className="mx-auto w-full max-w-[120rem] overflow-x-auto px-5 pb-16 pt-12 md:pb-24 lg:px-8">
+            <div className="org-tree">
+              <div className="org-card--ceo">
+                <OrgNode {...org.ceo} size="lg" />
+              </div>
+
+              <div className="org-children">
+                <div className="org-item">
+                  <div className="org-card--lead">
+                    <OrgNode {...org.construction} size="lg" />
+                  </div>
+                </div>
+
+                <div className="org-item">
+                  <div className="org-card--lead">
+                    <OrgNode {...org.gm} size="lg" />
+                  </div>
+                </div>
+              </div>
+
+              <div
+                className="org-children org-children--wide"
+                style={{ "--org-cols": org.managers.length } as CSSProperties}
+              >
+                {org.managers.map((m) => (
+                  <div className="org-item" key={m.id}>
+                    <div className="org-card">
+                      <OrgNode id={m.id} name={m.name} role={m.role} />
+                    </div>
+
+                    {m.reports.length > 0 && (
+                      <div className="org-children">
+                        {m.reports.map((r) => (
+                          <div className="org-item" key={r.id}>
+                            <div className="org-card">
+                              <OrgNode {...r} />
+                            </div>
+                          </div>
+                        ))}
+                      </div>
+                    )}
+                  </div>
+                ))}
+              </div>
+            </div>
+          </div>
+        </Reveal>
       </section>
     </SiteLayout>
   );

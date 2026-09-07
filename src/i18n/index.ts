@@ -7,12 +7,12 @@ export type Locale = "en" | "ar";
 export const dictionaries: Record<Locale, Dict> = { en, ar };
 
 export const CONTACT = {
-  phone: "+968 9511 4511",
-  phoneHref: "tel:+96895114511",
-  whatsapp: "+968 9511 4511",
+  phone: "+96894114511",
+  phoneHref: "tel:+96894114511",
+  whatsapp: "+96894114511",
   email: "info@bonyamec.com",
-  applyEmail: "apply@bonyanec.com",
-  whatsappHref: "https://wa.me/96895114511",
+  applyEmail: "info@bonyamec.com",
+  whatsappHref: "https://wa.me/96894114511",
   /** Exact office location provided by the client (Google Maps short link). */
   mapHref: "https://maps.app.goo.gl/QH2wMhHbD71WDPY58",
   mapEmbedHref:

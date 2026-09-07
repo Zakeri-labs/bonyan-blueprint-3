@@ -4,6 +4,16 @@ import { SiteLayout } from "../SiteLayout";
 import { IMAGES } from "../assets";
 import { Btn, Reveal, SectionLabel } from "../ui";
 
+/** Destination for discipline-card job applications (per client spec). */
+const APPLICATION_EMAIL = "info@bonyamec.com";
+
+/** Builds a prefilled mailto link for applying to a specific discipline. */
+function disciplineMailto(position: string): string {
+  const subject = `Application for ${position}`;
+  const body = `Hello Bonyan Team,\n\nI am interested in applying for the ${position} position. Please find my CV attached.\n\nThank you.`;
+  return `mailto:${APPLICATION_EMAIL}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+}
+
 export function CareerPage() {
   const { t } = useT();
 
@@ -56,12 +66,14 @@ export function CareerPage() {
             </h2>
             <ul className="mt-6 grid gap-3 sm:grid-cols-2">
               {t.career.disciplines.map((d) => (
-                <li
-                  key={d}
-                  className="flex items-start gap-3 border border-border bg-card p-4 text-sm"
-                >
-                  <span aria-hidden="true" className="mt-2 size-1.5 shrink-0 bg-primary" />
-                  <span>{d}</span>
+                <li key={d}>
+                  <a
+                    href={disciplineMailto(d)}
+                    className="flex h-full cursor-pointer items-start gap-3 border border-border bg-card p-4 text-sm transition-colors hover:border-primary hover:bg-primary/5"
+                  >
+                    <span aria-hidden="true" className="mt-2 size-1.5 shrink-0 bg-primary" />
+                    <span>{d}</span>
+                  </a>
                 </li>
               ))}
             </ul>

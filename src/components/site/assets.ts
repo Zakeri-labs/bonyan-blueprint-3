@@ -50,8 +50,25 @@ export const PORTFOLIO_IMAGES = [heroVilla, projSchool, projMosque, projCompound
  * Files live in `/public/team/`; an empty string falls back to a placeholder.
  */
 export const TEAM_PHOTOS = [
-  "/team/yaser-al-aufi.jpg", // Yaser Salim Hamed Al Aufi — Founder & CEO
+  "/team/yaser-al-aufi.jpg", // Yasir Salim Hamed Al Aufi — Founder & CEO
   "/team/agha-shahid.jpg", // Agha Shahid — Technical Manager
   "/team/atheesh-nadesan.jpg", // Atheesh Nadesan — General Manager
-  "/team/mohammadreza-zakeri.jpg", // Mohammadreza Zakeri — IT Manager
+  "/team/ajil-kunnar-mathias.jpg", // Ajil Kunnar Mathias — Construction Manager
 ];
+
+/**
+ * Org-chart portraits, keyed by the person `id` in `team.org` (dictionaries).
+ * Files live in `/public/team/`; a missing key falls back to a placeholder icon.
+ * Add entries as portraits are provided.
+ */
+export const ORG_PHOTOS: Record<string, string> = {
+  yasir: "/team/yaser-al-aufi.jpg", // Yasir Salim Hamed Al Aufi
+  ajil: "/team/ajil-kunnar-mathias.jpg", // Ajil Kunnar Mathias
+  athesh: "/team/atheesh-nadesan.jpg", // Athesh Nadesan
+  agha: "/team/agha-shahid.jpg", // Agha Shahid Yazdeb
+  ibrahim: "/team/mohammad-ibrahim-mirkar.jpg", // Mohammad Ibrahim Mirkar
+  puvanesh: "/team/puvanesh-ravi.jpg", // Puvanesh Ravi
+  siva: "/team/siva-murukesan.jpg", // Siva Murukesan
+  ahsan: "/team/ahsan-ali.jpg", // Ahsan Ali
+  jefrin: "/team/jefrin-monish.jpg", // Jefrin Monish
+};
