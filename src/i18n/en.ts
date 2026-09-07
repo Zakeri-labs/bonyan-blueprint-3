@@ -202,6 +202,228 @@ export const en = {
       },
     ],
   },
+  portfolioPage: {
+    eyebrow: "Portfolio",
+    title: "Delivered Work, Service by Service",
+    lead: "A closer look at how Bonyan's seven service lines play out on real projects across the Sultanate of Oman — from first concept drawings through to supervised handover.",
+    stats: [
+      { value: "2016", label: "Founded in Oman" },
+      { value: "2021", label: "Engineering consultancy since" },
+      { value: "50", label: "Team across design & site" },
+      { value: "7", label: "Integrated service lines" },
+    ],
+    sectionsLabel: "Work by Service",
+    sectionsHeading: "Every Discipline, on the Ground",
+    sectionsBody:
+      "Each section below groups representative projects under the service that led them. Most projects draw on more than one.",
+    relevantLabel: "Relevant project types",
+    projectsLabel: "Representative projects",
+    serviceCta: "Discuss a similar project",
+    services: [
+      {
+        id: "design",
+        summary:
+          "Concept-to-permit architectural and structural packages — 3D perspectives, detailed drawings and specifications — prepared to clear Municipality and ROP review the first time.",
+        projects: [
+          {
+            name: "Private Villa, Al Mabelah",
+            type: "Residential",
+            scope: "Architectural & structural design",
+            location: "Al Seeb",
+            year: "2023",
+          },
+          {
+            name: "Replacement Primary School",
+            type: "Institutional",
+            scope: "Full design & authority approvals",
+            location: "Ibra",
+            year: "2023",
+          },
+          {
+            name: "Neighbourhood Mosque",
+            type: "Community",
+            scope: "Concept to detailed drawings",
+            location: "Bahla",
+            year: "2022",
+          },
+        ],
+      },
+      {
+        id: "mep",
+        summary:
+          "Mechanical, electrical and plumbing design — HVAC, fire protection, power distribution, lighting and plumbing — fully coordinated with the architecture and structure.",
+        projects: [
+          {
+            name: "Commercial Complex",
+            type: "Commercial Building",
+            scope: "HVAC, fire & electrical design",
+            location: "Sohar",
+            year: "2024",
+          },
+          {
+            name: "Courthouse Fit-out",
+            type: "Institutional",
+            scope: "MEP coordination & documentation",
+            location: "Muscat",
+            year: "2023",
+          },
+          {
+            name: "Residential Compound",
+            type: "Compound",
+            scope: "Power, water & drainage design",
+            location: "Al Amrat",
+            year: "2022",
+          },
+        ],
+      },
+      {
+        id: "supervision",
+        summary:
+          "Resident engineers, contractor coordination, material and workmanship inspection, safety monitoring and progress reporting from foundation to handover.",
+        projects: [
+          {
+            name: "Government School Package",
+            type: "Ministry Project",
+            scope: "Full-time site supervision",
+            location: "Sumail",
+            year: "2024",
+          },
+          {
+            name: "Grand Mosque",
+            type: "Community",
+            scope: "QA/QC & progress reporting",
+            location: "Muscat",
+            year: "2023",
+          },
+          {
+            name: "Private Villa",
+            type: "Private Project",
+            scope: "Inspection through to handover",
+            location: "Bawshar",
+            year: "2023",
+          },
+        ],
+      },
+      {
+        id: "construction",
+        summary:
+          "Structural, finishing and MEP execution — plastering, flooring, tiling, painting, ceilings, doors, fire and safety and external works — for villas and commercial buildings.",
+        projects: [
+          {
+            name: "Two-Villa Development",
+            type: "Villas",
+            scope: "Structure through to finishes",
+            location: "Saham",
+            year: "2024",
+          },
+          {
+            name: "Retail & Office Block",
+            type: "Commercial",
+            scope: "Full construction & MEP",
+            location: "Al Seeb",
+            year: "2023",
+          },
+          {
+            name: "Warehouse Facility",
+            type: "Industrial",
+            scope: "Structural & external works",
+            location: "Sur",
+            year: "2022",
+          },
+        ],
+      },
+      {
+        id: "management",
+        summary:
+          "Cost estimation, scheduling, bid-package preparation and technical/commercial analysis, construction management, deviation analysis and as-built records.",
+        projects: [
+          {
+            name: "Residential Compound",
+            type: "Compounds",
+            scope: "Cost, schedule & contractor management",
+            location: "Al Amrat",
+            year: "2024",
+          },
+          {
+            name: "Commercial Development",
+            type: "Commercial",
+            scope: "Bid packages & construction management",
+            location: "Muscat",
+            year: "2023",
+          },
+          {
+            name: "Institutional Campus",
+            type: "Institutional",
+            scope: "Planning & deviation analysis",
+            location: "Ibra",
+            year: "2022",
+          },
+        ],
+      },
+      {
+        id: "quantity",
+        summary:
+          "Bills of quantities, cost estimates and financial evaluations, tender documentation and ongoing cost monitoring against the technical scope.",
+        projects: [
+          {
+            name: "Commercial Building",
+            type: "Commercial Building",
+            scope: "BOQ & tender documentation",
+            location: "Sohar",
+            year: "2024",
+          },
+          {
+            name: "Residential Compound",
+            type: "Compound",
+            scope: "Cost estimation & monitoring",
+            location: "Al Seeb",
+            year: "2023",
+          },
+          {
+            name: "Private Villas",
+            type: "Villa",
+            scope: "BOQ & financial evaluation",
+            location: "Muscat",
+            year: "2022",
+          },
+        ],
+      },
+      {
+        id: "planning",
+        summary:
+          "Topographic survey, soil investigation, traffic and hydrological studies, environmental assessment, master planning, feasibility studies and value engineering.",
+        projects: [
+          {
+            name: "Public Park",
+            type: "Parks",
+            scope: "Master planning & feasibility",
+            location: "Al Amrat",
+            year: "2024",
+          },
+          {
+            name: "Mixed-Use Land Parcel",
+            type: "Developments",
+            scope: "Site studies & master plan",
+            location: "Al Seeb",
+            year: "2023",
+          },
+          {
+            name: "Community Realm Upgrade",
+            type: "Public Realm",
+            scope: "Traffic & environmental studies",
+            location: "Sur",
+            year: "2022",
+          },
+        ],
+      },
+    ],
+    cta: {
+      heading: "Have a project like these?",
+      body: "Tell us the scope and location, and we'll come back with the right mix of services and clear next steps.",
+      primary: "Contact Us",
+      secondary: "Contact via WhatsApp",
+    },
+  },
   process: {
     label: "Our Process",
     heading: "A Clear Path from First Contact to Completion",
@@ -509,6 +731,10 @@ export const en = {
     team: {
       title: "Our Team | Bonyan Construction & Engineering, Muscat",
       desc: "Meet the Bonyan team — leadership and specialists in design, engineering, supervision, and construction in Muscat, Oman.",
+    },
+    portfolio: {
+      title: "Portfolio | Bonyan Construction & Engineering, Muscat",
+      desc: "Representative projects delivered by Bonyan across Oman — architectural and structural design, MEP engineering, supervision, construction, project management, quantity surveying, and planning.",
     },
     services: {
       title: "Services | Bonyan Construction & Engineering, Muscat",

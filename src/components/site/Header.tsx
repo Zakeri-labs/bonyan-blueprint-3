@@ -15,7 +15,7 @@ export function useNavItems() {
     { label: t.nav.about, to: lp("/about") },
     { label: t.nav.team, to: lp("/team") },
     { label: t.nav.services, to: lp("/services") },
-    { label: t.nav.portfolio, to: lp("/"), hash: "portfolio" },
+    { label: t.nav.portfolio, to: lp("/portfolio") },
     { label: t.nav.testimonials, to: lp("/"), hash: "testimonials" },
     { label: t.nav.career, to: lp("/career") },
     { label: t.nav.contact, to: lp("/contact") },

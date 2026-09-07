@@ -8,7 +8,7 @@ export function MobileBottomNav() {
   const items = [
     { label: t.nav.home, to: lp("/"), icon: Home },
     { label: t.nav.services, to: lp("/services"), icon: LayoutGrid },
-    { label: t.nav.portfolio, to: lp("/"), hash: "portfolio", icon: Images },
+    { label: t.nav.portfolio, to: lp("/portfolio"), icon: Images },
     { label: t.nav.contact, to: lp("/contact"), icon: Mail },
   ];
 

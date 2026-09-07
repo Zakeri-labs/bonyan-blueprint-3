@@ -13,18 +13,21 @@ import { Route as IndexRouteImport } from './routes/index'
 import { Route as AboutRouteImport } from './routes/about'
 import { Route as CareerRouteImport } from './routes/career'
 import { Route as ContactRouteImport } from './routes/contact'
+import { Route as PortfolioRouteImport } from './routes/portfolio'
 import { Route as ServicesRouteImport } from './routes/services'
 import { Route as TeamRouteImport } from './routes/team'
 import { Route as ArIndexRouteImport } from './routes/ar.index'
 import { Route as ArAboutRouteImport } from './routes/ar.about'
 import { Route as ArCareerRouteImport } from './routes/ar.career'
 import { Route as ArContactRouteImport } from './routes/ar.contact'
+import { Route as ArPortfolioRouteImport } from './routes/ar.portfolio'
 import { Route as ArServicesRouteImport } from './routes/ar.services'
 import { Route as ArTeamRouteImport } from './routes/ar.team'
 import { Route as EnIndexRouteImport } from './routes/en.index'
 import { Route as EnAboutRouteImport } from './routes/en.about'
 import { Route as EnCareerRouteImport } from './routes/en.career'
 import { Route as EnContactRouteImport } from './routes/en.contact'
+import { Route as EnPortfolioRouteImport } from './routes/en.portfolio'
 import { Route as EnServicesRouteImport } from './routes/en.services'
 import { Route as EnTeamRouteImport } from './routes/en.team'
 
@@ -46,6 +49,11 @@ const CareerRoute = CareerRouteImport.update({
 const ContactRoute = ContactRouteImport.update({
   id: '/contact',
   path: '/contact',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const PortfolioRoute = PortfolioRouteImport.update({
+  id: '/portfolio',
+  path: '/portfolio',
   getParentRoute: () => rootRouteImport,
 } as any)
 const ServicesRoute = ServicesRouteImport.update({
@@ -78,6 +86,11 @@ const ArContactRoute = ArContactRouteImport.update({
   path: '/ar/contact',
   getParentRoute: () => rootRouteImport,
 } as any)
+const ArPortfolioRoute = ArPortfolioRouteImport.update({
+  id: '/ar/portfolio',
+  path: '/ar/portfolio',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const ArServicesRoute = ArServicesRouteImport.update({
   id: '/ar/services',
   path: '/ar/services',
@@ -108,6 +121,11 @@ const EnContactRoute = EnContactRouteImport.update({
   path: '/en/contact',
   getParentRoute: () => rootRouteImport,
 } as any)
+const EnPortfolioRoute = EnPortfolioRouteImport.update({
+  id: '/en/portfolio',
+  path: '/en/portfolio',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const EnServicesRoute = EnServicesRouteImport.update({
   id: '/en/services',
   path: '/en/services',
@@ -124,16 +142,19 @@ export interface FileRoutesByFullPath {
   '/about': typeof AboutRoute
   '/career': typeof CareerRoute
   '/contact': typeof ContactRoute
+  '/portfolio': typeof PortfolioRoute
   '/services': typeof ServicesRoute
   '/team': typeof TeamRoute
   '/ar/about': typeof ArAboutRoute
   '/ar/career': typeof ArCareerRoute
   '/ar/contact': typeof ArContactRoute
+  '/ar/portfolio': typeof ArPortfolioRoute
   '/ar/services': typeof ArServicesRoute
   '/ar/team': typeof ArTeamRoute
   '/en/about': typeof EnAboutRoute
   '/en/career': typeof EnCareerRoute
   '/en/contact': typeof EnContactRoute
+  '/en/portfolio': typeof EnPortfolioRoute
   '/en/services': typeof EnServicesRoute
   '/en/team': typeof EnTeamRoute
   '/ar/': typeof ArIndexRoute
@@ -144,16 +165,19 @@ export interface FileRoutesByTo {
   '/about': typeof AboutRoute
   '/career': typeof CareerRoute
   '/contact': typeof ContactRoute
+  '/portfolio': typeof PortfolioRoute
   '/services': typeof ServicesRoute
   '/team': typeof TeamRoute
   '/ar/about': typeof ArAboutRoute
   '/ar/career': typeof ArCareerRoute
   '/ar/contact': typeof ArContactRoute
+  '/ar/portfolio': typeof ArPortfolioRoute
   '/ar/services': typeof ArServicesRoute
   '/ar/team': typeof ArTeamRoute
   '/en/about': typeof EnAboutRoute
   '/en/career': typeof EnCareerRoute
   '/en/contact': typeof EnContactRoute
+  '/en/portfolio': typeof EnPortfolioRoute
   '/en/services': typeof EnServicesRoute
   '/en/team': typeof EnTeamRoute
   '/ar': typeof ArIndexRoute
@@ -165,16 +189,19 @@ export interface FileRoutesById {
   '/about': typeof AboutRoute
   '/career': typeof CareerRoute
   '/contact': typeof ContactRoute
+  '/portfolio': typeof PortfolioRoute
   '/services': typeof ServicesRoute
   '/team': typeof TeamRoute
   '/ar/about': typeof ArAboutRoute
   '/ar/career': typeof ArCareerRoute
   '/ar/contact': typeof ArContactRoute
+  '/ar/portfolio': typeof ArPortfolioRoute
   '/ar/services': typeof ArServicesRoute
   '/ar/team': typeof ArTeamRoute
   '/en/about': typeof EnAboutRoute
   '/en/career': typeof EnCareerRoute
   '/en/contact': typeof EnContactRoute
+  '/en/portfolio': typeof EnPortfolioRoute
   '/en/services': typeof EnServicesRoute
   '/en/team': typeof EnTeamRoute
   '/ar/': typeof ArIndexRoute
@@ -187,16 +214,19 @@ export interface FileRouteTypes {
     | '/about'
     | '/career'
     | '/contact'
+    | '/portfolio'
     | '/services'
     | '/team'
     | '/ar/about'
     | '/ar/career'
     | '/ar/contact'
+    | '/ar/portfolio'
     | '/ar/services'
     | '/ar/team'
     | '/en/about'
     | '/en/career'
     | '/en/contact'
+    | '/en/portfolio'
     | '/en/services'
     | '/en/team'
     | '/ar/'
@@ -207,16 +237,19 @@ export interface FileRouteTypes {
     | '/about'
     | '/career'
     | '/contact'
+    | '/portfolio'
     | '/services'
     | '/team'
     | '/ar/about'
     | '/ar/career'
     | '/ar/contact'
+    | '/ar/portfolio'
     | '/ar/services'
     | '/ar/team'
     | '/en/about'
     | '/en/career'
     | '/en/contact'
+    | '/en/portfolio'
     | '/en/services'
     | '/en/team'
     | '/ar'
@@ -227,16 +260,19 @@ export interface FileRouteTypes {
     | '/about'
     | '/career'
     | '/contact'
+    | '/portfolio'
     | '/services'
     | '/team'
     | '/ar/about'
     | '/ar/career'
     | '/ar/contact'
+    | '/ar/portfolio'
     | '/ar/services'
     | '/ar/team'
     | '/en/about'
     | '/en/career'
     | '/en/contact'
+    | '/en/portfolio'
     | '/en/services'
     | '/en/team'
     | '/ar/'
@@ -248,16 +284,19 @@ export interface RootRouteChildren {
   AboutRoute: typeof AboutRoute
   CareerRoute: typeof CareerRoute
   ContactRoute: typeof ContactRoute
+  PortfolioRoute: typeof PortfolioRoute
   ServicesRoute: typeof ServicesRoute
   TeamRoute: typeof TeamRoute
   ArAboutRoute: typeof ArAboutRoute
   ArCareerRoute: typeof ArCareerRoute
   ArContactRoute: typeof ArContactRoute
+  ArPortfolioRoute: typeof ArPortfolioRoute
   ArServicesRoute: typeof ArServicesRoute
   ArTeamRoute: typeof ArTeamRoute
   EnAboutRoute: typeof EnAboutRoute
   EnCareerRoute: typeof EnCareerRoute
   EnContactRoute: typeof EnContactRoute
+  EnPortfolioRoute: typeof EnPortfolioRoute
   EnServicesRoute: typeof EnServicesRoute
   EnTeamRoute: typeof EnTeamRoute
   ArIndexRoute: typeof ArIndexRoute
@@ -292,6 +331,13 @@ declare module '@tanstack/react-router' {
       path: '/contact'
       fullPath: '/contact'
       preLoaderRoute: typeof ContactRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/portfolio': {
+      id: '/portfolio'
+      path: '/portfolio'
+      fullPath: '/portfolio'
+      preLoaderRoute: typeof PortfolioRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/services': {
@@ -336,6 +382,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof ArContactRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/ar/portfolio': {
+      id: '/ar/portfolio'
+      path: '/ar/portfolio'
+      fullPath: '/ar/portfolio'
+      preLoaderRoute: typeof ArPortfolioRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/ar/services': {
       id: '/ar/services'
       path: '/ar/services'
@@ -378,6 +431,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof EnContactRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/en/portfolio': {
+      id: '/en/portfolio'
+      path: '/en/portfolio'
+      fullPath: '/en/portfolio'
+      preLoaderRoute: typeof EnPortfolioRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/en/services': {
       id: '/en/services'
       path: '/en/services'
@@ -400,16 +460,19 @@ const rootRouteChildren: RootRouteChildren = {
   AboutRoute: AboutRoute,
   CareerRoute: CareerRoute,
   ContactRoute: ContactRoute,
+  PortfolioRoute: PortfolioRoute,
   ServicesRoute: ServicesRoute,
   TeamRoute: TeamRoute,
   ArAboutRoute: ArAboutRoute,
   ArCareerRoute: ArCareerRoute,
   ArContactRoute: ArContactRoute,
+  ArPortfolioRoute: ArPortfolioRoute,
   ArServicesRoute: ArServicesRoute,
   ArTeamRoute: ArTeamRoute,
   EnAboutRoute: EnAboutRoute,
   EnCareerRoute: EnCareerRoute,
   EnContactRoute: EnContactRoute,
+  EnPortfolioRoute: EnPortfolioRoute,
   EnServicesRoute: EnServicesRoute,
   EnTeamRoute: EnTeamRoute,
   ArIndexRoute: ArIndexRoute,

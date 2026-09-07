@@ -77,7 +77,7 @@ export function PortfolioSection() {
         </div>
 
         <div className="mt-10">
-          <Btn to={lp("/services")} arrow>
+          <Btn to={lp("/portfolio")} arrow>
             {t.portfolio.cta}
           </Btn>
         </div>
