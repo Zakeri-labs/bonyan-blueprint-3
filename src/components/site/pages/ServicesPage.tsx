@@ -1,3 +1,4 @@
+import { ArrowRight } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { useT } from "@/i18n";
 import { SiteLayout } from "../SiteLayout";
@@ -104,7 +105,7 @@ export function ServicesPage() {
                       <p className="mt-4 text-sm leading-relaxed text-muted-foreground md:text-base">
                         {s.detail}
                       </p>
-                      <p className="mt-6 text-[0.6875rem] font-bold uppercase tracking-widest text-primary">
+                      <p className="mt-6 text-[0.6875rem] font-bold uppercase tracking-widest text-foreground">
                         {t.pages.services.relevant}
                       </p>
                       <ul className="mt-3 flex flex-wrap gap-2">
@@ -117,6 +118,18 @@ export function ServicesPage() {
                           </li>
                         ))}
                       </ul>
+                      <Btn
+                        to={lp("/portfolio")}
+                        hash={s.id}
+                        variant="outline"
+                        className="mt-8 border-primary hover:border-primary"
+                      >
+                        {t.pages.services.viewProjects}
+                        <ArrowRight
+                          aria-hidden="true"
+                          className="size-4 shrink-0 text-primary transition-transform duration-300 group-hover:translate-x-1 rtl:rotate-180 rtl:group-hover:-translate-x-1"
+                        />
+                      </Btn>
                     </div>
                     <img
                       src={SERVICE_IMAGES[i]}

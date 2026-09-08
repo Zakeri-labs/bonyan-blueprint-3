@@ -8,6 +8,13 @@ import detailDrawings from "@/assets/detail-drawings.jpg";
 import detailFacade from "@/assets/detail-facade.jpg";
 import managingDirector from "@/assets/managing-director.jpg";
 
+import buildingConstruction01 from "@/assets/Picture of Projects/Building_Construction_01.png";
+import buildingConstruction02 from "@/assets/Picture of Projects/Building_Construction_02.png";
+import buildingConstruction03 from "@/assets/Picture of Projects/Building_Construction_03.png";
+import constructionSupervision02 from "@/assets/Picture of Projects/Construction_Supervision_02.png";
+import constructionSupervision03 from "@/assets/Picture of Projects/Construction_Supervision_03.png";
+import constructionSupervision04 from "@/assets/Picture of Projects/Construction_Supervision_04.png";
+
 import client1 from "@/assets/client-1.png";
 import client2 from "@/assets/client-2.png";
 import client3 from "@/assets/client-3.png";
@@ -30,6 +37,26 @@ export const IMAGES = {
 };
 
 export const CLIENT_AVATARS = [client1, client2, client3, client4, client5, client6];
+
+/**
+ * Photos for the Building Construction "Representative projects" cards on the
+ * Portfolio page, in the same order as `portfolioPage.services` → `construction`
+ * → `projects` in the dictionaries.
+ */
+export const BUILDING_CONSTRUCTION_IMAGES = [
+  buildingConstruction01, // Admiral Oil & Gas Tools — fabrication factory
+  buildingConstruction02, // Falcon Oil Field Service — office building
+  buildingConstruction03, // Al Ufi — twin villa, Sumail
+];
+
+/**
+ * Small photo set shown inside the first "Representative projects" card of the
+ * Construction Supervision section (01 / 07): one image on top, two below.
+ */
+export const SUPERVISION_CARD_GALLERY = {
+  top: constructionSupervision04,
+  bottom: [constructionSupervision02, constructionSupervision03],
+};
 
 /** Service card imagery, in the same order as the services in `en.ts`. */
 export const SERVICE_IMAGES = [

@@ -102,14 +102,14 @@ function OrgNode({
       >
         <span
           className={`font-display font-bold leading-tight text-foreground ${
-            lg ? "text-xs" : "text-[0.5rem]"
+            lg ? "text-sm" : "text-[0.625rem]"
           }`}
         >
           {name}
         </span>
         <span
           className={`font-medium uppercase leading-tight tracking-wide text-primary ${
-            lg ? "text-[0.5625rem] tracking-wider" : "text-[0.4375rem]"
+            lg ? "text-[0.6875rem] tracking-wider" : "text-[0.5625rem]"
           }`}
         >
           {role}
@@ -119,7 +119,7 @@ function OrgNode({
             href={`mailto:${email}`}
             dir="ltr"
             className={`mt-1 self-start break-all font-medium text-link underline transition-colors hover:text-link/80 ${
-              lg ? "text-[0.5625rem]" : "text-[0.4375rem]"
+              lg ? "text-[0.6875rem]" : "text-[0.5625rem]"
             }`}
           >
             {email}
