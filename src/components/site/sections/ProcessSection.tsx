@@ -1,5 +1,5 @@
 import { useT } from "@/i18n";
-import { Btn, GhostNumber, Reveal, SectionLabel } from "../ui";
+import { Btn, Reveal, SectionLabel } from "../ui";
 
 export function ProcessSection() {
   const { t, lp } = useT();
@@ -7,7 +7,6 @@ export function ProcessSection() {
   return (
     <section id="process" aria-labelledby="process-heading" className="relative bg-background">
       <div className="container-site relative py-20 md:py-28">
-        <GhostNumber value="06" />
         <div className="grid gap-8 lg:grid-cols-2 lg:items-end">
           <Reveal>
             <SectionLabel>{t.process.label}</SectionLabel>

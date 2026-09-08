@@ -221,62 +221,6 @@ export const en = {
     serviceCta: "Discuss a similar project",
     services: [
       {
-        id: "design",
-        summary:
-          "Concept-to-permit architectural and structural packages — 3D perspectives, detailed drawings and specifications — prepared to clear Municipality and ROP review the first time.",
-        projects: [
-          {
-            name: "Private Villa, Al Mabelah",
-            type: "Residential",
-            scope: "Architectural & structural design",
-            location: "Al Seeb",
-            year: "2023",
-          },
-          {
-            name: "Replacement Primary School",
-            type: "Institutional",
-            scope: "Full design & authority approvals",
-            location: "Ibra",
-            year: "2023",
-          },
-          {
-            name: "Neighbourhood Mosque",
-            type: "Community",
-            scope: "Concept to detailed drawings",
-            location: "Bahla",
-            year: "2022",
-          },
-        ],
-      },
-      {
-        id: "mep",
-        summary:
-          "Mechanical, electrical and plumbing design — HVAC, fire protection, power distribution, lighting and plumbing — fully coordinated with the architecture and structure.",
-        projects: [
-          {
-            name: "Commercial Complex",
-            type: "Commercial Building",
-            scope: "HVAC, fire & electrical design",
-            location: "Sohar",
-            year: "2024",
-          },
-          {
-            name: "Courthouse Fit-out",
-            type: "Institutional",
-            scope: "MEP coordination & documentation",
-            location: "Muscat",
-            year: "2023",
-          },
-          {
-            name: "Residential Compound",
-            type: "Compound",
-            scope: "Power, water & drainage design",
-            location: "Al Amrat",
-            year: "2022",
-          },
-        ],
-      },
-      {
         id: "supervision",
         summary:
           "Resident engineers, contractor coordination, material and workmanship inspection, safety monitoring and progress reporting from foundation to handover.",
@@ -333,6 +277,34 @@ export const en = {
         ],
       },
       {
+        id: "design",
+        summary:
+          "Concept-to-permit architectural and structural packages — 3D perspectives, detailed drawings and specifications — prepared to clear Municipality and ROP review the first time.",
+        projects: [
+          {
+            name: "Private Villa, Al Mabelah",
+            type: "Residential",
+            scope: "Architectural & structural design",
+            location: "Al Seeb",
+            year: "2023",
+          },
+          {
+            name: "Replacement Primary School",
+            type: "Institutional",
+            scope: "Full design & authority approvals",
+            location: "Ibra",
+            year: "2023",
+          },
+          {
+            name: "Neighbourhood Mosque",
+            type: "Community",
+            scope: "Concept to detailed drawings",
+            location: "Bahla",
+            year: "2022",
+          },
+        ],
+      },
+      {
         id: "management",
         summary:
           "Cost estimation, scheduling, bid-package preparation and technical/commercial analysis, construction management, deviation analysis and as-built records.",
@@ -356,6 +328,34 @@ export const en = {
             type: "Institutional",
             scope: "Planning & deviation analysis",
             location: "Ibra",
+            year: "2022",
+          },
+        ],
+      },
+      {
+        id: "mep",
+        summary:
+          "Mechanical, electrical and plumbing design — HVAC, fire protection, power distribution, lighting and plumbing — fully coordinated with the architecture and structure.",
+        projects: [
+          {
+            name: "Commercial Complex",
+            type: "Commercial Building",
+            scope: "HVAC, fire & electrical design",
+            location: "Sohar",
+            year: "2024",
+          },
+          {
+            name: "Courthouse Fit-out",
+            type: "Institutional",
+            scope: "MEP coordination & documentation",
+            location: "Muscat",
+            year: "2023",
+          },
+          {
+            name: "Residential Compound",
+            type: "Compound",
+            scope: "Power, water & drainage design",
+            location: "Al Amrat",
             year: "2022",
           },
         ],

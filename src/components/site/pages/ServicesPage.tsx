@@ -1,11 +1,23 @@
+import { cn } from "@/lib/utils";
 import { useT } from "@/i18n";
 import { SiteLayout } from "../SiteLayout";
 import { IMAGES, SERVICE_IMAGES } from "../assets";
 import { Btn, Reveal, SectionLabel } from "../ui";
-import { SERVICE_ICONS, ServiceCarousel, splitServiceIndices } from "../sections/ServicesSection";
+import {
+  SERVICE_ICONS,
+  ServiceCarousel,
+  serviceOrderNumber,
+  sortByServiceOrder,
+  splitServiceIndices,
+} from "../sections/ServicesSection";
 
 export function ServicesPage() {
   const { t, lp } = useT();
+
+  const { core, rest } = splitServiceIndices(t.services.items);
+  const coreOrdered = sortByServiceOrder(t.services.items, core);
+  const restOrdered = sortByServiceOrder(t.services.items, rest);
+  const allOrdered = [...coreOrdered, ...restOrdered];
 
   return (
     <SiteLayout>
@@ -39,34 +51,27 @@ export function ServicesPage() {
             {t.services.label}
           </h2>
 
-          {(() => {
-            const { core, rest } = splitServiceIndices(t.services.items);
-            return (
-              <>
-                <div className="md:rounded-xl md:border md:border-primary/25 md:bg-background/40 md:p-8">
-                  <p className="eyebrow flex items-center gap-3">
-                    <span aria-hidden="true" className="inline-block h-px w-8 bg-primary" />
-                    <span className="animate-text-glow">{t.services.coreLabel}</span>
-                  </p>
-                  <div className="mt-6">
-                    <ServiceCarousel indices={core} gridClass="md:grid-cols-3" compact />
-                  </div>
-                </div>
+          <div className="md:rounded-xl md:border md:border-primary/25 md:bg-background/40 md:p-8">
+            <p className="eyebrow flex items-center gap-3">
+              <span aria-hidden="true" className="inline-block h-px w-8 bg-primary" />
+              <span className="animate-text-glow">{t.services.coreLabel}</span>
+            </p>
+            <div className="mt-6">
+              <ServiceCarousel indices={coreOrdered} gridClass="md:grid-cols-3" compact numbered />
+            </div>
+          </div>
 
-                <div className="mt-14 flex items-center gap-4">
-                  <span aria-hidden="true" className="h-px flex-1 bg-border" />
-                  <span className="text-[0.6875rem] font-bold uppercase tracking-[0.2em] text-muted-foreground">
-                    {t.services.moreLabel}
-                  </span>
-                  <span aria-hidden="true" className="h-px flex-1 bg-border" />
-                </div>
+          <div className="mt-14 flex items-center gap-4">
+            <span aria-hidden="true" className="h-px flex-1 bg-border" />
+            <span className="text-[0.6875rem] font-bold uppercase tracking-[0.2em] text-muted-foreground">
+              {t.services.moreLabel}
+            </span>
+            <span aria-hidden="true" className="h-px flex-1 bg-border" />
+          </div>
 
-                <div className="mt-8">
-                  <ServiceCarousel indices={rest} gridClass="md:grid-cols-2" compact />
-                </div>
-              </>
-            );
-          })()}
+          <div className="mt-8">
+            <ServiceCarousel indices={restOrdered} gridClass="md:grid-cols-2" compact numbered />
+          </div>
         </div>
       </section>
 
@@ -76,19 +81,22 @@ export function ServicesPage() {
             {t.pages.services.title}
           </h2>
           <div className="grid gap-14">
-            {(() => {
-              const { core, rest } = splitServiceIndices(t.services.items);
-              return [...core, ...rest];
-            })().map((i, order) => {
+            {allOrdered.map((i, order) => {
               const s = t.services.items[i]!;
               const Icon = SERVICE_ICONS[i]!;
               return (
                 <Reveal key={s.id}>
                   <article
                     id={s.id}
-                    className="grid items-center gap-8 border-t border-border pt-10 lg:grid-cols-2 lg:gap-14"
+                    className="grid scroll-mt-24 items-center gap-8 border-t border-border pt-10 lg:grid-cols-2 lg:gap-14"
                   >
-                    <div className={order % 2 === 1 ? "lg:order-2" : undefined}>
+                    <div className={cn("relative", order % 2 === 1 && "lg:order-2")}>
+                      <span
+                        aria-hidden="true"
+                        className="pointer-events-none absolute -top-4 end-0 select-none font-display text-[3.5rem] font-extrabold leading-none text-foreground/[0.07] md:-top-6 md:text-[5rem]"
+                      >
+                        {String(serviceOrderNumber(s.id)).padStart(2, "0")}
+                      </span>
                       <Icon aria-hidden="true" className="size-8 text-primary" />
                       <h3 className="mt-5 font-display text-2xl font-extrabold leading-tight">
                         {s.title}

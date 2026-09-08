@@ -2,7 +2,7 @@ import { MapPin } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { CONTACT, useT } from "@/i18n";
 import { PORTFOLIO_IMAGES } from "../assets";
-import { Btn, GhostNumber, H_SCROLL_ITEM, H_SCROLL_STRIP, Reveal, SectionLabel } from "../ui";
+import { Btn, H_SCROLL_ITEM, H_SCROLL_STRIP, Reveal, SectionLabel } from "../ui";
 
 /** Asymmetric editorial grid: 3 across the top row, 2 wider items below. */
 const SPANS = ["lg:col-span-4", "lg:col-span-4", "lg:col-span-4", "lg:col-span-5", "lg:col-span-7"];
@@ -13,7 +13,6 @@ export function PortfolioSection() {
   return (
     <section id="portfolio" aria-labelledby="portfolio-heading" className="relative bg-panel">
       <div className="container-site relative py-20 md:py-28">
-        <GhostNumber value="05" />
         <div className="grid gap-8 lg:grid-cols-2 lg:items-end">
           <Reveal>
             <SectionLabel>{t.portfolio.label}</SectionLabel>

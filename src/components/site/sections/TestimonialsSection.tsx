@@ -3,7 +3,7 @@ import { CheckCircle2, ChevronLeft, ChevronRight, MapPin, Quote, Star } from "lu
 import { cn } from "@/lib/utils";
 import { useT } from "@/i18n";
 import { CLIENT_AVATARS } from "../assets";
-import { GhostNumber, SectionLabel } from "../ui";
+import { SectionLabel } from "../ui";
 
 const PER_VIEW = 3;
 
@@ -34,7 +34,6 @@ export function TestimonialsSection() {
       onMouseLeave={() => setIsPaused(false)}
     >
       <div className="container-site relative py-20 md:py-28">
-        <GhostNumber value="07" light />
         <div className="grid gap-10 lg:grid-cols-[1fr_2fr] lg:gap-16">
           <div>
             <SectionLabel light>{t.testimonials.label}</SectionLabel>

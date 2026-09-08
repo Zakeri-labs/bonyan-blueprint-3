@@ -1,7 +1,7 @@
 import { Check } from "lucide-react";
 import { useT } from "@/i18n";
 import { IMAGES } from "../assets";
-import { Btn, GhostNumber, Reveal, SectionLabel } from "../ui";
+import { Btn, Reveal, SectionLabel } from "../ui";
 
 export function AboutSection() {
   const { t, lp } = useT();
@@ -9,7 +9,6 @@ export function AboutSection() {
   return (
     <section id="about" aria-labelledby="about-heading" className="relative bg-background">
       <div className="container-site relative py-20 md:py-28">
-        <GhostNumber value="04" />
         <div className="grid items-center gap-12 lg:grid-cols-2 lg:gap-16">
           <Reveal>
             <SectionLabel>{t.about.label}</SectionLabel>

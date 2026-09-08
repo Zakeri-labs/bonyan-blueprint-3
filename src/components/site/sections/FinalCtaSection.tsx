@@ -1,6 +1,6 @@
 import { CONTACT, useT } from "@/i18n";
 import { IMAGES } from "../assets";
-import { Btn, GhostNumber, Reveal, SectionLabel } from "../ui";
+import { Btn, Reveal, SectionLabel } from "../ui";
 import { ContactCards } from "../ContactCards";
 import { InquiryForm } from "../InquiryForm";
 
@@ -28,7 +28,6 @@ export function FinalCtaSection() {
       />
 
       <div className="container-site relative py-20 md:py-28">
-        <GhostNumber value="08" />
         <div className="grid gap-12 lg:grid-cols-2 lg:gap-16">
           <Reveal>
             <SectionLabel>{t.contact.label}</SectionLabel>

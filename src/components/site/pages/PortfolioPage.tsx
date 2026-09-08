@@ -1,3 +1,4 @@
+import { useEffect, useRef, useState } from "react";
 import { MapPin } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { CONTACT, useT } from "@/i18n";
@@ -5,6 +6,79 @@ import { SiteLayout } from "../SiteLayout";
 import { IMAGES, SERVICE_IMAGES } from "../assets";
 import { Btn, GhostNumber, Reveal, SectionLabel } from "../ui";
 import { SERVICE_ICONS } from "../sections/ServicesSection";
+
+/**
+ * A single stat figure that animates the first time it scrolls into view.
+ * Plain counts tick up from zero; a year-like value (4 digits, not in the
+ * future) ticks *down* from the current year, so "since 2021" reads as a
+ * countdown. Reduced-motion, SSR, and no-JS all get the final value directly.
+ */
+function StatValue({
+  value,
+  className,
+  delay = 0,
+}: {
+  value: string;
+  className?: string;
+  delay?: number;
+}) {
+  const ref = useRef<HTMLParagraphElement>(null);
+  const [display, setDisplay] = useState(value);
+
+  useEffect(() => {
+    const el = ref.current;
+    if (!el) return;
+
+    const match = value.match(/^(\d+)(.*)$/);
+    if (!match) return;
+
+    const target = Number(match[1]);
+    const suffix = match[2] ?? "";
+    const currentYear = new Date().getFullYear();
+    const isYear = match[1].length === 4 && target >= 1900 && target <= currentYear;
+    const start = isYear ? currentYear : 0;
+    if (start === target) return;
+    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+
+    const DURATION = 1400;
+    let raf = 0;
+    let timer = 0;
+
+    const animate = () => {
+      const t0 = performance.now();
+      const tick = (now: number) => {
+        const progress = Math.min(1, (now - t0) / DURATION);
+        const eased = 1 - Math.pow(1 - progress, 3);
+        setDisplay(`${Math.round(start + (target - start) * eased)}${suffix}`);
+        if (progress < 1) raf = requestAnimationFrame(tick);
+      };
+      raf = requestAnimationFrame(tick);
+    };
+
+    const io = new IntersectionObserver(
+      (entries) => {
+        if (!entries[0]?.isIntersecting) return;
+        io.disconnect();
+        setDisplay(`${start}${suffix}`);
+        timer = window.setTimeout(animate, delay);
+      },
+      { threshold: 0.4 },
+    );
+    io.observe(el);
+
+    return () => {
+      io.disconnect();
+      cancelAnimationFrame(raf);
+      window.clearTimeout(timer);
+    };
+  }, [value, delay]);
+
+  return (
+    <p ref={ref} className={className}>
+      {display}
+    </p>
+  );
+}
 
 export function PortfolioPage() {
   const { t, lp } = useT();
@@ -39,11 +113,13 @@ export function PortfolioPage() {
       <section aria-label={p.eyebrow} className="bg-panel">
         <div className="container-site py-12 md:py-16">
           <ul className="grid grid-cols-2 gap-px overflow-hidden rounded-md border border-border bg-border md:grid-cols-4">
-            {p.stats.map((s) => (
+            {p.stats.map((s, i) => (
               <li key={s.label} className="bg-background/95 p-6 md:p-7">
-                <p className="font-display text-3xl font-extrabold text-primary md:text-4xl">
-                  {s.value}
-                </p>
+                <StatValue
+                  value={s.value}
+                  delay={i * 140}
+                  className="font-display text-3xl font-extrabold text-primary md:text-4xl"
+                />
                 <p className="mt-2 text-xs leading-snug text-muted-foreground md:text-sm">
                   {s.label}
                 </p>

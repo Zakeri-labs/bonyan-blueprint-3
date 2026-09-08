@@ -14,7 +14,7 @@ import {
 import { cn } from "@/lib/utils";
 import { useT } from "@/i18n";
 import { SERVICE_IMAGES } from "../assets";
-import { Btn, GhostNumber, H_SCROLL_ITEM, H_SCROLL_STRIP, Reveal, SectionLabel } from "../ui";
+import { Btn, H_SCROLL_ITEM, H_SCROLL_STRIP, Reveal, SectionLabel } from "../ui";
 import { L } from "../L";
 
 /** Same order as `services.items` in `en.ts`. */
@@ -30,6 +30,36 @@ export const SERVICE_ICONS = [
 /** Visually prioritized services (task 5 pillars): design, supervision, construction. */
 export const CORE_SERVICE_IDS = new Set(["design", "supervision", "construction"]);
 
+/**
+ * Canonical display order for services across the site (Portfolio + Services pages),
+ * by service `id`. Core pillars lead, then the rest.
+ */
+export const SERVICE_ORDER = [
+  "supervision",
+  "construction",
+  "design",
+  "management",
+  "mep",
+  "quantity",
+  "planning",
+] as const;
+
+/** 1-based position of a service in {@link SERVICE_ORDER} (0 if unknown). */
+export function serviceOrderNumber(id: string): number {
+  const i = SERVICE_ORDER.indexOf(id as (typeof SERVICE_ORDER)[number]);
+  return i === -1 ? 0 : i + 1;
+}
+
+/** Sort a list of `services.items` indices into {@link SERVICE_ORDER}. */
+export function sortByServiceOrder(
+  items: ReadonlyArray<{ id: string }>,
+  indices: number[],
+): number[] {
+  return [...indices].sort(
+    (a, b) => serviceOrderNumber(items[a]!.id) - serviceOrderNumber(items[b]!.id),
+  );
+}
+
 /** Split the service list into core vs. the rest, preserving original indices. */
 export function splitServiceIndices(items: ReadonlyArray<{ id: string }>) {
   const core: number[] = [];
@@ -38,7 +68,16 @@ export function splitServiceIndices(items: ReadonlyArray<{ id: string }>) {
   return { core, rest };
 }
 
-export function ServiceCard({ index, compact = false }: { index: number; compact?: boolean }) {
+export function ServiceCard({
+  index,
+  compact = false,
+  number,
+}: {
+  index: number;
+  compact?: boolean;
+  /** When set, a large faint numeral is shown in the card corner. */
+  number?: number;
+}) {
   const { t, lp } = useT();
   const s = t.services.items[index]!;
   const Icon = SERVICE_ICONS[index] ?? HardHat;
@@ -58,6 +97,15 @@ export function ServiceCard({ index, compact = false }: { index: number; compact
         aria-hidden="true"
         className="pointer-events-none absolute -inset-full bg-linear-to-tr from-primary/0 via-primary/5 to-primary/0 opacity-0 transition-opacity duration-700 group-hover:opacity-100"
       />
+
+      {number != null && (
+        <span
+          aria-hidden="true"
+          className="pointer-events-none absolute -bottom-2 end-2 select-none font-display text-[3.5rem] font-extrabold leading-none text-foreground/[0.07] md:text-[4.5rem]"
+        >
+          {String(number).padStart(2, "0")}
+        </span>
+      )}
 
       {!compact && (
         <div className="relative aspect-16/9 overflow-hidden">
@@ -118,10 +166,13 @@ export function ServiceCarousel({
   indices,
   gridClass,
   compact = false,
+  numbered = false,
 }: {
   indices: number[];
   gridClass: string;
   compact?: boolean;
+  /** Show each card's canonical service number as a large faint numeral. */
+  numbered?: boolean;
 }) {
   const { t, dir } = useT();
   const scrollerRef = useRef<HTMLDivElement>(null);
@@ -242,7 +293,11 @@ export function ServiceCarousel({
       >
         {indices.map((i) => (
           <div key={t.services.items[i]!.id} data-card className={H_SCROLL_ITEM}>
-            <ServiceCard index={i} compact={compact} />
+            <ServiceCard
+              index={i}
+              compact={compact}
+              number={numbered ? serviceOrderNumber(t.services.items[i]!.id) : undefined}
+            />
           </div>
         ))}
       </div>
@@ -256,7 +311,6 @@ export function ServicesSection() {
   return (
     <section id="services" aria-labelledby="services-heading" className="relative bg-panel">
       <div className="container-site relative py-20 md:py-28">
-        <GhostNumber value="03" />
         <div className="grid gap-8 lg:grid-cols-2 lg:items-end">
           <Reveal>
             <SectionLabel>{t.services.label}</SectionLabel>
@@ -275,7 +329,9 @@ export function ServicesSection() {
         </div>
 
         {(() => {
-          const { core, rest } = splitServiceIndices(t.services.items);
+          const split = splitServiceIndices(t.services.items);
+          const core = sortByServiceOrder(t.services.items, split.core);
+          const rest = sortByServiceOrder(t.services.items, split.rest);
           return (
             <>
               {/* Core services — framed and set apart (frame is desktop-only) */}

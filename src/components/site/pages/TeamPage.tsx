@@ -130,9 +130,76 @@ function OrgNode({
   );
 }
 
+type OrgTreeNode = {
+  id: string;
+  name: string;
+  role: string;
+  children?: OrgTreeNode[];
+};
+
+/** One row of the mobile indented tree: a small portrait plus name, role, email. */
+function MobileOrgNode({ node, root = false }: { node: OrgTreeNode; root?: boolean }) {
+  const email = ORG_EMAILS[node.id] ?? "";
+  const kids = node.children ?? [];
+
+  return (
+    <li className={root ? undefined : "org-mrow"}>
+      <div className="flex items-center gap-3 py-1.5">
+        <span className="flex size-11 shrink-0 overflow-hidden rounded-md border border-border bg-panel">
+          <OrgPortrait src={ORG_PHOTOS[node.id] ?? ""} name={node.name} />
+        </span>
+        <span className="min-w-0">
+          <span className="block font-display text-sm font-bold leading-tight text-foreground">
+            {node.name}
+          </span>
+          <span className="block text-[0.6875rem] font-medium uppercase leading-tight tracking-wide text-primary">
+            {node.role}
+          </span>
+          {email && (
+            <a
+              href={`mailto:${email}`}
+              dir="ltr"
+              className="mt-0.5 block truncate text-[0.6875rem] text-link underline"
+            >
+              {email}
+            </a>
+          )}
+        </span>
+      </div>
+
+      {kids.length > 0 && (
+        <ul className="org-mgroup">
+          {kids.map((c) => (
+            <MobileOrgNode key={c.id} node={c} />
+          ))}
+        </ul>
+      )}
+    </li>
+  );
+}
+
 export function TeamPage() {
   const { t } = useT();
   const org = t.team.org;
+  const mobileTree: OrgTreeNode = {
+    id: org.ceo.id,
+    name: org.ceo.name,
+    role: org.ceo.role,
+    children: [
+      { id: org.construction.id, name: org.construction.name, role: org.construction.role },
+      {
+        id: org.gm.id,
+        name: org.gm.name,
+        role: org.gm.role,
+        children: org.managers.map((m) => ({
+          id: m.id,
+          name: m.name,
+          role: m.role,
+          children: m.reports.map((r) => ({ id: r.id, name: r.name, role: r.role })),
+        })),
+      },
+    ],
+  };
 
   return (
     <SiteLayout>
@@ -240,7 +307,13 @@ export function TeamPage() {
         </div>
 
         <Reveal>
-          <div className="mx-auto w-full max-w-[120rem] overflow-x-auto px-5 pb-16 pt-12 md:pb-24 lg:px-8">
+          <div className="container-site pb-16 pt-10 lg:hidden">
+            <ul className="org-mtree">
+              <MobileOrgNode node={mobileTree} root />
+            </ul>
+          </div>
+
+          <div className="mx-auto hidden w-full max-w-[120rem] overflow-x-auto px-5 pb-16 pt-12 md:pb-24 lg:block lg:px-8">
             <div className="org-tree">
               <div className="org-card--ceo">
                 <OrgNode {...org.ceo} size="lg" />
