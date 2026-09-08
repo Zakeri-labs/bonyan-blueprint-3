@@ -595,7 +595,7 @@ export const en = {
         linkedin: "",
       },
       {
-        name: "Ajil Kumar Mathias",
+        name: "Ajil Kunnar Mathias",
         role: "Construction Manager",
         email: "ajil@live.com",
         phone: "",
@@ -605,13 +605,13 @@ export const en = {
     org: {
       heading: "Organizational Chart",
       intro: "How Bonyan is organised — from leadership through every department.",
-      ceo: { id: "yasir", name: "Yasir Salim Hamed Al Aufi", role: "CEO & Founder" },
-      construction: { id: "ajil", name: "Ajil Kumar Mathias", role: "Construction Manager" },
-      gm: { id: "athesh", name: "Athesh Nadesan", role: "General Manager" },
+      ceo: { id: "yasir", name: "Yaser Salim Hamed Al Aufi", role: "CEO & Founder" },
+      construction: { id: "ajil", name: "Ajil Kunnar Mathias", role: "Construction Manager" },
+      gm: { id: "athesh", name: "Atheesh Nadesan", role: "General Manager" },
       managers: [
         {
           id: "agha",
-          name: "Agha Shahid Yazdeb",
+          name: "Agha Shahid",
           role: "Technical Manager / QA & QC",
           reports: [],
         },
@@ -627,14 +627,14 @@ export const en = {
         { id: "rajesh", name: "Rajesh Asirvatham", role: "Supervision Manager", reports: [] },
         {
           id: "ibrahim",
-          name: "Mohammad Ibrahim Mirkar",
+          name: "Mohammed Ibrahim Mirkar",
           role: "Structure Head",
           reports: [],
         },
         { id: "salman", name: "Salman Kh", role: "Projects Manager", reports: [] },
         {
           id: "siva",
-          name: "Siva Murukesan",
+          name: "Siva Murukesn",
           role: "HR / Accounts Manager",
           reports: [{ id: "emas", name: "Emas (name pending)", role: "Public Relations Manager" }],
         },
