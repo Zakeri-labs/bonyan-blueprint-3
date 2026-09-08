@@ -585,9 +585,9 @@ export const ar: Dict = {
         linkedin: "",
       },
       {
-        name: "أجيل كنّار ماثياس",
+        name: "أجيل كومار ماثياس",
         role: "مدير الإنشاءات",
-        email: "",
+        email: "ajil@live.com",
         phone: "",
         linkedin: "",
       },
@@ -596,7 +596,7 @@ export const ar: Dict = {
       heading: "الهيكل التنظيمي",
       intro: "كيف تُنظَّم بنيان — من القيادة وحتى كل قسم.",
       ceo: { id: "yasir", name: "ياسر سالم حمد العوفي", role: "الرئيس التنفيذي والمؤسس" },
-      construction: { id: "ajil", name: "أجيل كنّار ماثياس", role: "مدير الإنشاءات" },
+      construction: { id: "ajil", name: "أجيل كومار ماثياس", role: "مدير الإنشاءات" },
       gm: { id: "athesh", name: "أتيش ناديسان", role: "المدير العام" },
       managers: [
         {

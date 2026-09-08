@@ -346,6 +346,11 @@
   align-items: center;
   /* Vertical space between chart levels — scales up on wider screens */
   --org-gap-v: 3.5rem;
+  /* Shared connector-line colour / thickness and fluid card widths (geometry) */
+  --org-line: color-mix(in oklch, var(--primary) 55%, transparent);
+  --org-line-w: 2px;
+  --org-ceo-w: clamp(6.5rem, 13.5vw, 14rem);
+  --org-lead-w: clamp(5.5rem, 11.5vw, 12.5rem);
 }
 @media (min-width: 1280px) {
   .org-tree {
@@ -370,10 +375,88 @@
   width: clamp(4rem, 8vw, 10rem);
 }
 .org-card--lead {
-  width: clamp(5.5rem, 11.5vw, 12.5rem);
+  width: var(--org-lead-w);
 }
 .org-card--ceo {
-  width: clamp(6.5rem, 13.5vw, 14rem);
+  width: var(--org-ceo-w);
+}
+
+/* Name plate under each chart portrait — sits slightly proud of the card with a
+   subtle drop shadow that reads just below the strip. */
+.org-caption {
+  box-shadow: 0 6px 12px -7px oklch(0 0 0 / 0.5);
+}
+
+/* ---- Top of the tree -----------------------------------------------------
+   The General Manager sits directly under the CEO, joined by one straight
+   vertical line (centre → centre); the manager fan then spreads from the GM.
+   The Construction Manager hangs off to the left as a side branch: a line
+   drops straight down from the CEO card's bottom edge, then elbows left and
+   enters the top of the side card. */
+.org-mid {
+  position: relative;
+  width: 100%;
+  margin-top: var(--org-gap-v);
+  display: flex;
+  justify-content: center;
+}
+
+/* CEO centre → GM centre: one straight vertical line across the whole gap */
+.org-mid::before {
+  content: "";
+  position: absolute;
+  left: 50%;
+  bottom: 100%;
+  width: var(--org-line-w);
+  height: var(--org-gap-v);
+  background: var(--org-line);
+}
+
+/* CEO bottom edge (just off-centre) → straight down, then a straight run left,
+   then a straight drop into the top-centre of the Construction Manager card —
+   an orthogonal "S" with square corners. Segments 1 + 2 (the drop off the CEO
+   card and the horizontal run) are drawn here; segment 3 (the final drop into
+   the side card) is `.org-mid__aside::before`. */
+.org-mid::after {
+  content: "";
+  position: absolute;
+  top: calc(-1 * var(--org-gap-v));
+  right: calc(50% + 2rem);
+  left: calc(50% - var(--org-ceo-w) / 2 - 6rem - var(--org-lead-w) / 2);
+  height: calc(var(--org-gap-v) * 0.5);
+  border-right: var(--org-line-w) solid var(--org-line);
+  border-bottom: var(--org-line-w) solid var(--org-line);
+}
+
+/* Segment 3: the final straight drop into the top-centre of the side card */
+.org-mid__aside::before {
+  content: "";
+  position: absolute;
+  left: 50%;
+  bottom: 100%;
+  width: var(--org-line-w);
+  height: calc(var(--org-gap-v) * 0.5);
+  background: var(--org-line);
+}
+
+/* Sits level with the GM row but far to the left, so its (variable-height)
+   name plate never reaches down into the manager row below. */
+.org-mid__aside {
+  position: absolute;
+  top: 0;
+  right: calc(50% + var(--org-ceo-w) / 2 + 6rem);
+  width: var(--org-lead-w);
+}
+
+[dir="rtl"] .org-mid::after {
+  right: calc(50% - var(--org-ceo-w) / 2 - 6rem - var(--org-lead-w) / 2);
+  left: calc(50% + 2rem);
+  border-right: none;
+  border-left: var(--org-line-w) solid var(--org-line);
+}
+[dir="rtl"] .org-mid__aside {
+  right: auto;
+  left: calc(50% + var(--org-ceo-w) / 2 + 6rem);
 }
 
 .org-children {
@@ -407,20 +490,13 @@
   position: absolute;
   left: 50%;
   bottom: calc(100% + var(--org-gap-v) / 2);
-  width: 1px;
+  width: var(--org-line-w);
   height: calc(var(--org-gap-v) / 2);
-  background: color-mix(in oklch, var(--primary) 50%, transparent);
+  background: var(--org-line);
 }
 
-/* The manager fan feeds from the General Manager only (the right of the two
-   direct reports), not from the centre between them. */
-.org-children--wide::before {
-  left: calc(50% + clamp(5.5rem, 11.5vw, 12.5rem) / 2 + var(--org-gap-h, 0.5rem) / 2);
-}
-[dir="rtl"] .org-children--wide::before {
-  left: auto;
-  right: calc(50% + clamp(5.5rem, 11.5vw, 12.5rem) / 2 + var(--org-gap-h, 0.5rem) / 2);
-}
+/* The manager fan feeds straight down from the General Manager, who is now
+   centred under the CEO — so the feed point stays at the centre (50%). */
 
 /* Each child → bus (lower half of the gap) */
 .org-children > .org-item::before {
@@ -428,20 +504,22 @@
   position: absolute;
   left: 50%;
   bottom: 100%;
-  width: 1px;
+  width: var(--org-line-w);
   height: calc(var(--org-gap-v) / 2);
-  background: color-mix(in oklch, var(--primary) 50%, transparent);
+  background: var(--org-line);
 }
 
-/* Horizontal bus spanning the siblings */
+/* Horizontal bus spanning the siblings — each item paints the half-gutter on
+   either side so neighbouring segments meet exactly (no overlap, so no
+   double-bright patch over the gaps). */
 .org-children > .org-item::after {
   content: "";
   position: absolute;
   bottom: calc(100% + var(--org-gap-v) / 2);
-  left: calc(-1 * var(--org-gap-h, 0.5rem));
-  right: calc(-1 * var(--org-gap-h, 0.5rem));
-  height: 1px;
-  background: color-mix(in oklch, var(--primary) 50%, transparent);
+  left: calc(-0.5 * var(--org-gap-h, 0.5rem));
+  right: calc(-0.5 * var(--org-gap-h, 0.5rem));
+  height: var(--org-line-w);
+  background: var(--org-line);
 }
 .org-children > .org-item:first-child::after {
   left: 50%;
@@ -454,6 +532,116 @@
 }
 .org-children > .org-item:only-child::before {
   height: var(--org-gap-v);
+}
+
+/* ---- Chart entrance animation (desktop) --------------------------------------
+   `.org-tree` gets `.is-in` from an IntersectionObserver in TeamPage. Cards
+   cascade in level by level (CEO → leads → managers L→R → reports) and each
+   connector "draws" itself just after its parent card has landed. */
+.org-tree .org-card--ceo,
+.org-tree .org-card--lead,
+.org-tree .org-card {
+  opacity: 0;
+  transform: translateY(16px);
+  transition:
+    opacity 0.9s ease,
+    transform 0.9s ease;
+}
+.org-tree.is-in .org-card--ceo,
+.org-tree.is-in .org-card--lead,
+.org-tree.is-in .org-card {
+  opacity: 1;
+  transform: none;
+}
+.org-tree.is-in .org-card--ceo {
+  transition-delay: 0ms;
+}
+.org-tree.is-in .org-mid__gm .org-card--lead,
+.org-tree.is-in .org-mid__aside .org-card--lead {
+  transition-delay: 300ms;
+}
+.org-tree.is-in .org-children--wide > .org-item > .org-card {
+  transition-delay: calc(620ms + var(--i, 0) * 80ms);
+}
+.org-tree.is-in .org-children--wide .org-children > .org-item > .org-card {
+  transition-delay: 1900ms;
+}
+
+/* Connectors: vertical lines scale from the top, the horizontal bus from its
+   centre; the CEO→Construction elbow just fades (an L can't cleanly "draw").
+   These "draw" slowly — a long, deliberate sweep. */
+.org-tree .org-mid::before,
+.org-tree .org-mid__aside::before,
+.org-tree .org-children::before,
+.org-tree .org-children > .org-item::before {
+  transform: scaleY(0);
+  transform-origin: top;
+  transition: transform 1.6s ease;
+}
+.org-tree .org-children > .org-item::after {
+  transform: scaleX(0);
+  transform-origin: center;
+  transition: transform 1.6s ease;
+}
+.org-tree .org-mid::after {
+  opacity: 0;
+  transition: opacity 1.6s ease;
+}
+.org-tree.is-in .org-mid::before,
+.org-tree.is-in .org-mid__aside::before,
+.org-tree.is-in .org-children::before,
+.org-tree.is-in .org-children > .org-item::before {
+  transform: scaleY(1);
+}
+.org-tree.is-in .org-children > .org-item::after {
+  transform: scaleX(1);
+}
+.org-tree.is-in .org-mid::after {
+  opacity: 1;
+}
+.org-tree.is-in .org-mid::before {
+  transition-delay: 360ms;
+}
+.org-tree.is-in .org-mid::after,
+.org-tree.is-in .org-mid__aside::before {
+  transition-delay: 560ms;
+}
+.org-tree.is-in .org-children--wide::before {
+  transition-delay: 780ms;
+}
+.org-tree.is-in .org-children--wide > .org-item::after {
+  transition-delay: 1000ms;
+}
+.org-tree.is-in .org-children--wide > .org-item::before {
+  transition-delay: calc(1220ms + var(--i, 0) * 80ms);
+}
+.org-tree.is-in .org-children--wide .org-children::before {
+  transition-delay: 2300ms;
+}
+.org-tree.is-in .org-children--wide .org-children > .org-item::after {
+  transition-delay: 2500ms;
+}
+.org-tree.is-in .org-children--wide .org-children > .org-item::before {
+  transition-delay: 2600ms;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .org-tree .org-card--ceo,
+  .org-tree .org-card--lead,
+  .org-tree .org-card {
+    opacity: 1 !important;
+    transform: none !important;
+  }
+  .org-tree .org-mid::before,
+  .org-tree .org-mid__aside::before,
+  .org-tree .org-children::before,
+  .org-tree .org-children > .org-item::before,
+  .org-tree .org-children > .org-item::after {
+    transform: none !important;
+  }
+  .org-tree .org-mid::after {
+    opacity: 1 !important;
+  }
 }
 
 /* Mobile: an indented "file explorer" tree (see .lg\:hidden block in TeamPage) */

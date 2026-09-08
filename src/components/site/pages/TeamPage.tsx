@@ -1,13 +1,40 @@
-import { type CSSProperties, useState } from "react";
+import { type CSSProperties, useEffect, useRef, useState } from "react";
 import { Mail, UserRound } from "lucide-react";
 import { useT } from "@/i18n";
 import { SiteLayout } from "../SiteLayout";
 import { IMAGES, ORG_PHOTOS, TEAM_PHOTOS } from "../assets";
 import { Reveal, SectionLabel } from "../ui";
 
+/** Fires once when the referenced element first scrolls into view. */
+function useInView<T extends Element>() {
+  const ref = useRef<T>(null);
+  const [inView, setInView] = useState(false);
+
+  useEffect(() => {
+    const el = ref.current;
+    if (!el) return;
+    const io = new IntersectionObserver(
+      (entries) => {
+        if (entries[0]?.isIntersecting) {
+          setInView(true);
+          io.disconnect();
+        }
+      },
+      // Fire only once the chart is well inside the viewport (its top past the
+      // lower third) so the slow reveal actually plays where the reader is looking.
+      { threshold: 0, rootMargin: "0px 0px -35% 0px" },
+    );
+    io.observe(el);
+    return () => io.disconnect();
+  }, []);
+
+  return { ref, inView };
+}
+
 /** Org-chart email addresses, keyed by person id. Fill in as they are confirmed. */
 const ORG_EMAILS: Record<string, string> = {
   yasir: "yaufi@bonyanec.com",
+  ajil: "ajil@live.com",
   athesh: "atheesh.n@bonyanec.com",
   agha: "agha.sh@bonyanec.com",
   jefrin: "jefrin.m@bonyanec.com",
@@ -65,15 +92,17 @@ function OrgPortrait({ src, name }: { src: string; name: string }) {
       width={400}
       height={400}
       onError={() => setFailed(true)}
-      className="size-full object-cover object-center"
+      className="size-full object-cover object-center transition-transform duration-700 ease-out group-hover:scale-[1.06] group-focus-visible:scale-[1.06]"
     />
   );
 }
 
 /**
- * One person in the org chart. The card shows only the portrait; name, role and
- * the person's email are revealed on hover / focus. The email is a mailto: link
- * once it is present in `ORG_EMAILS`.
+ * One person in the org chart. Each card is a portrait with a name plate under
+ * it (name + role, always visible) that sits slightly proud of the card with a
+ * soft drop shadow. On hover / focus a navy cover at 50% opacity fills the card
+ * and reveals a mail icon beside the person's email — a mailto: link once the
+ * address is present in `ORG_EMAILS`.
  */
 function OrgNode({
   id,
@@ -92,11 +121,34 @@ function OrgNode({
   return (
     <figure
       tabIndex={0}
-      className="group relative aspect-square w-full overflow-hidden border border-border bg-panel outline-none transition-colors hover:border-primary focus-visible:border-primary"
+      className="group relative flex w-full flex-col rounded-lg border border-border bg-panel outline-none transition-colors hover:border-primary focus-visible:border-primary"
     >
-      <OrgPortrait src={ORG_PHOTOS[id] ?? ""} name={name} />
+      <div className="relative aspect-square w-full overflow-hidden rounded-t-lg">
+        <OrgPortrait src={ORG_PHOTOS[id] ?? ""} name={name} />
+
+        {email && (
+          <div className="absolute inset-0 bg-background/80 opacity-0 transition-opacity duration-300 group-hover:opacity-100 group-focus:opacity-100 group-focus-within:opacity-100">
+            <a
+              href={`mailto:${email}`}
+              dir="ltr"
+              className={`absolute inset-x-0 bottom-0 flex h-1/4 translate-y-2 items-center justify-center px-2 text-center font-medium text-foreground underline decoration-primary/60 underline-offset-2 opacity-0 transition delay-100 duration-500 hover:text-primary group-hover:translate-y-0 group-hover:opacity-100 group-focus:translate-y-0 group-focus:opacity-100 group-focus-within:translate-y-0 group-focus-within:opacity-100 ${
+                lg ? "text-xs" : "text-[0.5625rem]"
+              }`}
+            >
+              <span className={`flex items-start break-all ${lg ? "gap-1.5" : "gap-1"}`}>
+                <Mail
+                  aria-hidden="true"
+                  className={`mt-px shrink-0 text-primary ${lg ? "size-3.5" : "size-3"}`}
+                />
+                <span>{email}</span>
+              </span>
+            </a>
+          </div>
+        )}
+      </div>
+
       <figcaption
-        className={`absolute inset-0 flex flex-col justify-end bg-linear-to-t from-background/80 via-background/40 to-transparent opacity-0 transition-opacity duration-300 group-hover:opacity-100 group-focus:opacity-100 group-focus-within:opacity-100 ${
+        className={`org-caption relative z-1 flex flex-col rounded-b-lg border-t border-border bg-panel ${
           lg ? "gap-1 p-3" : "gap-0.5 p-2"
         }`}
       >
@@ -114,17 +166,6 @@ function OrgNode({
         >
           {role}
         </span>
-        {email && (
-          <a
-            href={`mailto:${email}`}
-            dir="ltr"
-            className={`mt-1 self-start break-all font-medium text-link underline transition-colors hover:text-link/80 ${
-              lg ? "text-[0.6875rem]" : "text-[0.5625rem]"
-            }`}
-          >
-            {email}
-          </a>
-        )}
       </figcaption>
     </figure>
   );
@@ -181,6 +222,7 @@ function MobileOrgNode({ node, root = false }: { node: OrgTreeNode; root?: boole
 export function TeamPage() {
   const { t } = useT();
   const org = t.team.org;
+  const chart = useInView<HTMLDivElement>();
   const mobileTree: OrgTreeNode = {
     id: org.ceo.id,
     name: org.ceo.name,
@@ -312,54 +354,54 @@ export function TeamPage() {
               <MobileOrgNode node={mobileTree} root />
             </ul>
           </div>
+        </Reveal>
 
-          <div className="mx-auto hidden w-full max-w-[120rem] overflow-x-auto px-5 pb-16 pt-12 md:pb-24 lg:block lg:px-8">
-            <div className="org-tree">
-              <div className="org-card--ceo">
-                <OrgNode {...org.ceo} size="lg" />
-              </div>
+        <div className="mx-auto hidden w-full max-w-[120rem] overflow-x-auto px-5 pb-16 pt-12 md:pb-24 lg:block lg:px-8">
+          <div ref={chart.ref} className={`org-tree${chart.inView ? " is-in" : ""}`}>
+            <div className="org-card--ceo">
+              <OrgNode {...org.ceo} size="lg" />
+            </div>
 
-              <div className="org-children">
-                <div className="org-item">
-                  <div className="org-card--lead">
-                    <OrgNode {...org.construction} size="lg" />
-                  </div>
-                </div>
-
-                <div className="org-item">
-                  <div className="org-card--lead">
-                    <OrgNode {...org.gm} size="lg" />
-                  </div>
+            <div className="org-mid">
+              <div className="org-mid__aside">
+                <div className="org-card--lead">
+                  <OrgNode {...org.construction} size="lg" />
                 </div>
               </div>
 
-              <div
-                className="org-children org-children--wide"
-                style={{ "--org-cols": org.managers.length } as CSSProperties}
-              >
-                {org.managers.map((m) => (
-                  <div className="org-item" key={m.id}>
-                    <div className="org-card">
-                      <OrgNode id={m.id} name={m.name} role={m.role} />
-                    </div>
-
-                    {m.reports.length > 0 && (
-                      <div className="org-children">
-                        {m.reports.map((r) => (
-                          <div className="org-item" key={r.id}>
-                            <div className="org-card">
-                              <OrgNode {...r} />
-                            </div>
-                          </div>
-                        ))}
-                      </div>
-                    )}
-                  </div>
-                ))}
+              <div className="org-mid__gm">
+                <div className="org-card--lead">
+                  <OrgNode {...org.gm} size="lg" />
+                </div>
               </div>
             </div>
+
+            <div
+              className="org-children org-children--wide"
+              style={{ "--org-cols": org.managers.length } as CSSProperties}
+            >
+              {org.managers.map((m, i) => (
+                <div className="org-item" key={m.id} style={{ "--i": i } as CSSProperties}>
+                  <div className="org-card">
+                    <OrgNode id={m.id} name={m.name} role={m.role} />
+                  </div>
+
+                  {m.reports.length > 0 && (
+                    <div className="org-children">
+                      {m.reports.map((r) => (
+                        <div className="org-item" key={r.id}>
+                          <div className="org-card">
+                            <OrgNode {...r} />
+                          </div>
+                        </div>
+                      ))}
+                    </div>
+                  )}
+                </div>
+              ))}
+            </div>
           </div>
-        </Reveal>
+        </div>
       </section>
     </SiteLayout>
   );

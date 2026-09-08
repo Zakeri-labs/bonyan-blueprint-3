@@ -595,9 +595,9 @@ export const en = {
         linkedin: "",
       },
       {
-        name: "Ajil Kunnar Mathias",
+        name: "Ajil Kumar Mathias",
         role: "Construction Manager",
-        email: "",
+        email: "ajil@live.com",
         phone: "",
         linkedin: "",
       },
@@ -606,7 +606,7 @@ export const en = {
       heading: "Organizational Chart",
       intro: "How Bonyan is organised — from leadership through every department.",
       ceo: { id: "yasir", name: "Yasir Salim Hamed Al Aufi", role: "CEO & Founder" },
-      construction: { id: "ajil", name: "Ajil Kunnar Mathias", role: "Construction Manager" },
+      construction: { id: "ajil", name: "Ajil Kumar Mathias", role: "Construction Manager" },
       gm: { id: "athesh", name: "Athesh Nadesan", role: "General Manager" },
       managers: [
         {

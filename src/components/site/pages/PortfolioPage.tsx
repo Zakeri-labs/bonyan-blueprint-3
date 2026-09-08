@@ -4,6 +4,7 @@ import { cn } from "@/lib/utils";
 import { CONTACT, useT } from "@/i18n";
 import { SiteLayout } from "../SiteLayout";
 import {
+  ARCHITECTURAL_IMAGES,
   BUILDING_CONSTRUCTION_IMAGES,
   IMAGES,
   SERVICE_IMAGES,
@@ -253,6 +254,43 @@ export function PortfolioPage() {
                                 <p className="mt-1 flex-1 text-xs leading-relaxed text-muted-foreground">
                                   {proj.scope}
                                 </p>
+                              </div>
+                            </article>
+                          </Reveal>
+                        </li>
+                      );
+                    }
+                    if (entry.id === "design") {
+                      return (
+                        <li key={proj.name}>
+                          <Reveal delay={(pi % 3) * 60}>
+                            <article className="group flex h-full flex-col overflow-hidden border border-border bg-card transition-all duration-500 hover:-translate-y-1 hover:border-primary/70 hover:shadow-lg hover:shadow-primary/15">
+                              <img
+                                src={ARCHITECTURAL_IMAGES[pi]}
+                                alt={proj.name}
+                                loading="lazy"
+                                width={800}
+                                height={600}
+                                className="aspect-4/3 w-full border-b border-border object-cover"
+                              />
+                              <div className="flex flex-1 flex-col p-5">
+                                <span className="eyebrow">{proj.type}</span>
+                                <h4 className="mt-2 font-display text-base font-bold leading-snug transition-colors duration-300 group-hover:text-primary">
+                                  {proj.name}
+                                </h4>
+                                <p className="mt-3 flex-1 text-xs leading-relaxed text-muted-foreground">
+                                  {proj.scope}
+                                </p>
+                                <div className="mt-4 flex flex-wrap items-center gap-x-3 gap-y-1 border-t border-border pt-3 text-[0.6875rem] text-muted-foreground">
+                                  <span className="inline-flex items-center gap-1">
+                                    <MapPin aria-hidden="true" className="size-3 text-primary" />
+                                    {proj.location}
+                                  </span>
+                                  <span aria-hidden="true" className="text-border">
+                                    |
+                                  </span>
+                                  <span className="text-primary">{proj.year}</span>
+                                </div>
                               </div>
                             </article>
                           </Reveal>

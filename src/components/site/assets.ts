@@ -6,7 +6,17 @@ import projCompound from "@/assets/proj-compound.jpg";
 import projCommercial from "@/assets/proj-commercial.jpg";
 import detailDrawings from "@/assets/detail-drawings.jpg";
 import detailFacade from "@/assets/detail-facade.jpg";
-import managingDirector from "@/assets/managing-director.jpg";
+
+import teamYaserAlAufi from "@/assets/Team picture/Yaser Salim Hamed Al Aufi.png";
+import teamAjilKunnarMathias from "@/assets/Team picture/Ajil Kunnar Mathias.png";
+import teamAtheeshNadesan from "@/assets/Team picture/Atheesh Nadesan.png";
+import teamAghaShahid from "@/assets/Team picture/Agha Shahid.png";
+import teamAhsanAli from "@/assets/Team picture/Ahsan Ali.png";
+import teamJefrinMonish from "@/assets/Team picture/Jefrin Monish.png";
+import teamPuvaneshRavi from "@/assets/Team picture/Puvanesh Ravi.png";
+import teamRajeshAsirvatham from "@/assets/Team picture/Rajesh Asirvatham.png";
+import teamMohammedIbrahimMirkar from "@/assets/Team picture/Mohammed Ibrahim Mirkar.png";
+import teamSivaMurukesan from "@/assets/Team picture/Siva Murukesn.png";
 
 import buildingConstruction01 from "@/assets/Picture of Projects/Building_Construction_01.png";
 import buildingConstruction02 from "@/assets/Picture of Projects/Building_Construction_02.png";
@@ -14,6 +24,9 @@ import buildingConstruction03 from "@/assets/Picture of Projects/Building_Constr
 import constructionSupervision02 from "@/assets/Picture of Projects/Construction_Supervision_02.png";
 import constructionSupervision03 from "@/assets/Picture of Projects/Construction_Supervision_03.png";
 import constructionSupervision04 from "@/assets/Picture of Projects/Construction_Supervision_04.png";
+import architectural1 from "@/assets/Picture of Projects/Architectural-1.png";
+import architectural2 from "@/assets/Picture of Projects/Architectural-2.png";
+import architectural3 from "@/assets/Picture of Projects/Architectural-3.png";
 
 import client1 from "@/assets/client-1.png";
 import client2 from "@/assets/client-2.png";
@@ -33,7 +46,7 @@ export const IMAGES = {
   drawings: detailDrawings,
   facade: detailFacade,
   villa: heroVilla,
-  managingDirector,
+  managingDirector: teamYaserAlAufi,
 };
 
 export const CLIENT_AVATARS = [client1, client2, client3, client4, client5, client6];
@@ -58,6 +71,13 @@ export const SUPERVISION_CARD_GALLERY = {
   bottom: [constructionSupervision02, constructionSupervision03],
 };
 
+/**
+ * Photos for the Architectural & Structural Design "Representative projects"
+ * cards on the Portfolio page (03 / 07), in the same order as
+ * `portfolioPage.services` → `design` → `projects` in the dictionaries.
+ */
+export const ARCHITECTURAL_IMAGES = [architectural1, architectural2, architectural3];
+
 /** Service card imagery, in the same order as the services in `en.ts`. */
 export const SERVICE_IMAGES = [
   detailDrawings, // design
@@ -74,28 +94,29 @@ export const PORTFOLIO_IMAGES = [heroVilla, projSchool, projMosque, projCompound
 
 /**
  * Leadership portraits, in the same order as `team.members` in the dictionaries.
- * Files live in `/public/team/`; an empty string falls back to a placeholder.
+ * Sourced from `@/assets/Team picture/`; an empty string falls back to a placeholder.
  */
 export const TEAM_PHOTOS = [
-  "/team/yaser-al-aufi.jpg", // Yasir Salim Hamed Al Aufi — Founder & CEO
-  "/team/agha-shahid.jpg", // Agha Shahid — Technical Manager
-  "/team/atheesh-nadesan.jpg", // Atheesh Nadesan — General Manager
-  "/team/ajil-kunnar-mathias.jpg", // Ajil Kunnar Mathias — Construction Manager
+  teamYaserAlAufi, // Yasir Salim Hamed Al Aufi — Founder & CEO
+  teamAghaShahid, // Agha Shahid — Technical Manager
+  teamAtheeshNadesan, // Atheesh Nadesan — General Manager
+  teamAjilKunnarMathias, // Ajil Kunnar Mathias — Construction Manager
 ];
 
 /**
  * Org-chart portraits, keyed by the person `id` in `team.org` (dictionaries).
- * Files live in `/public/team/`; a missing key falls back to a placeholder icon.
- * Add entries as portraits are provided.
+ * Sourced from `@/assets/Team picture/` (`.png`); a missing key falls back to a
+ * placeholder icon. Add entries as portraits are provided.
  */
 export const ORG_PHOTOS: Record<string, string> = {
-  yasir: "/team/yaser-al-aufi.jpg", // Yasir Salim Hamed Al Aufi
-  ajil: "/team/ajil-kunnar-mathias.jpg", // Ajil Kunnar Mathias
-  athesh: "/team/atheesh-nadesan.jpg", // Athesh Nadesan
-  agha: "/team/agha-shahid.jpg", // Agha Shahid Yazdeb
-  ibrahim: "/team/mohammad-ibrahim-mirkar.jpg", // Mohammad Ibrahim Mirkar
-  puvanesh: "/team/puvanesh-ravi.jpg", // Puvanesh Ravi
-  siva: "/team/siva-murukesan.jpg", // Siva Murukesan
-  ahsan: "/team/ahsan-ali.jpg", // Ahsan Ali
-  jefrin: "/team/jefrin-monish.jpg", // Jefrin Monish
+  yasir: teamYaserAlAufi, // Yasir Salim Hamed Al Aufi
+  ajil: teamAjilKunnarMathias, // Ajil Kunnar Mathias
+  athesh: teamAtheeshNadesan, // Athesh Nadesan
+  agha: teamAghaShahid, // Agha Shahid Yazdeb
+  ahsan: teamAhsanAli, // Ahsan Ali
+  jefrin: teamJefrinMonish, // Jefrin Monish
+  puvanesh: teamPuvaneshRavi, // Puvanesh Ravi
+  rajesh: teamRajeshAsirvatham, // Rajesh Asirvatham
+  ibrahim: teamMohammedIbrahimMirkar, // Mohammad Ibrahim Mirkar
+  siva: teamSivaMurukesan, // Siva Murukesan
 };
