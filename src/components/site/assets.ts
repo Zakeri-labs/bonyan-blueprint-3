@@ -21,9 +21,12 @@ import teamSivaMurukesan from "@/assets/Team picture/Siva Murukesn.png";
 import buildingConstruction01 from "@/assets/Picture of Projects/Building_Construction_01.png";
 import buildingConstruction02 from "@/assets/Picture of Projects/Building_Construction_02.png";
 import buildingConstruction03 from "@/assets/Picture of Projects/Building_Construction_03.png";
+import buildingConstruction04 from "@/assets/Picture of Projects/Building_Construction_04.png";
+import buildingConstruction05 from "@/assets/Picture of Projects/Building_Construction_05.png";
+import buildingConstruction06 from "@/assets/Picture of Projects/Building_Construction_06.png";
+import constructionSupervision01 from "@/assets/Picture of Projects/Construction_Supervision_01.png";
 import constructionSupervision02 from "@/assets/Picture of Projects/Construction_Supervision_02.png";
 import constructionSupervision03 from "@/assets/Picture of Projects/Construction_Supervision_03.png";
-import constructionSupervision04 from "@/assets/Picture of Projects/Construction_Supervision_04.png";
 import architectural1 from "@/assets/Picture of Projects/Architectural-1.png";
 import architectural2 from "@/assets/Picture of Projects/Architectural-2.png";
 import architectural3 from "@/assets/Picture of Projects/Architectural-3.png";
@@ -67,8 +70,18 @@ export const BUILDING_CONSTRUCTION_IMAGES = [
  * Construction Supervision section (01 / 07): one image on top, two below.
  */
 export const SUPERVISION_CARD_GALLERY = {
-  top: constructionSupervision04,
+  top: constructionSupervision01,
   bottom: [constructionSupervision02, constructionSupervision03],
+};
+
+/**
+ * Same layout as `SUPERVISION_CARD_GALLERY` (one image on top, two below), shown
+ * inside the second "Representative projects" card of the Construction
+ * Supervision section (01 / 07).
+ */
+export const SUPERVISION_CARD_GALLERY_2 = {
+  top: buildingConstruction04,
+  bottom: [buildingConstruction05, buildingConstruction06],
 };
 
 /**

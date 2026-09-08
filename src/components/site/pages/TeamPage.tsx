@@ -179,12 +179,21 @@ type OrgTreeNode = {
 };
 
 /** One row of the mobile indented tree: a small portrait plus name, role, email. */
-function MobileOrgNode({ node, root = false }: { node: OrgTreeNode; root?: boolean }) {
+function MobileOrgNode({
+  node,
+  root = false,
+  orderMap,
+}: {
+  node: OrgTreeNode;
+  root?: boolean;
+  orderMap: Map<string, number>;
+}) {
   const email = ORG_EMAILS[node.id] ?? "";
   const kids = node.children ?? [];
+  const order = orderMap.get(node.id) ?? 0;
 
   return (
-    <li className={root ? undefined : "org-mrow"}>
+    <li className={root ? undefined : "org-mrow"} style={{ "--i": order } as CSSProperties}>
       <div className="flex items-center gap-3 py-1.5">
         <span className="flex size-11 shrink-0 overflow-hidden rounded-md border border-border bg-panel">
           <OrgPortrait src={ORG_PHOTOS[node.id] ?? ""} name={node.name} />
@@ -211,7 +220,7 @@ function MobileOrgNode({ node, root = false }: { node: OrgTreeNode; root?: boole
       {kids.length > 0 && (
         <ul className="org-mgroup">
           {kids.map((c) => (
-            <MobileOrgNode key={c.id} node={c} />
+            <MobileOrgNode key={c.id} node={c} orderMap={orderMap} />
           ))}
         </ul>
       )}
@@ -223,6 +232,7 @@ export function TeamPage() {
   const { t } = useT();
   const org = t.team.org;
   const chart = useInView<HTMLDivElement>();
+  const mobileChart = useInView<HTMLUListElement>();
   const mobileTree: OrgTreeNode = {
     id: org.ceo.id,
     name: org.ceo.name,
@@ -242,6 +252,13 @@ export function TeamPage() {
       },
     ],
   };
+
+  // Pre-order index for every node, so the mobile tree can cascade in top-to-bottom.
+  const mobileOrder = new Map<string, number>();
+  (function walk(n: OrgTreeNode) {
+    mobileOrder.set(n.id, mobileOrder.size);
+    n.children?.forEach(walk);
+  })(mobileTree);
 
   return (
     <SiteLayout>
@@ -348,13 +365,11 @@ export function TeamPage() {
           </p>
         </div>
 
-        <Reveal>
-          <div className="container-site pb-16 pt-10 lg:hidden">
-            <ul className="org-mtree">
-              <MobileOrgNode node={mobileTree} root />
-            </ul>
-          </div>
-        </Reveal>
+        <div className="container-site pb-16 pt-10 lg:hidden">
+          <ul ref={mobileChart.ref} className={`org-mtree${mobileChart.inView ? " is-in" : ""}`}>
+            <MobileOrgNode node={mobileTree} root orderMap={mobileOrder} />
+          </ul>
+        </div>
 
         <div className="mx-auto hidden w-full max-w-[120rem] overflow-x-auto px-5 pb-16 pt-12 md:pb-24 lg:block lg:px-8">
           <div ref={chart.ref} className={`org-tree${chart.inView ? " is-in" : ""}`}>

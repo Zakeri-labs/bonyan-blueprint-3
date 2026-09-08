@@ -9,6 +9,7 @@ import {
   IMAGES,
   SERVICE_IMAGES,
   SUPERVISION_CARD_GALLERY,
+  SUPERVISION_CARD_GALLERY_2,
 } from "../assets";
 import { Btn, GhostNumber, Reveal, SectionLabel } from "../ui";
 import { SERVICE_ICONS } from "../sections/ServicesSection";
@@ -297,15 +298,22 @@ export function PortfolioPage() {
                         </li>
                       );
                     }
-                    const showGallery = entry.id === "supervision" && pi === 0;
+                    const cardGallery =
+                      entry.id === "supervision"
+                        ? pi === 0
+                          ? SUPERVISION_CARD_GALLERY
+                          : pi === 1
+                            ? SUPERVISION_CARD_GALLERY_2
+                            : null
+                        : null;
                     return (
                       <li key={proj.name}>
                         <Reveal delay={(pi % 3) * 60}>
                           <article className="group flex h-full flex-col border border-border bg-card p-5 transition-all duration-500 hover:-translate-y-1 hover:border-primary/70 hover:shadow-lg hover:shadow-primary/15">
-                            {showGallery && (
+                            {cardGallery && (
                               <div className="mb-4 grid gap-3">
                                 <img
-                                  src={SUPERVISION_CARD_GALLERY.top}
+                                  src={cardGallery.top}
                                   alt={proj.name}
                                   loading="lazy"
                                   width={600}
@@ -313,7 +321,7 @@ export function PortfolioPage() {
                                   className="aspect-16/10 w-full border border-border object-cover"
                                 />
                                 <div className="grid grid-cols-2 gap-3">
-                                  {SUPERVISION_CARD_GALLERY.bottom.map((src) => (
+                                  {cardGallery.bottom.map((src) => (
                                     <img
                                       key={src}
                                       src={src}
