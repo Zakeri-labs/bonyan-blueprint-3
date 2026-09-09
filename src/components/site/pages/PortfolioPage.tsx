@@ -6,6 +6,7 @@ import { SiteLayout } from "../SiteLayout";
 import {
   ARCHITECTURAL_IMAGES,
   BUILDING_CONSTRUCTION_IMAGES,
+  CLIENT_LOGOS,
   IMAGES,
   SERVICE_IMAGES,
   SUPERVISION_CARD_GALLERY,
@@ -133,6 +134,49 @@ export function PortfolioPage() {
               </li>
             ))}
           </ul>
+        </div>
+      </section>
+
+      {/* Client logo strip */}
+      <section
+        aria-labelledby="portfolio-clients"
+        className="border-y border-ivory-border bg-ivory py-4 text-ink md:py-5"
+      >
+        <div className="container-site">
+          <p id="portfolio-clients" className="eyebrow mb-2 text-ink-muted">
+            <span
+              aria-hidden="true"
+              className="me-3 inline-block h-px w-8 bg-primary align-middle"
+            />
+            {p.clientsLabel}
+          </p>
+        </div>
+        <div className="client-logo-marquee-viewport" dir="ltr">
+          <div className="client-logo-marquee">
+            {[false, true].map((isDuplicate) => (
+              <ul
+                key={String(isDuplicate)}
+                aria-hidden={isDuplicate || undefined}
+                className="flex shrink-0 items-center gap-4 pe-4 md:gap-6 md:pe-6"
+              >
+                {CLIENT_LOGOS.map((logo) => (
+                  <li
+                    key={logo.src}
+                    className="flex h-20 w-80 shrink-0 items-center justify-center"
+                  >
+                    <img
+                      src={logo.src}
+                      alt={isDuplicate ? "" : logo.alt}
+                      loading="lazy"
+                      width={840}
+                      height={240}
+                      className="max-h-full max-w-full object-contain"
+                    />
+                  </li>
+                ))}
+              </ul>
+            ))}
+          </div>
         </div>
       </section>
 

@@ -212,6 +212,7 @@ export const en = {
       { value: "50", label: "Team across design & site" },
       { value: "7", label: "Integrated service lines" },
     ],
+    clientsLabel: "Our Clients",
     sectionsLabel: "Work by Service",
     sectionsHeading: "Every Discipline, on the Ground",
     sectionsBody:

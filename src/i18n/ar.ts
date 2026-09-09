@@ -205,6 +205,7 @@ export const ar: Dict = {
       { value: "50", label: "فريق من التصميم إلى الموقع" },
       { value: "7", label: "خطوط خدمات متكاملة" },
     ],
+    clientsLabel: "عملاؤنا",
     sectionsLabel: "الأعمال حسب الخدمة",
     sectionsHeading: "كل تخصص، على أرض الواقع",
     sectionsBody:

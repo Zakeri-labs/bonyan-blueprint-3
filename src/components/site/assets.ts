@@ -7,7 +7,7 @@ import projCommercial from "@/assets/proj-commercial.jpg";
 import detailDrawings from "@/assets/detail-drawings.jpg";
 import detailFacade from "@/assets/detail-facade.jpg";
 
-import teamYaserAlAufi from "@/assets/Team picture/Yaser Salim Hamed Al Aufi.png";
+import teamYaserAlAufi from "@/assets/Team picture/Yasir Salim Hamed Al Aufi.png";
 import teamAjilKunnarMathias from "@/assets/Team picture/Ajil Kunnar Mathias.png";
 import teamAtheeshNadesan from "@/assets/Team picture/Atheesh Nadesan.png";
 import teamAghaShahid from "@/assets/Team picture/Agha Shahid.png";
@@ -27,6 +27,7 @@ import buildingConstruction06 from "@/assets/Picture of Projects/Building_Constr
 import constructionSupervision01 from "@/assets/Picture of Projects/Construction_Supervision_01.png";
 import constructionSupervision02 from "@/assets/Picture of Projects/Construction_Supervision_02.png";
 import constructionSupervision03 from "@/assets/Picture of Projects/Construction_Supervision_03.png";
+import constructionServices from "@/assets/Picture of Projects/Construction_services.png";
 import architectural1 from "@/assets/Picture of Projects/Architectural-1.png";
 import architectural2 from "@/assets/Picture of Projects/Architectural-2.png";
 import architectural3 from "@/assets/Picture of Projects/Architectural-3.png";
@@ -37,6 +38,14 @@ import client3 from "@/assets/client-3.png";
 import client4 from "@/assets/client-4.png";
 import client5 from "@/assets/client-5.png";
 import client6 from "@/assets/client-6.png";
+import clientLogo01 from "@/assets/clients/client-01-supreme-judiciary-council.png";
+import clientLogo02 from "@/assets/clients/client-02-ministry-of-labor.png";
+import clientLogo03 from "@/assets/clients/client-03-telecommunications-regulatory-authority.png";
+import clientLogo04 from "@/assets/clients/client-04-ministry-of-heritage-tourism.png";
+import clientLogo05 from "@/assets/clients/client-05-ministry-housing-urban-planning.png";
+import clientLogo06 from "@/assets/clients/client-06-ministry-agriculture-fisheries-water-resources.png";
+import clientLogo07 from "@/assets/clients/client-07-asharqiyah-south-governorate.png";
+import clientLogo08 from "@/assets/clients/client-08-ministry-transport-communications-information-technology.png";
 
 /** Replace any image here to swap it everywhere it is used. */
 export const IMAGES = {
@@ -53,6 +62,18 @@ export const IMAGES = {
 };
 
 export const CLIENT_AVATARS = [client1, client2, client3, client4, client5, client6];
+
+/** Client marks used in the Portfolio-page scrolling logo strip. */
+export const CLIENT_LOGOS = [
+  { src: clientLogo01, alt: "Supreme Judiciary Council" },
+  { src: clientLogo02, alt: "Ministry of Labour" },
+  { src: clientLogo03, alt: "Telecommunications Regulatory Authority" },
+  { src: clientLogo04, alt: "Ministry of Heritage and Tourism" },
+  { src: clientLogo05, alt: "Ministry of Housing and Urban Planning" },
+  { src: clientLogo06, alt: "Ministry of Agriculture, Fisheries and Water Resources" },
+  { src: clientLogo07, alt: "A'Sharqiyah South Governorate" },
+  { src: clientLogo08, alt: "Ministry of Transport, Communications and Information Technology" },
+];
 
 /**
  * Photos for the Building Construction "Representative projects" cards on the
@@ -95,7 +116,7 @@ export const ARCHITECTURAL_IMAGES = [architectural1, architectural2, architectur
 export const SERVICE_IMAGES = [
   detailDrawings, // design
   detailFacade, // mep
-  aboutReview, // supervision
+  constructionServices, // supervision
   heroVilla, // construction
   projCompound, // management
   projCommercial, // quantity
