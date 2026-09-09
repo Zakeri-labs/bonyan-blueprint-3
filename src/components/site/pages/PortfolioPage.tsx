@@ -8,9 +8,11 @@ import {
   BUILDING_CONSTRUCTION_IMAGES,
   CLIENT_LOGOS,
   IMAGES,
+  PORTFOLIO_CARD_IMAGES,
   SERVICE_IMAGES,
   SUPERVISION_CARD_GALLERY,
   SUPERVISION_CARD_GALLERY_2,
+  SUPERVISION_CARD_GALLERY_3,
 } from "../assets";
 import { Btn, GhostNumber, Reveal, SectionLabel } from "../ui";
 import { SERVICE_ICONS } from "../sections/ServicesSection";
@@ -348,8 +350,11 @@ export function PortfolioPage() {
                           ? SUPERVISION_CARD_GALLERY
                           : pi === 1
                             ? SUPERVISION_CARD_GALLERY_2
-                            : null
+                            : pi === 2
+                              ? SUPERVISION_CARD_GALLERY_3
+                              : null
                         : null;
+                    const cardImage = PORTFOLIO_CARD_IMAGES[entry.id]?.[pi];
                     return (
                       <li key={proj.name}>
                         <Reveal delay={(pi % 3) * 60}>
@@ -379,6 +384,16 @@ export function PortfolioPage() {
                                   ))}
                                 </div>
                               </div>
+                            )}
+                            {cardImage && (
+                              <img
+                                src={cardImage}
+                                alt={proj.name}
+                                loading="lazy"
+                                width={800}
+                                height={600}
+                                className="mb-4 aspect-4/3 w-full border border-border object-cover"
+                              />
                             )}
                             <span className="eyebrow">{proj.type}</span>
                             <h4 className="mt-2 font-display text-base font-bold leading-snug transition-colors duration-300 group-hover:text-primary">

@@ -31,6 +31,27 @@ import constructionServices from "@/assets/Picture of Projects/Construction_serv
 import architectural1 from "@/assets/Picture of Projects/Architectural-1.png";
 import architectural2 from "@/assets/Picture of Projects/Architectural-2.png";
 import architectural3 from "@/assets/Picture of Projects/Architectural-3.png";
+import supervisionVilla from "@/assets/Picture of Projects/portfolio/supervision-villa.jpg";
+import supervisionVillaDetail01 from "@/assets/Picture of Projects/portfolio/supervision-villa-detail-01.png";
+import supervisionVillaDetail02 from "@/assets/Picture of Projects/portfolio/supervision-villa-detail-02.png";
+import managementCompound from "@/assets/Picture of Projects/portfolio/management-compound.jpg";
+import managementCommercial from "@/assets/Picture of Projects/portfolio/management-commercial.jpg";
+import managementCampus from "@/assets/Picture of Projects/portfolio/management-campus.jpg";
+import mepCommercial from "@/assets/Picture of Projects/portfolio/mep-commercial.jpg";
+import mepInstitutional from "@/assets/Picture of Projects/portfolio/mep-institutional.jpg";
+import mepCompound from "@/assets/Picture of Projects/portfolio/mep-compound.jpg";
+import quantityCommercial from "@/assets/Picture of Projects/portfolio/quantity-commercial.jpg";
+import quantityCompound from "@/assets/Picture of Projects/portfolio/quantity-compound.jpg";
+import quantityVillas from "@/assets/Picture of Projects/portfolio/quantity-villas.jpg";
+import planningPark from "@/assets/Picture of Projects/portfolio/planning-park.jpg";
+import planningLand from "@/assets/Picture of Projects/portfolio/planning-land.jpg";
+import planningRealm from "@/assets/Picture of Projects/portfolio/planning-realm.jpg";
+import mainConstruction from "@/assets/Picture of Projects/portfolio/main-construction.jpg";
+import mainDesign from "@/assets/Picture of Projects/portfolio/main-design.jpg";
+import mainManagement from "@/assets/Picture of Projects/portfolio/main-management.jpg";
+import mainMep from "@/assets/Picture of Projects/portfolio/main-mep.jpg";
+import mainQuantity from "@/assets/Picture of Projects/portfolio/main-quantity.jpg";
+import mainPlanning from "@/assets/Picture of Projects/portfolio/main-planning.jpg";
 
 import client1 from "@/assets/client-1.png";
 import client2 from "@/assets/client-2.png";
@@ -105,6 +126,12 @@ export const SUPERVISION_CARD_GALLERY_2 = {
   bottom: [buildingConstruction05, buildingConstruction06],
 };
 
+/** Additional contextual views for the Private Villa supervision project (01 / 07). */
+export const SUPERVISION_CARD_GALLERY_3 = {
+  top: supervisionVilla,
+  bottom: [supervisionVillaDetail01, supervisionVillaDetail02],
+};
+
 /**
  * Photos for the Architectural & Structural Design "Representative projects"
  * cards on the Portfolio page (03 / 07), in the same order as
@@ -112,15 +139,28 @@ export const SUPERVISION_CARD_GALLERY_2 = {
  */
 export const ARCHITECTURAL_IMAGES = [architectural1, architectural2, architectural3];
 
+/**
+ * Project photography and project renderings for the remaining Portfolio cards.
+ * The source material is drawn from the supplied company profiles: construction
+ * projects for supervision, management, MEP and cost work; public-realm project
+ * renderings for planning.
+ */
+export const PORTFOLIO_CARD_IMAGES: Partial<Record<string, Array<string | undefined>>> = {
+  management: [managementCompound, managementCommercial, managementCampus],
+  mep: [mepCommercial, mepInstitutional, mepCompound],
+  quantity: [quantityCommercial, quantityCompound, quantityVillas],
+  planning: [planningPark, planningLand, planningRealm],
+};
+
 /** Service card imagery, in the same order as the services in `en.ts`. */
 export const SERVICE_IMAGES = [
-  detailDrawings, // design
-  detailFacade, // mep
+  mainDesign, // design — residential project rendering from supplied profiles
+  mainMep, // MEP — institutional project image from supplied profiles
   constructionServices, // supervision
-  heroVilla, // construction
-  projCompound, // management
-  projCommercial, // quantity
-  projSchool, // planning
+  mainConstruction, // construction — completed villa from supplied profiles
+  mainManagement, // management — built project from supplied profiles
+  mainQuantity, // quantity — commercial project from supplied profiles
+  mainPlanning, // planning — public-realm rendering from supplied brochure
 ];
 
 /** Portfolio imagery, in the same order as the five portfolio categories. */
