@@ -565,7 +565,6 @@ export const en = {
     applyEmailLabel: "Recruitment Email",
   },
   team: {
-    note: "Direct phone numbers and LinkedIn profiles are added as they are confirmed.",
     leadershipTitle: "Leadership",
     emailLabel: "Email",
     phoneLabel: "Phone",
@@ -596,7 +595,7 @@ export const en = {
         linkedin: "",
       },
       {
-        name: "Ajil Kunnar Mathias",
+        name: "Ajil Kumar Mathias",
         role: "Construction Manager",
         email: "ajil@live.com",
         phone: "",
@@ -607,7 +606,7 @@ export const en = {
       heading: "Organizational Chart",
       intro: "How Bonyan is organised — from leadership through every department.",
       ceo: { id: "yasir", name: "Yaser Salim Hamed Al Aufi", role: "CEO & Founder" },
-      construction: { id: "ajil", name: "Ajil Kunnar Mathias", role: "Construction Manager" },
+      construction: { id: "ajil", name: "Ajil Kumar Mathias", role: "Construction Manager" },
       gm: { id: "athesh", name: "Atheesh Nadesan", role: "General Manager" },
       managers: [
         {
@@ -622,7 +621,13 @@ export const en = {
           id: "amir",
           name: "Amir Pareeb",
           role: "Lead Architect",
-          reports: [{ id: "riyan", name: "Riyan (name pending)", role: "Architect / Team Member" }],
+          reports: [
+            {
+              id: "riyan",
+              name: "RAIYAN HUSSEIN MOHAMMED HAMOOD AL HAJRI",
+              role: "Architect / Team Member",
+            },
+          ],
         },
         { id: "puvanesh", name: "Puvanesh Ravi", role: "QS Head", reports: [] },
         { id: "rajesh", name: "Rajesh Asirvatham", role: "Supervision Manager", reports: [] },

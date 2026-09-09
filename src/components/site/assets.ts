@@ -17,6 +17,11 @@ import teamPuvaneshRavi from "@/assets/Team picture/Puvanesh Ravi.png";
 import teamRajeshAsirvatham from "@/assets/Team picture/Rajesh Asirvatham.png";
 import teamMohammedIbrahimMirkar from "@/assets/Team picture/Mohammed Ibrahim Mirkar.png";
 import teamSivaMurukesan from "@/assets/Team picture/Siva Murukesn.png";
+import teamAmirHosseinParesh from "@/assets/Team picture/Amir hossein paresh.png";
+import teamSalmanRahimdokhtKhorram from "@/assets/Team picture/SALMAN RAHIMDOKHT KHORRAM.png";
+import teamUmmerFaruq from "@/assets/Team picture/UMMER FARUQ.png";
+import teamPramodh from "@/assets/Team picture/Pramodh.png";
+import teamRaiyanHusseinMohammedHamoodAlHajri from "@/assets/Team picture/RAIYAN HUSSEIN MOHAMMED HAMOOD AL HAJRI.png";
 
 import buildingConstruction01 from "@/assets/Picture of Projects/Building_Construction_01.png";
 import buildingConstruction02 from "@/assets/Picture of Projects/Building_Construction_02.png";
@@ -160,6 +165,30 @@ export const PORTFOLIO_CARD_IMAGES: Partial<Record<string, Array<string | undefi
   planning: [planningPark, planningLand, planningRealm],
 };
 
+/**
+ * Project imagery used by the Home page. Every image is also displayed with
+ * its matching project on the Portfolio page; keep the service and project
+ * indices in sync with `portfolioPage.services` in the dictionaries.
+ */
+export const HOME_PROJECT_IMAGES = {
+  hero: buildingConstruction03,
+  about: managementCompound,
+  cta: planningPark,
+};
+
+/**
+ * The five projects featured in Home's selected-work grid. The text is read
+ * from the matching Portfolio-page project at render time, not duplicated in
+ * the Home-page dictionary.
+ */
+export const HOME_PORTFOLIO_PROJECTS = [
+  { serviceId: "construction", projectIndex: 0, image: buildingConstruction01 },
+  { serviceId: "design", projectIndex: 1, image: architectural2 },
+  { serviceId: "supervision", projectIndex: 2, image: supervisionVilla },
+  { serviceId: "planning", projectIndex: 0, image: planningPark },
+  { serviceId: "mep", projectIndex: 0, image: mepCommercial },
+] as const;
+
 /** Service card imagery, in the same order as the services in `en.ts`. */
 export const SERVICE_IMAGES = [
   mainDesign, // design — residential project rendering from supplied profiles
@@ -201,4 +230,9 @@ export const ORG_PHOTOS: Record<string, string> = {
   rajesh: teamRajeshAsirvatham, // Rajesh Asirvatham
   ibrahim: teamMohammedIbrahimMirkar, // Mohammad Ibrahim Mirkar
   siva: teamSivaMurukesan, // Siva Murukesan
+  amir: teamAmirHosseinParesh, // Amir Hossein Paresh
+  salman: teamSalmanRahimdokhtKhorram, // Salman Rahimdokht Khorram
+  ummer: teamUmmerFaruq, // Ummer Faruq
+  pramodh: teamPramodh, // Pramodh Sasi Vaasukuttan
+  riyan: teamRaiyanHusseinMohammedHamoodAlHajri, // Raiyan Hussein Mohammed Hamood Al Hajri
 };

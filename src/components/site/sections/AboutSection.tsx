@@ -1,6 +1,6 @@
 import { Check } from "lucide-react";
 import { useT } from "@/i18n";
-import { IMAGES } from "../assets";
+import { HOME_PROJECT_IMAGES } from "../assets";
 import { Btn, Reveal, SectionLabel } from "../ui";
 
 export function AboutSection() {
@@ -54,7 +54,7 @@ export function AboutSection() {
             <div className="relative">
               <div className="overflow-hidden border border-border">
                 <img
-                  src={IMAGES.about}
+                  src={HOME_PROJECT_IMAGES.about}
                   alt={t.about.imageAlt}
                   loading="lazy"
                   width={1200}

@@ -555,7 +555,6 @@ export const ar: Dict = {
     applyEmailLabel: "بريد التوظيف",
   },
   team: {
-    note: "تُضاف أرقام الهواتف المباشرة وحسابات لينكدإن فور تأكيدها.",
     leadershipTitle: "القيادة",
     emailLabel: "البريد الإلكتروني",
     phoneLabel: "الهاتف",
@@ -597,7 +596,7 @@ export const ar: Dict = {
       heading: "الهيكل التنظيمي",
       intro: "كيف تُنظَّم بنيان — من القيادة وحتى كل قسم.",
       ceo: { id: "yasir", name: "Yaser Salim Hamed Al Aufi", role: "الرئيس التنفيذي والمؤسس" },
-      construction: { id: "ajil", name: "Ajil Kunnar Mathias", role: "مدير الإنشاءات" },
+      construction: { id: "ajil", name: "Ajil Kumar Mathias", role: "مدير الإنشاءات" },
       gm: { id: "athesh", name: "Atheesh Nadesan", role: "المدير العام" },
       managers: [
         {
@@ -612,7 +611,13 @@ export const ar: Dict = {
           id: "amir",
           name: "أمير باريب",
           role: "كبير المعماريين",
-          reports: [{ id: "riyan", name: "ريان (الاسم قيد التأكيد)", role: "معماري / عضو الفريق" }],
+          reports: [
+            {
+              id: "riyan",
+              name: "RAIYAN HUSSEIN MOHAMMED HAMOOD AL HAJRI",
+              role: "معماري / عضو الفريق",
+            },
+          ],
         },
         { id: "puvanesh", name: "Puvanesh Ravi", role: "رئيس قسم حصر الكميات", reports: [] },
         { id: "rajesh", name: "Rajesh Asirvatham", role: "مدير الإشراف", reports: [] },

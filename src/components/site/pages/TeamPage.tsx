@@ -92,7 +92,7 @@ function OrgPortrait({ src, name }: { src: string; name: string }) {
       width={400}
       height={400}
       onError={() => setFailed(true)}
-      className="size-full object-cover object-center transition-transform duration-700 ease-out group-hover:scale-[1.06] group-focus-visible:scale-[1.06]"
+      className="size-full object-cover object-top transition-transform duration-700 ease-out group-hover:scale-[1.06] group-focus-visible:scale-[1.06]"
     />
   );
 }
@@ -294,10 +294,6 @@ export function TeamPage() {
           >
             {t.team.leadershipTitle}
           </h2>
-
-          <p className="mt-4 max-w-2xl border-s-2 border-primary/50 bg-card/50 px-4 py-3 text-xs leading-relaxed text-muted-foreground">
-            {t.team.note}
-          </p>
 
           <div className="mt-10 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
             {t.team.members.map((m, i) => {

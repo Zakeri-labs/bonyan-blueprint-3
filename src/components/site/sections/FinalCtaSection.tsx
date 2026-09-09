@@ -1,5 +1,5 @@
 import { CONTACT, useT } from "@/i18n";
-import { IMAGES } from "../assets";
+import { HOME_PROJECT_IMAGES } from "../assets";
 import { Btn, Reveal, SectionLabel } from "../ui";
 import { ContactCards } from "../ContactCards";
 import { InquiryForm } from "../InquiryForm";
@@ -10,7 +10,7 @@ export function FinalCtaSection() {
   return (
     <section id="contact" aria-labelledby="final-cta-heading" className="relative overflow-hidden">
       <img
-        src={IMAGES.facade}
+        src={HOME_PROJECT_IMAGES.cta}
         alt=""
         aria-hidden="true"
         loading="lazy"

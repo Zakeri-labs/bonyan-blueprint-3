@@ -80,6 +80,7 @@ export function ServiceCard({
 }) {
   const { t, lp } = useT();
   const s = t.services.items[index]!;
+  const portfolioService = t.portfolioPage.services.find((service) => service.id === s.id);
   const Icon = SERVICE_ICONS[index] ?? HardHat;
   const priority = CORE_SERVICE_IDS.has(s.id);
 
@@ -140,7 +141,9 @@ export function ServiceCard({
         <h3 className="mt-5 font-display text-lg font-bold leading-snug transition-colors duration-300 group-hover:text-primary">
           {s.title}
         </h3>
-        <p className="mt-3 flex-1 text-sm leading-relaxed text-muted-foreground">{s.desc}</p>
+        <p className="mt-3 flex-1 text-sm leading-relaxed text-muted-foreground">
+          {portfolioService?.summary ?? s.desc}
+        </p>
         <L
           to={lp("/services")}
           hash={s.id}
