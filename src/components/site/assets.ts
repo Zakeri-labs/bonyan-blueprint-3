@@ -43,15 +43,15 @@ import mepCompound from "@/assets/Picture of Projects/portfolio/mep-compound.jpg
 import quantityCommercial from "@/assets/Picture of Projects/portfolio/quantity-commercial.jpg";
 import quantityCompound from "@/assets/Picture of Projects/portfolio/quantity-compound.jpg";
 import quantityVillas from "@/assets/Picture of Projects/portfolio/quantity-villas.jpg";
-import planningPark from "@/assets/Picture of Projects/portfolio/planning-park.jpg";
-import planningLand from "@/assets/Picture of Projects/portfolio/planning-land.jpg";
-import planningRealm from "@/assets/Picture of Projects/portfolio/planning-realm.jpg";
+import planningPark from "@/assets/Picture of Projects/portfolio/planning-park-cropped.jpg";
+import planningLand from "@/assets/Picture of Projects/portfolio/planning-land-cropped.jpg";
+import planningRealm from "@/assets/Picture of Projects/portfolio/planning-realm-cropped.jpg";
 import mainConstruction from "@/assets/Picture of Projects/portfolio/main-construction.jpg";
 import mainDesign from "@/assets/Picture of Projects/portfolio/main-design.jpg";
 import mainManagement from "@/assets/Picture of Projects/portfolio/main-management.jpg";
 import mainMep from "@/assets/Picture of Projects/portfolio/main-mep.jpg";
-import mainQuantity from "@/assets/Picture of Projects/portfolio/main-quantity.jpg";
-import mainPlanning from "@/assets/Picture of Projects/portfolio/main-planning.jpg";
+import mainQuantity from "@/assets/Picture of Projects/portfolio/Quantity Surveying.png";
+import mainPlanning from "@/assets/Picture of Projects/portfolio/main-planning-cropped.jpg";
 
 import client1 from "@/assets/client-1.png";
 import client2 from "@/assets/client-2.png";
@@ -67,6 +67,10 @@ import clientLogo05 from "@/assets/clients/client-05-ministry-housing-urban-plan
 import clientLogo06 from "@/assets/clients/client-06-ministry-agriculture-fisheries-water-resources.png";
 import clientLogo07 from "@/assets/clients/client-07-asharqiyah-south-governorate.png";
 import clientLogo08 from "@/assets/clients/client-08-ministry-transport-communications-information-technology.png";
+import clientLogo09 from "@/assets/clients/client-09-South Al Batinah Governorate.png";
+import clientLogo10 from "@/assets/clients/client-10-Oman Chamber of Commerce & Industry (OCCI).png";
+import clientLogo11 from "@/assets/clients/client-11-Oman Housing Bank.png";
+import clientLogo12 from "@/assets/clients/client-12-Al Dakhiliyah Governorate.png";
 
 /** Replace any image here to swap it everywhere it is used. */
 export const IMAGES = {
@@ -94,6 +98,10 @@ export const CLIENT_LOGOS = [
   { src: clientLogo06, alt: "Ministry of Agriculture, Fisheries and Water Resources" },
   { src: clientLogo07, alt: "A'Sharqiyah South Governorate" },
   { src: clientLogo08, alt: "Ministry of Transport, Communications and Information Technology" },
+  { src: clientLogo09, alt: "South Al Batinah Governorate" },
+  { src: clientLogo10, alt: "Oman Chamber of Commerce and Industry" },
+  { src: clientLogo11, alt: "Oman Housing Bank" },
+  { src: clientLogo12, alt: "Al Dakhiliyah Governorate" },
 ];
 
 /**
