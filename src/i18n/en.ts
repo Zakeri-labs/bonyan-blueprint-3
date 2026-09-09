@@ -73,7 +73,7 @@ export const en = {
         desc: "Concept and detailed design for buildings, ready for authority approval and construction.",
         detail:
           "Architectural, structural and civil design — from concept and 3D perspectives through to detailed drawings, technical specifications, and full authority approvals with the Municipality, ROP and other bodies.",
-        types: ["Villas", "Schools", "Mosques", "Commercial Buildings"],
+        types: ["Public Realm", "Residential Villas", "Mixed-Use Developments"],
       },
       {
         id: "mep",
@@ -81,7 +81,7 @@ export const en = {
         desc: "Mechanical, electrical and plumbing engineering, coordinated with the building design.",
         detail:
           "HVAC and ventilation, fire protection, power generation and distribution, lighting, and plumbing design, fully coordinated with the architecture and structure.",
-        types: ["All Building Types"],
+        types: ["Commercial Buildings", "Residential Villas", "Building Extensions"],
       },
       {
         id: "supervision",
@@ -89,7 +89,7 @@ export const en = {
         desc: "Full-time site supervision, inspection and QA/QC through to handover.",
         detail:
           "Resident engineers, contractor coordination, material and workmanship inspection, site safety monitoring, and progress reporting from foundation to handover.",
-        types: ["Ministry Projects", "Schools", "Private Projects"],
+        types: ["Structural Works", "Concrete Works", "Residential Villas"],
       },
       {
         id: "construction",
@@ -97,7 +97,7 @@ export const en = {
         desc: "Structural, finishing and MEP works for residential and commercial buildings.",
         detail:
           "Structural works, plastering, flooring and wall tiling, MEP execution, painting, false ceilings, doors and windows, fire and safety works, and external works for villas and commercial buildings.",
-        types: ["Villas", "Commercial", "Industrial"],
+        types: ["Industrial Facilities", "Office Buildings", "Residential Villas"],
       },
       {
         id: "management",
@@ -105,7 +105,7 @@ export const en = {
         desc: "Cost, schedule and contractor management that keeps projects on track.",
         detail:
           "Cost estimation, scheduling and planning, bid-package preparation and technical/commercial analysis, construction management, site safety, deviation analysis, and as-built records.",
-        types: ["Compounds", "Commercial", "Institutional"],
+        types: ["Residential Villas", "Commercial Buildings", "Mixed-Use Developments"],
       },
       {
         id: "quantity",
@@ -113,7 +113,7 @@ export const en = {
         desc: "BOQ, cost estimation and tender documentation for accurate budgeting.",
         detail:
           "Bills of quantities, cost estimates and financial evaluations, tender documentation, and ongoing cost monitoring against the technical scope.",
-        types: ["Commercial Buildings", "Compounds", "Villas"],
+        types: ["Commercial Buildings", "Farmhouses", "Residential Villas"],
       },
       {
         id: "planning",
@@ -121,7 +121,7 @@ export const en = {
         desc: "Site studies and master planning for parks, developments and mixed-use land.",
         detail:
           "Topographic survey, soil investigation, traffic and hydrological studies, environmental assessment, master planning, feasibility studies, and value engineering.",
-        types: ["Parks", "Developments", "Public Realm"],
+        types: ["Public Parks", "Green Belt Landscapes", "Municipal Public Realm"],
       },
     ],
   },

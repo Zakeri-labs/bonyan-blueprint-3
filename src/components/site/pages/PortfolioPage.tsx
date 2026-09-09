@@ -274,76 +274,6 @@ export function PortfolioPage() {
                 </p>
                 <ul className="mt-4 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
                   {entry.projects.map((proj, pi) => {
-                    if (entry.id === "construction") {
-                      return (
-                        <li key={proj.name}>
-                          <Reveal delay={(pi % 3) * 60}>
-                            <article className="group flex h-full flex-col overflow-hidden border border-border bg-card transition-all duration-500 hover:-translate-y-1 hover:border-primary/70 hover:shadow-lg hover:shadow-primary/15">
-                              <img
-                                src={BUILDING_CONSTRUCTION_IMAGES[pi]}
-                                alt={proj.name}
-                                loading="lazy"
-                                width={800}
-                                height={600}
-                                className="aspect-4/3 w-full border-b border-border object-cover"
-                              />
-                              <div className="flex flex-1 flex-col p-5">
-                                <span className="eyebrow">{p.clientLabel}</span>
-                                <p className="mt-1 text-sm font-semibold leading-snug text-foreground">
-                                  {proj.type}
-                                </p>
-                                <h4 className="mt-3 font-display text-base font-bold leading-snug transition-colors duration-300 group-hover:text-primary">
-                                  {proj.name}
-                                </h4>
-                                <p className="mt-4 text-[0.6875rem] font-bold uppercase tracking-widest text-primary">
-                                  {p.scopeLabel}
-                                </p>
-                                <p className="mt-1 flex-1 text-xs leading-relaxed text-muted-foreground">
-                                  {proj.scope}
-                                </p>
-                              </div>
-                            </article>
-                          </Reveal>
-                        </li>
-                      );
-                    }
-                    if (entry.id === "design") {
-                      return (
-                        <li key={proj.name}>
-                          <Reveal delay={(pi % 3) * 60}>
-                            <article className="group flex h-full flex-col overflow-hidden border border-border bg-card transition-all duration-500 hover:-translate-y-1 hover:border-primary/70 hover:shadow-lg hover:shadow-primary/15">
-                              <img
-                                src={ARCHITECTURAL_IMAGES[pi]}
-                                alt={proj.name}
-                                loading="lazy"
-                                width={800}
-                                height={600}
-                                className="aspect-4/3 w-full border-b border-border object-cover"
-                              />
-                              <div className="flex flex-1 flex-col p-5">
-                                <span className="eyebrow">{proj.type}</span>
-                                <h4 className="mt-2 font-display text-base font-bold leading-snug transition-colors duration-300 group-hover:text-primary">
-                                  {proj.name}
-                                </h4>
-                                <p className="mt-3 flex-1 text-xs leading-relaxed text-muted-foreground">
-                                  {proj.scope}
-                                </p>
-                                <div className="mt-4 flex flex-wrap items-center gap-x-3 gap-y-1 border-t border-border pt-3 text-[0.6875rem] text-muted-foreground">
-                                  <span className="inline-flex items-center gap-1">
-                                    <MapPin aria-hidden="true" className="size-3 text-primary" />
-                                    {proj.location}
-                                  </span>
-                                  <span aria-hidden="true" className="text-border">
-                                    |
-                                  </span>
-                                  <span className="text-primary">{proj.year}</span>
-                                </div>
-                              </div>
-                            </article>
-                          </Reveal>
-                        </li>
-                      );
-                    }
                     const cardGallery =
                       entry.id === "supervision"
                         ? pi === 0
@@ -354,22 +284,27 @@ export function PortfolioPage() {
                               ? SUPERVISION_CARD_GALLERY_3
                               : null
                         : null;
-                    const cardImage = PORTFOLIO_CARD_IMAGES[entry.id]?.[pi];
+                    const cardImage =
+                      entry.id === "construction"
+                        ? BUILDING_CONSTRUCTION_IMAGES[pi]
+                        : entry.id === "design"
+                          ? ARCHITECTURAL_IMAGES[pi]
+                          : PORTFOLIO_CARD_IMAGES[entry.id]?.[pi];
                     return (
-                      <li key={proj.name}>
-                        <Reveal delay={(pi % 3) * 60}>
+                      <li key={proj.name} className="h-full">
+                        <Reveal className="h-full" delay={(pi % 3) * 60}>
                           <article className="group flex h-full flex-col border border-border bg-card p-5 transition-all duration-500 hover:-translate-y-1 hover:border-primary/70 hover:shadow-lg hover:shadow-primary/15">
                             {cardGallery && (
-                              <div className="mb-4 grid gap-3">
+                              <div className="mb-4 grid aspect-4/3 grid-rows-[minmax(0,3fr)_minmax(0,2fr)] gap-2 overflow-hidden">
                                 <img
                                   src={cardGallery.top}
                                   alt={proj.name}
                                   loading="lazy"
                                   width={600}
                                   height={360}
-                                  className="aspect-16/10 w-full border border-border object-cover"
+                                  className="size-full border border-border object-cover"
                                 />
-                                <div className="grid grid-cols-2 gap-3">
+                                <div className="grid min-h-0 grid-cols-2 gap-2">
                                   {cardGallery.bottom.map((src) => (
                                     <img
                                       key={src}
@@ -379,7 +314,7 @@ export function PortfolioPage() {
                                       loading="lazy"
                                       width={300}
                                       height={225}
-                                      className="aspect-4/3 w-full border border-border object-cover"
+                                      className="size-full border border-border object-cover"
                                     />
                                   ))}
                                 </div>
@@ -402,15 +337,19 @@ export function PortfolioPage() {
                             <p className="mt-3 flex-1 text-xs leading-relaxed text-muted-foreground">
                               {proj.scope}
                             </p>
-                            <div className="mt-4 flex flex-wrap items-center gap-x-3 gap-y-1 border-t border-border pt-3 text-[0.6875rem] text-muted-foreground">
-                              <span className="inline-flex items-center gap-1">
-                                <MapPin aria-hidden="true" className="size-3 text-primary" />
-                                {proj.location}
-                              </span>
-                              <span aria-hidden="true" className="text-border">
-                                |
-                              </span>
-                              <span className="text-primary">{proj.year}</span>
+                            <div className="mt-4 flex min-h-8 flex-wrap items-center gap-x-3 gap-y-1 border-t border-border pt-3 text-[0.6875rem] text-muted-foreground">
+                              {proj.location && (
+                                <span className="inline-flex items-center gap-1">
+                                  <MapPin aria-hidden="true" className="size-3 text-primary" />
+                                  {proj.location}
+                                </span>
+                              )}
+                              {proj.location && proj.year && (
+                                <span aria-hidden="true" className="text-border">
+                                  |
+                                </span>
+                              )}
+                              {proj.year && <span className="text-primary">{proj.year}</span>}
                             </div>
                           </article>
                         </Reveal>

@@ -114,8 +114,7 @@ export function Hero() {
               ))}
             </ul>
           </div>
-          {/* Floating architectural badge accent for desktop */}
-          <div className="hidden lg:col-span-4 lg:block">
+          <div className="lg:col-span-4">
             <div className="animate-float-slow relative ms-auto max-w-xs overflow-hidden rounded-xl border border-primary/40 bg-card/60 p-6 shadow-2xl backdrop-blur-md">
               <div
                 aria-hidden="true"

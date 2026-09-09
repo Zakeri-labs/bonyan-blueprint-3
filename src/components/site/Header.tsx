@@ -216,6 +216,16 @@ export function Header() {
                 </li>
               </ul>
 
+              <div className="mt-5 flex items-center gap-2 border-t border-border pt-5 text-xs font-semibold text-primary">
+                <span className="relative flex size-2 shrink-0">
+                  <span className="status-ping" />
+                  <span className="relative inline-flex size-2 rounded-full bg-primary" />
+                </span>
+                <span className="font-bold uppercase tracking-wider">
+                  {locale === "ar" ? "استشارات نَشِطة" : "Active Consultancy"}
+                </span>
+              </div>
+
               <div className="mt-auto space-y-4 pt-8">
                 <LanguageSwitcher className="w-fit" />
                 <Btn to={lp("/contact")} className="w-full" arrow onClick={() => setOpen(false)}>
