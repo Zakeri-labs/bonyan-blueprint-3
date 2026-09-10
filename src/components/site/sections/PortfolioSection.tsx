@@ -42,7 +42,7 @@ export function PortfolioSection() {
             {projects.map((p, i) => (
               <li key={p.name} className={cn(H_SCROLL_ITEM, SPANS[i] ?? "lg:col-span-4")}>
                 <Reveal delay={(i % 3) * 70}>
-                  <article className="group relative h-full overflow-hidden border border-border transition-all duration-500 hover:-translate-y-1 hover:border-primary/80 hover:shadow-lg hover:shadow-primary/15">
+                  <article className="group relative h-full overflow-hidden border border-border transition-all duration-500 hover:-translate-y-1 hover:border-primary/80 hover:shadow-lg hover:shadow-primary/8">
                     <img
                       src={p.image}
                       alt={
@@ -57,7 +57,7 @@ export function PortfolioSection() {
                     />
                     <div
                       aria-hidden="true"
-                      className="absolute inset-0 bg-linear-to-t from-background via-background/50 to-transparent transition-opacity duration-500 group-hover:opacity-90"
+                      className="absolute inset-0 bg-linear-to-t from-background/75 via-background/25 to-transparent transition-opacity duration-500 group-hover:opacity-85"
                     />
                     <div className="absolute inset-x-0 bottom-0 p-5 transition-transform duration-300 group-hover:-translate-y-1">
                       <span className="eyebrow">{p.type}</span>

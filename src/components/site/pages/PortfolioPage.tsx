@@ -9,6 +9,7 @@ import {
   CLIENT_LOGOS,
   IMAGES,
   PORTFOLIO_CARD_IMAGES,
+  PORTFOLIO_SECTION_MAIN_IMAGES,
   SERVICE_IMAGES,
   SUPERVISION_CARD_GALLERY,
   SUPERVISION_CARD_GALLERY_2,
@@ -222,7 +223,7 @@ export function PortfolioPage() {
                 <Reveal className={imgRight ? "lg:order-2" : undefined}>
                   <div className="relative overflow-hidden border border-border">
                     <img
-                      src={SERVICE_IMAGES[si]}
+                      src={PORTFOLIO_SECTION_MAIN_IMAGES[entry.id] ?? SERVICE_IMAGES[si]}
                       alt={svc.title}
                       loading="lazy"
                       width={1200}

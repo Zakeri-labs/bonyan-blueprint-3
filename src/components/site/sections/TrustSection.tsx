@@ -59,7 +59,7 @@ export function TrustSection() {
           </Reveal>
 
           <Reveal delay={140} className="lg:col-span-3">
-            <article className="animate-frame-glow mx-auto w-full max-w-[17rem] overflow-hidden rounded-xl border border-primary/70 bg-panel shadow-2xl transition-transform duration-500 hover:scale-[1.02] lg:ms-auto lg:me-0">
+            <article className="animate-frame-glow mx-auto w-full max-w-[17rem] overflow-hidden rounded-xl border border-primary/70 bg-panel shadow-xl shadow-background/30 transition-transform duration-500 hover:scale-[1.02] lg:ms-auto lg:me-0">
               <img
                 src={IMAGES.managingDirector}
                 alt={t.trust.directorImageAlt}

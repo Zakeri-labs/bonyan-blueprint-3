@@ -47,7 +47,17 @@ const ORG_EMAILS: Record<string, string> = {
 };
 
 /** Portrait with a graceful fallback to the placeholder if the file is missing. */
-function TeamPhoto({ src, name, pending }: { src: string; name: string; pending: string }) {
+function TeamPhoto({
+  src,
+  name,
+  pending,
+  zoomToAgha = false,
+}: {
+  src: string;
+  name: string;
+  pending: string;
+  zoomToAgha?: boolean;
+}) {
   const [failed, setFailed] = useState(false);
 
   if (!src || failed) {
@@ -67,13 +77,25 @@ function TeamPhoto({ src, name, pending }: { src: string; name: string; pending:
       width={900}
       height={1124}
       onError={() => setFailed(true)}
-      className="size-full object-cover object-center"
+      className={`size-full origin-bottom object-contain object-bottom ${
+        zoomToAgha ? "scale-[1.125]" : ""
+      }`}
     />
   );
 }
 
 /** Slim portrait for the org chart: the photo, or a quiet icon until one is added. */
-function OrgPortrait({ src, name }: { src: string; name: string }) {
+function OrgPortrait({
+  src,
+  name,
+  preserveAspectRatio = false,
+  naturalWidth = false,
+}: {
+  src: string;
+  name: string;
+  preserveAspectRatio?: boolean;
+  naturalWidth?: boolean;
+}) {
   const [failed, setFailed] = useState(false);
 
   if (!src || failed) {
@@ -89,10 +111,14 @@ function OrgPortrait({ src, name }: { src: string; name: string }) {
       src={src}
       alt={name}
       loading="lazy"
-      width={400}
-      height={400}
+      width={naturalWidth ? undefined : 400}
+      height={naturalWidth ? undefined : 400}
       onError={() => setFailed(true)}
-      className="size-full object-cover object-top transition-transform duration-700 ease-out group-hover:scale-[1.06] group-focus-visible:scale-[1.06]"
+      className={
+        naturalWidth
+          ? "h-full w-auto max-w-none object-contain object-bottom"
+          : `size-full object-bottom ${preserveAspectRatio ? "object-contain" : "object-fill"}`
+      }
     />
   );
 }
@@ -117,6 +143,7 @@ function OrgNode({
 }) {
   const email = ORG_EMAILS[id] ?? "";
   const lg = size === "lg";
+  const useNaturalPhotoWidth = id === "athesh";
 
   return (
     <figure
@@ -124,7 +151,25 @@ function OrgNode({
       className="group relative flex w-full flex-col rounded-lg border border-border bg-panel outline-none transition-colors hover:border-primary focus-visible:border-primary"
     >
       <div className="relative aspect-square w-full overflow-hidden rounded-t-lg">
-        <OrgPortrait src={ORG_PHOTOS[id] ?? ""} name={name} />
+        <div
+          className={
+            useNaturalPhotoWidth
+              ? "mx-auto h-full w-fit overflow-hidden"
+              : "size-full"
+          }
+        >
+          <OrgPortrait
+            src={ORG_PHOTOS[id] ?? ""}
+            name={name}
+            naturalWidth={useNaturalPhotoWidth}
+            preserveAspectRatio={
+              id === "yasir" ||
+              id === "athesh" ||
+              id === "ajil" ||
+              id === "ahsan"
+            }
+          />
+        </div>
 
         {email && (
           <div className="absolute inset-0 bg-background/80 opacity-0 transition-opacity duration-300 group-hover:opacity-100 group-focus:opacity-100 group-focus-within:opacity-100">
@@ -196,7 +241,16 @@ function MobileOrgNode({
     <li className={root ? undefined : "org-mrow"} style={{ "--i": order } as CSSProperties}>
       <div className="flex items-center gap-3 py-1.5">
         <span className="flex size-11 shrink-0 overflow-hidden rounded-md border border-border bg-panel">
-          <OrgPortrait src={ORG_PHOTOS[node.id] ?? ""} name={node.name} />
+          <OrgPortrait
+            src={ORG_PHOTOS[node.id] ?? ""}
+            name={node.name}
+            preserveAspectRatio={
+              node.id === "yasir" ||
+              node.id === "athesh" ||
+              node.id === "ajil" ||
+              node.id === "ahsan"
+            }
+          />
         </span>
         <span className="min-w-0">
           <span className="block font-display text-sm font-bold leading-tight text-foreground">
@@ -307,6 +361,7 @@ export function TeamPage() {
                         src={TEAM_PHOTOS[i] ?? ""}
                         name={m.name}
                         pending={t.team.photoPending}
+                        zoomToAgha={i === 2 || i === 3}
                       />
                     </div>
 

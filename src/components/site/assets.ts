@@ -8,6 +8,7 @@ import detailDrawings from "@/assets/detail-drawings.jpg";
 import detailFacade from "@/assets/detail-facade.jpg";
 
 import teamYaserAlAufi from "@/assets/Team picture/Yasir Salim Hamed Al Aufi.png";
+import teamYaserAlAufiLeadership from "@/assets/Team picture/Yasir Salim Hamed Al Aufi-2.png";
 import teamAjilKunnarMathias from "@/assets/Team picture/Ajil Kunnar Mathias.png";
 import teamAtheeshNadesan from "@/assets/Team picture/Atheesh Nadesan.png";
 import teamAghaShahid from "@/assets/Team picture/Agha Shahid.png";
@@ -33,9 +34,10 @@ import constructionSupervision01 from "@/assets/Picture of Projects/Construction
 import constructionSupervision02 from "@/assets/Picture of Projects/Construction_Supervision_02.png";
 import constructionSupervision03 from "@/assets/Picture of Projects/Construction_Supervision_03.png";
 import constructionServices from "@/assets/Picture of Projects/Construction_services.png";
-import architectural1 from "@/assets/Picture of Projects/Architectural-1.png";
+import sahamPublicPark from "@/assets/Picture of Projects/Architectural-1.png";
 import architectural2 from "@/assets/Picture of Projects/Architectural-2.png";
 import architectural3 from "@/assets/Picture of Projects/Architectural-3.png";
+import universityOfficeBuilding from "@/assets/Picture of Projects/portfolio/university-office-building.jpg";
 import supervisionVilla from "@/assets/Picture of Projects/portfolio/supervision-villa.jpg";
 import supervisionVillaDetail01 from "@/assets/Picture of Projects/portfolio/supervision-villa-detail-01.png";
 import supervisionVillaDetail02 from "@/assets/Picture of Projects/portfolio/supervision-villa-detail-02.png";
@@ -49,10 +51,12 @@ import quantityCommercial from "@/assets/Picture of Projects/portfolio/quantity-
 import quantityCompound from "@/assets/Picture of Projects/portfolio/quantity-compound.jpg";
 import quantityVillas from "@/assets/Picture of Projects/portfolio/quantity-villas.jpg";
 import planningPark from "@/assets/Picture of Projects/portfolio/planning-park-cropped.jpg";
-import planningLand from "@/assets/Picture of Projects/portfolio/planning-land-cropped.jpg";
-import planningRealm from "@/assets/Picture of Projects/portfolio/planning-realm-cropped.jpg";
+import alMurtafaBeach from "@/assets/Picture of Projects/portfolio/Development of Al-Murtafa' Beach, Wilayat of Sur.png";
+import eightVillaComplex from "@/assets/Picture of Projects/portfolio/8-villa-complex.jpg";
+import universityCampusMasterPlan from "@/assets/Picture of Projects/portfolio/university-campus-master-plan.jpg";
 import mainConstruction from "@/assets/Picture of Projects/portfolio/main-construction.jpg";
 import mainDesign from "@/assets/Picture of Projects/portfolio/main-design.jpg";
+import mainDesignBrochure from "@/assets/Picture of Projects/portfolio/main-design-brochure.jpg";
 import mainManagement from "@/assets/Picture of Projects/portfolio/main-management.jpg";
 import mainMep from "@/assets/Picture of Projects/portfolio/main-mep.jpg";
 import mainQuantity from "@/assets/Picture of Projects/portfolio/Quantity Surveying.png";
@@ -150,7 +154,7 @@ export const SUPERVISION_CARD_GALLERY_3 = {
  * cards on the Portfolio page (03 / 07), in the same order as
  * `portfolioPage.services` → `design` → `projects` in the dictionaries.
  */
-export const ARCHITECTURAL_IMAGES = [architectural1, architectural2, architectural3];
+export const ARCHITECTURAL_IMAGES = [universityOfficeBuilding, architectural2, architectural3];
 
 /**
  * Project photography and project renderings for the remaining Portfolio cards.
@@ -159,10 +163,10 @@ export const ARCHITECTURAL_IMAGES = [architectural1, architectural2, architectur
  * renderings for planning.
  */
 export const PORTFOLIO_CARD_IMAGES: Partial<Record<string, Array<string | undefined>>> = {
-  management: [managementCompound, managementCommercial, managementCampus],
+  management: [mainDesign, managementCommercial, managementCampus],
   mep: [mepCommercial, mepInstitutional, mepCompound],
   quantity: [quantityCommercial, quantityCompound, quantityVillas],
-  planning: [planningPark, planningLand, planningRealm],
+  planning: [alMurtafaBeach, sahamPublicPark, universityCampusMasterPlan],
 };
 
 /**
@@ -200,6 +204,15 @@ export const SERVICE_IMAGES = [
   mainPlanning, // planning — public-realm rendering from supplied brochure
 ];
 
+/**
+ * Hero imagery for the seven "Work by Service" sections on the Portfolio page.
+ * These replacements are intentionally limited to this page's section cards.
+ */
+export const PORTFOLIO_SECTION_MAIN_IMAGES: Partial<Record<string, string>> = {
+  design: mainDesignBrochure,
+  management: eightVillaComplex,
+};
+
 /** Portfolio imagery, in the same order as the five portfolio categories. */
 export const PORTFOLIO_IMAGES = [heroVilla, projSchool, projMosque, projCompound, projCommercial];
 
@@ -208,7 +221,7 @@ export const PORTFOLIO_IMAGES = [heroVilla, projSchool, projMosque, projCompound
  * Sourced from `@/assets/Team picture/`; an empty string falls back to a placeholder.
  */
 export const TEAM_PHOTOS = [
-  teamYaserAlAufi, // Yasir Salim Hamed Al Aufi — Founder & CEO
+  teamYaserAlAufiLeadership, // Yasir Salim Hamed Al Aufi — Founder & CEO
   teamAghaShahid, // Agha Shahid — Technical Manager
   teamAtheeshNadesan, // Atheesh Nadesan — General Manager
   teamAjilKunnarMathias, // Ajil Kunnar Mathias — Construction Manager
@@ -220,7 +233,7 @@ export const TEAM_PHOTOS = [
  * placeholder icon. Add entries as portraits are provided.
  */
 export const ORG_PHOTOS: Record<string, string> = {
-  yasir: teamYaserAlAufi, // Yasir Salim Hamed Al Aufi
+  yasir: teamYaserAlAufiLeadership, // Yasir Salim Hamed Al Aufi
   ajil: teamAjilKunnarMathias, // Ajil Kunnar Mathias
   athesh: teamAtheeshNadesan, // Athesh Nadesan
   agha: teamAghaShahid, // Agha Shahid Yazdeb

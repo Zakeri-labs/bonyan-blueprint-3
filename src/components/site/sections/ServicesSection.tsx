@@ -87,7 +87,7 @@ export function ServiceCard({
   return (
     <article
       className={cn(
-        "group relative flex h-full flex-col overflow-hidden border bg-card transition-all duration-500 hover:-translate-y-1 hover:shadow-lg hover:shadow-primary/20",
+        "group relative flex h-full flex-col overflow-hidden border bg-card transition-all duration-500 hover:-translate-y-1 hover:shadow-lg hover:shadow-primary/10",
         priority
           ? "border-primary/40 hover:border-primary"
           : "border-border hover:border-primary/70",
@@ -116,11 +116,11 @@ export function ServiceCard({
             loading="lazy"
             width={1200}
             height={675}
-            className="size-full object-cover opacity-70 transition-transform duration-700 group-hover:scale-110 group-hover:opacity-90"
+            className="size-full object-cover opacity-85 transition-transform duration-700 group-hover:scale-110 group-hover:opacity-100"
           />
           <div
             aria-hidden="true"
-            className="absolute inset-0 bg-linear-to-t from-card via-card/40 to-transparent"
+            className="absolute inset-0 bg-linear-to-t from-card/75 via-card/20 to-transparent"
           />
         </div>
       )}

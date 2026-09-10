@@ -16,11 +16,11 @@ export function FinalCtaSection() {
         loading="lazy"
         width={1200}
         height={800}
-        className="absolute inset-0 size-full object-cover opacity-25"
+        className="absolute inset-0 size-full object-cover opacity-40"
       />
       <div
         aria-hidden="true"
-        className="absolute inset-0 bg-linear-to-b from-background via-background/95 to-background"
+        className="absolute inset-0 bg-linear-to-b from-background/85 via-background/75 to-background/85"
       />
       <div
         aria-hidden="true"
