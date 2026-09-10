@@ -57,7 +57,7 @@ export function PortfolioSection() {
                     />
                     <div
                       aria-hidden="true"
-                      className="absolute inset-0 bg-linear-to-t from-background/75 via-background/25 to-transparent transition-opacity duration-500 group-hover:opacity-85"
+                      className="absolute inset-0 bg-linear-to-t from-background/15 via-background/15 to-transparent transition-opacity duration-500 group-hover:opacity-100"
                     />
                     <div className="absolute inset-x-0 bottom-0 p-5 transition-transform duration-300 group-hover:-translate-y-1">
                       <span className="eyebrow">{p.type}</span>

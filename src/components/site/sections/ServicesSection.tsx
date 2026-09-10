@@ -120,7 +120,7 @@ export function ServiceCard({
           />
           <div
             aria-hidden="true"
-            className="absolute inset-0 bg-linear-to-t from-card/75 via-card/20 to-transparent"
+            className="absolute inset-0 bg-linear-to-t from-card/15 via-card/15 to-transparent"
           />
         </div>
       )}
