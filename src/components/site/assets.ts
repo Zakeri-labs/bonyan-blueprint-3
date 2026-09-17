@@ -45,8 +45,9 @@ import bonyanOffice from "@/assets/bonyan-office.png";
 import managementCommercial from "@/assets/Picture of Projects/portfolio/management-commercial.jpg";
 import managementCampus from "@/assets/Picture of Projects/portfolio/management-campus.jpg";
 import mepCommercial from "@/assets/Picture of Projects/portfolio/mep-commercial.jpg";
-import mepInstitutional from "@/assets/Picture of Projects/portfolio/mep-institutional.jpg";
-import mepCompound from "@/assets/Picture of Projects/portfolio/mep-compound.jpg";
+import mepMechanicalSystems from "@/assets/Picture of Projects/portfolio/MEP-1.png";
+import mepSiteSupervision from "@/assets/Picture of Projects/portfolio/MEP-3.png";
+import mepElectricalEngineering from "@/assets/Picture of Projects/portfolio/MEP-2.png";
 import quantityCommercial from "@/assets/Picture of Projects/portfolio/quantity-commercial.jpg";
 import quantityCompound from "@/assets/Picture of Projects/portfolio/quantity-compound.jpg";
 import quantityVillas from "@/assets/Picture of Projects/portfolio/quantity-villas.jpg";
@@ -59,16 +60,18 @@ import mainDesign from "@/assets/Picture of Projects/portfolio/main-design.jpg";
 import mainDesignBrochure from "@/assets/Picture of Projects/portfolio/main-design-brochure.jpg";
 import mainManagement from "@/assets/Picture of Projects/portfolio/main-management.jpg";
 import mainMep from "@/assets/Picture of Projects/portfolio/main-mep.jpg";
+import mainMepSystems from "@/assets/Picture of Projects/portfolio/main-mep-systems.png";
 import mainQuantity from "@/assets/Picture of Projects/portfolio/quantity-surveying-cost-control.png";
+import portfolioQuantitySurveying from "@/assets/Picture of Projects/portfolio/quantity-surveying-cost-control-portfolio.png";
 import mainPlanning from "@/assets/Picture of Projects/portfolio/main-planning-cropped.jpg";
 import servicesArchitecturalStructuralDesign from "@/assets/Picture of Projects/portfolio/services-architectural-structural-design.png";
 
-import client3 from "@/assets/client-3.png";
 import client4 from "@/assets/client-4.png";
 import client5 from "@/assets/client-5.png";
 import client6 from "@/assets/client-6.png";
 import zahranAlAufi from "@/assets/testimonials/zahran-al-aufi.png";
 import ahmedAlShukaili from "@/assets/testimonials/ahmed-al-shukaili.png";
+import salimSaidAlHizami from "@/assets/testimonials/salim-said-al-hizami.png";
 import clientLogo01 from "@/assets/clients/client-01-supreme-judiciary-council.png";
 import clientLogo02 from "@/assets/clients/client-02-ministry-of-labor.png";
 import clientLogo03 from "@/assets/clients/client-03-telecommunications-regulatory-authority.png";
@@ -86,6 +89,7 @@ import clientLogo12 from "@/assets/clients/client-12-Al Dakhiliyah Governorate.p
 export const IMAGES = {
   hero: heroVilla,
   about: aboutReview,
+  quantitySurveying: mainQuantity,
   mosque: projMosque,
   school: projSchool,
   compound: projCompound,
@@ -96,7 +100,14 @@ export const IMAGES = {
   managingDirector: teamYaserAlAufi,
 };
 
-export const CLIENT_AVATARS = [zahranAlAufi, ahmedAlShukaili, client3, client4, client5, client6];
+export const CLIENT_AVATARS = [
+  zahranAlAufi,
+  ahmedAlShukaili,
+  salimSaidAlHizami,
+  client4,
+  client5,
+  client6,
+];
 
 /** Client marks used in the Portfolio-page scrolling logo strip. */
 export const CLIENT_LOGOS = [
@@ -168,7 +179,7 @@ export const ARCHITECTURAL_TWIN_VILLA_IMAGE = twinVillaGallery;
  */
 export const PORTFOLIO_CARD_IMAGES: Partial<Record<string, Array<string | undefined>>> = {
   management: [mainDesign, managementCommercial, managementCampus],
-  mep: [mepCommercial, mepInstitutional, mepCompound],
+  mep: [mepMechanicalSystems, mepSiteSupervision, mepElectricalEngineering],
   quantity: [quantityCommercial, quantityCompound, quantityVillas],
   planning: [alMurtafaBeach, sahamPublicPark, universityCampusMasterPlan],
 };
@@ -223,6 +234,8 @@ export const SERVICE_DETAIL_IMAGES = [
 export const PORTFOLIO_SECTION_MAIN_IMAGES: Partial<Record<string, string>> = {
   design: servicesArchitecturalStructuralDesign,
   management: eightVillaComplex,
+  mep: mainMepSystems,
+  quantity: portfolioQuantitySurveying,
 };
 
 /** Portfolio imagery, in the same order as the five portfolio categories. */

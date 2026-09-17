@@ -5,7 +5,7 @@ import { useT } from "@/i18n";
 import { CLIENT_AVATARS } from "../assets";
 import { SectionLabel } from "../ui";
 
-const PER_VIEW = 3;
+const PER_VIEW = 2;
 
 export function TestimonialsSection() {
   const { t } = useT();
@@ -34,8 +34,8 @@ export function TestimonialsSection() {
       onMouseLeave={() => setIsPaused(false)}
     >
       <div className="container-site relative py-20 md:py-28">
-        <div className="grid gap-10 lg:grid-cols-[1fr_2fr] lg:gap-16">
-          <div>
+        <div className="grid gap-10 lg:grid-cols-[minmax(13rem,0.65fr)_minmax(0,2.35fr)] lg:gap-12">
+          <div className="lg:max-w-60">
             <SectionLabel light>{t.testimonials.label}</SectionLabel>
             <h2
               id="testimonials-heading"
@@ -68,14 +68,14 @@ export function TestimonialsSection() {
           </div>
 
           <div>
-            <ul className="grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
+            <ul className="grid gap-5 sm:grid-cols-2">
               {visibleItems.map((item, idx) => {
                 const avatar =
                   CLIENT_AVATARS[item.avatarIndex % CLIENT_AVATARS.length] ?? CLIENT_AVATARS[0];
                 return (
                   <li
                     key={item.name + idx}
-                    className="group relative flex h-full min-h-[25.75rem] flex-col overflow-hidden border border-ivory-border bg-background/5 p-6 transition-all duration-500 hover:-translate-y-2 hover:border-primary/60 hover:bg-background/20 hover:shadow-2xl"
+                    className="group relative flex h-full min-h-[25rem] flex-col overflow-hidden border border-ivory-border bg-background/5 p-6 sm:h-[27rem] lg:h-[25rem] transition-all duration-500 hover:-translate-y-2 hover:border-primary/60 hover:bg-background/20 hover:shadow-2xl"
                   >
                     <div className="flex items-start justify-between gap-3">
                       <Quote
@@ -88,7 +88,7 @@ export function TestimonialsSection() {
                       </span>
                     </div>
 
-                    <p className="mt-4 flex-1 text-sm leading-relaxed text-ink/90 transition-colors duration-300 group-hover:text-ink">
+                    <p className="mt-4 text-sm leading-relaxed text-ink/90 sm:h-48 sm:overflow-y-auto lg:h-36 transition-colors duration-300 group-hover:text-ink">
                       "{item.quote}"
                     </p>
 
@@ -103,7 +103,7 @@ export function TestimonialsSection() {
                       ))}
                     </div>
 
-                    <div className="mt-5 flex items-center gap-3.5 border-t border-ivory-border pt-4">
+                    <div className="mt-5 flex min-h-24 items-center gap-3.5 border-t border-ivory-border pt-4">
                       <img
                         src={avatar}
                         alt={item.name}
@@ -112,11 +112,13 @@ export function TestimonialsSection() {
                         height={64}
                         className="size-16 shrink-0 rounded-full border-2 border-primary/40 object-cover transition-transform duration-300 group-hover:scale-105 group-hover:border-primary"
                       />
-                      <div className="min-w-0 flex-1">
+                      <div className="flex min-w-0 flex-1 flex-col justify-center self-stretch">
                         <p className="font-display text-sm font-bold leading-snug text-ink transition-colors duration-300 group-hover:text-primary">
                           {item.name}
                         </p>
-                        <p className="truncate text-xs font-medium text-ink-muted">{item.role}</p>
+                        <p className="text-xs font-medium leading-snug text-ink-muted">
+                          {item.role}
+                        </p>
                         {item.location && (
                           <p className="mt-1 flex items-center gap-1 text-[0.625rem] text-primary">
                             <MapPin aria-hidden="true" className="size-3 shrink-0" />

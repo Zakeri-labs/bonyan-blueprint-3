@@ -64,7 +64,7 @@ export function AboutPage() {
           </Reveal>
           <Reveal delay={100}>
             <img
-              src={IMAGES.about}
+              src={IMAGES.quantitySurveying}
               alt={t.about.imageAlt}
               loading="lazy"
               width={1200}

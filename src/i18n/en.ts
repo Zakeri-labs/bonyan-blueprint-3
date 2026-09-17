@@ -343,25 +343,28 @@ export const en = {
           "Mechanical, electrical and plumbing design — HVAC, fire protection, power distribution, lighting and plumbing — fully coordinated with the architecture and structure.",
         projects: [
           {
-            name: "Commercial Building",
-            type: "Mr. Sulaiman Said Al Kindy",
-            scope: "Ground floor and headroom retail building; structural works, finishes, MEP and external works",
-            location: "Al Amrat",
-            year: "Under construction",
+            name: "Mechanical Systems Coordination",
+            type: "Mechanical Engineering",
+            scope:
+              "HVAC ductwork, ventilation and fire-protection systems coordinated on site for precise installation and building integration.",
+            location: "Muscat, Oman",
+            year: "MEP Engineering",
           },
           {
-            name: "Residential Villa",
-            type: "Mr. Ibrahim Khalaf Rashid Abdullah Al-Abri",
-            scope: "Ground floor, first floor and penthouse; construction, finishes, MEP and external works",
-            location: "Al Manuma North",
-            year: "Handed over",
+            name: "MEP Site Supervision",
+            type: "Supervision & Engineering",
+            scope:
+              "Site supervision of plumbing, drainage and fire-fighting pipework, ensuring coordinated MEP execution against approved drawings.",
+            location: "Muscat, Oman",
+            year: "MEP Supervision",
           },
           {
-            name: "Residential Villa",
-            type: "Mr. Nasser Ibrahim Ahmed Al-Hinai",
-            scope: "Structural works, MEP, finishes and external works",
-            location: "Sumail",
-            year: "Handed over",
+            name: "Electrical Engineering Integration",
+            type: "Building Services Engineering",
+            scope:
+              "Electrical distribution, cabling and control panels engineered in coordination with the mechanical and plumbing building services.",
+            location: "Muscat, Oman",
+            year: "MEP Engineering",
           },
         ],
       },
@@ -482,11 +485,11 @@ export const en = {
         avatarIndex: 1,
       },
       {
-        name: "Dr. Fatima Al-Riyami",
-        role: "Residential Property Owner",
-        location: "Bawshar, Muscat",
+        name: "Salim Said Al-Hizami",
+        role: "Assistant Director, Education & Training",
+        location: "",
         quote:
-          "Their 3D visualization precision allowed us to review every detail of our home before construction began, avoiding costly site modifications later. Highly recommended engineering team.",
+          "We value Bonyan's collaboration in providing on-site training opportunities for vocational college students as part of its social responsibility. This initiative helps equip students and connect academic learning with the requirements of the labour market.",
         rating: 5,
         avatarIndex: 2,
       },
@@ -642,7 +645,7 @@ export const en = {
         { id: "salman", name: "Salman khorram", role: "Projects Manager", reports: [] },
         {
           id: "siva",
-          name: "Siva Murukesn",
+          name: "SIVA Murukesan",
           role: "HR / Accounts Manager",
           reports: [{ id: "emas", name: "Emas (name pending)", role: "Public Relations Manager" }],
         },
