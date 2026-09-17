@@ -34,6 +34,10 @@ export const en = {
     badgeText:
       "End-to-end construction — from design and engineering through on-site supervision to final handover.",
     imageAlt: "Contemporary Omani villa at dusk with stone and glass facade",
+    previousSlide: "Previous project",
+    nextSlide: "Next project",
+    slideControls: "Project slideshow controls",
+    goToSlide: "Show project",
   },
   strip: ["Design Excellence", "Technical Precision", "Cost Control", "Timely Delivery"],
   trust: {

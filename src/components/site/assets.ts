@@ -66,6 +66,12 @@ import mainQuantity from "@/assets/Picture of Projects/portfolio/quantity-survey
 import portfolioQuantitySurveying from "@/assets/Picture of Projects/portfolio/quantity-surveying-cost-control-portfolio.png";
 import mainPlanning from "@/assets/Picture of Projects/portfolio/main-planning-cropped.jpg";
 import servicesArchitecturalStructuralDesign from "@/assets/Picture of Projects/portfolio/services-architectural-structural-design.png";
+import slider1 from "@/assets/Picture of Projects/portfolio/Slider-1.png";
+import slider2 from "@/assets/Picture of Projects/portfolio/Slider-2.png";
+import slider3 from "@/assets/Picture of Projects/portfolio/Slider-3.png";
+import slider4 from "@/assets/Picture of Projects/portfolio/Slider-4.png";
+import slider5 from "@/assets/Picture of Projects/portfolio/Slider-5.png";
+import slider6 from "@/assets/Picture of Projects/portfolio/Slider-6.png";
 
 import client4 from "@/assets/client-4.png";
 import client5 from "@/assets/client-5.png";
@@ -194,6 +200,9 @@ export const HOME_PROJECT_IMAGES = {
   about: bonyanOffice,
   cta: planningPark,
 };
+
+/** Full-bleed project imagery for the rotating Home-page hero, in display order. */
+export const HOME_HERO_SLIDES = [slider1, slider2, slider3, slider4, slider5, slider6] as const;
 
 /**
  * The five projects featured in Home's selected-work grid. The text is read

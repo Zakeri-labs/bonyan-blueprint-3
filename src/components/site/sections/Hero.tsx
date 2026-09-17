@@ -1,52 +1,102 @@
-import { useEffect, useState } from "react";
+import { useCallback, useEffect, useState } from "react";
+import useEmblaCarousel from "embla-carousel-react";
+import { ChevronLeft, ChevronRight } from "lucide-react";
 import { useT } from "@/i18n";
-import { IMAGES } from "../assets";
+import { HOME_HERO_SLIDES } from "../assets";
 import { Btn } from "../ui";
 
 export function Hero() {
   const { t, lp } = useT();
-  const [showVideo, setShowVideo] = useState(false);
+  const [emblaRef, emblaApi] = useEmblaCarousel({ loop: true, duration: 28 });
+  const [activeSlide, setActiveSlide] = useState(0);
+  const [reducedMotion, setReducedMotion] = useState(false);
+  const [isPaused, setIsPaused] = useState(false);
+
+  const updateActiveSlide = useCallback(() => {
+    setActiveSlide(emblaApi?.selectedScrollSnap() ?? 0);
+  }, [emblaApi]);
 
   useEffect(() => {
-    const reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)");
-    const updateVideoVisibility = () => setShowVideo(!reducedMotion.matches);
+    const mediaQuery = window.matchMedia("(prefers-reduced-motion: reduce)");
+    const updateMotionPreference = () => setReducedMotion(mediaQuery.matches);
 
-    updateVideoVisibility();
-    reducedMotion.addEventListener("change", updateVideoVisibility);
+    updateMotionPreference();
+    mediaQuery.addEventListener("change", updateMotionPreference);
 
-    return () => reducedMotion.removeEventListener("change", updateVideoVisibility);
+    return () => mediaQuery.removeEventListener("change", updateMotionPreference);
   }, []);
 
+  useEffect(() => {
+    if (!emblaApi) return;
+
+    updateActiveSlide();
+    emblaApi.on("select", updateActiveSlide);
+    emblaApi.on("reInit", updateActiveSlide);
+
+    return () => {
+      emblaApi.off("select", updateActiveSlide);
+      emblaApi.off("reInit", updateActiveSlide);
+    };
+  }, [emblaApi, updateActiveSlide]);
+
+  useEffect(() => {
+    if (!emblaApi || reducedMotion || isPaused) return;
+
+    const timer = window.setInterval(() => emblaApi.scrollNext(), 6500);
+    return () => window.clearInterval(timer);
+  }, [activeSlide, emblaApi, isPaused, reducedMotion]);
+
+  const handleKeyDown = (event: React.KeyboardEvent<HTMLElement>) => {
+    if (event.key === "ArrowLeft") {
+      event.preventDefault();
+      emblaApi?.scrollPrev();
+    }
+    if (event.key === "ArrowRight") {
+      event.preventDefault();
+      emblaApi?.scrollNext();
+    }
+  };
+
   return (
-    <section className="relative min-h-[92vh] w-full overflow-hidden">
-      <img
-        src={IMAGES.hero}
-        alt={t.hero.imageAlt}
-        width={1920}
-        height={1088}
-        fetchPriority="high"
-        className="absolute inset-0 size-full object-cover"
-      />
-      {showVideo && (
-        <video
-          aria-hidden="true"
-          autoPlay
-          muted
-          loop
-          playsInline
-          poster={IMAGES.hero}
-          className="absolute inset-0 size-full object-cover object-center"
-        >
-          <source src="/videos/bonyan-hero-loop.mp4" type="video/mp4" />
-        </video>
-      )}
+    <section
+      className="relative min-h-[92vh] w-full overflow-hidden"
+      onBlurCapture={(event) => {
+        if (!event.currentTarget.contains(event.relatedTarget)) setIsPaused(false);
+      }}
+      onFocusCapture={() => setIsPaused(true)}
+      onKeyDown={handleKeyDown}
+      onPointerEnter={() => setIsPaused(true)}
+      onPointerLeave={() => setIsPaused(false)}
+    >
+      <div
+        ref={emblaRef}
+        aria-hidden="true"
+        className="absolute inset-0 touch-pan-y overflow-hidden"
+      >
+        <div className="flex h-full">
+          {HOME_HERO_SLIDES.map((slide, index) => (
+            <div key={slide} className="h-full min-w-0 shrink-0 grow-0 basis-full">
+              <img
+                src={slide}
+                alt=""
+                width={1672}
+                height={941}
+                fetchPriority={index === 0 ? "high" : "auto"}
+                loading={index === 0 ? "eager" : "lazy"}
+                decoding="async"
+                className="size-full object-cover object-center"
+              />
+            </div>
+          ))}
+        </div>
+      </div>
       <div
         aria-hidden="true"
-        className="absolute inset-0 bg-linear-to-b from-background/75 via-background/35 to-background"
+        className="absolute inset-0 bg-linear-to-b from-background/65 via-background/25 to-background/90"
       />
       <div
         aria-hidden="true"
-        className="absolute inset-0 bg-linear-to-r from-background/90 via-background/25 to-transparent rtl:bg-linear-to-l"
+        className="absolute inset-0 bg-linear-to-r from-background/80 via-background/15 to-transparent rtl:bg-linear-to-l"
       />
 
       {/* Ambient background light orbs */}
@@ -60,7 +110,7 @@ export function Hero() {
         style={{ animationDelay: "3.5s" }}
       />
 
-      <div className="container-site relative flex min-h-[92vh] flex-col justify-end pb-16 pt-32 md:justify-center md:pb-28 md:pt-40">
+      <div className="container-site relative flex min-h-[92vh] flex-col justify-end pb-24 pt-32 md:justify-center md:pb-28 md:pt-40">
         <div className="grid gap-12 lg:grid-cols-12 lg:items-center">
           <div className="max-w-3xl lg:col-span-8">
             <div className="inline-flex items-center gap-2 rounded-full border border-primary/30 bg-background/50 px-3.5 py-1 backdrop-blur-xs">
@@ -114,28 +164,55 @@ export function Hero() {
               ))}
             </ul>
           </div>
-          <div className="lg:col-span-4">
-            <div className="animate-float-slow relative ms-auto max-w-xs overflow-hidden rounded-xl border border-primary/40 bg-card/60 p-6 shadow-2xl backdrop-blur-md">
-              <div
-                aria-hidden="true"
-                className="absolute -end-10 -top-10 size-32 rounded-full bg-primary/20 blur-2xl"
-              />
-              <div className="flex items-start gap-4">
-                <div className="flex h-12 min-w-[3.75rem] shrink-0 items-center justify-center rounded-lg border border-primary/50 bg-primary/10 px-2.5 text-primary">
-                  <span className="font-display text-lg font-extrabold tracking-tight">100%</span>
-                </div>
-                <div>
-                  <h3 className="font-display text-sm font-bold text-foreground">
-                    {t.hero.badgeTitle}
-                  </h3>
-                  <p className="mt-1 text-xs leading-relaxed text-muted-foreground">
-                    {t.hero.badgeText}
-                  </p>
-                </div>
-              </div>
+          <div className="hidden lg:col-span-4 lg:block">
+            <div
+              aria-hidden="true"
+              className="animate-float-slow relative ms-auto mt-24 min-h-28 max-w-xs translate-y-[154px] overflow-hidden rounded-xl border border-primary/40 bg-card/60 p-6 shadow-2xl backdrop-blur-md"
+            >
+              <div className="absolute -end-10 -top-10 size-32 rounded-full bg-primary/20 blur-2xl" />
             </div>
           </div>
         </div>
+      </div>
+
+      <div className="absolute bottom-6 start-1/2 z-10 flex -translate-x-1/2 translate-y-[90px] items-center gap-2 rounded-full border border-primary/25 bg-background/45 p-2 shadow-lg backdrop-blur-md md:bottom-auto md:end-8 md:start-auto md:top-1/2 md:translate-x-0 md:translate-y-[calc(-50%+90px)] md:flex-col">
+        <button
+          type="button"
+          aria-label={t.hero.previousSlide}
+          className="flex size-9 items-center justify-center rounded-full text-foreground transition-colors hover:bg-primary/15 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary"
+          onClick={() => emblaApi?.scrollPrev()}
+        >
+          <ChevronLeft aria-hidden="true" className="size-4 rtl:rotate-180" />
+        </button>
+        <div className="flex items-center gap-1.5" role="group" aria-label={t.hero.slideControls}>
+          {HOME_HERO_SLIDES.map((slide, index) => (
+            <button
+              key={slide}
+              type="button"
+              aria-label={`${t.hero.goToSlide} ${index + 1}`}
+              aria-pressed={activeSlide === index}
+              className="flex size-5 items-center justify-center focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary"
+              onClick={() => emblaApi?.scrollTo(index)}
+            >
+              <span
+                aria-hidden="true"
+                className={`block rounded-full transition-all duration-300 ${
+                  activeSlide === index
+                    ? "h-2 w-5 bg-primary"
+                    : "size-2 bg-foreground/60 hover:bg-foreground"
+                }`}
+              />
+            </button>
+          ))}
+        </div>
+        <button
+          type="button"
+          aria-label={t.hero.nextSlide}
+          className="flex size-9 items-center justify-center rounded-full text-foreground transition-colors hover:bg-primary/15 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary"
+          onClick={() => emblaApi?.scrollNext()}
+        >
+          <ChevronRight aria-hidden="true" className="size-4 rtl:rotate-180" />
+        </button>
       </div>
     </section>
   );
