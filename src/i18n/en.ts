@@ -649,7 +649,7 @@ export const en = {
           role: "HR / Accounts Manager",
           reports: [{ id: "emas", name: "Emas (name pending)", role: "Public Relations Manager" }],
         },
-        { id: "ummer", name: "Ummer Farva", role: "Branch Head", reports: [] },
+        { id: "ummer", name: "Ummer Faruq", role: "Branch Head", reports: [] },
         {
           id: "pramodh",
           name: "Pramodh Sasi Vaasukuttan",
