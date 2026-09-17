@@ -10,8 +10,8 @@ export const CONTACT = {
   phone: "+96894114511",
   phoneHref: "tel:+96894114511",
   whatsapp: "+96894114511",
-  email: "info@bonyamec.com",
-  applyEmail: "info@bonyamec.com",
+  email: "info@bonyanec.com",
+  applyEmail: "info@bonyanec.com",
   whatsappHref: "https://wa.me/96894114511",
   /** Exact office location provided by the client (Google Maps short link). */
   mapHref: "https://maps.app.goo.gl/QH2wMhHbD71WDPY58",

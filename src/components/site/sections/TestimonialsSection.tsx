@@ -75,7 +75,7 @@ export function TestimonialsSection() {
                 return (
                   <li
                     key={item.name + idx}
-                    className="group relative flex h-full flex-col overflow-hidden border border-ivory-border bg-background/5 p-6 transition-all duration-500 hover:-translate-y-2 hover:border-primary/60 hover:bg-background/20 hover:shadow-2xl"
+                    className="group relative flex h-full min-h-[25.75rem] flex-col overflow-hidden border border-ivory-border bg-background/5 p-6 transition-all duration-500 hover:-translate-y-2 hover:border-primary/60 hover:bg-background/20 hover:shadow-2xl"
                   >
                     <div className="flex items-start justify-between gap-3">
                       <Quote
@@ -108,19 +108,21 @@ export function TestimonialsSection() {
                         src={avatar}
                         alt={item.name}
                         loading="lazy"
-                        width={48}
-                        height={48}
-                        className="size-11 shrink-0 rounded-full border-2 border-primary/40 object-cover transition-transform duration-300 group-hover:scale-105 group-hover:border-primary"
+                        width={64}
+                        height={64}
+                        className="size-16 shrink-0 rounded-full border-2 border-primary/40 object-cover transition-transform duration-300 group-hover:scale-105 group-hover:border-primary"
                       />
                       <div className="min-w-0 flex-1">
-                        <p className="truncate font-display text-sm font-bold text-ink transition-colors duration-300 group-hover:text-primary">
+                        <p className="font-display text-sm font-bold leading-snug text-ink transition-colors duration-300 group-hover:text-primary">
                           {item.name}
                         </p>
                         <p className="truncate text-xs font-medium text-ink-muted">{item.role}</p>
-                        <p className="mt-1 flex items-center gap-1 text-[0.625rem] text-primary">
-                          <MapPin aria-hidden="true" className="size-3 shrink-0" />
-                          <span className="truncate">{item.location}</span>
-                        </p>
+                        {item.location && (
+                          <p className="mt-1 flex items-center gap-1 text-[0.625rem] text-primary">
+                            <MapPin aria-hidden="true" className="size-3 shrink-0" />
+                            <span className="truncate">{item.location}</span>
+                          </p>
+                        )}
                       </div>
                     </div>
                   </li>

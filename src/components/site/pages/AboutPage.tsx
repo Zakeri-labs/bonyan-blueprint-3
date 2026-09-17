@@ -24,7 +24,6 @@ export function AboutPage() {
           className="absolute inset-0 bg-linear-to-b from-background/80 via-background/90 to-background"
         />
         <div className="container-site relative pb-16 md:pb-24">
-          <SectionLabel>{t.pages.about.eyebrow}</SectionLabel>
           <h1 className="max-w-3xl font-display text-4xl font-extrabold leading-tight md:text-6xl">
             {t.pages.about.title}
           </h1>
@@ -38,6 +37,7 @@ export function AboutPage() {
       <section aria-labelledby="overview-heading" className="bg-background">
         <div className="container-site grid items-center gap-12 py-20 lg:grid-cols-2 lg:gap-16 md:py-24">
           <Reveal>
+            <SectionLabel>{t.about.sectionLabel}</SectionLabel>
             <h2
               id="overview-heading"
               className="font-display text-3xl font-extrabold leading-tight md:text-4xl"

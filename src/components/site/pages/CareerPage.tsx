@@ -5,7 +5,7 @@ import { IMAGES } from "../assets";
 import { Btn, Reveal, SectionLabel } from "../ui";
 
 /** Destination for discipline-card job applications (per client spec). */
-const APPLICATION_EMAIL = "info@bonyamec.com";
+const APPLICATION_EMAIL = "info@bonyanec.com";
 
 /** Builds a prefilled mailto link for applying to a specific discipline. */
 function disciplineMailto(position: string): string {

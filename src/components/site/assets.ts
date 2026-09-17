@@ -63,12 +63,12 @@ import mainQuantity from "@/assets/Picture of Projects/portfolio/quantity-survey
 import mainPlanning from "@/assets/Picture of Projects/portfolio/main-planning-cropped.jpg";
 import servicesArchitecturalStructuralDesign from "@/assets/Picture of Projects/portfolio/services-architectural-structural-design.png";
 
-import client1 from "@/assets/client-1.png";
-import client2 from "@/assets/client-2.png";
 import client3 from "@/assets/client-3.png";
 import client4 from "@/assets/client-4.png";
 import client5 from "@/assets/client-5.png";
 import client6 from "@/assets/client-6.png";
+import zahranAlAufi from "@/assets/testimonials/zahran-al-aufi.png";
+import ahmedAlShukaili from "@/assets/testimonials/ahmed-al-shukaili.png";
 import clientLogo01 from "@/assets/clients/client-01-supreme-judiciary-council.png";
 import clientLogo02 from "@/assets/clients/client-02-ministry-of-labor.png";
 import clientLogo03 from "@/assets/clients/client-03-telecommunications-regulatory-authority.png";
@@ -96,7 +96,7 @@ export const IMAGES = {
   managingDirector: teamYaserAlAufi,
 };
 
-export const CLIENT_AVATARS = [client1, client2, client3, client4, client5, client6];
+export const CLIENT_AVATARS = [zahranAlAufi, ahmedAlShukaili, client3, client4, client5, client6];
 
 /** Client marks used in the Portfolio-page scrolling logo strip. */
 export const CLIENT_LOGOS = [

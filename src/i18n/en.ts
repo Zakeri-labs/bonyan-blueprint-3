@@ -127,6 +127,7 @@ export const en = {
   },
   about: {
     label: "About Bonyan",
+    sectionLabel: "About Bunyan Construction",
     heading1: "Omani-Owned Since 2016.",
     heading2: "Design, Engineering & Supervision.",
     body: "Bonyan was founded in 2016 as a 100% Omani-owned construction company under Omani entrepreneur Yasir Salim Hamed Al Aufi. In 2021 we expanded our commercial registration to include engineering consultancy, and since mid-2023 we have delivered ministry and government projects alongside our private work.",
@@ -463,18 +464,18 @@ export const en = {
     goTo: "Go to testimonial",
     items: [
       {
-        name: "Sheikh Abdullah Al-Busaidi",
-        role: "Private Villa Owner",
-        location: "Al Mabelah, Al Seeb",
+        name: "Mr. Zahran Al Aufi",
+        role: "CEO, Falcon",
+        location: "",
         quote:
           "Working with Bonyan Consultancy on the architectural design and site supervision of our villa was an exceptional experience. Their precise drawings and cost estimation saved us significant expenses during construction.",
         rating: 5,
         avatarIndex: 0,
       },
       {
-        name: "Eng. Nasser Al-Maamari",
-        role: "Commercial Complex Developer",
-        location: "Sohar",
+        name: "Mr. Ahmed Said Hamed Al Shukaili",
+        role: "Manager, Admiral",
+        location: "",
         quote:
           "The seamless integration of architectural and civil design with strict site supervision by Bonyan engineers was key to delivering our commercial project on time and with zero execution errors.",
         rating: 5,
@@ -756,7 +757,7 @@ export const en = {
     },
     career: {
       title: "Careers at Bonyan | Engineering & Construction in Muscat, Oman",
-      desc: "Explore career opportunities at Bonyan in Muscat, Oman. Send your CV to info@bonyamec.com for design, engineering, supervision, and construction roles.",
+      desc: "Explore career opportunities at Bonyan in Muscat, Oman. Send your CV to info@bonyanec.com for design, engineering, supervision, and construction roles.",
     },
   },
 };
