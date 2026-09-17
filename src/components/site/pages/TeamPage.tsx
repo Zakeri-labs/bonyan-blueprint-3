@@ -85,17 +85,7 @@ function TeamPhoto({
 }
 
 /** Slim portrait for the org chart: the photo, or a quiet icon until one is added. */
-function OrgPortrait({
-  src,
-  name,
-  preserveAspectRatio = false,
-  naturalWidth = false,
-}: {
-  src: string;
-  name: string;
-  preserveAspectRatio?: boolean;
-  naturalWidth?: boolean;
-}) {
+function OrgPortrait({ src, name }: { src: string; name: string }) {
   const [failed, setFailed] = useState(false);
 
   if (!src || failed) {
@@ -111,14 +101,10 @@ function OrgPortrait({
       src={src}
       alt={name}
       loading="lazy"
-      width={naturalWidth ? undefined : 400}
-      height={naturalWidth ? undefined : 400}
+      width={1122}
+      height={1402}
       onError={() => setFailed(true)}
-      className={
-        naturalWidth
-          ? "h-full w-auto max-w-none object-contain object-bottom"
-          : `size-full object-bottom ${preserveAspectRatio ? "object-contain" : "object-fill"}`
-      }
+      className="size-full object-contain object-bottom"
     />
   );
 }
@@ -143,32 +129,14 @@ function OrgNode({
 }) {
   const email = ORG_EMAILS[id] ?? "";
   const lg = size === "lg";
-  const useNaturalPhotoWidth = id === "athesh";
-
   return (
     <figure
       tabIndex={0}
       className="group relative flex w-full flex-col rounded-lg border border-border bg-panel outline-none transition-colors hover:border-primary focus-visible:border-primary"
     >
-      <div className="relative aspect-square w-full overflow-hidden rounded-t-lg">
-        <div
-          className={
-            useNaturalPhotoWidth
-              ? "mx-auto h-full w-fit overflow-hidden"
-              : "size-full"
-          }
-        >
-          <OrgPortrait
-            src={ORG_PHOTOS[id] ?? ""}
-            name={name}
-            naturalWidth={useNaturalPhotoWidth}
-            preserveAspectRatio={
-              id === "yasir" ||
-              id === "athesh" ||
-              id === "ajil" ||
-              id === "ahsan"
-            }
-          />
+      <div className="relative aspect-[1122/1402] w-full overflow-hidden rounded-t-lg">
+        <div className="size-full">
+          <OrgPortrait src={ORG_PHOTOS[id] ?? ""} name={name} />
         </div>
 
         {email && (
@@ -241,16 +209,7 @@ function MobileOrgNode({
     <li className={root ? undefined : "org-mrow"} style={{ "--i": order } as CSSProperties}>
       <div className="flex items-center gap-3 py-1.5">
         <span className="flex size-11 shrink-0 overflow-hidden rounded-md border border-border bg-panel">
-          <OrgPortrait
-            src={ORG_PHOTOS[node.id] ?? ""}
-            name={node.name}
-            preserveAspectRatio={
-              node.id === "yasir" ||
-              node.id === "athesh" ||
-              node.id === "ajil" ||
-              node.id === "ahsan"
-            }
-          />
+          <OrgPortrait src={ORG_PHOTOS[node.id] ?? ""} name={node.name} />
         </span>
         <span className="min-w-0">
           <span className="block font-display text-sm font-bold leading-tight text-foreground">
