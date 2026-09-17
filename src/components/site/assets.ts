@@ -1,5 +1,6 @@
 import heroVilla from "@/assets/hero-villa.jpg";
 import aboutReview from "@/assets/about-review.jpg";
+import aboutBonyanConstruction from "@/assets/about-bonyan-construction.png";
 import projMosque from "@/assets/proj-mosque.jpg";
 import projSchool from "@/assets/proj-school.jpg";
 import projCompound from "@/assets/proj-compound.jpg";
@@ -89,6 +90,7 @@ import clientLogo12 from "@/assets/clients/client-12-Al Dakhiliyah Governorate.p
 export const IMAGES = {
   hero: heroVilla,
   about: aboutReview,
+  aboutBonyanConstruction,
   quantitySurveying: mainQuantity,
   mosque: projMosque,
   school: projSchool,

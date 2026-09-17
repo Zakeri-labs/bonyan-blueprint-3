@@ -64,11 +64,11 @@ export function AboutPage() {
           </Reveal>
           <Reveal delay={100}>
             <img
-              src={IMAGES.quantitySurveying}
+              src={IMAGES.aboutBonyanConstruction}
               alt={t.about.imageAlt}
               loading="lazy"
-              width={1200}
-              height={912}
+              width={1448}
+              height={1086}
               className="aspect-4/3 w-full border border-border object-cover"
             />
           </Reveal>
