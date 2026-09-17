@@ -38,6 +38,34 @@ export const en = {
     nextSlide: "Next project",
     slideControls: "Project slideshow controls",
     goToSlide: "Show project",
+    slides: [
+      {
+        label: "Mixed-Use",
+        title: "80,000 sqm Mixed-Use Complex",
+        description: "Architectural design and floor planning",
+        meta: "Aziba, Muscat · 80,000 sqm",
+      },
+      {
+        label: "Public Realm",
+        title: "Saham Public Park",
+        description: "Master planning and landscape design — 120,000 sqm",
+        meta: "",
+      },
+      { label: "Residential Villas", title: "", description: "", meta: "" },
+      {
+        label: "Master Planning",
+        title: "Development of Al-Murtafa' Beach, Wilayat of Sur",
+        description: "1,600 metre beach walkway master plan",
+        meta: "",
+      },
+      { label: "", title: "", description: "", meta: "" },
+      {
+        label: "University of Technology and Applied Sciences",
+        title: "5,000 sqm Office Building in University",
+        description: "",
+        meta: "",
+      },
+    ],
   },
   strip: ["Design Excellence", "Technical Precision", "Cost Control", "Timely Delivery"],
   trust: {
@@ -251,7 +279,8 @@ export const en = {
           {
             name: "Residential Villa",
             type: "Mr. Ali Rashid Sultan Al Shekaili",
-            scope: "Ground floor, first floor and penthouse; structural works, finishes, MEP and external works",
+            scope:
+              "Ground floor, first floor and penthouse; structural works, finishes, MEP and external works",
             location: "Al Ansab",
             year: "Handed over",
           },
@@ -321,21 +350,24 @@ export const en = {
           {
             name: "Commercial Building Expansion",
             type: "Al Ofoq Real Estate Company SPC",
-            scope: "First and second floors with headroom; structural works, finishes, MEP and external works",
+            scope:
+              "First and second floors with headroom; structural works, finishes, MEP and external works",
             location: "Al Mabelah South",
             year: "Under construction",
           },
           {
             name: "Commercial Building",
             type: "H.H. Al Sayyid Adham Tariq Taimur Aal Said",
-            scope: "Five modern commercial showrooms; construction, MEP, fire and safety, false-ceiling and finishing works",
+            scope:
+              "Five modern commercial showrooms; construction, MEP, fire and safety, false-ceiling and finishing works",
             location: "Saham",
             year: "Handed over",
           },
           {
             name: "Commercial Building",
             type: "H.H. Al Sayyid Adham Tariq Taimur Aal Said",
-            scope: "Five modern commercial showrooms; construction, MEP, fire and safety, false-ceiling and finishing works",
+            scope:
+              "Five modern commercial showrooms; construction, MEP, fire and safety, false-ceiling and finishing works",
             location: "Saham",
             year: "Handed over",
           },
@@ -380,14 +412,16 @@ export const en = {
           {
             name: "Commercial Building",
             type: "Mr. Sulaiman Said Al Kindy",
-            scope: "Ground floor and headroom retail building; structural works, finishes, MEP and external works",
+            scope:
+              "Ground floor and headroom retail building; structural works, finishes, MEP and external works",
             location: "Al Amrat",
             year: "Under construction",
           },
           {
             name: "Residential Villa",
             type: "Mr. Said Juma Malallah Al Zadjali",
-            scope: "Ground floor, first floor and penthouse; construction, finishes, MEP and external works",
+            scope:
+              "Ground floor, first floor and penthouse; construction, finishes, MEP and external works",
             location: "Fanja",
             year: "Handed over",
           },

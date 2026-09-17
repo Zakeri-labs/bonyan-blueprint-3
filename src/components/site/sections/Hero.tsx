@@ -11,6 +11,7 @@ export function Hero() {
   const [activeSlide, setActiveSlide] = useState(0);
   const [reducedMotion, setReducedMotion] = useState(false);
   const [isPaused, setIsPaused] = useState(false);
+  const activeProject = t.hero.slides[activeSlide] ?? t.hero.slides[0];
 
   const updateActiveSlide = useCallback(() => {
     setActiveSlide(emblaApi?.selectedScrollSnap() ?? 0);
@@ -92,11 +93,11 @@ export function Hero() {
       </div>
       <div
         aria-hidden="true"
-        className="absolute inset-0 bg-linear-to-b from-background/65 via-background/25 to-background/90"
+        className="pointer-events-none absolute inset-0 bg-linear-to-b from-background/65 via-background/25 to-background/90"
       />
       <div
         aria-hidden="true"
-        className="absolute inset-0 bg-linear-to-r from-background/80 via-background/15 to-transparent rtl:bg-linear-to-l"
+        className="pointer-events-none absolute inset-0 bg-linear-to-r from-background/80 via-background/15 to-transparent rtl:bg-linear-to-l"
       />
 
       {/* Ambient background light orbs */}
@@ -110,7 +111,7 @@ export function Hero() {
         style={{ animationDelay: "3.5s" }}
       />
 
-      <div className="container-site relative flex min-h-[92vh] flex-col justify-end pb-24 pt-32 md:justify-center md:pb-28 md:pt-40">
+      <div className="pointer-events-none container-site relative flex min-h-[92vh] flex-col justify-end pb-24 pt-32 md:justify-center md:pb-28 md:pt-40">
         <div className="grid gap-12 lg:grid-cols-12 lg:items-center">
           <div className="max-w-3xl lg:col-span-8">
             <div className="inline-flex items-center gap-2 rounded-full border border-primary/30 bg-background/50 px-3.5 py-1 backdrop-blur-xs">
@@ -131,7 +132,7 @@ export function Hero() {
               <span className="mt-1 block">{t.hero.subtitle2}</span>
             </p>
 
-            <div className="mt-9 flex flex-wrap gap-3">
+            <div className="pointer-events-auto mt-9 flex flex-wrap gap-3">
               <Btn
                 to={lp("/contact")}
                 arrow
@@ -165,17 +166,42 @@ export function Hero() {
             </ul>
           </div>
           <div className="hidden lg:col-span-4 lg:block">
-            <div
-              aria-hidden="true"
-              className="animate-float-slow relative ms-auto mt-24 min-h-28 max-w-xs translate-y-[154px] overflow-hidden rounded-xl border border-primary/40 bg-card/60 p-6 shadow-2xl backdrop-blur-md"
-            >
-              <div className="absolute -end-10 -top-10 size-32 rounded-full bg-primary/20 blur-2xl" />
+            <div className="animate-float-slow relative ms-auto mt-24 min-h-28 max-w-sm translate-y-[154px] overflow-hidden rounded-xl border border-primary/40 bg-card/60 p-6 shadow-2xl backdrop-blur-md">
+              <div
+                aria-hidden="true"
+                className="absolute -end-10 -top-10 size-32 rounded-full bg-primary/20 blur-2xl"
+              />
+              {(activeProject.label ||
+                activeProject.title ||
+                activeProject.description ||
+                activeProject.meta) && (
+                <div key={activeSlide} className="relative">
+                  {activeProject.label && (
+                    <p className="eyebrow text-primary">{activeProject.label}</p>
+                  )}
+                  {activeProject.title && (
+                    <h3 className="mt-2 font-display text-lg font-bold leading-snug text-foreground">
+                      {activeProject.title}
+                    </h3>
+                  )}
+                  {activeProject.description && (
+                    <p className="mt-2 text-sm leading-relaxed text-muted-foreground">
+                      {activeProject.description}
+                    </p>
+                  )}
+                  {activeProject.meta && (
+                    <p className="mt-3 border-t border-primary/20 pt-3 text-xs font-medium text-primary">
+                      {activeProject.meta}
+                    </p>
+                  )}
+                </div>
+              )}
             </div>
           </div>
         </div>
       </div>
 
-      <div className="absolute bottom-6 start-1/2 z-10 flex -translate-x-1/2 translate-y-[90px] items-center gap-2 rounded-full border border-primary/25 bg-background/45 p-2 shadow-lg backdrop-blur-md md:bottom-auto md:end-8 md:start-auto md:top-1/2 md:translate-x-0 md:translate-y-[calc(-50%+90px)] md:flex-col">
+      <div className="absolute bottom-6 start-1/2 z-10 flex -translate-x-1/2 items-center gap-2 rounded-full border border-primary/25 bg-background/45 p-2 shadow-lg backdrop-blur-md md:bottom-8">
         <button
           type="button"
           aria-label={t.hero.previousSlide}
