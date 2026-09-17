@@ -104,7 +104,7 @@ export function AboutSection() {
                     target="_blank"
                     rel="noopener noreferrer"
                     tabIndex={locationVisible ? 0 : -1}
-                    className={`flex min-h-12 items-center justify-center gap-2 rounded-md bg-background px-[26px] py-3 text-center text-base font-semibold text-primary shadow-lg transition-colors hover:bg-primary-foreground focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary ${locationVisible ? "pointer-events-auto" : "pointer-events-none"}`}
+                    className={`flex min-h-12 items-center justify-center gap-2 rounded-md bg-background py-3 text-center text-base font-semibold text-primary shadow-lg transition-[padding,colors] hover:bg-primary-foreground focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary ${isHovered ? "px-[31px]" : "px-[26px]"} ${locationVisible ? "pointer-events-auto" : "pointer-events-none"}`}
                   >
                     <span>{t.contact.viewMap}</span>
                   </a>

@@ -1,11 +1,16 @@
+import { useState } from "react";
 import { Check } from "lucide-react";
-import { useT } from "@/i18n";
+import { CONTACT, useT } from "@/i18n";
 import { SiteLayout } from "../SiteLayout";
-import { IMAGES } from "../assets";
+import { HOME_PROJECT_IMAGES, IMAGES } from "../assets";
 import { Btn, Reveal, SectionLabel } from "../ui";
 
 export function AboutPage() {
   const { t, lp } = useT();
+  const [showMarketLocation, setShowMarketLocation] = useState(false);
+  const [isMarketImageHovered, setIsMarketImageHovered] = useState(false);
+  const [hasMarketImageFocus, setHasMarketImageFocus] = useState(false);
+  const marketLocationVisible = showMarketLocation || isMarketImageHovered || hasMarketImageFocus;
 
   return (
     <SiteLayout>
@@ -79,14 +84,59 @@ export function AboutPage() {
       <section aria-labelledby="market-heading" className="bg-panel">
         <div className="container-site grid items-center gap-12 py-20 lg:grid-cols-2 lg:gap-16 md:py-24">
           <Reveal>
-            <img
-              src={IMAGES.mosque}
-              alt={t.about.marketTitle}
-              loading="lazy"
-              width={1200}
-              height={800}
-              className="aspect-4/3 w-full border border-border object-cover"
-            />
+            <div
+              className="relative mx-auto w-full max-w-xl overflow-hidden border border-border"
+              onMouseEnter={() => setIsMarketImageHovered(true)}
+              onMouseLeave={() => setIsMarketImageHovered(false)}
+              onFocus={() => setHasMarketImageFocus(true)}
+              onBlur={(event) => {
+                if (!event.currentTarget.contains(event.relatedTarget)) {
+                  setHasMarketImageFocus(false);
+                  setShowMarketLocation(false);
+                }
+              }}
+            >
+              <button
+                type="button"
+                aria-label={`${t.about.homeImageAlt} — ${t.contact.viewMap}`}
+                aria-expanded={marketLocationVisible}
+                aria-controls="about-market-location"
+                onClick={() => setShowMarketLocation((visible) => !visible)}
+                className="relative block w-full cursor-pointer focus-visible:outline-4 focus-visible:-outline-offset-4 focus-visible:outline-primary"
+              >
+                <img
+                  src={HOME_PROJECT_IMAGES.about}
+                  alt={t.about.homeImageAlt}
+                  loading="lazy"
+                  width={1198}
+                  height={1313}
+                  className={`h-auto w-full transition-transform duration-700 ease-out motion-reduce:transition-none ${marketLocationVisible ? "scale-105" : "scale-100"}`}
+                />
+                <span
+                  aria-hidden="true"
+                  className="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_at_center,transparent_55%,rgba(0,0,0,0.3)_100%)]"
+                />
+                <span
+                  aria-hidden="true"
+                  className="pointer-events-none absolute inset-x-0 bottom-0 h-1/3 bg-gradient-to-t from-black/50 to-transparent"
+                />
+              </button>
+              <div
+                id="about-market-location"
+                aria-hidden={!marketLocationVisible}
+                className={`pointer-events-none absolute inset-x-4 flex -translate-y-1/2 items-center justify-center transition-[top,opacity] duration-700 ease-out motion-reduce:transition-none md:inset-x-6 ${marketLocationVisible ? "top-[72.5%] opacity-100" : "top-[110%] opacity-0"}`}
+              >
+                <a
+                  href={CONTACT.mapHref}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  tabIndex={marketLocationVisible ? 0 : -1}
+                  className={`flex min-h-12 items-center justify-center gap-2 rounded-md bg-background py-3 text-center text-base font-semibold text-primary shadow-lg transition-[padding,colors] hover:bg-primary-foreground focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary ${isMarketImageHovered ? "px-[31px]" : "px-[26px]"} ${marketLocationVisible ? "pointer-events-auto" : "pointer-events-none"}`}
+                >
+                  <span>{t.contact.viewMap}</span>
+                </a>
+              </div>
+            </div>
           </Reveal>
           <Reveal delay={100}>
             <h2

@@ -6,8 +6,12 @@ import { HOME_HERO_SLIDES } from "../assets";
 import { Btn } from "../ui";
 
 export function Hero() {
-  const { t, lp } = useT();
-  const [emblaRef, emblaApi] = useEmblaCarousel({ loop: true, duration: 28 });
+  const { t, lp, dir } = useT();
+  const [emblaRef, emblaApi] = useEmblaCarousel({
+    loop: true,
+    duration: 28,
+    direction: dir,
+  });
   const [activeSlide, setActiveSlide] = useState(0);
   const [reducedMotion, setReducedMotion] = useState(false);
   const [isPaused, setIsPaused] = useState(false);
@@ -201,7 +205,7 @@ export function Hero() {
         </div>
       </div>
 
-      <div className="absolute bottom-6 start-1/2 z-10 flex -translate-x-1/2 items-center gap-2 rounded-full border border-primary/25 bg-background/45 p-2 shadow-lg backdrop-blur-md md:bottom-8">
+      <div className="absolute bottom-6 start-1/2 z-10 flex -translate-x-1/2 items-center gap-2 rounded-full border border-primary/25 bg-background/45 p-2 shadow-lg backdrop-blur-md rtl:translate-x-1/2 md:bottom-8">
         <button
           type="button"
           aria-label={t.hero.previousSlide}
