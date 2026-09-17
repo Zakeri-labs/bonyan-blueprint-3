@@ -36,6 +36,7 @@ import constructionServices from "@/assets/Picture of Projects/Construction_serv
 import sahamPublicPark from "@/assets/Picture of Projects/Architectural-1.png";
 import architectural2 from "@/assets/Picture of Projects/Architectural-2.png";
 import architectural3 from "@/assets/Picture of Projects/Architectural-3.png";
+import twinVillaGallery from "@/assets/Picture of Projects/portfolio/twin-villa-gallery.png";
 import universityOfficeBuilding from "@/assets/Picture of Projects/portfolio/university-office-building.jpg";
 import supervisionVilla from "@/assets/Picture of Projects/portfolio/supervision-villa.jpg";
 import supervisionVillaDetail01 from "@/assets/Picture of Projects/portfolio/supervision-villa-detail-01.png";
@@ -58,8 +59,9 @@ import mainDesign from "@/assets/Picture of Projects/portfolio/main-design.jpg";
 import mainDesignBrochure from "@/assets/Picture of Projects/portfolio/main-design-brochure.jpg";
 import mainManagement from "@/assets/Picture of Projects/portfolio/main-management.jpg";
 import mainMep from "@/assets/Picture of Projects/portfolio/main-mep.jpg";
-import mainQuantity from "@/assets/Picture of Projects/portfolio/Quantity Surveying.png";
+import mainQuantity from "@/assets/Picture of Projects/portfolio/quantity-surveying-cost-control.png";
 import mainPlanning from "@/assets/Picture of Projects/portfolio/main-planning-cropped.jpg";
+import servicesArchitecturalStructuralDesign from "@/assets/Picture of Projects/portfolio/services-architectural-structural-design.png";
 
 import client1 from "@/assets/client-1.png";
 import client2 from "@/assets/client-2.png";
@@ -155,6 +157,9 @@ export const SUPERVISION_CARD_GALLERY_3 = {
  */
 export const ARCHITECTURAL_IMAGES = [universityOfficeBuilding, architectural2, architectural3];
 
+/** Three 3D views of the Twin Villa design project, supplied as one composite image (03 / 07). */
+export const ARCHITECTURAL_TWIN_VILLA_IMAGE = twinVillaGallery;
+
 /**
  * Project photography and project renderings for the remaining Portfolio cards.
  * The source material is drawn from the supplied company profiles: construction
@@ -198,8 +203,17 @@ export const SERVICE_IMAGES = [
   constructionServices, // supervision
   mainConstruction, // construction — completed villa from supplied profiles
   mainManagement, // management — built project from supplied profiles
-  mainQuantity, // quantity — commercial project from supplied profiles
+  mainQuantity, // quantity — site cost-control team
   mainPlanning, // planning — public-realm rendering from supplied brochure
+];
+
+/** Service-card imagery on the Home page. */
+export const HOME_SERVICE_IMAGES = [mainDesignBrochure, ...SERVICE_IMAGES.slice(1)];
+
+/** Main imagery for service detail sections on the Services page. */
+export const SERVICE_DETAIL_IMAGES = [
+  servicesArchitecturalStructuralDesign,
+  ...SERVICE_IMAGES.slice(1),
 ];
 
 /**
@@ -207,7 +221,7 @@ export const SERVICE_IMAGES = [
  * These replacements are intentionally limited to this page's section cards.
  */
 export const PORTFOLIO_SECTION_MAIN_IMAGES: Partial<Record<string, string>> = {
-  design: mainDesignBrochure,
+  design: servicesArchitecturalStructuralDesign,
   management: eightVillaComplex,
 };
 

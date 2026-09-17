@@ -13,7 +13,7 @@ import {
 } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { useT } from "@/i18n";
-import { SERVICE_IMAGES } from "../assets";
+import { HOME_SERVICE_IMAGES } from "../assets";
 import { Btn, H_SCROLL_ITEM, H_SCROLL_STRIP, Reveal, SectionLabel } from "../ui";
 import { L } from "../L";
 
@@ -111,7 +111,7 @@ export function ServiceCard({
       {!compact && (
         <div className="relative aspect-16/9 overflow-hidden">
           <img
-            src={SERVICE_IMAGES[index]}
+            src={HOME_SERVICE_IMAGES[index]}
             alt={s.title}
             loading="lazy"
             width={1200}

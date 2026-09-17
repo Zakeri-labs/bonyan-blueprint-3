@@ -18,9 +18,10 @@ export const CONTACT = {
   mapEmbedHref:
     "https://maps.google.com/maps?q=Bonyan%20Engineering%20consultancy,%20Mabela,%20Sanaya%20Muscat%20OM,%20811&z=16&output=embed",
   social: [
-    { label: "Facebook", href: "#" },
-    { label: "LinkedIn", href: "#" },
-    { label: "Instagram", href: "#" },
+    // Replace each placeholder with the corresponding Instagram profile URL when provided.
+    { label: "Bonyan Construction", href: "#" },
+    { label: "Interior Design", href: "#" },
+    { label: "Construction Consultancy", href: "#" },
   ],
 } as const;
 

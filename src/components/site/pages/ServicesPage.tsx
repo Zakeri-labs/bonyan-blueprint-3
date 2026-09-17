@@ -2,7 +2,7 @@ import { ArrowRight } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { useT } from "@/i18n";
 import { SiteLayout } from "../SiteLayout";
-import { IMAGES, SERVICE_IMAGES } from "../assets";
+import { IMAGES, SERVICE_DETAIL_IMAGES } from "../assets";
 import { Btn, Reveal, SectionLabel } from "../ui";
 import {
   SERVICE_ICONS,
@@ -132,7 +132,7 @@ export function ServicesPage() {
                       </Btn>
                     </div>
                     <img
-                      src={SERVICE_IMAGES[i]}
+                      src={SERVICE_DETAIL_IMAGES[i]}
                       alt={s.title}
                       loading="lazy"
                       width={1200}

@@ -1,10 +1,8 @@
-import { Facebook, Instagram, Linkedin, Mail, MapPin, Phone } from "lucide-react";
+import { Instagram, Mail, MapPin, Phone } from "lucide-react";
 import { CONTACT, useT } from "@/i18n";
 import { Brand, LanguageSwitcher } from "./Brand";
 import { Btn } from "./ui";
 import { L } from "./L";
-
-const socialIcons = { Facebook, LinkedIn: Linkedin, Instagram } as const;
 
 export function Footer() {
   const { t, lp } = useT();
@@ -28,19 +26,19 @@ export function Footer() {
             {t.meta.slogan}
           </p>
           <div className="mt-6 flex gap-3">
-            {CONTACT.social.map((s) => {
-              const Icon = socialIcons[s.label as keyof typeof socialIcons];
-              return (
-                <a
-                  key={s.label}
-                  href={s.href}
-                  aria-label={s.label}
-                  className="flex size-11 items-center justify-center rounded-xs border border-border text-muted-foreground transition-colors hover:border-primary hover:text-primary"
-                >
-                  <Icon aria-hidden="true" className="size-4" />
-                </a>
-              );
-            })}
+            {CONTACT.social.map((account) => (
+              <a
+                key={account.label}
+                href={account.href}
+                aria-label={account.label}
+                title={account.label}
+                target="_blank"
+                rel="noreferrer"
+                className="flex size-11 items-center justify-center rounded-xs border border-border text-muted-foreground transition-colors hover:border-primary hover:text-primary"
+              >
+                <Instagram aria-hidden="true" className="size-4" />
+              </a>
+            ))}
           </div>
           <LanguageSwitcher className="mt-6 w-fit" />
         </div>

@@ -51,7 +51,7 @@ export const en = {
       "Engineering Consultancy Since 2021",
       "Team of 50 Professionals",
       "Design to Site Supervision",
-      "Ministry and government project.",
+      "Government and private project.",
       "Integrity and Technical Precision",
     ],
   },

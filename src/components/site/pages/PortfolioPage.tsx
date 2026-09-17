@@ -5,6 +5,7 @@ import { CONTACT, useT } from "@/i18n";
 import { SiteLayout } from "../SiteLayout";
 import {
   ARCHITECTURAL_IMAGES,
+  ARCHITECTURAL_TWIN_VILLA_IMAGE,
   BUILDING_CONSTRUCTION_IMAGES,
   CLIENT_LOGOS,
   IMAGES,
@@ -289,7 +290,9 @@ export function PortfolioPage() {
                       entry.id === "construction"
                         ? BUILDING_CONSTRUCTION_IMAGES[pi]
                         : entry.id === "design"
-                          ? ARCHITECTURAL_IMAGES[pi]
+                          ? pi === 1
+                            ? ARCHITECTURAL_TWIN_VILLA_IMAGE
+                            : ARCHITECTURAL_IMAGES[pi]
                           : PORTFOLIO_CARD_IMAGES[entry.id]?.[pi];
                     return (
                       <li key={proj.name} className="h-full">
@@ -303,7 +306,7 @@ export function PortfolioPage() {
                                   loading="lazy"
                                   width={600}
                                   height={360}
-                                  className="size-full border border-border object-cover"
+                                  className="size-full border border-border object-cover object-center"
                                 />
                                 <div className="grid min-h-0 grid-cols-2 gap-2">
                                   {cardGallery.bottom.map((src) => (
@@ -315,7 +318,7 @@ export function PortfolioPage() {
                                       loading="lazy"
                                       width={300}
                                       height={225}
-                                      className="size-full border border-border object-cover"
+                                      className="size-full border border-border object-cover object-center"
                                     />
                                   ))}
                                 </div>
