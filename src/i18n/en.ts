@@ -51,7 +51,7 @@ export const en = {
       "Engineering Consultancy Since 2021",
       "Team of 50 Professionals",
       "Design to Site Supervision",
-      "Ministry & Private Projects",
+      "Ministry and government project.",
       "Integrity and Technical Precision",
     ],
   },
@@ -135,6 +135,7 @@ export const en = {
     mission:
       "Our mission is to provide a full range of professional design, consultancy, and supervision services with skill, responsibility, and integrity.",
     cta: "Learn About Bonyan",
+    homeImageAlt: "Bonyan office at Abu Adnan Tower",
     imageAlt: "Engineers reviewing technical drawings during a site coordination meeting",
     highlights: [
       "100% Omani-Owned, Founded in 2016",
@@ -406,8 +407,8 @@ export const en = {
           {
             name: "Saham Public Park",
             type: "Public Realm",
-            scope: "Master planning and landscape design",
-            location: "Saham",
+            scope: "Master planning and landscape design — 120,000 sqm",
+            location: "Saham, Oman",
             year: "120,000 sqm",
           },
           {

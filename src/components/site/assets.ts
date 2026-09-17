@@ -8,7 +8,6 @@ import detailDrawings from "@/assets/detail-drawings.jpg";
 import detailFacade from "@/assets/detail-facade.jpg";
 
 import teamYaserAlAufi from "@/assets/Team picture/Yasir Salim Hamed Al Aufi.png";
-import teamYaserAlAufiLeadership from "@/assets/Team picture/Yasir Salim Hamed Al Aufi-2.png";
 import teamAjilKunnarMathias from "@/assets/Team picture/Ajil Kunnar Mathias.png";
 import teamAtheeshNadesan from "@/assets/Team picture/Atheesh Nadesan.png";
 import teamAghaShahid from "@/assets/Team picture/Agha Shahid.png";
@@ -41,7 +40,7 @@ import universityOfficeBuilding from "@/assets/Picture of Projects/portfolio/uni
 import supervisionVilla from "@/assets/Picture of Projects/portfolio/supervision-villa.jpg";
 import supervisionVillaDetail01 from "@/assets/Picture of Projects/portfolio/supervision-villa-detail-01.png";
 import supervisionVillaDetail02 from "@/assets/Picture of Projects/portfolio/supervision-villa-detail-02.png";
-import managementCompound from "@/assets/Picture of Projects/portfolio/management-compound.jpg";
+import bonyanOffice from "@/assets/bonyan-office.png";
 import managementCommercial from "@/assets/Picture of Projects/portfolio/management-commercial.jpg";
 import managementCampus from "@/assets/Picture of Projects/portfolio/management-campus.jpg";
 import mepCommercial from "@/assets/Picture of Projects/portfolio/mep-commercial.jpg";
@@ -51,7 +50,7 @@ import quantityCommercial from "@/assets/Picture of Projects/portfolio/quantity-
 import quantityCompound from "@/assets/Picture of Projects/portfolio/quantity-compound.jpg";
 import quantityVillas from "@/assets/Picture of Projects/portfolio/quantity-villas.jpg";
 import planningPark from "@/assets/Picture of Projects/portfolio/planning-park-cropped.jpg";
-import alMurtafaBeach from "@/assets/Picture of Projects/portfolio/Development of Al-Murtafa' Beach, Wilayat of Sur.png";
+import alMurtafaBeach from "@/assets/Picture of Projects/portfolio/al-murtafa-beach-walkway.png";
 import eightVillaComplex from "@/assets/Picture of Projects/portfolio/8-villa-complex.jpg";
 import universityCampusMasterPlan from "@/assets/Picture of Projects/portfolio/university-campus-master-plan.jpg";
 import mainConstruction from "@/assets/Picture of Projects/portfolio/main-construction.jpg";
@@ -170,13 +169,11 @@ export const PORTFOLIO_CARD_IMAGES: Partial<Record<string, Array<string | undefi
 };
 
 /**
- * Project imagery used by the Home page. Every image is also displayed with
- * its matching project on the Portfolio page; keep the service and project
- * indices in sync with `portfolioPage.services` in the dictionaries.
+ * Home-page imagery, including the Bonyan office photograph.
  */
 export const HOME_PROJECT_IMAGES = {
   hero: buildingConstruction03,
-  about: managementCompound,
+  about: bonyanOffice,
   cta: planningPark,
 };
 
@@ -186,11 +183,12 @@ export const HOME_PROJECT_IMAGES = {
  * the Home-page dictionary.
  */
 export const HOME_PORTFOLIO_PROJECTS = [
-  { serviceId: "construction", projectIndex: 0, image: buildingConstruction01 },
+  { serviceId: "planning", projectIndex: 0, image: alMurtafaBeach },
   { serviceId: "design", projectIndex: 1, image: architectural2 },
   { serviceId: "supervision", projectIndex: 2, image: supervisionVilla },
-  { serviceId: "planning", projectIndex: 0, image: planningPark },
+  { serviceId: "planning", projectIndex: 1, image: sahamPublicPark },
   { serviceId: "mep", projectIndex: 0, image: mepCommercial },
+  { serviceId: "construction", projectIndex: 0, image: buildingConstruction01 },
 ] as const;
 
 /** Service card imagery, in the same order as the services in `en.ts`. */
@@ -221,7 +219,7 @@ export const PORTFOLIO_IMAGES = [heroVilla, projSchool, projMosque, projCompound
  * Sourced from `@/assets/Team picture/`; an empty string falls back to a placeholder.
  */
 export const TEAM_PHOTOS = [
-  teamYaserAlAufiLeadership, // Yasir Salim Hamed Al Aufi — Founder & CEO
+  teamYaserAlAufi, // Yasir Salim Hamed Al Aufi — Founder & CEO
   teamAghaShahid, // Agha Shahid — Technical Manager
   teamAtheeshNadesan, // Atheesh Nadesan — General Manager
   teamAjilKunnarMathias, // Ajil Kunnar Mathias — Construction Manager
@@ -233,7 +231,7 @@ export const TEAM_PHOTOS = [
  * placeholder icon. Add entries as portraits are provided.
  */
 export const ORG_PHOTOS: Record<string, string> = {
-  yasir: teamYaserAlAufiLeadership, // Yasir Salim Hamed Al Aufi
+  yasir: teamYaserAlAufi, // Yasir Salim Hamed Al Aufi
   ajil: teamAjilKunnarMathias, // Ajil Kunnar Mathias
   athesh: teamAtheeshNadesan, // Athesh Nadesan
   agha: teamAghaShahid, // Agha Shahid Yazdeb

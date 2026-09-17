@@ -1,10 +1,15 @@
+import { useState } from "react";
 import { Check } from "lucide-react";
-import { useT } from "@/i18n";
+import { CONTACT, useT } from "@/i18n";
 import { HOME_PROJECT_IMAGES } from "../assets";
 import { Btn, Reveal, SectionLabel } from "../ui";
 
 export function AboutSection() {
   const { t, lp } = useT();
+  const [showLocation, setShowLocation] = useState(false);
+  const [isHovered, setIsHovered] = useState(false);
+  const [hasFocus, setHasFocus] = useState(false);
+  const locationVisible = showLocation || isHovered || hasFocus;
 
   return (
     <section id="about" aria-labelledby="about-heading" className="relative bg-background">
@@ -52,15 +57,58 @@ export function AboutSection() {
 
           <Reveal delay={100}>
             <div className="relative">
-              <div className="overflow-hidden border border-border">
-                <img
-                  src={HOME_PROJECT_IMAGES.about}
-                  alt={t.about.imageAlt}
-                  loading="lazy"
-                  width={1200}
-                  height={912}
-                  className="aspect-4/3 w-full object-cover"
-                />
+              <div
+                className="relative overflow-hidden border border-border"
+                onMouseEnter={() => setIsHovered(true)}
+                onMouseLeave={() => setIsHovered(false)}
+                onFocus={() => setHasFocus(true)}
+                onBlur={(event) => {
+                  if (!event.currentTarget.contains(event.relatedTarget)) {
+                    setHasFocus(false);
+                    setShowLocation(false);
+                  }
+                }}
+              >
+                <button
+                  type="button"
+                  aria-label={`${t.about.homeImageAlt} — ${t.contact.viewMap}`}
+                  aria-expanded={locationVisible}
+                  aria-controls="about-office-location"
+                  onClick={() => setShowLocation((visible) => !visible)}
+                  className="relative block w-full cursor-pointer focus-visible:outline-4 focus-visible:-outline-offset-4 focus-visible:outline-primary"
+                >
+                  <img
+                    src={HOME_PROJECT_IMAGES.about}
+                    alt={t.about.homeImageAlt}
+                    loading="lazy"
+                    width={1198}
+                    height={1313}
+                    className={`h-auto w-full transition-transform duration-700 ease-out motion-reduce:transition-none ${locationVisible ? "scale-105" : "scale-100"}`}
+                  />
+                  <span
+                    aria-hidden="true"
+                    className="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_at_center,transparent_55%,rgba(0,0,0,0.3)_100%)]"
+                  />
+                  <span
+                    aria-hidden="true"
+                    className="pointer-events-none absolute inset-x-0 bottom-0 h-1/3 bg-gradient-to-t from-black/50 to-transparent"
+                  />
+                </button>
+                <div
+                  id="about-office-location"
+                  aria-hidden={!locationVisible}
+                  className={`pointer-events-none absolute inset-x-4 flex -translate-y-1/2 items-center justify-center transition-[top,opacity] duration-700 ease-out motion-reduce:transition-none md:inset-x-6 ${locationVisible ? "top-[72.5%] opacity-100" : "top-[110%] opacity-0"}`}
+                >
+                  <a
+                    href={CONTACT.mapHref}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    tabIndex={locationVisible ? 0 : -1}
+                    className={`flex min-h-12 items-center justify-center gap-2 rounded-md bg-background px-[26px] py-3 text-center text-base font-semibold text-primary shadow-lg transition-colors hover:bg-primary-foreground focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary ${locationVisible ? "pointer-events-auto" : "pointer-events-none"}`}
+                  >
+                    <span>{t.contact.viewMap}</span>
+                  </a>
+                </div>
               </div>
               <div
                 aria-hidden="true"

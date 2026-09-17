@@ -4,7 +4,7 @@ import { CONTACT, useT } from "@/i18n";
 import { HOME_PORTFOLIO_PROJECTS } from "../assets";
 import { Btn, H_SCROLL_ITEM, H_SCROLL_STRIP, Reveal, SectionLabel } from "../ui";
 
-/** Asymmetric editorial grid: 3 across the top row, 2 wider items below. */
+/** Asymmetric editorial grid: 3 across the top, 2 wide cards, then a stacked follow-on card. */
 const SPANS = ["lg:col-span-4", "lg:col-span-4", "lg:col-span-4", "lg:col-span-5", "lg:col-span-7"];
 
 export function PortfolioSection() {
@@ -15,6 +15,83 @@ export function PortfolioSection() {
 
     return project ? [{ ...project, image }] : [];
   });
+  const admiralProject = projects[5];
+
+  const renderProjectCard = (
+    project: (typeof projects)[number],
+    index: number,
+    compact = false,
+    stackedPrimary = false,
+  ) => (
+    <Reveal
+      className={cn(
+        "h-full",
+        compact ? "lg:block lg:min-h-0 lg:flex-1" : stackedPrimary && "lg:h-auto lg:shrink-0",
+      )}
+      delay={(index % 3) * 70}
+    >
+      <article className="group relative h-full overflow-hidden border border-border transition-all duration-500 hover:-translate-y-1 hover:border-primary/80 hover:shadow-lg hover:shadow-primary/8">
+        <img
+          src={project.image}
+          alt={
+            project.location
+              ? `${project.name} — ${project.scope}, ${project.location}`
+              : `${project.name} — ${project.scope}`
+          }
+          loading="lazy"
+          width={1200}
+          height={800}
+          className={cn(
+            "aspect-4/3 w-full object-cover transition-transform duration-700 group-hover:scale-108",
+            compact && "lg:size-full lg:aspect-auto lg:object-top",
+          )}
+        />
+        <div
+          aria-hidden="true"
+          className="absolute inset-0 bg-linear-to-t from-background/95 from-0% via-background/70 via-30% to-transparent to-60% transition-opacity duration-500 group-hover:opacity-100"
+        />
+        <div
+          className={cn(
+            "absolute inset-x-0 bottom-0 p-5 transition-transform duration-300 group-hover:-translate-y-1",
+            compact && "lg:p-4",
+          )}
+        >
+          <span className="eyebrow">{project.type}</span>
+          <h3
+            className={cn(
+              "mt-2 font-display text-lg font-bold leading-snug transition-colors duration-300 group-hover:text-primary",
+              compact && "lg:mt-1.5 lg:line-clamp-2 lg:text-sm lg:leading-tight",
+            )}
+          >
+            {project.name}
+          </h3>
+          {compact ? (
+            <p className="mt-1 hidden text-[0.65rem] leading-snug text-primary lg:line-clamp-2 lg:block">
+              {project.scope}
+            </p>
+          ) : (
+            <>
+              <p className="mt-1 text-xs text-primary">{project.scope}</p>
+              {project.location && (
+                <a
+                  href={CONTACT.mapHref}
+                  target="_blank"
+                  rel="noreferrer"
+                  className="mt-2 flex w-fit items-center gap-1.5 text-xs text-muted-foreground transition-colors hover:text-primary"
+                >
+                  <MapPin
+                    aria-hidden="true"
+                    className="size-3.5 text-primary transition-transform duration-300 group-hover:scale-125"
+                  />
+                  {project.location}
+                </a>
+              )}
+            </>
+          )}
+        </div>
+      </article>
+    </Reveal>
+  );
 
   return (
     <section id="portfolio" aria-labelledby="portfolio-heading" className="relative bg-panel">
@@ -39,51 +116,31 @@ export function PortfolioSection() {
         {/* Mobile: horizontal swipe. Desktop: asymmetric grid. */}
         <div className="mt-12">
           <ul className={cn(H_SCROLL_STRIP, "md:grid-cols-2 lg:grid-cols-12")}>
-            {projects.map((p, i) => (
-              <li key={p.name} className={cn(H_SCROLL_ITEM, SPANS[i] ?? "lg:col-span-4")}>
-                <Reveal delay={(i % 3) * 70}>
-                  <article className="group relative h-full overflow-hidden border border-border transition-all duration-500 hover:-translate-y-1 hover:border-primary/80 hover:shadow-lg hover:shadow-primary/8">
-                    <img
-                      src={p.image}
-                      alt={
-                        p.location
-                          ? `${p.name} — ${p.scope}, ${p.location}`
-                          : `${p.name} — ${p.scope}`
-                      }
-                      loading="lazy"
-                      width={1200}
-                      height={800}
-                      className="aspect-4/3 w-full object-cover transition-transform duration-700 group-hover:scale-108"
-                    />
-                    <div
-                      aria-hidden="true"
-                      className="absolute inset-0 bg-linear-to-t from-background/15 via-background/15 to-transparent transition-opacity duration-500 group-hover:opacity-100"
-                    />
-                    <div className="absolute inset-x-0 bottom-0 p-5 transition-transform duration-300 group-hover:-translate-y-1">
-                      <span className="eyebrow">{p.type}</span>
-                      <h3 className="mt-2 font-display text-lg font-bold leading-snug transition-colors duration-300 group-hover:text-primary">
-                        {p.name}
-                      </h3>
-                      <p className="mt-1 text-xs text-primary">{p.scope}</p>
-                      {p.location && (
-                        <a
-                          href={CONTACT.mapHref}
-                          target="_blank"
-                          rel="noreferrer"
-                          className="mt-2 flex w-fit items-center gap-1.5 text-xs text-muted-foreground transition-colors hover:text-primary"
-                        >
-                          <MapPin
-                            aria-hidden="true"
-                            className="size-3.5 text-primary transition-transform duration-300 group-hover:scale-125"
-                          />
-                          {p.location}
-                        </a>
-                      )}
-                    </div>
-                  </article>
-                </Reveal>
-              </li>
-            ))}
+            {projects.map((project, index) => {
+              if (index === 5) {
+                return (
+                  <li key={project.name} className={cn(H_SCROLL_ITEM, "lg:hidden")}>
+                    {renderProjectCard(project, index)}
+                  </li>
+                );
+              }
+
+              const stacksAdmiral = index === 3 && admiralProject;
+
+              return (
+                <li
+                  key={project.name}
+                  className={cn(
+                    H_SCROLL_ITEM,
+                    SPANS[index] ?? "lg:col-span-4",
+                    stacksAdmiral && "lg:flex lg:flex-col",
+                  )}
+                >
+                  {renderProjectCard(project, index, false, Boolean(stacksAdmiral))}
+                  {stacksAdmiral && renderProjectCard(admiralProject, 5, true)}
+                </li>
+              );
+            })}
           </ul>
         </div>
 
