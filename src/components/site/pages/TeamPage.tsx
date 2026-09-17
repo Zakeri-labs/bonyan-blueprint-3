@@ -47,17 +47,7 @@ const ORG_EMAILS: Record<string, string> = {
 };
 
 /** Portrait with a graceful fallback to the placeholder if the file is missing. */
-function TeamPhoto({
-  src,
-  name,
-  pending,
-  zoomToAgha = false,
-}: {
-  src: string;
-  name: string;
-  pending: string;
-  zoomToAgha?: boolean;
-}) {
+function TeamPhoto({ src, name, pending }: { src: string; name: string; pending: string }) {
   const [failed, setFailed] = useState(false);
 
   if (!src || failed) {
@@ -77,9 +67,7 @@ function TeamPhoto({
       width={900}
       height={1124}
       onError={() => setFailed(true)}
-      className={`size-full origin-bottom object-contain object-bottom ${
-        zoomToAgha ? "scale-[1.125]" : ""
-      }`}
+      className="size-full object-contain object-bottom"
     />
   );
 }
@@ -162,7 +150,7 @@ function OrgNode({
 
       <figcaption
         className={`org-caption relative z-1 flex flex-col rounded-b-lg border-t border-border bg-panel ${
-          lg ? "gap-1 p-3" : "gap-0.5 p-2"
+          lg ? "min-h-[4.5625rem] gap-1 p-3" : "min-h-[3.3125rem] gap-0.5 p-2"
         }`}
       >
         <span
@@ -320,7 +308,6 @@ export function TeamPage() {
                         src={TEAM_PHOTOS[i] ?? ""}
                         name={m.name}
                         pending={t.team.photoPending}
-                        zoomToAgha={i === 2 || i === 3}
                       />
                     </div>
 

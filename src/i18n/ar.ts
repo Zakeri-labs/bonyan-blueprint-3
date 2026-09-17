@@ -610,7 +610,7 @@ export const ar: Dict = {
           role: "المدير الفني / ضمان ومراقبة الجودة",
           reports: [],
         },
-        { id: "jefrin", name: "Jefrin Monish", role: "رئيس قسم الرسم الهندسي", reports: [] },
+        { id: "jefrin", name: "Jerin Mosi Sasi", role: "رئيس قسم الرسم الهندسي", reports: [] },
         { id: "ahsan", name: "Ahsan Ali", role: "رئيس قسم الكهروميكانيك", reports: [] },
         {
           id: "amir",

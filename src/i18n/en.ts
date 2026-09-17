@@ -620,7 +620,7 @@ export const en = {
           role: "Technical Manager / QA & QC",
           reports: [],
         },
-        { id: "jefrin", name: "Jefrin Monish", role: "Drafting Head", reports: [] },
+        { id: "jefrin", name: "Jerin Mosi Sasi", role: "Drafting Head", reports: [] },
         { id: "ahsan", name: "Ahsan Ali", role: "MEP Head", reports: [] },
         {
           id: "amir",
