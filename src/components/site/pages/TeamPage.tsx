@@ -37,7 +37,7 @@ const ORG_EMAILS: Record<string, string> = {
   ajil: "ajil@live.com",
   athesh: "atheesh.n@bonyanec.com",
   agha: "agha.sh@bonyanec.com",
-  jefrin: "jefrin.m@bonyanec.com",
+  jefrin: "jerin.mo@bonyanec.com",
   ahsan: "ahsan.a@bonyanec.com",
   puvanesh: "puvanesh.r@bonyanec.com",
   rajesh: "rajesh.a@bonyanec.com",
@@ -117,6 +117,7 @@ function OrgNode({
 }) {
   const email = ORG_EMAILS[id] ?? "";
   const lg = size === "lg";
+  const isPending = !name && !role;
   return (
     <figure
       tabIndex={0}
@@ -124,7 +125,11 @@ function OrgNode({
     >
       <div className="relative aspect-[1122/1402] w-full overflow-hidden rounded-t-lg">
         <div className="size-full">
-          <OrgPortrait src={ORG_PHOTOS[id] ?? ""} name={name} />
+          {isPending ? (
+            <span aria-hidden="true" className="block size-full bg-panel" />
+          ) : (
+            <OrgPortrait src={ORG_PHOTOS[id] ?? ""} name={name} />
+          )}
         </div>
 
         {email && (
@@ -192,30 +197,37 @@ function MobileOrgNode({
   const email = ORG_EMAILS[node.id] ?? "";
   const kids = node.children ?? [];
   const order = orderMap.get(node.id) ?? 0;
+  const isPending = !node.name && !node.role;
 
   return (
     <li className={root ? undefined : "org-mrow"} style={{ "--i": order } as CSSProperties}>
       <div className="flex items-center gap-3 py-1.5">
         <span className="flex size-11 shrink-0 overflow-hidden rounded-md border border-border bg-panel">
-          <OrgPortrait src={ORG_PHOTOS[node.id] ?? ""} name={node.name} />
-        </span>
-        <span className="min-w-0">
-          <span className="block font-display text-sm font-bold leading-tight text-foreground">
-            {node.name}
-          </span>
-          <span className="block text-[0.6875rem] font-medium uppercase leading-tight tracking-wide text-primary">
-            {node.role}
-          </span>
-          {email && (
-            <a
-              href={`mailto:${email}`}
-              dir="ltr"
-              className="mt-0.5 block truncate text-[0.6875rem] text-link underline"
-            >
-              {email}
-            </a>
+          {isPending ? (
+            <span aria-hidden="true" className="block size-full" />
+          ) : (
+            <OrgPortrait src={ORG_PHOTOS[node.id] ?? ""} name={node.name} />
           )}
         </span>
+        {!isPending && (
+          <span className="min-w-0">
+            <span className="block font-display text-sm font-bold leading-tight text-foreground">
+              {node.name}
+            </span>
+            <span className="block text-[0.6875rem] font-medium uppercase leading-tight tracking-wide text-primary">
+              {node.role}
+            </span>
+            {email && (
+              <a
+                href={`mailto:${email}`}
+                dir="ltr"
+                className="mt-0.5 block truncate text-[0.6875rem] text-link underline"
+              >
+                {email}
+              </a>
+            )}
+          </span>
+        )}
       </div>
 
       {kids.length > 0 && (

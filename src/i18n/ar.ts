@@ -674,9 +674,7 @@ export const ar: Dict = {
           id: "siva",
           name: "SIVA MURUKESAN",
           role: "مدير الموارد البشرية والحسابات",
-          reports: [
-            { id: "emas", name: "إيماس (الاسم قيد التأكيد)", role: "مدير العلاقات العامة" },
-          ],
+          reports: [{ id: "emas", name: "إيماس", role: "مدير العلاقات العامة" }],
         },
         { id: "ummer", name: "أُمّر فروا", role: "رئيس الفرع", reports: [] },
         {
@@ -685,6 +683,9 @@ export const ar: Dict = {
           role: "رئيس الفرع",
           reports: [],
         },
+        { id: "abisekh", name: "أبيشيخ دوراي", role: "عضو الفريق", reports: [] },
+        { id: "zakeri", name: "Mohammad Reza Zakeri", role: "مدير تقنية المعلومات", reports: [] },
+        { id: "jefrin-monish", name: "Jefrin Monish", role: "", reports: [] },
       ],
     },
   },

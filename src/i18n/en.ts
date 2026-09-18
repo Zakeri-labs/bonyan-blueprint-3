@@ -685,7 +685,7 @@ export const en = {
           id: "siva",
           name: "SIVA Murukesan",
           role: "HR / Accounts Manager",
-          reports: [{ id: "emas", name: "Emas (name pending)", role: "Public Relations Manager" }],
+          reports: [{ id: "emas", name: "Emas", role: "Public Relations Manager" }],
         },
         { id: "ummer", name: "Ummer Faruq", role: "Branch Head", reports: [] },
         {
@@ -694,6 +694,9 @@ export const en = {
           role: "Branch Head",
           reports: [],
         },
+        { id: "abisekh", name: "Abisekh Durai", role: "Team Member", reports: [] },
+        { id: "zakeri", name: "Mohammad Reza Zakeri", role: "IT Manager", reports: [] },
+        { id: "jefrin-monish", name: "Jefrin Monish", role: "", reports: [] },
       ],
     },
   },

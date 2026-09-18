@@ -22,7 +22,10 @@ import teamAmirHosseinParesh from "@/assets/Team picture/New/Amir paresh.PNG";
 import teamSalmanRahimdokhtKhorram from "@/assets/Team picture/New/Salman khorram.PNG";
 import teamUmmerFaruq from "@/assets/Team picture/New/Ummer Faruq.PNG";
 import teamPramodh from "@/assets/Team picture/New/Pramodh Sasi Vaasukuttan.PNG";
-import teamRaiyanHusseinMohammedHamoodAlHajri from "@/assets/Team picture/New/RAIYAN HUSSEIN MOHAMMED HAMOOD AL HAJRI .png";
+import teamRaiyanHusseinMohammedHamoodAlHajri from "@/assets/Team picture/New/RAIYAN HUSSEIN MOHAMMED HAMOOD AL HAJRI.png";
+import teamAbisekhDurai from "@/assets/Team picture/New/Abisekh Durai.png";
+import teamEmas from "@/assets/Team picture/New/Emas.png";
+import teamMohammadRezaZakeri from "@/assets/Team picture/New/Mohammad Reza Zakeri.png";
 
 import buildingConstruction01 from "@/assets/Picture of Projects/Building_Construction_01.png";
 import buildingConstruction02 from "@/assets/Picture of Projects/Building_Construction_02.png";
@@ -284,4 +287,8 @@ export const ORG_PHOTOS: Record<string, string> = {
   ummer: teamUmmerFaruq, // Ummer Faruq
   pramodh: teamPramodh, // Pramodh Sasi Vaasukuttan
   riyan: teamRaiyanHusseinMohammedHamoodAlHajri, // Raiyan Hussein Mohammed Hamood Al Hajri
+  abisekh: teamAbisekhDurai, // Abisekh Durai
+  emas: teamEmas, // Emas
+  zakeri: teamMohammadRezaZakeri, // Mohammad Reza Zakeri
+  "jefrin-monish": teamJefrinMonish, // Jefrin Monish
 };

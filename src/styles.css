@@ -365,23 +365,13 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  /* Vertical space between chart levels — scales up on wider screens */
-  --org-gap-v: 3.5rem;
-  /* Shared connector-line colour / thickness and fluid card widths (geometry) */
+  /* Every dimension scales with the available viewport, while staying legible. */
+  --org-gap-v: clamp(2.25rem, 4vw, 5rem);
+  /* Shared connector-line colour / thickness and fluid card widths (geometry). */
   --org-line: color-mix(in oklch, var(--primary) 55%, transparent);
   --org-line-w: 2px;
-  --org-ceo-w: clamp(6.5rem, 13.5vw, 14rem);
-  --org-lead-w: clamp(5.5rem, 11.5vw, 12.5rem);
-}
-@media (min-width: 1280px) {
-  .org-tree {
-    --org-gap-v: 4.25rem;
-  }
-}
-@media (min-width: 1600px) {
-  .org-tree {
-    --org-gap-v: 5rem;
-  }
+  --org-ceo-w: clamp(6.5rem, 14vw, 14rem);
+  --org-lead-w: clamp(5.5rem, 12vw, 12.5rem);
 }
 
 .org-item {
@@ -393,7 +383,7 @@
 
 /* Card wrappers — fluid width so the chart grows with the viewport */
 .org-card {
-  width: clamp(4rem, 8vw, 10rem);
+  width: clamp(4.25rem, 8vw, 10rem);
 }
 .org-card--lead {
   width: var(--org-lead-w);
@@ -405,7 +395,13 @@
 /* Name plate under each chart portrait — sits slightly proud of the card with a
    subtle drop shadow that reads just below the strip. */
 .org-caption {
+  min-width: 0;
+  /* Matches the tallest three-line name-and-role combination in the chart. */
+  min-height: 7.25rem;
   box-shadow: 0 6px 12px -7px oklch(0 0 0 / 0.5);
+}
+.org-caption > span {
+  overflow-wrap: anywhere;
 }
 
 /* ---- Top of the tree -----------------------------------------------------
@@ -432,12 +428,6 @@
   height: var(--org-gap-v);
   background: var(--org-line);
 }
-
-/* CEO bottom edge (just off-centre) → straight down, then a straight run left,
-   then a straight drop into the top-centre of the Construction Manager card —
-   an orthogonal "S" with square corners. Segments 1 + 2 (the drop off the CEO
-   card and the horizontal run) are drawn here; segment 3 (the final drop into
-   the side card) is `.org-mid__aside::before`. */
 .org-mid::after {
   content: "";
   position: absolute;
@@ -448,8 +438,6 @@
   border-right: var(--org-line-w) solid var(--org-line);
   border-bottom: var(--org-line-w) solid var(--org-line);
 }
-
-/* Segment 3: the final straight drop into the top-centre of the side card */
 .org-mid__aside::before {
   content: "";
   position: absolute;
@@ -459,9 +447,6 @@
   height: calc(var(--org-gap-v) * 0.5);
   background: var(--org-line);
 }
-
-/* Sits level with the GM row but far to the left, so its (variable-height)
-   name plate never reaches down into the manager row below. */
 .org-mid__aside {
   position: absolute;
   top: 0;
@@ -487,7 +472,7 @@
   flex-shrink: 0;
   justify-content: center;
   align-items: flex-start;
-  --org-gap-h: clamp(0.375rem, 0.7vw, 0.75rem);
+  --org-gap-h: clamp(0.25rem, 0.7vw, 0.75rem);
   gap: var(--org-gap-h);
 }
 
@@ -500,9 +485,13 @@
   align-items: start;
 }
 .org-children--wide > .org-item > .org-card {
+  /* A percentage width keeps each manager card proportional to its column. */
   width: 100%;
   max-width: 12rem;
   margin-inline: auto;
+}
+.org-children--wide > .org-item {
+  min-width: 0;
 }
 
 /* Parent → bus (upper half of the gap) */
