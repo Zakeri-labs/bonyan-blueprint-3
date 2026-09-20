@@ -1,4 +1,4 @@
-import { type CSSProperties, useEffect, useRef, useState } from "react";
+import { type CSSProperties, type RefObject, useEffect, useRef, useState } from "react";
 import { Mail, UserRound } from "lucide-react";
 import { useT } from "@/i18n";
 import { SiteLayout } from "../SiteLayout";
@@ -109,11 +109,13 @@ function OrgNode({
   name,
   role,
   size = "sm",
+  captionRow,
 }: {
   id: string;
   name: string;
   role: string;
   size?: "lg" | "sm";
+  captionRow: "ceo" | "leadership" | "managers" | "reports";
 }) {
   const email = ORG_EMAILS[id] ?? "";
   const lg = size === "lg";
@@ -154,8 +156,9 @@ function OrgNode({
       </div>
 
       <figcaption
+        data-org-caption-row={captionRow}
         className={`org-caption relative z-1 flex flex-col rounded-b-lg border-t border-border bg-panel ${
-          lg ? "min-h-[4.5625rem] gap-1 p-3" : "min-h-[3.3125rem] gap-0.5 p-2"
+          lg ? "gap-1 p-3" : "gap-0.5 p-2"
         }`}
       >
         <span
@@ -175,6 +178,49 @@ function OrgNode({
       </figcaption>
     </figure>
   );
+}
+
+/**
+ * Makes captions equally tall only within their visual chart row. This keeps
+ * cards aligned while avoiding a chart-wide fixed height that leaves excess
+ * space beneath shorter names or roles.
+ */
+function useEqualOrgCaptionRows(ref: RefObject<HTMLElement | null>, org: unknown) {
+  useEffect(() => {
+    const chart = ref.current;
+    if (!chart) return;
+
+    const equalize = () => {
+      const captions = Array.from(chart.querySelectorAll<HTMLElement>("[data-org-caption-row]"));
+      const rows = new Map<string, HTMLElement[]>();
+
+      captions.forEach((caption) => {
+        caption.style.minHeight = "0";
+        const row = caption.dataset.orgCaptionRow;
+        if (!row) return;
+        rows.set(row, [...(rows.get(row) ?? []), caption]);
+      });
+
+      rows.forEach((rowCaptions) => {
+        const tallestCaption = Math.ceil(
+          Math.max(...rowCaptions.map((caption) => caption.getBoundingClientRect().height)),
+        );
+        rowCaptions.forEach((caption) => {
+          caption.style.minHeight = `${tallestCaption}px`;
+        });
+      });
+    };
+
+    equalize();
+    const observer = new ResizeObserver(equalize);
+    observer.observe(chart);
+    window.addEventListener("resize", equalize);
+
+    return () => {
+      observer.disconnect();
+      window.removeEventListener("resize", equalize);
+    };
+  }, [org, ref]);
 }
 
 type OrgTreeNode = {
@@ -246,6 +292,8 @@ export function TeamPage() {
   const org = t.team.org;
   const chart = useInView<HTMLDivElement>();
   const mobileChart = useInView<HTMLUListElement>();
+  const desktopChart = useRef<HTMLDivElement>(null);
+  useEqualOrgCaptionRows(desktopChart, org);
   const mobileTree: OrgTreeNode = {
     id: org.ceo.id,
     name: org.ceo.name,
@@ -380,22 +428,25 @@ export function TeamPage() {
           </ul>
         </div>
 
-        <div className="mx-auto hidden w-full max-w-[120rem] overflow-x-auto px-5 pb-16 pt-12 md:pb-24 lg:block lg:px-8">
+        <div
+          ref={desktopChart}
+          className="mx-auto hidden w-full max-w-[120rem] overflow-x-auto px-5 pb-16 pt-12 md:pb-24 lg:block lg:px-8"
+        >
           <div ref={chart.ref} className={`org-tree${chart.inView ? " is-in" : ""}`}>
             <div className="org-card--ceo">
-              <OrgNode {...org.ceo} size="lg" />
+              <OrgNode {...org.ceo} size="lg" captionRow="ceo" />
             </div>
 
             <div className="org-mid">
               <div className="org-mid__aside">
                 <div className="org-card--lead">
-                  <OrgNode {...org.construction} size="lg" />
+                  <OrgNode {...org.construction} size="lg" captionRow="leadership" />
                 </div>
               </div>
 
               <div className="org-mid__gm">
                 <div className="org-card--lead">
-                  <OrgNode {...org.gm} size="lg" />
+                  <OrgNode {...org.gm} size="lg" captionRow="leadership" />
                 </div>
               </div>
             </div>
@@ -407,7 +458,7 @@ export function TeamPage() {
               {org.managers.map((m, i) => (
                 <div className="org-item" key={m.id} style={{ "--i": i } as CSSProperties}>
                   <div className="org-card">
-                    <OrgNode id={m.id} name={m.name} role={m.role} />
+                    <OrgNode id={m.id} name={m.name} role={m.role} captionRow="managers" />
                   </div>
 
                   {m.reports.length > 0 && (
@@ -415,7 +466,7 @@ export function TeamPage() {
                       {m.reports.map((r) => (
                         <div className="org-item" key={r.id}>
                           <div className="org-card">
-                            <OrgNode {...r} />
+                            <OrgNode {...r} captionRow="reports" />
                           </div>
                         </div>
                       ))}

@@ -47,7 +47,7 @@ export function Hero() {
   useEffect(() => {
     if (!emblaApi || reducedMotion || isPaused) return;
 
-    const timer = window.setInterval(() => emblaApi.scrollNext(), 6500);
+    const timer = window.setInterval(() => emblaApi.scrollNext(), 4000);
     return () => window.clearInterval(timer);
   }, [activeSlide, emblaApi, isPaused, reducedMotion]);
 
@@ -70,8 +70,6 @@ export function Hero() {
       }}
       onFocusCapture={() => setIsPaused(true)}
       onKeyDown={handleKeyDown}
-      onPointerEnter={() => setIsPaused(true)}
-      onPointerLeave={() => setIsPaused(false)}
     >
       <div
         ref={emblaRef}

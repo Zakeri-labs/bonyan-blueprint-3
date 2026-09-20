@@ -1,37 +1,77 @@
-import { useEffect, useState } from "react";
+import { useEffect, useRef } from "react";
 import { CheckCircle2, ChevronLeft, ChevronRight, MapPin, Quote, Star } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { useT } from "@/i18n";
 import { CLIENT_AVATARS } from "../assets";
 import { SectionLabel } from "../ui";
 
-const PER_VIEW = 2;
-
 export function TestimonialsSection() {
   const { t } = useT();
-  const [page, setPage] = useState(0);
-  const [isPaused, setIsPaused] = useState(false);
+  const cardsViewportRef = useRef<HTMLUListElement>(null);
 
   const items = t.testimonials.items ?? [];
-  const pages = Math.ceil(items.length / PER_VIEW) || 1;
-  const visibleItems = items.slice(page * PER_VIEW, page * PER_VIEW + PER_VIEW);
 
-  // Auto-play / continuous slide interval
+  const scrollCards = (direction: 1 | -1) => {
+    const viewport = cardsViewportRef.current;
+    if (!viewport) return;
+
+    const isRtl = getComputedStyle(viewport).direction === "rtl";
+    viewport.scrollBy({
+      left: direction * viewport.clientWidth * (isRtl ? -1 : 1),
+      behavior: "smooth",
+    });
+  };
+
   useEffect(() => {
-    if (isPaused || pages <= 1) return;
-    const timer = setInterval(() => {
-      setPage((prev) => (prev + 1) % pages);
-    }, 5500);
-    return () => clearInterval(timer);
-  }, [isPaused, pages]);
+    const viewport = cardsViewportRef.current;
+    if (!viewport || items.length <= 1) return;
+
+    const mobileQuery = window.matchMedia("(max-width: 1023px)");
+    let timer: number | undefined;
+
+    const stopAutoScroll = () => {
+      if (timer) window.clearInterval(timer);
+    };
+
+    const startAutoScroll = () => {
+      if (!mobileQuery.matches) return;
+
+      timer = window.setInterval(() => {
+        const maxScroll = viewport.scrollWidth - viewport.clientWidth;
+        const isRtl = getComputedStyle(viewport).direction === "rtl";
+        const scrollPosition = isRtl ? Math.abs(viewport.scrollLeft) : viewport.scrollLeft;
+
+        if (scrollPosition >= maxScroll - 1) {
+          viewport.scrollTo({ left: 0, behavior: "smooth" });
+          return;
+        }
+
+        viewport.scrollBy({
+          left: viewport.clientWidth * (isRtl ? -1 : 1),
+          behavior: "smooth",
+        });
+      }, 5500);
+    };
+
+    const handleViewportChange = () => {
+      stopAutoScroll();
+      startAutoScroll();
+    };
+
+    startAutoScroll();
+    mobileQuery.addEventListener("change", handleViewportChange);
+
+    return () => {
+      stopAutoScroll();
+      mobileQuery.removeEventListener("change", handleViewportChange);
+    };
+  }, [items.length]);
 
   return (
     <section
       id="testimonials"
       aria-labelledby="testimonials-heading"
       className="relative bg-ivory text-ink"
-      onMouseEnter={() => setIsPaused(true)}
-      onMouseLeave={() => setIsPaused(false)}
     >
       <div className="container-site relative py-20 md:py-28">
         <div className="grid gap-10 lg:grid-cols-[minmax(13rem,0.65fr)_minmax(0,2.35fr)] lg:gap-12">
@@ -47,10 +87,10 @@ export function TestimonialsSection() {
             </h2>
             <p className="mt-5 text-sm leading-relaxed text-ink-muted">{t.testimonials.body}</p>
 
-            <div className="mt-8 flex items-center gap-3">
+            <div className="mt-8 flex items-center gap-3 lg:hidden">
               <button
                 type="button"
-                onClick={() => setPage((p) => (p - 1 + pages) % pages)}
+                onClick={() => scrollCards(-1)}
                 aria-label={t.testimonials.prev}
                 className="flex size-11 items-center justify-center rounded-xs border border-ivory-border text-ink transition-all duration-300 hover:border-primary hover:bg-primary/10 hover:text-primary"
               >
@@ -58,7 +98,7 @@ export function TestimonialsSection() {
               </button>
               <button
                 type="button"
-                onClick={() => setPage((p) => (p + 1) % pages)}
+                onClick={() => scrollCards(1)}
                 aria-label={t.testimonials.next}
                 className="flex size-11 items-center justify-center rounded-xs border border-ivory-border text-ink transition-all duration-300 hover:border-primary hover:bg-primary/10 hover:text-primary"
               >
@@ -67,15 +107,18 @@ export function TestimonialsSection() {
             </div>
           </div>
 
-          <div>
-            <ul className="grid gap-5 sm:grid-cols-2">
-              {visibleItems.map((item, idx) => {
+          <div className="min-w-0">
+            <ul
+              ref={cardsViewportRef}
+              className="flex w-full max-w-full snap-x snap-mandatory gap-5 overflow-x-auto scroll-smooth pb-3 [scrollbar-width:none] [&::-webkit-scrollbar]:hidden lg:grid lg:grid-cols-3 lg:overflow-visible lg:pb-0"
+            >
+              {items.map((item, idx) => {
                 const avatar =
                   CLIENT_AVATARS[item.avatarIndex % CLIENT_AVATARS.length] ?? CLIENT_AVATARS[0];
                 return (
                   <li
                     key={item.name + idx}
-                    className="group relative flex h-full min-h-[25rem] flex-col overflow-hidden border border-ivory-border bg-background/5 p-6 sm:h-[27rem] lg:h-[25rem] transition-all duration-500 hover:-translate-y-2 hover:border-primary/60 hover:bg-background/20 hover:shadow-2xl"
+                    className="group relative flex min-h-[25rem] w-full min-w-full shrink-0 snap-center flex-col overflow-hidden border border-ivory-border bg-background/5 p-6 sm:h-[27rem] lg:h-[28rem] lg:min-w-0 transition-all duration-500 hover:-translate-y-2 hover:border-primary/60 hover:bg-background/20 hover:shadow-2xl"
                   >
                     <div className="flex items-start justify-between gap-3">
                       <Quote
@@ -88,7 +131,7 @@ export function TestimonialsSection() {
                       </span>
                     </div>
 
-                    <p className="mt-4 text-sm leading-relaxed text-ink/90 sm:h-48 sm:overflow-y-auto lg:h-36 transition-colors duration-300 group-hover:text-ink">
+                    <p className="mt-4 text-sm leading-relaxed text-ink/90 sm:h-48 sm:overflow-y-auto lg:h-auto lg:flex-1 lg:overflow-visible transition-colors duration-300 group-hover:text-ink">
                       "{item.quote}"
                     </p>
 
@@ -110,7 +153,10 @@ export function TestimonialsSection() {
                         loading="lazy"
                         width={64}
                         height={64}
-                        className="size-16 shrink-0 rounded-full border-2 border-primary/40 object-cover transition-transform duration-300 group-hover:scale-105 group-hover:border-primary"
+                        className={cn(
+                          "size-16 shrink-0 rounded-full border-2 border-primary/40 object-cover transition-transform duration-300 group-hover:scale-105 group-hover:border-primary",
+                          item.avatarIndex <= 1 && "object-top",
+                        )}
                       />
                       <div className="flex min-w-0 flex-1 flex-col justify-center self-stretch">
                         <p className="font-display text-sm font-bold leading-snug text-ink transition-colors duration-300 group-hover:text-primary">
@@ -131,22 +177,6 @@ export function TestimonialsSection() {
                 );
               })}
             </ul>
-
-            <div className="mt-8 flex justify-center gap-2">
-              {Array.from({ length: pages }).map((_, i) => (
-                <button
-                  key={i}
-                  type="button"
-                  onClick={() => setPage(i)}
-                  aria-label={`${t.testimonials.goTo} ${i + 1}`}
-                  aria-current={page === i ? "true" : undefined}
-                  className={cn(
-                    "h-1.5 rounded-xs transition-all duration-500",
-                    page === i ? "w-10 bg-primary" : "w-6 bg-ivory-border hover:bg-primary/50",
-                  )}
-                />
-              ))}
-            </div>
           </div>
         </div>
       </div>

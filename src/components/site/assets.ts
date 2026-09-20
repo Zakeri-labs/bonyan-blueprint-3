@@ -76,9 +76,6 @@ import slider4 from "@/assets/Picture of Projects/portfolio/Slider-4.png";
 import slider5 from "@/assets/Picture of Projects/portfolio/Slider-5.png";
 import slider6 from "@/assets/Picture of Projects/portfolio/Slider-6.png";
 
-import client4 from "@/assets/client-4.png";
-import client5 from "@/assets/client-5.png";
-import client6 from "@/assets/client-6.png";
 import zahranAlAufi from "@/assets/testimonials/zahran-al-aufi.png";
 import ahmedAlShukaili from "@/assets/testimonials/ahmed-al-shukaili.png";
 import salimSaidAlHizami from "@/assets/testimonials/salim-said-al-hizami.png";
@@ -111,14 +108,7 @@ export const IMAGES = {
   managingDirector: teamYaserAlAufi,
 };
 
-export const CLIENT_AVATARS = [
-  zahranAlAufi,
-  ahmedAlShukaili,
-  salimSaidAlHizami,
-  client4,
-  client5,
-  client6,
-];
+export const CLIENT_AVATARS = [zahranAlAufi, ahmedAlShukaili, salimSaidAlHizami];
 
 /** Client marks used in the Portfolio-page scrolling logo strip. */
 export const CLIENT_LOGOS = [

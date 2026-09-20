@@ -51,14 +51,25 @@ export const en = {
         description: "Master planning and landscape design — 120,000 sqm",
         meta: "",
       },
-      { label: "Residential Villas", title: "", description: "", meta: "" },
+      {
+        label: "Residential Villas",
+        title: "Villa Architectural Design",
+        description: "Architectural concept proposal for a contemporary luxury villa.",
+        meta: "Architectural design · 2026",
+      },
       {
         label: "Master Planning",
         title: "Development of Al-Murtafa' Beach, Wilayat of Sur",
         description: "1,600 metre beach walkway master plan",
         meta: "",
       },
-      { label: "", title: "", description: "", meta: "" },
+      {
+        label: "Special Facilities",
+        title: "Space Habitats Centre",
+        description:
+          "Detailed structural design for an innovative centre currently under construction.",
+        meta: "Duqm Special Economic Zone · 4,043.90 sqm",
+      },
       {
         label: "University of Technology and Applied Sciences",
         title: "5,000 sqm Office Building in University",
@@ -530,33 +541,6 @@ export const en = {
           "We value Bonyan's collaboration in providing on-site training opportunities for vocational college students as part of its social responsibility. This initiative helps equip students and connect academic learning with the requirements of the labour market.",
         rating: 5,
         avatarIndex: 2,
-      },
-      {
-        name: "Khamis Al-Zadjali",
-        role: "Mosque Committee Representative",
-        location: "Muscat",
-        quote:
-          "It was an honor collaborating with Bonyan on the engineering drawings and site supervision for our grand mosque project. Honest, dedicated, and continuous site oversight throughout.",
-        rating: 5,
-        avatarIndex: 3,
-      },
-      {
-        name: "Tariq Al-Balushi",
-        role: "Real Estate Developer",
-        location: "Al Seeb, Muscat",
-        quote:
-          "Bonyan provided practical engineering solutions for plot subdivision and planning support, enabling smooth approvals with local authorities and optimal land utilization.",
-        rating: 5,
-        avatarIndex: 4,
-      },
-      {
-        name: "Salim Al-Harthy",
-        role: "Residential Compound Client",
-        location: "Salalah",
-        quote:
-          "Regular engineering site inspections and clear quality reports from Bonyan gave us complete confidence that our contractor fully adhered to engineering specs.",
-        rating: 5,
-        avatarIndex: 5,
       },
     ],
   },

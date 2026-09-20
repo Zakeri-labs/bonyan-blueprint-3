@@ -396,8 +396,6 @@
    subtle drop shadow that reads just below the strip. */
 .org-caption {
   min-width: 0;
-  /* Matches the tallest three-line name-and-role combination in the chart. */
-  min-height: 7.25rem;
   box-shadow: 0 6px 12px -7px oklch(0 0 0 / 0.5);
 }
 .org-caption > span {
