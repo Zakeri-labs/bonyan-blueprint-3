@@ -23,10 +23,10 @@ export const en = {
   hero: {
     eyebrow: "Engineering & Construction Services — Muscat, Oman",
     title1: "Building Your Vision with Precision.",
-    title2: "Expert Design, Engineering, Supervision, and Construction Services.",
+    title2: "Expert Design, Engineering, Supervision & Construction.",
     subtitle:
-      "Architectural and civil design, MEP engineering, quantity surveying, site supervision, and construction.",
-    subtitle2: "For ministry, private, and commercial projects across the Sultanate of Oman.",
+      "Architectural and civil design, MEP engineering, quantity surveying, supervision, and construction.",
+    subtitle2: "For public, private, and commercial projects across Oman.",
     primary: "Contact Us",
     secondary: "View Our Work",
     capabilities: ["Design", "Engineering", "Supervision", "Construction"],
