@@ -113,28 +113,28 @@ export function Hero() {
         style={{ animationDelay: "3.5s" }}
       />
 
-      <div className="pointer-events-none container-site relative flex min-h-[92vh] flex-col justify-end pb-36 pt-32 md:justify-center md:pb-28 md:pt-40">
+      <div className="pointer-events-none container-site relative flex min-h-[92vh] flex-col justify-end pb-48 pt-32 md:justify-center md:pb-28 md:pt-40">
         <div className="grid gap-12 lg:grid-cols-12 lg:items-center">
           <div className="max-w-3xl lg:col-span-8">
-            <div className="inline-flex items-center gap-2 rounded-full border border-primary/30 bg-background/50 px-3.5 py-1 backdrop-blur-xs">
+            <div className="inline-flex max-w-[18rem] items-center gap-2 rounded-full border border-primary/30 bg-background/50 px-3.5 py-1 backdrop-blur-xs sm:max-w-none">
               <span className="relative flex size-2 shrink-0">
                 <span className="status-ping" />
                 <span className="relative inline-flex size-2 rounded-full bg-primary" />
               </span>
               <p className="eyebrow">{t.hero.eyebrow}</p>
             </div>
-            <h1 className="mt-5 font-display text-[2rem] font-extrabold leading-[1.08] sm:mt-6 sm:text-5xl md:text-6xl lg:text-7xl">
+            <h1 className="mt-5 max-w-[18rem] font-display text-[2rem] font-extrabold leading-[1.08] sm:mt-6 sm:max-w-none sm:text-5xl md:text-6xl lg:text-7xl">
               <span className="block">{t.hero.title1}</span>
               <span className="mt-2.5 block max-w-[18rem] text-[1.0625rem] font-bold leading-snug text-primary sm:mt-3 sm:max-w-xl sm:text-2xl md:max-w-2xl md:text-[1.75rem] lg:text-3xl">
                 {t.hero.title2}
               </span>
             </h1>
-            <p className="mt-4 max-w-[18rem] text-sm leading-relaxed text-muted-foreground sm:max-w-2xl sm:text-base md:mt-6 md:text-lg">
-              <span className="block">{t.hero.subtitle}</span>
-              <span className="mt-1 block">{t.hero.subtitle2}</span>
+            <p className="mt-5 max-w-[18rem] text-sm leading-relaxed text-muted-foreground sm:max-w-2xl sm:text-base md:mt-6 md:text-lg">
+              <span className="hidden sm:block">{t.hero.subtitle}</span>
+              <span className="hidden sm:mt-1 sm:block">{t.hero.subtitle2}</span>
             </p>
 
-            <div className="pointer-events-auto mt-6 flex flex-wrap gap-3 sm:mt-9">
+            <div className="pointer-events-auto mt-5 flex flex-wrap gap-3 sm:mt-9">
               <Btn
                 to={lp("/contact")}
                 arrow
@@ -152,7 +152,7 @@ export function Hero() {
               </Btn>
             </div>
 
-            <ul className="mt-7 flex flex-wrap items-center gap-x-4 gap-y-2 text-[0.6875rem] font-medium uppercase tracking-[0.12em] text-muted-foreground sm:mt-10 sm:gap-x-6 sm:text-xs sm:tracking-[0.15em]">
+            <ul className="mt-5 flex max-w-[18rem] flex-wrap items-center gap-x-4 gap-y-2 text-[0.6875rem] font-medium uppercase tracking-[0.12em] text-muted-foreground sm:mt-10 sm:max-w-none sm:gap-x-6 sm:text-xs sm:tracking-[0.15em]">
               {t.hero.capabilities.map((c) => (
                 <li
                   key={c}
