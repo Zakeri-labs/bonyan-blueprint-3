@@ -304,7 +304,7 @@ export const en = {
         projects: [
           {
             name: "Factory for Fabrication Work, Oil and Gas",
-            type: "Admiral Oil and Gas Tools LLC",
+            type: "Admiral Oil and Gas Tools",
             scope: "Construction and completion of work as per approved drawing and specification.",
             location: "Muscat",
             year: "",
@@ -646,12 +646,12 @@ export const en = {
         { id: "ahsan", name: "Ahsan Ali", role: "MEP Head", reports: [] },
         {
           id: "amir",
-          name: "Amir paresh",
+          name: "Amir Paresh",
           role: "Lead Architect",
           reports: [
             {
               id: "riyan",
-              name: "RAIYAN HUSSEIN MOHAMMED HAMOOD AL HAJRI",
+              name: "Raiyan Hussein Mohammed Hamood Al Hajri",
               role: "Architect / Team Member",
             },
           ],
@@ -664,13 +664,16 @@ export const en = {
           role: "Structure Head",
           reports: [],
         },
-        { id: "salman", name: "Salman khorram", role: "Projects Manager", reports: [] },
+        { id: "salman", name: "Salman Khorram", role: "Projects Manager", reports: [] },
         {
           id: "siva",
-          name: "SIVA Murukesan",
+          name: "Siva Murukesan",
           role: "HR / Accounts Manager",
-          reports: [{ id: "emas", name: "Emas", role: "Public Relations Manager" }],
+          reports: [
+            { id: "emas", name: "Iman Rashid Marhoon Al Rawahi", role: "Public Relations Manager" },
+          ],
         },
+        { id: "zakeri", name: "Mohammad Reza Zakeri", role: "IT Manager", reports: [] },
         { id: "ummer", name: "Ummer Faruq", role: "Branch Head", reports: [] },
         {
           id: "pramodh",
@@ -678,9 +681,6 @@ export const en = {
           role: "Branch Head",
           reports: [],
         },
-        { id: "abisekh", name: "Abisekh Durai", role: "Team Member", reports: [] },
-        { id: "zakeri", name: "Mohammad Reza Zakeri", role: "IT Manager", reports: [] },
-        { id: "jefrin-monish", name: "Jefrin Monish", role: "", reports: [] },
       ],
     },
   },

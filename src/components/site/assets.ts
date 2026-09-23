@@ -23,7 +23,6 @@ import teamSalmanRahimdokhtKhorram from "@/assets/Team picture/New/Salman khorra
 import teamUmmerFaruq from "@/assets/Team picture/New/Ummer Faruq.PNG";
 import teamPramodh from "@/assets/Team picture/New/Pramodh Sasi Vaasukuttan.PNG";
 import teamRaiyanHusseinMohammedHamoodAlHajri from "@/assets/Team picture/New/RAIYAN HUSSEIN MOHAMMED HAMOOD AL HAJRI.png";
-import teamAbisekhDurai from "@/assets/Team picture/New/Abisekh Durai.png";
 import teamEmas from "@/assets/Team picture/New/Emas.png";
 import teamMohammadRezaZakeri from "@/assets/Team picture/New/Mohammad Reza Zakeri.png";
 
@@ -205,7 +204,12 @@ export const HOME_HERO_SLIDES = [slider1, slider2, slider3, slider4, slider5, sl
 export const HOME_PORTFOLIO_PROJECTS = [
   { serviceId: "planning", projectIndex: 0, image: alMurtafaBeach },
   { serviceId: "design", projectIndex: 1, image: architectural2 },
-  { serviceId: "supervision", projectIndex: 2, image: supervisionVilla },
+  {
+    serviceId: "supervision",
+    projectIndex: 2,
+    image: supervisionVilla,
+    hideClientAndLocation: true,
+  },
   { serviceId: "planning", projectIndex: 1, image: sahamPublicPark },
   { serviceId: "mep", projectIndex: 0, image: mepCommercial },
   { serviceId: "construction", projectIndex: 0, image: buildingConstruction01 },
@@ -277,8 +281,6 @@ export const ORG_PHOTOS: Record<string, string> = {
   ummer: teamUmmerFaruq, // Ummer Faruq
   pramodh: teamPramodh, // Pramodh Sasi Vaasukuttan
   riyan: teamRaiyanHusseinMohammedHamoodAlHajri, // Raiyan Hussein Mohammed Hamood Al Hajri
-  abisekh: teamAbisekhDurai, // Abisekh Durai
   emas: teamEmas, // Emas
   zakeri: teamMohammadRezaZakeri, // Mohammad Reza Zakeri
-  "jefrin-monish": teamJefrinMonish, // Jefrin Monish
 };

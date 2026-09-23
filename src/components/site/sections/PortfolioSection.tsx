@@ -9,11 +9,11 @@ const SPANS = ["lg:col-span-4", "lg:col-span-4", "lg:col-span-4", "lg:col-span-5
 
 export function PortfolioSection() {
   const { t, lp } = useT();
-  const projects = HOME_PORTFOLIO_PROJECTS.flatMap(({ serviceId, projectIndex, image }) => {
+  const projects = HOME_PORTFOLIO_PROJECTS.flatMap(({ serviceId, projectIndex, ...display }) => {
     const service = t.portfolioPage.services.find((item) => item.id === serviceId);
     const project = service?.projects[projectIndex];
 
-    return project ? [{ ...project, image }] : [];
+    return project ? [{ ...project, ...display }] : [];
   });
   const admiralProject = projects[5];
 
@@ -22,76 +22,81 @@ export function PortfolioSection() {
     index: number,
     compact = false,
     stackedPrimary = false,
-  ) => (
-    <Reveal
-      className={cn(
-        "h-full",
-        compact ? "lg:block lg:min-h-0 lg:flex-1" : stackedPrimary && "lg:h-auto lg:shrink-0",
-      )}
-      delay={(index % 3) * 70}
-    >
-      <article className="group relative h-full overflow-hidden border border-border transition-all duration-500 hover:-translate-y-1 hover:border-primary/80 hover:shadow-lg hover:shadow-primary/8">
-        <img
-          src={project.image}
-          alt={
-            project.location
-              ? `${project.name} — ${project.scope}, ${project.location}`
-              : `${project.name} — ${project.scope}`
-          }
-          loading="lazy"
-          width={1200}
-          height={800}
-          className={cn(
-            "aspect-4/3 w-full object-cover transition-transform duration-700 group-hover:scale-108",
-            compact && "lg:size-full lg:aspect-auto lg:object-top",
-          )}
-        />
-        <div
-          aria-hidden="true"
-          className="absolute inset-0 bg-linear-to-t from-background/95 from-0% via-background/70 via-30% to-transparent to-60% transition-opacity duration-500 group-hover:opacity-100"
-        />
-        <div
-          className={cn(
-            "absolute inset-x-0 bottom-0 p-5 transition-transform duration-300 group-hover:-translate-y-1",
-            compact && "lg:p-4",
-          )}
-        >
-          <span className="eyebrow">{project.type}</span>
-          <h3
+  ) => {
+    const hideClientAndLocation =
+      "hideClientAndLocation" in project && project.hideClientAndLocation;
+
+    return (
+      <Reveal
+        className={cn(
+          "h-full",
+          compact ? "lg:block lg:min-h-0 lg:flex-1" : stackedPrimary && "lg:h-auto lg:shrink-0",
+        )}
+        delay={(index % 3) * 70}
+      >
+        <article className="group relative h-full overflow-hidden border border-border transition-all duration-500 hover:-translate-y-1 hover:border-primary/80 hover:shadow-lg hover:shadow-primary/8">
+          <img
+            src={project.image}
+            alt={
+              project.location && !hideClientAndLocation
+                ? `${project.name} — ${project.scope}, ${project.location}`
+                : `${project.name} — ${project.scope}`
+            }
+            loading="lazy"
+            width={1200}
+            height={800}
             className={cn(
-              "mt-2 font-display text-lg font-bold leading-snug transition-colors duration-300 group-hover:text-primary",
-              compact && "lg:mt-1.5 lg:line-clamp-2 lg:text-sm lg:leading-tight",
+              "aspect-4/3 w-full object-cover transition-transform duration-700 group-hover:scale-108",
+              compact && "lg:size-full lg:aspect-auto lg:object-top",
+            )}
+          />
+          <div
+            aria-hidden="true"
+            className="absolute inset-0 bg-linear-to-t from-background/95 from-0% via-background/70 via-30% to-transparent to-60% transition-opacity duration-500 group-hover:opacity-100"
+          />
+          <div
+            className={cn(
+              "absolute inset-x-0 bottom-0 p-5 transition-transform duration-300 group-hover:-translate-y-1",
+              compact && "lg:p-4",
             )}
           >
-            {project.name}
-          </h3>
-          {compact ? (
-            <p className="mt-1 hidden text-[0.65rem] leading-snug text-primary lg:line-clamp-2 lg:block">
-              {project.scope}
-            </p>
-          ) : (
-            <>
-              <p className="mt-1 text-xs text-primary">{project.scope}</p>
-              {project.location && (
-                <a
-                  href={CONTACT.mapHref}
-                  target="_blank"
-                  rel="noreferrer"
-                  className="mt-2 flex w-fit items-center gap-1.5 text-xs text-muted-foreground transition-colors hover:text-primary"
-                >
-                  <MapPin
-                    aria-hidden="true"
-                    className="size-3.5 text-primary transition-transform duration-300 group-hover:scale-125"
-                  />
-                  {project.location}
-                </a>
+            {!hideClientAndLocation && <span className="eyebrow">{project.type}</span>}
+            <h3
+              className={cn(
+                "mt-2 font-display text-lg font-bold leading-snug transition-colors duration-300 group-hover:text-primary",
+                compact && "lg:mt-1.5 lg:line-clamp-2 lg:text-sm lg:leading-tight",
               )}
-            </>
-          )}
-        </div>
-      </article>
-    </Reveal>
-  );
+            >
+              {project.name}
+            </h3>
+            {compact ? (
+              <p className="mt-1 hidden text-[0.65rem] leading-snug text-primary lg:line-clamp-2 lg:block">
+                {project.scope}
+              </p>
+            ) : (
+              <>
+                <p className="mt-1 text-xs text-primary">{project.scope}</p>
+                {project.location && !hideClientAndLocation && (
+                  <a
+                    href={CONTACT.mapHref}
+                    target="_blank"
+                    rel="noreferrer"
+                    className="mt-2 flex w-fit items-center gap-1.5 text-xs text-muted-foreground transition-colors hover:text-primary"
+                  >
+                    <MapPin
+                      aria-hidden="true"
+                      className="size-3.5 text-primary transition-transform duration-300 group-hover:scale-125"
+                    />
+                    {project.location}
+                  </a>
+                )}
+              </>
+            )}
+          </div>
+        </article>
+      </Reveal>
+    );
+  };
 
   return (
     <section id="portfolio" aria-labelledby="portfolio-heading" className="relative bg-panel">

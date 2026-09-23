@@ -46,6 +46,8 @@ const ORG_EMAILS: Record<string, string> = {
   siva: "siva.m@bonyanec.com",
 };
 
+const DEFERRED_MANAGER_IDS = new Set(["ummer", "pramodh"]);
+
 /** Portrait with a graceful fallback to the placeholder if the file is missing. */
 function TeamPhoto({ src, name, pending }: { src: string; name: string; pending: string }) {
   const [failed, setFailed] = useState(false);
@@ -456,21 +458,44 @@ export function TeamPage() {
               style={{ "--org-cols": org.managers.length } as CSSProperties}
             >
               {org.managers.map((m, i) => (
-                <div className="org-item" key={m.id} style={{ "--i": i } as CSSProperties}>
-                  <div className="org-card">
-                    <OrgNode id={m.id} name={m.name} role={m.role} captionRow="managers" />
-                  </div>
-
-                  {m.reports.length > 0 && (
-                    <div className="org-children">
-                      {m.reports.map((r) => (
-                        <div className="org-item" key={r.id}>
+                <div
+                  className={`org-item${DEFERRED_MANAGER_IDS.has(m.id) ? " org-item--deferred" : ""}${m.id === "pramodh" ? " org-item--deferred-last" : ""}`}
+                  key={m.id}
+                  style={{ "--i": i } as CSSProperties}
+                >
+                  {DEFERRED_MANAGER_IDS.has(m.id) ? (
+                    <>
+                      <div className="org-deferred-spacer" aria-hidden="true">
+                        <div className="org-card org-card--spacer">
+                          <OrgNode id="" name="" role="" captionRow="managers" />
+                        </div>
+                      </div>
+                      <div className="org-children">
+                        <div className="org-item">
                           <div className="org-card">
-                            <OrgNode {...r} captionRow="reports" />
+                            <OrgNode id={m.id} name={m.name} role={m.role} captionRow="reports" />
                           </div>
                         </div>
-                      ))}
-                    </div>
+                      </div>
+                    </>
+                  ) : (
+                    <>
+                      <div className="org-card">
+                        <OrgNode id={m.id} name={m.name} role={m.role} captionRow="managers" />
+                      </div>
+
+                      {m.reports.length > 0 && (
+                        <div className="org-children">
+                          {m.reports.map((r) => (
+                            <div className="org-item" key={r.id}>
+                              <div className="org-card">
+                                <OrgNode {...r} captionRow="reports" />
+                              </div>
+                            </div>
+                          ))}
+                        </div>
+                      )}
+                    </>
                   )}
                 </div>
               ))}

@@ -542,6 +542,40 @@
   height: var(--org-gap-v);
 }
 
+/* Ummer and Pramodh are part of the manager level but are displayed alongside
+   the reports. A hidden, same-sized spacer keeps their cards on that lower
+   row, while this uninterrupted vertical line preserves their manager-level
+   connection to the third-row bus. */
+.org-card--spacer {
+  visibility: hidden;
+}
+.org-children--wide > .org-item > .org-deferred-spacer > .org-card {
+  width: 100%;
+  max-width: 12rem;
+  margin-inline: auto;
+}
+.org-deferred-spacer {
+  position: relative;
+  width: 100%;
+}
+.org-deferred-spacer::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  bottom: calc(-1 * var(--org-gap-v));
+  left: 50%;
+  width: var(--org-line-w);
+  background: var(--org-line);
+}
+.org-item--deferred > .org-children::before,
+.org-item--deferred > .org-children > .org-item::before {
+  display: none;
+}
+.org-item--deferred-last > .org-children {
+  --org-deferred-offset: calc(var(--org-gap-h) + 2px);
+  inset-inline-start: var(--org-deferred-offset);
+}
+
 /* ---- Chart entrance animation (desktop) --------------------------------------
    `.org-tree` gets `.is-in` from an IntersectionObserver in TeamPage. Cards
    cascade in level by level (CEO → leads → managers L→R → reports) and each
@@ -581,7 +615,8 @@
 .org-tree .org-mid::before,
 .org-tree .org-mid__aside::before,
 .org-tree .org-children::before,
-.org-tree .org-children > .org-item::before {
+.org-tree .org-children > .org-item::before,
+.org-tree .org-deferred-spacer::before {
   transform: scaleY(0);
   transform-origin: top;
   transition: transform 1.6s ease;
@@ -598,7 +633,8 @@
 .org-tree.is-in .org-mid::before,
 .org-tree.is-in .org-mid__aside::before,
 .org-tree.is-in .org-children::before,
-.org-tree.is-in .org-children > .org-item::before {
+.org-tree.is-in .org-children > .org-item::before,
+.org-tree.is-in .org-deferred-spacer::before {
   transform: scaleY(1);
 }
 .org-tree.is-in .org-children > .org-item::after {
@@ -632,6 +668,9 @@
 .org-tree.is-in .org-children--wide .org-children > .org-item::before {
   transition-delay: 2600ms;
 }
+.org-tree.is-in .org-deferred-spacer::before {
+  transition-delay: 2300ms;
+}
 
 @media (prefers-reduced-motion: reduce) {
   .org-tree .org-card--ceo,
@@ -644,6 +683,7 @@
   .org-tree .org-mid__aside::before,
   .org-tree .org-children::before,
   .org-tree .org-children > .org-item::before,
+  .org-tree .org-deferred-spacer::before,
   .org-tree .org-children > .org-item::after {
     transform: none !important;
   }
