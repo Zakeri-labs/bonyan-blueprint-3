@@ -2,7 +2,7 @@ import { type CSSProperties, type RefObject, useEffect, useRef, useState } from 
 import { Mail, UserRound } from "lucide-react";
 import { useT } from "@/i18n";
 import { SiteLayout } from "../SiteLayout";
-import { IMAGES, ORG_PHOTOS, TEAM_PHOTOS } from "../assets";
+import { ORG_PHOTOS, TEAM_PHOTOS } from "../assets";
 import { Reveal, SectionLabel } from "../ui";
 
 /** Fires once when the referenced element first scrolls into view. */
@@ -326,14 +326,6 @@ export function TeamPage() {
   return (
     <SiteLayout>
       <section className="relative overflow-hidden pt-32 md:pt-40">
-        <img
-          src={IMAGES.about}
-          alt=""
-          aria-hidden="true"
-          width={1200}
-          height={800}
-          className="absolute inset-0 size-full object-cover opacity-20"
-        />
         <div
           aria-hidden="true"
           className="absolute inset-0 bg-linear-to-b from-background/80 via-background/90 to-background"

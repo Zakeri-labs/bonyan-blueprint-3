@@ -1,30 +1,30 @@
-import heroVilla from "@/assets/hero-villa.jpg";
-import aboutReview from "@/assets/about-review.jpg";
-import aboutBonyanConstruction from "@/assets/about-bonyan-construction.png";
-import projMosque from "@/assets/proj-mosque.jpg";
-import projSchool from "@/assets/proj-school.jpg";
-import projCompound from "@/assets/proj-compound.jpg";
-import projCommercial from "@/assets/proj-commercial.jpg";
-import detailDrawings from "@/assets/detail-drawings.jpg";
-import detailFacade from "@/assets/detail-facade.jpg";
+import heroVilla from "@/assets/Picture of Projects/hero-villa.jpg";
+import aboutReview from "@/assets/Picture of Projects/about-review.jpg";
+import aboutBonyanConstruction from "@/assets/Picture of Projects/about-bonyan-construction.png";
+import projMosque from "@/assets/Picture of Projects/proj-mosque.jpg";
+import projSchool from "@/assets/Picture of Projects/proj-school.jpg";
+import projCompound from "@/assets/Picture of Projects/proj-compound.jpg";
+import projCommercial from "@/assets/Picture of Projects/proj-commercial.jpg";
+import detailDrawings from "@/assets/Picture of Projects/detail-drawings.jpg";
+import detailFacade from "@/assets/Picture of Projects/detail-facade.jpg";
 
-import teamYaserAlAufi from "@/assets/Team picture/New/Yasir Salim Hamed Al Aufi.png";
-import teamAjilKunnarMathias from "@/assets/Team picture/New/Ajil Kumar Mathias .png";
-import teamAtheeshNadesan from "@/assets/Team picture/New/Atheesh Nadesan.png";
-import teamAghaShahid from "@/assets/Team picture/New/Agha Shahid.png";
-import teamAhsanAli from "@/assets/Team picture/New/Ahsan Ali.png";
-import teamJefrinMonish from "@/assets/Team picture/New/Jefrin Monish.png";
-import teamPuvaneshRavi from "@/assets/Team picture/New/Puvanesh Ravi.png";
-import teamRajeshAsirvatham from "@/assets/Team picture/New/Rajesh Asirvatham.PNG";
-import teamMohammedIbrahimMirkar from "@/assets/Team picture/New/Mohammed Ibrahim Mirkar.png";
-import teamSivaMurukesan from "@/assets/Team picture/New/SIVA Murukesan.PNG";
-import teamAmirHosseinParesh from "@/assets/Team picture/New/Amir paresh.PNG";
-import teamSalmanRahimdokhtKhorram from "@/assets/Team picture/New/Salman khorram.PNG";
-import teamUmmerFaruq from "@/assets/Team picture/New/Ummer Faruq.PNG";
-import teamPramodh from "@/assets/Team picture/New/Pramodh Sasi Vaasukuttan.PNG";
-import teamRaiyanHusseinMohammedHamoodAlHajri from "@/assets/Team picture/New/RAIYAN HUSSEIN MOHAMMED HAMOOD AL HAJRI.png";
-import teamEmas from "@/assets/Team picture/New/Emas.png";
-import teamMohammadRezaZakeri from "@/assets/Team picture/New/Mohammad Reza Zakeri.png";
+import teamYaserAlAufi from "@/assets/team/Yasir Salim Hamed Al Aufi.png";
+import teamAjilKunnarMathias from "@/assets/team/Ajil Kumar Mathias .png";
+import teamAtheeshNadesan from "@/assets/team/Atheesh Nadesan.png";
+import teamAghaShahid from "@/assets/team/Agha Shahid.png";
+import teamAhsanAli from "@/assets/team/Ahsan Ali.png";
+import teamJefrinMonish from "@/assets/team/Jefrin Monish.png";
+import teamPuvaneshRavi from "@/assets/team/Puvanesh Ravi.png";
+import teamRajeshAsirvatham from "@/assets/team/Rajesh Asirvatham.PNG";
+import teamMohammedIbrahimMirkar from "@/assets/team/Mohammed Ibrahim Mirkar.png";
+import teamSivaMurukesan from "@/assets/team/SIVA Murukesan.PNG";
+import teamAmirHosseinParesh from "@/assets/team/Amir paresh.PNG";
+import teamSalmanRahimdokhtKhorram from "@/assets/team/Salman khorram.PNG";
+import teamUmmerFaruq from "@/assets/team/Ummer Faruq.PNG";
+import teamPramodh from "@/assets/team/Pramodh Sasi Vaasukuttan.PNG";
+import teamRaiyanHusseinMohammedHamoodAlHajri from "@/assets/team/RAIYAN HUSSEIN MOHAMMED HAMOOD AL HAJRI.png";
+import teamEmas from "@/assets/team/Emas.png";
+import teamMohammadRezaZakeri from "@/assets/team/Mohammad Reza Zakeri.png";
 
 import buildingConstruction01 from "@/assets/Picture of Projects/Building_Construction_01.png";
 import buildingConstruction02 from "@/assets/Picture of Projects/Building_Construction_02.png";
@@ -39,45 +39,45 @@ import constructionServices from "@/assets/Picture of Projects/Construction_serv
 import sahamPublicPark from "@/assets/Picture of Projects/Architectural-1.png";
 import architectural2 from "@/assets/Picture of Projects/Architectural-2.png";
 import architectural3 from "@/assets/Picture of Projects/Architectural-3.png";
-import twinVillaGallery from "@/assets/Picture of Projects/portfolio/twin-villa-gallery.png";
-import universityOfficeBuilding from "@/assets/Picture of Projects/portfolio/university-office-building.jpg";
-import supervisionVilla from "@/assets/Picture of Projects/portfolio/supervision-villa.jpg";
-import supervisionVillaDetail01 from "@/assets/Picture of Projects/portfolio/supervision-villa-detail-01.png";
-import supervisionVillaDetail02 from "@/assets/Picture of Projects/portfolio/supervision-villa-detail-02.png";
-import bonyanOffice from "@/assets/bonyan-office.png";
-import managementCommercial from "@/assets/Picture of Projects/portfolio/management-commercial.jpg";
-import managementCampus from "@/assets/Picture of Projects/portfolio/management-campus.jpg";
-import mepCommercial from "@/assets/Picture of Projects/portfolio/mep-commercial.jpg";
-import mepMechanicalSystems from "@/assets/Picture of Projects/portfolio/MEP-1.png";
-import mepSiteSupervision from "@/assets/Picture of Projects/portfolio/MEP-3.png";
-import mepElectricalEngineering from "@/assets/Picture of Projects/portfolio/MEP-2.png";
-import quantityCommercial from "@/assets/Picture of Projects/portfolio/quantity-commercial.jpg";
-import quantityCompound from "@/assets/Picture of Projects/portfolio/quantity-compound.jpg";
-import quantityVillas from "@/assets/Picture of Projects/portfolio/quantity-villas.jpg";
-import planningPark from "@/assets/Picture of Projects/portfolio/planning-park-cropped.jpg";
-import alMurtafaBeach from "@/assets/Picture of Projects/portfolio/al-murtafa-beach-walkway.png";
-import eightVillaComplex from "@/assets/Picture of Projects/portfolio/8-villa-complex.jpg";
-import universityCampusMasterPlan from "@/assets/Picture of Projects/portfolio/university-campus-master-plan.jpg";
-import mainConstruction from "@/assets/Picture of Projects/portfolio/main-construction.jpg";
-import mainDesign from "@/assets/Picture of Projects/portfolio/main-design.jpg";
-import mainDesignBrochure from "@/assets/Picture of Projects/portfolio/main-design-brochure.jpg";
-import mainManagement from "@/assets/Picture of Projects/portfolio/main-management.jpg";
-import mainMep from "@/assets/Picture of Projects/portfolio/main-mep.jpg";
-import mainMepSystems from "@/assets/Picture of Projects/portfolio/main-mep-systems.png";
-import mainQuantity from "@/assets/Picture of Projects/portfolio/quantity-surveying-cost-control.png";
-import portfolioQuantitySurveying from "@/assets/Picture of Projects/portfolio/quantity-surveying-cost-control-portfolio.png";
-import mainPlanning from "@/assets/Picture of Projects/portfolio/main-planning-cropped.jpg";
-import servicesArchitecturalStructuralDesign from "@/assets/Picture of Projects/portfolio/services-architectural-structural-design.png";
-import slider1 from "@/assets/Picture of Projects/portfolio/Slider-1.png";
-import slider2 from "@/assets/Picture of Projects/portfolio/Slider-2.png";
-import slider3 from "@/assets/Picture of Projects/portfolio/Slider-3.png";
-import slider4 from "@/assets/Picture of Projects/portfolio/Slider-4.png";
-import slider5 from "@/assets/Picture of Projects/portfolio/Slider-5.png";
-import slider6 from "@/assets/Picture of Projects/portfolio/Slider-6.png";
+import twinVillaGallery from "@/assets/Picture of Projects/twin-villa-gallery.png";
+import universityOfficeBuilding from "@/assets/Picture of Projects/university-office-building.jpg";
+import supervisionVilla from "@/assets/Picture of Projects/supervision-villa.jpg";
+import supervisionVillaDetail01 from "@/assets/Picture of Projects/supervision-villa-detail-01.png";
+import supervisionVillaDetail02 from "@/assets/Picture of Projects/supervision-villa-detail-02.png";
+import bonyanOffice from "@/assets/Picture of Projects/bonyan-office.png";
+import managementCommercial from "@/assets/Picture of Projects/management-commercial.jpg";
+import managementCampus from "@/assets/Picture of Projects/management-campus.jpg";
+import mepCommercial from "@/assets/Picture of Projects/mep-commercial.jpg";
+import mepMechanicalSystems from "@/assets/Picture of Projects/MEP-1.png";
+import mepSiteSupervision from "@/assets/Picture of Projects/MEP-3.png";
+import mepElectricalEngineering from "@/assets/Picture of Projects/MEP-2.png";
+import quantityCommercial from "@/assets/Picture of Projects/quantity-commercial.jpg";
+import quantityCompound from "@/assets/Picture of Projects/quantity-compound.jpg";
+import quantityVillas from "@/assets/Picture of Projects/quantity-villas.jpg";
+import planningPark from "@/assets/Picture of Projects/planning-park-cropped.jpg";
+import alMurtafaBeach from "@/assets/Picture of Projects/al-murtafa-beach-walkway.png";
+import eightVillaComplex from "@/assets/Picture of Projects/8-villa-complex.jpg";
+import universityCampusMasterPlan from "@/assets/Picture of Projects/university-campus-master-plan.jpg";
+import mainConstruction from "@/assets/Picture of Projects/main-construction.jpg";
+import mainDesign from "@/assets/Picture of Projects/main-design.jpg";
+import mainDesignBrochure from "@/assets/Picture of Projects/main-design-brochure.jpg";
+import mainManagement from "@/assets/Picture of Projects/main-management.jpg";
+import mainMep from "@/assets/Picture of Projects/main-mep.jpg";
+import mainMepSystems from "@/assets/Picture of Projects/main-mep-systems.png";
+import mainQuantity from "@/assets/Picture of Projects/quantity-surveying-cost-control.png";
+import portfolioQuantitySurveying from "@/assets/Picture of Projects/quantity-surveying-cost-control-portfolio.png";
+import mainPlanning from "@/assets/Picture of Projects/main-planning-cropped.jpg";
+import servicesArchitecturalStructuralDesign from "@/assets/Picture of Projects/services-architectural-structural-design.png";
+import slider1 from "@/assets/Picture of Projects/Slider-1.png";
+import slider2 from "@/assets/Picture of Projects/Slider-2.png";
+import slider3 from "@/assets/Picture of Projects/Slider-3.png";
+import slider4 from "@/assets/Picture of Projects/Slider-4.png";
+import slider5 from "@/assets/Picture of Projects/Slider-5.png";
+import slider6 from "@/assets/Picture of Projects/Slider-6.png";
 
-import zahranAlAufi from "@/assets/testimonials/zahran-al-aufi.png";
-import ahmedAlShukaili from "@/assets/testimonials/ahmed-al-shukaili.png";
-import salimSaidAlHizami from "@/assets/testimonials/salim-said-al-hizami.png";
+import zahranAlAufi from "@/assets/Picture of Projects/zahran-al-aufi.png";
+import ahmedAlShukaili from "@/assets/Picture of Projects/ahmed-al-shukaili.png";
+import salimSaidAlHizami from "@/assets/Picture of Projects/salim-said-al-hizami.png";
 import clientLogo01 from "@/assets/clients/client-01-supreme-judiciary-council.png";
 import clientLogo02 from "@/assets/clients/client-02-ministry-of-labor.png";
 import clientLogo03 from "@/assets/clients/client-03-telecommunications-regulatory-authority.png";
@@ -251,7 +251,7 @@ export const PORTFOLIO_IMAGES = [heroVilla, projSchool, projMosque, projCompound
 
 /**
  * Leadership portraits, in the same order as `team.members` in the dictionaries.
- * Sourced from `@/assets/Team picture/`; an empty string falls back to a placeholder.
+ * Sourced from `@/assets/team/`; an empty string falls back to a placeholder.
  */
 export const TEAM_PHOTOS = [
   teamYaserAlAufi, // Yasir Salim Hamed Al Aufi — Founder & CEO
@@ -262,7 +262,7 @@ export const TEAM_PHOTOS = [
 
 /**
  * Org-chart portraits, keyed by the person `id` in `team.org` (dictionaries).
- * Sourced from `@/assets/Team picture/` (`.png`); a missing key falls back to a
+ * Sourced from `@/assets/team/` (`.png`); a missing key falls back to a
  * placeholder icon. Add entries as portraits are provided.
  */
 export const ORG_PHOTOS: Record<string, string> = {

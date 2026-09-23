@@ -1,5 +1,5 @@
 import { useRouterState } from "@tanstack/react-router";
-import bonyanLogo from "@/assets/bonyan-logo.png";
+import bonyanLogo from "@/assets/Picture of Projects/bonyan-logo.png";
 import { cn } from "@/lib/utils";
 import { basePath, localizedPath, useT } from "@/i18n";
 import { L } from "./L";
