@@ -8,7 +8,8 @@ import projCommercial from "@/assets/Picture of Projects/proj-commercial.jpg";
 import detailDrawings from "@/assets/Picture of Projects/detail-drawings.jpg";
 import detailFacade from "@/assets/Picture of Projects/detail-facade.jpg";
 
-import teamYaserAlAufi from "@/assets/team/Yasir Salim Hamed Al Aufi.png";
+import managingDirectorYaserAlAufi from "@/assets/team/Yasir Salim Hamed Al Aufi.png";
+import teamYaserAlAufi from "@/assets/team/Yasir Salim Hamed Al Aufi-2.png";
 import teamAjilKunnarMathias from "@/assets/team/Ajil Kumar Mathias .png";
 import teamAtheeshNadesan from "@/assets/team/Atheesh Nadesan.png";
 import teamAghaShahid from "@/assets/team/Agha Shahid.png";
@@ -104,7 +105,7 @@ export const IMAGES = {
   drawings: detailDrawings,
   facade: detailFacade,
   villa: heroVilla,
-  managingDirector: teamYaserAlAufi,
+  managingDirector: managingDirectorYaserAlAufi,
 };
 
 export const CLIENT_AVATARS = [zahranAlAufi, ahmedAlShukaili, salimSaidAlHizami];
