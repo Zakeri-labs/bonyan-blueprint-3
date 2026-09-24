@@ -246,9 +246,13 @@ function MobileOrgNode({
   const kids = node.children ?? [];
   const order = orderMap.get(node.id) ?? 0;
   const isPending = !node.name && !node.role;
+  const alignsWithReports = DEFERRED_MANAGER_IDS.has(node.id);
 
   return (
-    <li className={root ? undefined : "org-mrow"} style={{ "--i": order } as CSSProperties}>
+    <li
+      className={root ? undefined : `org-mrow${alignsWithReports ? " org-mrow--deferred" : ""}`}
+      style={{ "--i": order } as CSSProperties}
+    >
       <div className="flex items-center gap-3 py-1.5">
         <span className="flex size-11 shrink-0 overflow-hidden rounded-md border border-border bg-panel">
           {isPending ? (

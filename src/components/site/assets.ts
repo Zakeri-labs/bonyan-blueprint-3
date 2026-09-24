@@ -208,7 +208,7 @@ export const HOME_PORTFOLIO_PROJECTS = [
     serviceId: "supervision",
     projectIndex: 2,
     image: supervisionVilla,
-    hideClientAndLocation: true,
+    hideClient: true,
   },
   { serviceId: "planning", projectIndex: 1, image: sahamPublicPark },
   { serviceId: "mep", projectIndex: 0, image: mepCommercial },

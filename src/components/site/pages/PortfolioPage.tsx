@@ -341,20 +341,6 @@ export function PortfolioPage() {
                             <p className="mt-3 flex-1 text-xs leading-relaxed text-muted-foreground">
                               {proj.scope}
                             </p>
-                            <div className="mt-4 flex min-h-8 flex-wrap items-center gap-x-3 gap-y-1 border-t border-border pt-3 text-[0.6875rem] text-muted-foreground">
-                              {proj.location && (
-                                <span className="inline-flex items-center gap-1">
-                                  <MapPin aria-hidden="true" className="size-3 text-primary" />
-                                  {proj.location}
-                                </span>
-                              )}
-                              {proj.location && proj.year && (
-                                <span aria-hidden="true" className="text-border">
-                                  |
-                                </span>
-                              )}
-                              {proj.year && <span className="text-primary">{proj.year}</span>}
-                            </div>
                           </article>
                         </Reveal>
                       </li>

@@ -1,6 +1,5 @@
-import { MapPin } from "lucide-react";
 import { cn } from "@/lib/utils";
-import { CONTACT, useT } from "@/i18n";
+import { useT } from "@/i18n";
 import { HOME_PORTFOLIO_PROJECTS } from "../assets";
 import { Btn, H_SCROLL_ITEM, H_SCROLL_STRIP, Reveal, SectionLabel } from "../ui";
 
@@ -23,8 +22,7 @@ export function PortfolioSection() {
     compact = false,
     stackedPrimary = false,
   ) => {
-    const hideClientAndLocation =
-      "hideClientAndLocation" in project && project.hideClientAndLocation;
+    const hideClient = "hideClient" in project && project.hideClient;
 
     return (
       <Reveal
@@ -37,11 +35,7 @@ export function PortfolioSection() {
         <article className="group relative h-full overflow-hidden border border-border transition-all duration-500 hover:-translate-y-1 hover:border-primary/80 hover:shadow-lg hover:shadow-primary/8">
           <img
             src={project.image}
-            alt={
-              project.location && !hideClientAndLocation
-                ? `${project.name} — ${project.scope}, ${project.location}`
-                : `${project.name} — ${project.scope}`
-            }
+            alt={`${project.name} — ${project.scope}`}
             loading="lazy"
             width={1200}
             height={800}
@@ -60,7 +54,7 @@ export function PortfolioSection() {
               compact && "lg:p-4",
             )}
           >
-            {!hideClientAndLocation && <span className="eyebrow">{project.type}</span>}
+            {!hideClient && <span className="eyebrow">{project.type}</span>}
             <h3
               className={cn(
                 "mt-2 font-display text-lg font-bold leading-snug transition-colors duration-300 group-hover:text-primary",
@@ -76,20 +70,6 @@ export function PortfolioSection() {
             ) : (
               <>
                 <p className="mt-1 text-xs text-primary">{project.scope}</p>
-                {project.location && !hideClientAndLocation && (
-                  <a
-                    href={CONTACT.mapHref}
-                    target="_blank"
-                    rel="noreferrer"
-                    className="mt-2 flex w-fit items-center gap-1.5 text-xs text-muted-foreground transition-colors hover:text-primary"
-                  >
-                    <MapPin
-                      aria-hidden="true"
-                      className="size-3.5 text-primary transition-transform duration-300 group-hover:scale-125"
-                    />
-                    {project.location}
-                  </a>
-                )}
               </>
             )}
           </div>
