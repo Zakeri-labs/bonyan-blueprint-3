@@ -69,7 +69,7 @@ function TeamPhoto({ src, name, pending }: { src: string; name: string; pending:
       width={900}
       height={1124}
       onError={() => setFailed(true)}
-      className="size-full object-contain object-bottom"
+      className="size-full object-cover object-top"
     />
   );
 }
@@ -94,7 +94,7 @@ function OrgPortrait({ src, name }: { src: string; name: string }) {
       width={1122}
       height={1402}
       onError={() => setFailed(true)}
-      className="size-full object-contain object-bottom"
+      className="size-full object-cover object-top"
     />
   );
 }
