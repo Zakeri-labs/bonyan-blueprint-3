@@ -30,6 +30,16 @@ import { Route as EnContactRouteImport } from './routes/en.contact'
 import { Route as EnPortfolioRouteImport } from './routes/en.portfolio'
 import { Route as EnServicesRouteImport } from './routes/en.services'
 import { Route as EnTeamRouteImport } from './routes/en.team'
+import { Route as DesignsRouteImport } from './routes/designs'
+import { Route as EnDesignsRouteImport } from './routes/en.designs'
+import { Route as ArDesignsRouteImport } from './routes/ar.designs'
+import { Route as DesignRouteImport } from './routes/design'
+import { Route as EnDesignRouteImport } from './routes/en.design'
+import { Route as ArDesignRouteImport } from './routes/ar.design'
+import { Route as DesignsSlugRouteImport } from './routes/designs.$slug'
+import { Route as EnDesignsSlugRouteImport } from './routes/en.designs.$slug'
+import { Route as ArDesignsSlugRouteImport } from './routes/ar.designs.$slug'
+
 
 const IndexRoute = IndexRouteImport.update({
   id: '/',
@@ -129,6 +139,51 @@ const EnPortfolioRoute = EnPortfolioRouteImport.update({
 const EnServicesRoute = EnServicesRouteImport.update({
   id: '/en/services',
   path: '/en/services',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const DesignsRoute = DesignsRouteImport.update({
+  id: '/designs',
+  path: '/designs',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const EnDesignsRoute = EnDesignsRouteImport.update({
+  id: '/en/designs',
+  path: '/en/designs',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ArDesignsRoute = ArDesignsRouteImport.update({
+  id: '/ar/designs',
+  path: '/ar/designs',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const DesignRoute = DesignRouteImport.update({
+  id: '/design',
+  path: '/design',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const EnDesignRoute = EnDesignRouteImport.update({
+  id: '/en/design',
+  path: '/en/design',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ArDesignRoute = ArDesignRouteImport.update({
+  id: '/ar/design',
+  path: '/ar/design',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const DesignsSlugRoute = DesignsSlugRouteImport.update({
+  id: '/designs/$slug',
+  path: '/designs/$slug',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const EnDesignsSlugRoute = EnDesignsSlugRouteImport.update({
+  id: '/en/designs/$slug',
+  path: '/en/designs/$slug',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ArDesignsSlugRoute = ArDesignsSlugRouteImport.update({
+  id: '/ar/designs/$slug',
+  path: '/ar/designs/$slug',
   getParentRoute: () => rootRouteImport,
 } as any)
 const EnTeamRoute = EnTeamRouteImport.update({
@@ -445,6 +500,69 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof EnServicesRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/designs': {
+      id: '/designs'
+      path: '/designs'
+      fullPath: '/designs'
+      preLoaderRoute: typeof DesignsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/design': {
+      id: '/design'
+      path: '/design'
+      fullPath: '/design'
+      preLoaderRoute: typeof DesignRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/designs/$slug': {
+      id: '/designs/$slug'
+      path: '/designs/$slug'
+      fullPath: '/designs/$slug'
+      preLoaderRoute: typeof DesignsSlugRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/ar/designs': {
+      id: '/ar/designs'
+      path: '/ar/designs'
+      fullPath: '/ar/designs'
+      preLoaderRoute: typeof ArDesignsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/ar/design': {
+      id: '/ar/design'
+      path: '/ar/design'
+      fullPath: '/ar/design'
+      preLoaderRoute: typeof ArDesignRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/ar/designs/$slug': {
+      id: '/ar/designs/$slug'
+      path: '/ar/designs/$slug'
+      fullPath: '/ar/designs/$slug'
+      preLoaderRoute: typeof ArDesignsSlugRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/en/designs': {
+      id: '/en/designs'
+      path: '/en/designs'
+      fullPath: '/en/designs'
+      preLoaderRoute: typeof EnDesignsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/en/design': {
+      id: '/en/design'
+      path: '/en/design'
+      fullPath: '/en/design'
+      preLoaderRoute: typeof EnDesignRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/en/designs/$slug': {
+      id: '/en/designs/$slug'
+      path: '/en/designs/$slug'
+      fullPath: '/en/designs/$slug'
+      preLoaderRoute: typeof EnDesignsSlugRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/en/team': {
       id: '/en/team'
       path: '/en/team'
@@ -456,6 +574,15 @@ declare module '@tanstack/react-router' {
 }
 
 const rootRouteChildren: RootRouteChildren = {
+  DesignsRoute: DesignsRoute,
+  EnDesignsRoute: EnDesignsRoute,
+  ArDesignsRoute: ArDesignsRoute,
+  DesignRoute: DesignRoute,
+  EnDesignRoute: EnDesignRoute,
+  ArDesignRoute: ArDesignRoute,
+  DesignsSlugRoute: DesignsSlugRoute,
+  EnDesignsSlugRoute: EnDesignsSlugRoute,
+  ArDesignsSlugRoute: ArDesignsSlugRoute,
   IndexRoute: IndexRoute,
   AboutRoute: AboutRoute,
   CareerRoute: CareerRoute,
