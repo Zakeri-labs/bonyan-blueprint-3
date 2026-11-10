@@ -1,16 +1,16 @@
 import { ArrowLeft, ArrowRight, MessageCircle } from "lucide-react";
+import { Link } from "@tanstack/react-router";
 import { useT } from "@/i18n";
 import { SiteLayout } from "../SiteLayout";
-import { L } from "../L";
-import { DESIGNS, DESIGN_CATEGORIES } from "@/data/designs";
+import { DESIGNS, DESIGN_CATEGORIES, getBookingUrl } from "@/data/designs";
 
 export function DesignDetailPage({ slug }: { slug: string }) {
-  const { t, lp, locale, dir } = useT();
+  const { t, locale, dir } = useT();
   const dg = t.designGallery;
   const isAr = locale === "ar";
   const BackIcon = isAr ? ArrowRight : ArrowLeft;
 
-  const design = DESIGNS.find((d) => d.slug === slug) ?? DESIGNS[0];
+  const design = DESIGNS.find((d) => d.slug === slug) ?? DESIGNS[0]!;
   const title = isAr ? design.titleAr : design.titleEn;
   const description = isAr ? design.descriptionAr : design.descriptionEn;
 
@@ -30,7 +30,7 @@ export function DesignDetailPage({ slug }: { slug: string }) {
     { label: dg.service, value: isAr ? design.serviceAr : design.serviceEn },
   ].filter((s) => Boolean(s.value));
 
-  const getWhatsAppLink = (intent: "same" | "modified" | "question") => {
+  const getWhatsAppLink = (intent: "same" | "modified" | "question" | "similar") => {
     const intentText =
       intent === "same"
         ? isAr
@@ -40,9 +40,13 @@ export function DesignDetailPage({ slug }: { slug: string }) {
           ? isAr
             ? `مرحباً، أود التصميم "${title}" (${design.code}) مع بعض التعديلات.`
             : `Hello, I want the design "${title}" (${design.code}) with some modifications.`
-          : isAr
-            ? `مرحباً، لدي استفسار عن التصميم "${title}" (${design.code}).`
-            : `Hello, I have a question about design "${title}" (${design.code}).`;
+          : intent === "similar"
+            ? isAr
+              ? `مرحباً، أود الاستفسار عن مشروع مماثل لـ "${title}" (${design.code}).`
+              : `Hello, I'd like to inquire about a project similar to "${title}" (${design.code}).`
+            : isAr
+              ? `مرحباً، لدي استفسار عن التصميم "${title}" (${design.code}).`
+              : `Hello, I have a question about design "${title}" (${design.code}).`;
 
     return `https://wa.me/96894114511?text=${encodeURIComponent(intentText)}`;
   };
@@ -51,13 +55,13 @@ export function DesignDetailPage({ slug }: { slug: string }) {
     <SiteLayout>
       <div className="container-site py-10 lg:py-16" dir={dir}>
         {/* Back button */}
-        <L
-          to={lp("/designs")}
-          className="mb-8 inline-flex items-center gap-2 text-sm font-semibold text-muted-foreground transition-colors hover:text-primary"
+        <Link
+          to={isAr ? "/designs" : "/en/designs"}
+          className="mb-8 inline-flex items-center gap-2 text-sm font-semibold text-muted-foreground transition-colors hover:text-primary cursor-pointer"
         >
           <BackIcon className="size-4" aria-hidden="true" />
           <span>{dg.back}</span>
-        </L>
+        </Link>
 
         {/* Content grid */}
         <div className="grid gap-10 lg:grid-cols-12 lg:items-start">
@@ -110,18 +114,14 @@ export function DesignDetailPage({ slug }: { slug: string }) {
               {design.isBookable ? (
                 <>
                   <a
-                    href={getWhatsAppLink("same")}
-                    target="_blank"
-                    rel="noreferrer"
-                    className="inline-flex min-h-11 items-center justify-center rounded-xs bg-primary px-6 py-3 text-sm font-semibold text-primary-foreground shadow-[0_8px_24px_-14px_var(--primary)] transition-all hover:brightness-110"
+                    href={getBookingUrl({ slug: design.slug, path: "same", locale })}
+                    className="inline-flex min-h-11 items-center justify-center rounded-xs bg-primary px-6 py-3 text-sm font-semibold text-primary-foreground shadow-[0_8px_24px_-14px_var(--primary)] transition-all hover:brightness-110 cursor-pointer text-center"
                   >
                     {dg.wantSame}
                   </a>
                   <a
-                    href={getWhatsAppLink("modified")}
-                    target="_blank"
-                    rel="noreferrer"
-                    className="inline-flex min-h-11 items-center justify-center rounded-xs border border-border bg-card/40 px-6 py-3 text-sm font-semibold text-foreground transition-colors hover:border-primary hover:text-primary"
+                    href={getBookingUrl({ slug: design.slug, path: "modified", locale })}
+                    className="inline-flex min-h-11 items-center justify-center rounded-xs border border-border bg-card/40 px-6 py-3 text-sm font-semibold text-foreground transition-colors hover:border-primary hover:text-primary cursor-pointer text-center"
                   >
                     {dg.wantModified}
                   </a>
@@ -131,7 +131,7 @@ export function DesignDetailPage({ slug }: { slug: string }) {
                   href={getWhatsAppLink("similar")}
                   target="_blank"
                   rel="noreferrer"
-                  className="inline-flex min-h-11 items-center justify-center rounded-xs bg-primary px-6 py-3 text-sm font-semibold text-primary-foreground shadow-[0_8px_24px_-14px_var(--primary)] transition-all hover:brightness-110"
+                  className="inline-flex min-h-11 items-center justify-center rounded-xs bg-primary px-6 py-3 text-sm font-semibold text-primary-foreground shadow-[0_8px_24px_-14px_var(--primary)] transition-all hover:brightness-110 cursor-pointer text-center"
                 >
                   {dg.similar}
                 </a>
@@ -141,7 +141,7 @@ export function DesignDetailPage({ slug }: { slug: string }) {
                 href={getWhatsAppLink("question")}
                 target="_blank"
                 rel="noreferrer"
-                className="inline-flex min-h-11 items-center justify-center gap-2 rounded-xs border border-emerald-500/70 bg-emerald-500/10 px-6 py-3 text-sm font-semibold text-emerald-400 transition-colors hover:bg-emerald-500/20"
+                className="inline-flex min-h-11 items-center justify-center gap-2 rounded-xs border border-emerald-500/70 bg-emerald-500/10 px-6 py-3 text-sm font-semibold text-emerald-400 transition-colors hover:bg-emerald-500/20 cursor-pointer text-center"
               >
                 <MessageCircle className="size-4" aria-hidden="true" />
                 <span>{dg.askWhatsapp}</span>

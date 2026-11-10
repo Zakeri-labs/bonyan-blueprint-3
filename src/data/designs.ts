@@ -186,3 +186,17 @@ export const DESIGNS: Design[] = [
     imageUrl: "/design-gallery/samples/bonyan/saham-public-park.webp",
   },
 ]
+
+export function getBookingUrl(options?: {
+  slug?: string
+  path?: "same" | "modified" | "idea"
+  locale?: "ar" | "en"
+}): string {
+  const params = new URLSearchParams()
+  if (options?.slug) params.set("design", options.slug)
+  if (options?.path && options.path !== "idea") params.set("path", options.path)
+  if (options?.locale === "en") params.set("lang", "en")
+  const query = params.toString()
+  return `https://app.bonyanec.com/designs/book${query ? `?${query}` : ""}`
+}
+

@@ -13,6 +13,7 @@ import { Route as IndexRouteImport } from './routes/index'
 import { Route as AboutRouteImport } from './routes/about'
 import { Route as CareerRouteImport } from './routes/career'
 import { Route as ContactRouteImport } from './routes/contact'
+import { Route as DesignRouteImport } from './routes/design'
 import { Route as PortfolioRouteImport } from './routes/portfolio'
 import { Route as ServicesRouteImport } from './routes/services'
 import { Route as TeamRouteImport } from './routes/team'
@@ -20,26 +21,27 @@ import { Route as ArIndexRouteImport } from './routes/ar.index'
 import { Route as ArAboutRouteImport } from './routes/ar.about'
 import { Route as ArCareerRouteImport } from './routes/ar.career'
 import { Route as ArContactRouteImport } from './routes/ar.contact'
+import { Route as ArDesignRouteImport } from './routes/ar.design'
 import { Route as ArPortfolioRouteImport } from './routes/ar.portfolio'
 import { Route as ArServicesRouteImport } from './routes/ar.services'
 import { Route as ArTeamRouteImport } from './routes/ar.team'
+import { Route as DesignsIndexRouteImport } from './routes/designs.index'
+import { Route as DesignsSlugRouteImport } from './routes/designs.$slug'
+import { Route as DesignsBookRouteImport } from './routes/designs.book'
 import { Route as EnIndexRouteImport } from './routes/en.index'
 import { Route as EnAboutRouteImport } from './routes/en.about'
 import { Route as EnCareerRouteImport } from './routes/en.career'
 import { Route as EnContactRouteImport } from './routes/en.contact'
+import { Route as EnDesignRouteImport } from './routes/en.design'
 import { Route as EnPortfolioRouteImport } from './routes/en.portfolio'
 import { Route as EnServicesRouteImport } from './routes/en.services'
 import { Route as EnTeamRouteImport } from './routes/en.team'
-import { Route as DesignsRouteImport } from './routes/designs'
-import { Route as EnDesignsRouteImport } from './routes/en.designs'
-import { Route as ArDesignsRouteImport } from './routes/ar.designs'
-import { Route as DesignRouteImport } from './routes/design'
-import { Route as EnDesignRouteImport } from './routes/en.design'
-import { Route as ArDesignRouteImport } from './routes/ar.design'
-import { Route as DesignsSlugRouteImport } from './routes/designs.$slug'
-import { Route as EnDesignsSlugRouteImport } from './routes/en.designs.$slug'
+import { Route as ArDesignsIndexRouteImport } from './routes/ar.designs.index'
 import { Route as ArDesignsSlugRouteImport } from './routes/ar.designs.$slug'
-
+import { Route as ArDesignsBookRouteImport } from './routes/ar.designs.book'
+import { Route as EnDesignsIndexRouteImport } from './routes/en.designs.index'
+import { Route as EnDesignsSlugRouteImport } from './routes/en.designs.$slug'
+import { Route as EnDesignsBookRouteImport } from './routes/en.designs.book'
 
 const IndexRoute = IndexRouteImport.update({
   id: '/',
@@ -59,6 +61,11 @@ const CareerRoute = CareerRouteImport.update({
 const ContactRoute = ContactRouteImport.update({
   id: '/contact',
   path: '/contact',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const DesignRoute = DesignRouteImport.update({
+  id: '/design',
+  path: '/design',
   getParentRoute: () => rootRouteImport,
 } as any)
 const PortfolioRoute = PortfolioRouteImport.update({
@@ -96,6 +103,11 @@ const ArContactRoute = ArContactRouteImport.update({
   path: '/ar/contact',
   getParentRoute: () => rootRouteImport,
 } as any)
+const ArDesignRoute = ArDesignRouteImport.update({
+  id: '/ar/design',
+  path: '/ar/design',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const ArPortfolioRoute = ArPortfolioRouteImport.update({
   id: '/ar/portfolio',
   path: '/ar/portfolio',
@@ -109,6 +121,21 @@ const ArServicesRoute = ArServicesRouteImport.update({
 const ArTeamRoute = ArTeamRouteImport.update({
   id: '/ar/team',
   path: '/ar/team',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const DesignsIndexRoute = DesignsIndexRouteImport.update({
+  id: '/designs/',
+  path: '/designs/',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const DesignsSlugRoute = DesignsSlugRouteImport.update({
+  id: '/designs/$slug',
+  path: '/designs/$slug',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const DesignsBookRoute = DesignsBookRouteImport.update({
+  id: '/designs/book',
+  path: '/designs/book',
   getParentRoute: () => rootRouteImport,
 } as any)
 const EnIndexRoute = EnIndexRouteImport.update({
@@ -131,6 +158,11 @@ const EnContactRoute = EnContactRouteImport.update({
   path: '/en/contact',
   getParentRoute: () => rootRouteImport,
 } as any)
+const EnDesignRoute = EnDesignRouteImport.update({
+  id: '/en/design',
+  path: '/en/design',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const EnPortfolioRoute = EnPortfolioRouteImport.update({
   id: '/en/portfolio',
   path: '/en/portfolio',
@@ -141,44 +173,14 @@ const EnServicesRoute = EnServicesRouteImport.update({
   path: '/en/services',
   getParentRoute: () => rootRouteImport,
 } as any)
-const DesignsRoute = DesignsRouteImport.update({
-  id: '/designs',
-  path: '/designs',
+const EnTeamRoute = EnTeamRouteImport.update({
+  id: '/en/team',
+  path: '/en/team',
   getParentRoute: () => rootRouteImport,
 } as any)
-const EnDesignsRoute = EnDesignsRouteImport.update({
-  id: '/en/designs',
-  path: '/en/designs',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const ArDesignsRoute = ArDesignsRouteImport.update({
-  id: '/ar/designs',
-  path: '/ar/designs',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const DesignRoute = DesignRouteImport.update({
-  id: '/design',
-  path: '/design',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const EnDesignRoute = EnDesignRouteImport.update({
-  id: '/en/design',
-  path: '/en/design',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const ArDesignRoute = ArDesignRouteImport.update({
-  id: '/ar/design',
-  path: '/ar/design',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const DesignsSlugRoute = DesignsSlugRouteImport.update({
-  id: '/designs/$slug',
-  path: '/designs/$slug',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const EnDesignsSlugRoute = EnDesignsSlugRouteImport.update({
-  id: '/en/designs/$slug',
-  path: '/en/designs/$slug',
+const ArDesignsIndexRoute = ArDesignsIndexRouteImport.update({
+  id: '/ar/designs/',
+  path: '/ar/designs/',
   getParentRoute: () => rootRouteImport,
 } as any)
 const ArDesignsSlugRoute = ArDesignsSlugRouteImport.update({
@@ -186,9 +188,24 @@ const ArDesignsSlugRoute = ArDesignsSlugRouteImport.update({
   path: '/ar/designs/$slug',
   getParentRoute: () => rootRouteImport,
 } as any)
-const EnTeamRoute = EnTeamRouteImport.update({
-  id: '/en/team',
-  path: '/en/team',
+const ArDesignsBookRoute = ArDesignsBookRouteImport.update({
+  id: '/ar/designs/book',
+  path: '/ar/designs/book',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const EnDesignsIndexRoute = EnDesignsIndexRouteImport.update({
+  id: '/en/designs/',
+  path: '/en/designs/',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const EnDesignsSlugRoute = EnDesignsSlugRouteImport.update({
+  id: '/en/designs/$slug',
+  path: '/en/designs/$slug',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const EnDesignsBookRoute = EnDesignsBookRouteImport.update({
+  id: '/en/designs/book',
+  path: '/en/designs/book',
   getParentRoute: () => rootRouteImport,
 } as any)
 
@@ -197,46 +214,70 @@ export interface FileRoutesByFullPath {
   '/about': typeof AboutRoute
   '/career': typeof CareerRoute
   '/contact': typeof ContactRoute
+  '/design': typeof DesignRoute
   '/portfolio': typeof PortfolioRoute
   '/services': typeof ServicesRoute
   '/team': typeof TeamRoute
   '/ar/about': typeof ArAboutRoute
   '/ar/career': typeof ArCareerRoute
   '/ar/contact': typeof ArContactRoute
+  '/ar/design': typeof ArDesignRoute
   '/ar/portfolio': typeof ArPortfolioRoute
   '/ar/services': typeof ArServicesRoute
   '/ar/team': typeof ArTeamRoute
+  '/designs/$slug': typeof DesignsSlugRoute
+  '/designs/book': typeof DesignsBookRoute
   '/en/about': typeof EnAboutRoute
   '/en/career': typeof EnCareerRoute
   '/en/contact': typeof EnContactRoute
+  '/en/design': typeof EnDesignRoute
   '/en/portfolio': typeof EnPortfolioRoute
   '/en/services': typeof EnServicesRoute
   '/en/team': typeof EnTeamRoute
   '/ar/': typeof ArIndexRoute
+  '/designs/': typeof DesignsIndexRoute
   '/en/': typeof EnIndexRoute
+  '/ar/designs/$slug': typeof ArDesignsSlugRoute
+  '/ar/designs/book': typeof ArDesignsBookRoute
+  '/en/designs/$slug': typeof EnDesignsSlugRoute
+  '/en/designs/book': typeof EnDesignsBookRoute
+  '/ar/designs/': typeof ArDesignsIndexRoute
+  '/en/designs/': typeof EnDesignsIndexRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/about': typeof AboutRoute
   '/career': typeof CareerRoute
   '/contact': typeof ContactRoute
+  '/design': typeof DesignRoute
   '/portfolio': typeof PortfolioRoute
   '/services': typeof ServicesRoute
   '/team': typeof TeamRoute
   '/ar/about': typeof ArAboutRoute
   '/ar/career': typeof ArCareerRoute
   '/ar/contact': typeof ArContactRoute
+  '/ar/design': typeof ArDesignRoute
   '/ar/portfolio': typeof ArPortfolioRoute
   '/ar/services': typeof ArServicesRoute
   '/ar/team': typeof ArTeamRoute
+  '/designs/$slug': typeof DesignsSlugRoute
+  '/designs/book': typeof DesignsBookRoute
   '/en/about': typeof EnAboutRoute
   '/en/career': typeof EnCareerRoute
   '/en/contact': typeof EnContactRoute
+  '/en/design': typeof EnDesignRoute
   '/en/portfolio': typeof EnPortfolioRoute
   '/en/services': typeof EnServicesRoute
   '/en/team': typeof EnTeamRoute
   '/ar': typeof ArIndexRoute
+  '/designs': typeof DesignsIndexRoute
   '/en': typeof EnIndexRoute
+  '/ar/designs/$slug': typeof ArDesignsSlugRoute
+  '/ar/designs/book': typeof ArDesignsBookRoute
+  '/en/designs/$slug': typeof EnDesignsSlugRoute
+  '/en/designs/book': typeof EnDesignsBookRoute
+  '/ar/designs': typeof ArDesignsIndexRoute
+  '/en/designs': typeof EnDesignsIndexRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
@@ -244,23 +285,35 @@ export interface FileRoutesById {
   '/about': typeof AboutRoute
   '/career': typeof CareerRoute
   '/contact': typeof ContactRoute
+  '/design': typeof DesignRoute
   '/portfolio': typeof PortfolioRoute
   '/services': typeof ServicesRoute
   '/team': typeof TeamRoute
   '/ar/about': typeof ArAboutRoute
   '/ar/career': typeof ArCareerRoute
   '/ar/contact': typeof ArContactRoute
+  '/ar/design': typeof ArDesignRoute
   '/ar/portfolio': typeof ArPortfolioRoute
   '/ar/services': typeof ArServicesRoute
   '/ar/team': typeof ArTeamRoute
+  '/designs/$slug': typeof DesignsSlugRoute
+  '/designs/book': typeof DesignsBookRoute
   '/en/about': typeof EnAboutRoute
   '/en/career': typeof EnCareerRoute
   '/en/contact': typeof EnContactRoute
+  '/en/design': typeof EnDesignRoute
   '/en/portfolio': typeof EnPortfolioRoute
   '/en/services': typeof EnServicesRoute
   '/en/team': typeof EnTeamRoute
   '/ar/': typeof ArIndexRoute
+  '/designs/': typeof DesignsIndexRoute
   '/en/': typeof EnIndexRoute
+  '/ar/designs/$slug': typeof ArDesignsSlugRoute
+  '/ar/designs/book': typeof ArDesignsBookRoute
+  '/en/designs/$slug': typeof EnDesignsSlugRoute
+  '/en/designs/book': typeof EnDesignsBookRoute
+  '/ar/designs/': typeof ArDesignsIndexRoute
+  '/en/designs/': typeof EnDesignsIndexRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
@@ -269,69 +322,105 @@ export interface FileRouteTypes {
     | '/about'
     | '/career'
     | '/contact'
+    | '/design'
     | '/portfolio'
     | '/services'
     | '/team'
     | '/ar/about'
     | '/ar/career'
     | '/ar/contact'
+    | '/ar/design'
     | '/ar/portfolio'
     | '/ar/services'
     | '/ar/team'
+    | '/designs/$slug'
+    | '/designs/book'
     | '/en/about'
     | '/en/career'
     | '/en/contact'
+    | '/en/design'
     | '/en/portfolio'
     | '/en/services'
     | '/en/team'
     | '/ar/'
+    | '/designs/'
     | '/en/'
+    | '/ar/designs/$slug'
+    | '/ar/designs/book'
+    | '/en/designs/$slug'
+    | '/en/designs/book'
+    | '/ar/designs/'
+    | '/en/designs/'
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/'
     | '/about'
     | '/career'
     | '/contact'
+    | '/design'
     | '/portfolio'
     | '/services'
     | '/team'
     | '/ar/about'
     | '/ar/career'
     | '/ar/contact'
+    | '/ar/design'
     | '/ar/portfolio'
     | '/ar/services'
     | '/ar/team'
+    | '/designs/$slug'
+    | '/designs/book'
     | '/en/about'
     | '/en/career'
     | '/en/contact'
+    | '/en/design'
     | '/en/portfolio'
     | '/en/services'
     | '/en/team'
     | '/ar'
+    | '/designs'
     | '/en'
+    | '/ar/designs/$slug'
+    | '/ar/designs/book'
+    | '/en/designs/$slug'
+    | '/en/designs/book'
+    | '/ar/designs'
+    | '/en/designs'
   id:
     | '__root__'
     | '/'
     | '/about'
     | '/career'
     | '/contact'
+    | '/design'
     | '/portfolio'
     | '/services'
     | '/team'
     | '/ar/about'
     | '/ar/career'
     | '/ar/contact'
+    | '/ar/design'
     | '/ar/portfolio'
     | '/ar/services'
     | '/ar/team'
+    | '/designs/$slug'
+    | '/designs/book'
     | '/en/about'
     | '/en/career'
     | '/en/contact'
+    | '/en/design'
     | '/en/portfolio'
     | '/en/services'
     | '/en/team'
     | '/ar/'
+    | '/designs/'
     | '/en/'
+    | '/ar/designs/$slug'
+    | '/ar/designs/book'
+    | '/en/designs/$slug'
+    | '/en/designs/book'
+    | '/ar/designs/'
+    | '/en/designs/'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
@@ -339,23 +428,35 @@ export interface RootRouteChildren {
   AboutRoute: typeof AboutRoute
   CareerRoute: typeof CareerRoute
   ContactRoute: typeof ContactRoute
+  DesignRoute: typeof DesignRoute
   PortfolioRoute: typeof PortfolioRoute
   ServicesRoute: typeof ServicesRoute
   TeamRoute: typeof TeamRoute
   ArAboutRoute: typeof ArAboutRoute
   ArCareerRoute: typeof ArCareerRoute
   ArContactRoute: typeof ArContactRoute
+  ArDesignRoute: typeof ArDesignRoute
   ArPortfolioRoute: typeof ArPortfolioRoute
   ArServicesRoute: typeof ArServicesRoute
   ArTeamRoute: typeof ArTeamRoute
+  DesignsSlugRoute: typeof DesignsSlugRoute
+  DesignsBookRoute: typeof DesignsBookRoute
   EnAboutRoute: typeof EnAboutRoute
   EnCareerRoute: typeof EnCareerRoute
   EnContactRoute: typeof EnContactRoute
+  EnDesignRoute: typeof EnDesignRoute
   EnPortfolioRoute: typeof EnPortfolioRoute
   EnServicesRoute: typeof EnServicesRoute
   EnTeamRoute: typeof EnTeamRoute
   ArIndexRoute: typeof ArIndexRoute
+  DesignsIndexRoute: typeof DesignsIndexRoute
   EnIndexRoute: typeof EnIndexRoute
+  ArDesignsSlugRoute: typeof ArDesignsSlugRoute
+  ArDesignsBookRoute: typeof ArDesignsBookRoute
+  EnDesignsSlugRoute: typeof EnDesignsSlugRoute
+  EnDesignsBookRoute: typeof EnDesignsBookRoute
+  ArDesignsIndexRoute: typeof ArDesignsIndexRoute
+  EnDesignsIndexRoute: typeof EnDesignsIndexRoute
 }
 
 declare module '@tanstack/react-router' {
@@ -386,6 +487,13 @@ declare module '@tanstack/react-router' {
       path: '/contact'
       fullPath: '/contact'
       preLoaderRoute: typeof ContactRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/design': {
+      id: '/design'
+      path: '/design'
+      fullPath: '/design'
+      preLoaderRoute: typeof DesignRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/portfolio': {
@@ -437,6 +545,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof ArContactRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/ar/design': {
+      id: '/ar/design'
+      path: '/ar/design'
+      fullPath: '/ar/design'
+      preLoaderRoute: typeof ArDesignRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/ar/portfolio': {
       id: '/ar/portfolio'
       path: '/ar/portfolio'
@@ -456,6 +571,27 @@ declare module '@tanstack/react-router' {
       path: '/ar/team'
       fullPath: '/ar/team'
       preLoaderRoute: typeof ArTeamRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/designs/': {
+      id: '/designs/'
+      path: '/designs'
+      fullPath: '/designs/'
+      preLoaderRoute: typeof DesignsIndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/designs/$slug': {
+      id: '/designs/$slug'
+      path: '/designs/$slug'
+      fullPath: '/designs/$slug'
+      preLoaderRoute: typeof DesignsSlugRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/designs/book': {
+      id: '/designs/book'
+      path: '/designs/book'
+      fullPath: '/designs/book'
+      preLoaderRoute: typeof DesignsBookRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/en/': {
@@ -486,6 +622,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof EnContactRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/en/design': {
+      id: '/en/design'
+      path: '/en/design'
+      fullPath: '/en/design'
+      preLoaderRoute: typeof EnDesignRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/en/portfolio': {
       id: '/en/portfolio'
       path: '/en/portfolio'
@@ -500,39 +643,18 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof EnServicesRouteImport
       parentRoute: typeof rootRouteImport
     }
-    '/designs': {
-      id: '/designs'
-      path: '/designs'
-      fullPath: '/designs'
-      preLoaderRoute: typeof DesignsRouteImport
+    '/en/team': {
+      id: '/en/team'
+      path: '/en/team'
+      fullPath: '/en/team'
+      preLoaderRoute: typeof EnTeamRouteImport
       parentRoute: typeof rootRouteImport
     }
-    '/design': {
-      id: '/design'
-      path: '/design'
-      fullPath: '/design'
-      preLoaderRoute: typeof DesignRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/designs/$slug': {
-      id: '/designs/$slug'
-      path: '/designs/$slug'
-      fullPath: '/designs/$slug'
-      preLoaderRoute: typeof DesignsSlugRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/ar/designs': {
-      id: '/ar/designs'
+    '/ar/designs/': {
+      id: '/ar/designs/'
       path: '/ar/designs'
-      fullPath: '/ar/designs'
-      preLoaderRoute: typeof ArDesignsRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/ar/design': {
-      id: '/ar/design'
-      path: '/ar/design'
-      fullPath: '/ar/design'
-      preLoaderRoute: typeof ArDesignRouteImport
+      fullPath: '/ar/designs/'
+      preLoaderRoute: typeof ArDesignsIndexRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/ar/designs/$slug': {
@@ -542,18 +664,18 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof ArDesignsSlugRouteImport
       parentRoute: typeof rootRouteImport
     }
-    '/en/designs': {
-      id: '/en/designs'
-      path: '/en/designs'
-      fullPath: '/en/designs'
-      preLoaderRoute: typeof EnDesignsRouteImport
+    '/ar/designs/book': {
+      id: '/ar/designs/book'
+      path: '/ar/designs/book'
+      fullPath: '/ar/designs/book'
+      preLoaderRoute: typeof ArDesignsBookRouteImport
       parentRoute: typeof rootRouteImport
     }
-    '/en/design': {
-      id: '/en/design'
-      path: '/en/design'
-      fullPath: '/en/design'
-      preLoaderRoute: typeof EnDesignRouteImport
+    '/en/designs/': {
+      id: '/en/designs/'
+      path: '/en/designs'
+      fullPath: '/en/designs/'
+      preLoaderRoute: typeof EnDesignsIndexRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/en/designs/$slug': {
@@ -563,47 +685,50 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof EnDesignsSlugRouteImport
       parentRoute: typeof rootRouteImport
     }
-    '/en/team': {
-      id: '/en/team'
-      path: '/en/team'
-      fullPath: '/en/team'
-      preLoaderRoute: typeof EnTeamRouteImport
+    '/en/designs/book': {
+      id: '/en/designs/book'
+      path: '/en/designs/book'
+      fullPath: '/en/designs/book'
+      preLoaderRoute: typeof EnDesignsBookRouteImport
       parentRoute: typeof rootRouteImport
     }
   }
 }
 
 const rootRouteChildren: RootRouteChildren = {
-  DesignsRoute: DesignsRoute,
-  EnDesignsRoute: EnDesignsRoute,
-  ArDesignsRoute: ArDesignsRoute,
-  DesignRoute: DesignRoute,
-  EnDesignRoute: EnDesignRoute,
-  ArDesignRoute: ArDesignRoute,
-  DesignsSlugRoute: DesignsSlugRoute,
-  EnDesignsSlugRoute: EnDesignsSlugRoute,
-  ArDesignsSlugRoute: ArDesignsSlugRoute,
   IndexRoute: IndexRoute,
   AboutRoute: AboutRoute,
   CareerRoute: CareerRoute,
   ContactRoute: ContactRoute,
+  DesignRoute: DesignRoute,
   PortfolioRoute: PortfolioRoute,
   ServicesRoute: ServicesRoute,
   TeamRoute: TeamRoute,
   ArAboutRoute: ArAboutRoute,
   ArCareerRoute: ArCareerRoute,
   ArContactRoute: ArContactRoute,
+  ArDesignRoute: ArDesignRoute,
   ArPortfolioRoute: ArPortfolioRoute,
   ArServicesRoute: ArServicesRoute,
   ArTeamRoute: ArTeamRoute,
+  DesignsSlugRoute: DesignsSlugRoute,
+  DesignsBookRoute: DesignsBookRoute,
   EnAboutRoute: EnAboutRoute,
   EnCareerRoute: EnCareerRoute,
   EnContactRoute: EnContactRoute,
+  EnDesignRoute: EnDesignRoute,
   EnPortfolioRoute: EnPortfolioRoute,
   EnServicesRoute: EnServicesRoute,
   EnTeamRoute: EnTeamRoute,
   ArIndexRoute: ArIndexRoute,
+  DesignsIndexRoute: DesignsIndexRoute,
   EnIndexRoute: EnIndexRoute,
+  ArDesignsSlugRoute: ArDesignsSlugRoute,
+  ArDesignsBookRoute: ArDesignsBookRoute,
+  EnDesignsSlugRoute: EnDesignsSlugRoute,
+  EnDesignsBookRoute: EnDesignsBookRoute,
+  ArDesignsIndexRoute: ArDesignsIndexRoute,
+  EnDesignsIndexRoute: EnDesignsIndexRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)

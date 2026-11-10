@@ -1,13 +1,12 @@
 import { useState, useMemo } from "react";
 import { Search, Pencil } from "lucide-react";
-import { CONTACT, useT } from "@/i18n";
+import { Link } from "@tanstack/react-router";
+import { useT } from "@/i18n";
 import { SiteLayout } from "../SiteLayout";
-import { L } from "../L";
-import { Btn } from "../ui";
-import { DESIGNS, DESIGN_CATEGORIES, type Design } from "@/data/designs";
+import { DESIGNS, DESIGN_CATEGORIES, getBookingUrl, type Design } from "@/data/designs";
 
 export function DesignsPage() {
-  const { t, lp, locale, dir } = useT();
+  const { t, locale, dir } = useT();
   const dg = t.designGallery;
   const isAr = locale === "ar";
 
@@ -150,7 +149,6 @@ export function DesignsPage() {
         <div className="mt-10 grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
           {filteredDesigns.map((d) => {
             const title = isAr ? d.titleAr : d.titleEn;
-            const detailHref = lp(`/designs/${d.slug}`);
             const categoryLabel = getCategoryLabel(d.categoryKey);
 
             return (
@@ -159,8 +157,9 @@ export function DesignsPage() {
                 className="group flex h-full flex-col overflow-hidden rounded-xs border border-border bg-panel/70 transition-all duration-300 hover:border-primary/40 hover:-translate-y-1 hover:shadow-lg"
               >
                 {/* 3D Image preview */}
-                <L
-                  to={detailHref}
+                <Link
+                  to={isAr ? "/designs/$slug" : "/en/designs/$slug"}
+                  params={{ slug: d.slug }}
                   className="relative block aspect-[4/3] overflow-hidden bg-background"
                   tabIndex={-1}
                   aria-hidden="true"
@@ -177,7 +176,7 @@ export function DesignsPage() {
                   >
                     {dg.badge3d}
                   </span>
-                </L>
+                </Link>
 
                 {/* Content */}
                 <div className="flex flex-1 flex-col gap-2 p-5">
@@ -188,7 +187,12 @@ export function DesignsPage() {
                   ) : null}
 
                   <h2 className="font-display text-base font-bold leading-snug text-foreground group-hover:text-primary transition-colors">
-                    <L to={detailHref}>{title}</L>
+                    <Link
+                      to={isAr ? "/designs/$slug" : "/en/designs/$slug"}
+                      params={{ slug: d.slug }}
+                    >
+                      {title}
+                    </Link>
                   </h2>
 
                   <p className="text-xs text-muted-foreground leading-relaxed">
@@ -202,19 +206,18 @@ export function DesignsPage() {
                   </p>
 
                   <div className="mt-auto grid grid-cols-2 gap-2 pt-4">
-                    <L
-                      to={detailHref}
-                      className="inline-flex min-h-10 items-center justify-center rounded-xs border border-border text-xs font-semibold text-foreground transition-colors hover:border-primary hover:text-primary"
+                    <Link
+                      to={isAr ? "/designs/$slug" : "/en/designs/$slug"}
+                      params={{ slug: d.slug }}
+                      className="inline-flex min-h-10 items-center justify-center rounded-xs border border-border text-xs font-semibold text-foreground transition-colors hover:border-primary hover:text-primary cursor-pointer text-center"
                     >
                       {dg.view}
-                    </L>
+                    </Link>
 
                     {d.isBookable ? (
                       <a
-                        href={getWhatsAppLink(d, "same")}
-                        target="_blank"
-                        rel="noreferrer"
-                        className="inline-flex min-h-10 items-center justify-center rounded-xs bg-primary px-3 text-xs font-semibold text-primary-foreground transition-all hover:brightness-110 shadow-[0_4px_12px_-6px_var(--primary)] text-center"
+                        href={getBookingUrl({ slug: d.slug, path: "same", locale })}
+                        className="inline-flex min-h-10 items-center justify-center rounded-xs bg-primary px-3 text-xs font-semibold text-primary-foreground transition-all hover:brightness-110 shadow-[0_4px_12px_-6px_var(--primary)] text-center cursor-pointer"
                       >
                         {dg.book}
                       </a>
@@ -223,7 +226,7 @@ export function DesignsPage() {
                         href={getWhatsAppLink(d, "similar")}
                         target="_blank"
                         rel="noreferrer"
-                        className="inline-flex min-h-10 items-center justify-center rounded-xs border border-primary/60 text-xs font-semibold text-primary transition-colors hover:bg-primary/10 text-center"
+                        className="inline-flex min-h-10 items-center justify-center rounded-xs border border-primary/60 text-xs font-semibold text-primary transition-colors hover:bg-primary/10 text-center cursor-pointer"
                       >
                         {dg.similar}
                       </a>
@@ -246,14 +249,8 @@ export function DesignsPage() {
               {dg.ideaBody}
             </p>
             <a
-              href={`https://wa.me/96894114511?text=${encodeURIComponent(
-                isAr
-                  ? "مرحباً، أود حجز موعد مع فريق التصميم لمناقشة فكرة تصميم جديدة من الصفر."
-                  : "Hello, I would like to book a meeting with the design team to discuss a new design from scratch."
-              )}`}
-              target="_blank"
-              rel="noreferrer"
-              className="mt-2 inline-flex min-h-10 items-center justify-center rounded-xs bg-primary px-4 text-xs font-semibold text-primary-foreground shadow-[0_4px_16px_-8px_var(--primary)] transition-all hover:brightness-110"
+              href={getBookingUrl({ path: "idea", locale })}
+              className="mt-2 inline-flex min-h-10 items-center justify-center rounded-xs bg-primary px-4 text-xs font-semibold text-primary-foreground shadow-[0_4px_16px_-8px_var(--primary)] transition-all hover:brightness-110 text-center cursor-pointer"
             >
               {dg.ideaCta}
             </a>
