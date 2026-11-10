@@ -1,8 +1,11 @@
+import { useState, useEffect } from "react";
 import { ArrowLeft, ArrowRight, MessageCircle } from "lucide-react";
 import { Link } from "@tanstack/react-router";
 import { useT } from "@/i18n";
 import { SiteLayout } from "../SiteLayout";
-import { DESIGNS, DESIGN_CATEGORIES, getBookingUrl } from "@/data/designs";
+import { DESIGNS, DESIGN_CATEGORIES, getBookingUrl, type Design } from "@/data/designs";
+import { fetchPublicDesign } from "@/lib/supabase";
+import { cn } from "@/lib/utils";
 
 export function DesignDetailPage({ slug }: { slug: string }) {
   const { t, locale, dir } = useT();
@@ -10,7 +13,25 @@ export function DesignDetailPage({ slug }: { slug: string }) {
   const isAr = locale === "ar";
   const BackIcon = isAr ? ArrowRight : ArrowLeft;
 
-  const design = DESIGNS.find((d) => d.slug === slug) ?? DESIGNS[0]!;
+  const [design, setDesign] = useState<Design>(() => {
+    return DESIGNS.find((d) => d.slug === slug) ?? DESIGNS[0]!;
+  });
+  const [activeImageUrl, setActiveImageUrl] = useState<string>("");
+
+  useEffect(() => {
+    let active = true;
+    fetchPublicDesign(slug).then((d) => {
+      if (!active || !d) return;
+      setDesign(d);
+      if (d.images && d.images.length > 0) {
+        setActiveImageUrl(d.images[0]?.url || d.imageUrl);
+      }
+    });
+    return () => {
+      active = false;
+    };
+  }, [slug]);
+
   const title = isAr ? design.titleAr : design.titleEn;
   const description = isAr ? design.descriptionAr : design.descriptionEn;
 
@@ -50,6 +71,9 @@ export function DesignDetailPage({ slug }: { slug: string }) {
 
     return `https://wa.me/96894114511?text=${encodeURIComponent(intentText)}`;
   };
+
+  const currentDisplayImage = activeImageUrl || design.imageUrl;
+  const allImages = design.images && design.images.length > 0 ? design.images : [{ id: "main", url: design.imageUrl }];
 
   return (
     <SiteLayout>
@@ -149,13 +173,13 @@ export function DesignDetailPage({ slug }: { slug: string }) {
             </div>
           </div>
 
-          {/* Right Column: 3D Visualization */}
-          <div className="order-first lg:order-last lg:col-span-7">
+          {/* Right Column: 3D Visualization & Gallery */}
+          <div className="order-first flex flex-col gap-3 lg:order-last lg:col-span-7">
             <div className="relative aspect-[4/3] w-full overflow-hidden rounded-xs border border-border bg-card shadow-2xl">
               <img
-                src={design.imageUrl}
+                src={currentDisplayImage}
                 alt={title}
-                className="size-full object-cover"
+                className="size-full object-cover transition-all duration-300"
               />
               <span
                 className="absolute end-4 bottom-4 rounded-xs bg-background/85 px-3 py-1 text-xs font-bold tracking-wider text-primary border border-primary/40 backdrop-blur-sm"
@@ -164,6 +188,34 @@ export function DesignDetailPage({ slug }: { slug: string }) {
                 {dg.badge3d} VIEW
               </span>
             </div>
+
+            {/* Thumbnail carousel if multiple images exist */}
+            {allImages.length > 1 ? (
+              <div className="flex gap-2 overflow-x-auto pb-1 [scrollbar-width:thin]">
+                {allImages.map((img, idx) => {
+                  const isSelected = (activeImageUrl || design.imageUrl) === img.url;
+                  return (
+                    <button
+                      key={img.id || idx}
+                      type="button"
+                      onClick={() => setActiveImageUrl(img.url)}
+                      className={cn(
+                        "relative size-20 shrink-0 overflow-hidden rounded-xs border transition-all cursor-pointer",
+                        isSelected
+                          ? "border-primary ring-2 ring-primary/40"
+                          : "border-border opacity-70 hover:opacity-100 hover:border-primary/50",
+                      )}
+                    >
+                      <img
+                        src={img.url}
+                        alt=""
+                        className="size-full object-cover"
+                      />
+                    </button>
+                  );
+                })}
+              </div>
+            ) : null}
           </div>
         </div>
       </div>

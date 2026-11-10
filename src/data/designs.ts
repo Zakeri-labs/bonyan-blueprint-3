@@ -22,6 +22,7 @@ export type Design = {
   serviceEn: string
   isBookable: boolean
   imageUrl: string
+  images?: { id: string; url: string; altAr?: string | null; altEn?: string | null }[]
 }
 
 export const DESIGN_CATEGORIES: DesignCategory[] = [

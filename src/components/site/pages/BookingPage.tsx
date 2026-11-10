@@ -1,4 +1,4 @@
-import { useId, useMemo, useRef, useState, type ChangeEvent, type FormEvent } from "react";
+import { useId, useMemo, useRef, useState, useEffect, type ChangeEvent, type FormEvent } from "react";
 import { Link } from "@tanstack/react-router";
 import {
   CalendarCheck,
@@ -19,6 +19,7 @@ import {
 import { useT, CONTACT } from "@/i18n";
 import { SiteLayout } from "../SiteLayout";
 import { DESIGNS, type Design } from "@/data/designs";
+import { fetchPublicGallery, fetchPublicDesign } from "@/lib/supabase";
 import {
   DEFAULT_BOOKING_SETTINGS,
   generateAvailableDays,
@@ -78,9 +79,33 @@ export function BookingPage({
   const topRef = useRef<HTMLDivElement>(null);
   const BackIcon = isAr ? ArrowRight : ArrowLeft;
 
-  const design: Design | null = designSlug
-    ? DESIGNS.find((d) => d.slug === designSlug) ?? null
-    : null;
+  const [design, setDesign] = useState<Design | null>(() => {
+    return designSlug ? DESIGNS.find((d) => d.slug === designSlug) ?? null : null;
+  });
+
+  useEffect(() => {
+    if (!designSlug) return;
+    fetchPublicDesign(designSlug).then((d) => {
+      if (d) setDesign(d);
+    });
+  }, [designSlug]);
+
+  const [bookingSettings, setBookingSettings] = useState(DEFAULT_BOOKING_SETTINGS);
+
+  useEffect(() => {
+    fetchPublicGallery().then((res) => {
+      if (!res?.site) return;
+      setBookingSettings({
+        timeZone: res.site.bookingTimezone,
+        workDays: res.site.bookingWorkDays,
+        dayStart: res.site.bookingDayStart,
+        dayEnd: res.site.bookingDayEnd,
+        slotMinutes: res.site.bookingSlotMinutes,
+        minNoticeHours: res.site.bookingMinNoticeHours,
+        daysAhead: res.site.bookingDaysAhead,
+      });
+    });
+  }, []);
 
   const path: MeetingPath = design
     ? initialPath === "modified"
@@ -112,10 +137,10 @@ export function BookingPage({
   const [submitting, setSubmitting] = useState(false);
   const [confirmed, setConfirmed] = useState(false);
 
-  // Available days & slots
+  // Available days & slots from live booking settings
   const availableDays = useMemo(() => {
-    return generateAvailableDays(DEFAULT_BOOKING_SETTINGS);
-  }, []);
+    return generateAvailableDays(bookingSettings);
+  }, [bookingSettings]);
 
   const activeDay = useMemo(() => {
     if (selectedDay) {
@@ -245,7 +270,15 @@ export function BookingPage({
         ? fields.wilayatOther
         : findWilayat(fields.wilayatKey)?.[isAr ? "ar" : "en"] || fields.wilayatKey;
 
+    const requestKey =
+      typeof crypto !== "undefined" && "randomUUID" in crypto
+        ? crypto.randomUUID()
+        : "10000000-1000-4000-8000-100000000000".replace(/[018]/g, (c) =>
+            (Number(c) ^ (Math.random() * 16 >> (Number(c) / 4))).toString(16),
+          );
+
     const bookingPayload = {
+      requestKey,
       clientName: fields.clientName,
       whatsappPhone: fields.whatsappPhone,
       email: fields.email,
@@ -262,7 +295,7 @@ export function BookingPage({
       locale,
     };
 
-    // Try sending to central API (if deployed/available)
+    // Send to central API on app.bonyanec.com
     try {
       await fetch("https://app.bonyanec.com/api/designs/booking", {
         method: "POST",
@@ -270,7 +303,7 @@ export function BookingPage({
         body: JSON.stringify(bookingPayload),
       }).catch(() => null);
     } catch {
-      // Graceful fallback
+      // Graceful fallback to client confirmation
     }
 
     setSubmitting(false);

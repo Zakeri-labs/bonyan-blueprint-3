@@ -1,9 +1,10 @@
-import { useState, useMemo } from "react";
+import { useState, useMemo, useEffect } from "react";
 import { Search, Pencil } from "lucide-react";
 import { Link } from "@tanstack/react-router";
 import { useT } from "@/i18n";
 import { SiteLayout } from "../SiteLayout";
-import { DESIGNS, DESIGN_CATEGORIES, getBookingUrl, type Design } from "@/data/designs";
+import { DESIGNS, DESIGN_CATEGORIES, getBookingUrl, type Design, type DesignCategory } from "@/data/designs";
+import { fetchPublicGallery } from "@/lib/supabase";
 
 export function DesignsPage() {
   const { t, locale, dir } = useT();
@@ -12,20 +13,38 @@ export function DesignsPage() {
 
   const [query, setQuery] = useState("");
   const [selectedCategory, setSelectedCategory] = useState<string>("all");
+  const [designsList, setDesignsList] = useState<Design[]>(DESIGNS);
+  const [categoriesList, setCategoriesList] = useState<DesignCategory[]>(DESIGN_CATEGORIES);
+
+  useEffect(() => {
+    let active = true;
+    fetchPublicGallery().then((res) => {
+      if (!active || !res) return;
+      if (res.categories && res.categories.length > 0) {
+        setCategoriesList(res.categories);
+      }
+      if (res.designs && res.designs.length > 0) {
+        setDesignsList(res.designs);
+      }
+    });
+    return () => {
+      active = false;
+    };
+  }, []);
 
   const categories = useMemo(() => {
     return [
       { key: "all", label: dg.all },
-      ...DESIGN_CATEGORIES.map((c) => ({
+      ...categoriesList.map((c) => ({
         key: c.key,
         label: isAr ? c.nameAr : c.nameEn,
       })),
     ];
-  }, [dg.all, isAr]);
+  }, [categoriesList, dg.all, isAr]);
 
   const filteredDesigns = useMemo(() => {
     const q = query.trim().toLowerCase();
-    return DESIGNS.filter((d) => {
+    return designsList.filter((d) => {
       const matchesCategory =
         selectedCategory === "all" || d.categoryKey === selectedCategory;
       if (!matchesCategory) return false;
@@ -43,7 +62,7 @@ export function DesignsPage() {
         desc.includes(q)
       );
     });
-  }, [query, selectedCategory, isAr]);
+  }, [designsList, query, selectedCategory, isAr]);
 
   const getWhatsAppLink = (design: Design, intent: "same" | "similar" | "question") => {
     const title = isAr ? design.titleAr : design.titleEn;
@@ -64,7 +83,7 @@ export function DesignsPage() {
   };
 
   const getCategoryLabel = (catKey: string) => {
-    const found = DESIGN_CATEGORIES.find((c) => c.key === catKey);
+    const found = categoriesList.find((c) => c.key === catKey);
     return found ? (isAr ? found.nameAr : found.nameEn) : "";
   };
 
