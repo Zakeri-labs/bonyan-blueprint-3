@@ -1,14 +1,7 @@
-import { createFileRoute } from "@tanstack/react-router";
-import { dictionaries, seoMeta } from "@/i18n";
-import { DesignsPage } from "@/components/site/pages/DesignsPage";
+import { createFileRoute, redirect } from "@tanstack/react-router";
 
 export const Route = createFileRoute("/en/designs/")({
-  head: () =>
-    seoMeta({
-      title: dictionaries.en.seo.designs.title,
-      description: dictionaries.en.seo.designs.desc,
-      locale: "en",
-      path: "/designs",
-    }),
-  component: DesignsPage,
+  beforeLoad: () => {
+    throw redirect({ to: "/en/architecture_designs" });
+  },
 });

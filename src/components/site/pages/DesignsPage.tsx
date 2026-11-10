@@ -158,7 +158,7 @@ export function DesignsPage() {
               >
                 {/* 3D Image preview */}
                 <Link
-                  to={isAr ? "/designs/$slug" : "/en/designs/$slug"}
+                  to={isAr ? "/architecture_designs/$slug" : "/en/architecture_designs/$slug"}
                   params={{ slug: d.slug }}
                   className="relative block aspect-[4/3] overflow-hidden bg-background"
                   tabIndex={-1}
@@ -188,7 +188,7 @@ export function DesignsPage() {
 
                   <h2 className="font-display text-base font-bold leading-snug text-foreground group-hover:text-primary transition-colors">
                     <Link
-                      to={isAr ? "/designs/$slug" : "/en/designs/$slug"}
+                      to={isAr ? "/architecture_designs/$slug" : "/en/architecture_designs/$slug"}
                       params={{ slug: d.slug }}
                     >
                       {title}
@@ -207,7 +207,7 @@ export function DesignsPage() {
 
                   <div className="mt-auto grid grid-cols-2 gap-2 pt-4">
                     <Link
-                      to={isAr ? "/designs/$slug" : "/en/designs/$slug"}
+                      to={isAr ? "/architecture_designs/$slug" : "/en/architecture_designs/$slug"}
                       params={{ slug: d.slug }}
                       className="inline-flex min-h-10 items-center justify-center rounded-xs border border-border text-xs font-semibold text-foreground transition-colors hover:border-primary hover:text-primary cursor-pointer text-center"
                     >

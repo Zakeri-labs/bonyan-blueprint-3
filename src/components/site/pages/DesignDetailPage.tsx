@@ -56,7 +56,7 @@ export function DesignDetailPage({ slug }: { slug: string }) {
       <div className="container-site py-10 lg:py-16" dir={dir}>
         {/* Back button */}
         <Link
-          to={isAr ? "/designs" : "/en/designs"}
+          to={isAr ? "/architecture_designs" : "/en/architecture_designs"}
           className="mb-8 inline-flex items-center gap-2 text-sm font-semibold text-muted-foreground transition-colors hover:text-primary cursor-pointer"
         >
           <BackIcon className="size-4" aria-hidden="true" />

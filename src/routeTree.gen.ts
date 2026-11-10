@@ -25,6 +25,9 @@ import { Route as ArDesignRouteImport } from './routes/ar.design'
 import { Route as ArPortfolioRouteImport } from './routes/ar.portfolio'
 import { Route as ArServicesRouteImport } from './routes/ar.services'
 import { Route as ArTeamRouteImport } from './routes/ar.team'
+import { Route as Architecture_designsIndexRouteImport } from './routes/architecture_designs.index'
+import { Route as Architecture_designsSlugRouteImport } from './routes/architecture_designs.$slug'
+import { Route as Architecture_designsBookRouteImport } from './routes/architecture_designs.book'
 import { Route as DesignsIndexRouteImport } from './routes/designs.index'
 import { Route as DesignsSlugRouteImport } from './routes/designs.$slug'
 import { Route as DesignsBookRouteImport } from './routes/designs.book'
@@ -36,9 +39,15 @@ import { Route as EnDesignRouteImport } from './routes/en.design'
 import { Route as EnPortfolioRouteImport } from './routes/en.portfolio'
 import { Route as EnServicesRouteImport } from './routes/en.services'
 import { Route as EnTeamRouteImport } from './routes/en.team'
+import { Route as ArArchitecture_designsIndexRouteImport } from './routes/ar.architecture_designs.index'
+import { Route as ArArchitecture_designsSlugRouteImport } from './routes/ar.architecture_designs.$slug'
+import { Route as ArArchitecture_designsBookRouteImport } from './routes/ar.architecture_designs.book'
 import { Route as ArDesignsIndexRouteImport } from './routes/ar.designs.index'
 import { Route as ArDesignsSlugRouteImport } from './routes/ar.designs.$slug'
 import { Route as ArDesignsBookRouteImport } from './routes/ar.designs.book'
+import { Route as EnArchitecture_designsIndexRouteImport } from './routes/en.architecture_designs.index'
+import { Route as EnArchitecture_designsSlugRouteImport } from './routes/en.architecture_designs.$slug'
+import { Route as EnArchitecture_designsBookRouteImport } from './routes/en.architecture_designs.book'
 import { Route as EnDesignsIndexRouteImport } from './routes/en.designs.index'
 import { Route as EnDesignsSlugRouteImport } from './routes/en.designs.$slug'
 import { Route as EnDesignsBookRouteImport } from './routes/en.designs.book'
@@ -123,6 +132,24 @@ const ArTeamRoute = ArTeamRouteImport.update({
   path: '/ar/team',
   getParentRoute: () => rootRouteImport,
 } as any)
+const Architecture_designsIndexRoute =
+  Architecture_designsIndexRouteImport.update({
+    id: '/architecture_designs/',
+    path: '/architecture_designs/',
+    getParentRoute: () => rootRouteImport,
+  } as any)
+const Architecture_designsSlugRoute =
+  Architecture_designsSlugRouteImport.update({
+    id: '/architecture_designs/$slug',
+    path: '/architecture_designs/$slug',
+    getParentRoute: () => rootRouteImport,
+  } as any)
+const Architecture_designsBookRoute =
+  Architecture_designsBookRouteImport.update({
+    id: '/architecture_designs/book',
+    path: '/architecture_designs/book',
+    getParentRoute: () => rootRouteImport,
+  } as any)
 const DesignsIndexRoute = DesignsIndexRouteImport.update({
   id: '/designs/',
   path: '/designs/',
@@ -178,6 +205,24 @@ const EnTeamRoute = EnTeamRouteImport.update({
   path: '/en/team',
   getParentRoute: () => rootRouteImport,
 } as any)
+const ArArchitecture_designsIndexRoute =
+  ArArchitecture_designsIndexRouteImport.update({
+    id: '/ar/architecture_designs/',
+    path: '/ar/architecture_designs/',
+    getParentRoute: () => rootRouteImport,
+  } as any)
+const ArArchitecture_designsSlugRoute =
+  ArArchitecture_designsSlugRouteImport.update({
+    id: '/ar/architecture_designs/$slug',
+    path: '/ar/architecture_designs/$slug',
+    getParentRoute: () => rootRouteImport,
+  } as any)
+const ArArchitecture_designsBookRoute =
+  ArArchitecture_designsBookRouteImport.update({
+    id: '/ar/architecture_designs/book',
+    path: '/ar/architecture_designs/book',
+    getParentRoute: () => rootRouteImport,
+  } as any)
 const ArDesignsIndexRoute = ArDesignsIndexRouteImport.update({
   id: '/ar/designs/',
   path: '/ar/designs/',
@@ -193,6 +238,24 @@ const ArDesignsBookRoute = ArDesignsBookRouteImport.update({
   path: '/ar/designs/book',
   getParentRoute: () => rootRouteImport,
 } as any)
+const EnArchitecture_designsIndexRoute =
+  EnArchitecture_designsIndexRouteImport.update({
+    id: '/en/architecture_designs/',
+    path: '/en/architecture_designs/',
+    getParentRoute: () => rootRouteImport,
+  } as any)
+const EnArchitecture_designsSlugRoute =
+  EnArchitecture_designsSlugRouteImport.update({
+    id: '/en/architecture_designs/$slug',
+    path: '/en/architecture_designs/$slug',
+    getParentRoute: () => rootRouteImport,
+  } as any)
+const EnArchitecture_designsBookRoute =
+  EnArchitecture_designsBookRouteImport.update({
+    id: '/en/architecture_designs/book',
+    path: '/en/architecture_designs/book',
+    getParentRoute: () => rootRouteImport,
+  } as any)
 const EnDesignsIndexRoute = EnDesignsIndexRouteImport.update({
   id: '/en/designs/',
   path: '/en/designs/',
@@ -225,6 +288,8 @@ export interface FileRoutesByFullPath {
   '/ar/portfolio': typeof ArPortfolioRoute
   '/ar/services': typeof ArServicesRoute
   '/ar/team': typeof ArTeamRoute
+  '/architecture_designs/$slug': typeof Architecture_designsSlugRoute
+  '/architecture_designs/book': typeof Architecture_designsBookRoute
   '/designs/$slug': typeof DesignsSlugRoute
   '/designs/book': typeof DesignsBookRoute
   '/en/about': typeof EnAboutRoute
@@ -235,13 +300,20 @@ export interface FileRoutesByFullPath {
   '/en/services': typeof EnServicesRoute
   '/en/team': typeof EnTeamRoute
   '/ar/': typeof ArIndexRoute
+  '/architecture_designs/': typeof Architecture_designsIndexRoute
   '/designs/': typeof DesignsIndexRoute
   '/en/': typeof EnIndexRoute
+  '/ar/architecture_designs/$slug': typeof ArArchitecture_designsSlugRoute
+  '/ar/architecture_designs/book': typeof ArArchitecture_designsBookRoute
   '/ar/designs/$slug': typeof ArDesignsSlugRoute
   '/ar/designs/book': typeof ArDesignsBookRoute
+  '/en/architecture_designs/$slug': typeof EnArchitecture_designsSlugRoute
+  '/en/architecture_designs/book': typeof EnArchitecture_designsBookRoute
   '/en/designs/$slug': typeof EnDesignsSlugRoute
   '/en/designs/book': typeof EnDesignsBookRoute
+  '/ar/architecture_designs/': typeof ArArchitecture_designsIndexRoute
   '/ar/designs/': typeof ArDesignsIndexRoute
+  '/en/architecture_designs/': typeof EnArchitecture_designsIndexRoute
   '/en/designs/': typeof EnDesignsIndexRoute
 }
 export interface FileRoutesByTo {
@@ -260,6 +332,8 @@ export interface FileRoutesByTo {
   '/ar/portfolio': typeof ArPortfolioRoute
   '/ar/services': typeof ArServicesRoute
   '/ar/team': typeof ArTeamRoute
+  '/architecture_designs/$slug': typeof Architecture_designsSlugRoute
+  '/architecture_designs/book': typeof Architecture_designsBookRoute
   '/designs/$slug': typeof DesignsSlugRoute
   '/designs/book': typeof DesignsBookRoute
   '/en/about': typeof EnAboutRoute
@@ -270,13 +344,20 @@ export interface FileRoutesByTo {
   '/en/services': typeof EnServicesRoute
   '/en/team': typeof EnTeamRoute
   '/ar': typeof ArIndexRoute
+  '/architecture_designs': typeof Architecture_designsIndexRoute
   '/designs': typeof DesignsIndexRoute
   '/en': typeof EnIndexRoute
+  '/ar/architecture_designs/$slug': typeof ArArchitecture_designsSlugRoute
+  '/ar/architecture_designs/book': typeof ArArchitecture_designsBookRoute
   '/ar/designs/$slug': typeof ArDesignsSlugRoute
   '/ar/designs/book': typeof ArDesignsBookRoute
+  '/en/architecture_designs/$slug': typeof EnArchitecture_designsSlugRoute
+  '/en/architecture_designs/book': typeof EnArchitecture_designsBookRoute
   '/en/designs/$slug': typeof EnDesignsSlugRoute
   '/en/designs/book': typeof EnDesignsBookRoute
+  '/ar/architecture_designs': typeof ArArchitecture_designsIndexRoute
   '/ar/designs': typeof ArDesignsIndexRoute
+  '/en/architecture_designs': typeof EnArchitecture_designsIndexRoute
   '/en/designs': typeof EnDesignsIndexRoute
 }
 export interface FileRoutesById {
@@ -296,6 +377,8 @@ export interface FileRoutesById {
   '/ar/portfolio': typeof ArPortfolioRoute
   '/ar/services': typeof ArServicesRoute
   '/ar/team': typeof ArTeamRoute
+  '/architecture_designs/$slug': typeof Architecture_designsSlugRoute
+  '/architecture_designs/book': typeof Architecture_designsBookRoute
   '/designs/$slug': typeof DesignsSlugRoute
   '/designs/book': typeof DesignsBookRoute
   '/en/about': typeof EnAboutRoute
@@ -306,13 +389,20 @@ export interface FileRoutesById {
   '/en/services': typeof EnServicesRoute
   '/en/team': typeof EnTeamRoute
   '/ar/': typeof ArIndexRoute
+  '/architecture_designs/': typeof Architecture_designsIndexRoute
   '/designs/': typeof DesignsIndexRoute
   '/en/': typeof EnIndexRoute
+  '/ar/architecture_designs/$slug': typeof ArArchitecture_designsSlugRoute
+  '/ar/architecture_designs/book': typeof ArArchitecture_designsBookRoute
   '/ar/designs/$slug': typeof ArDesignsSlugRoute
   '/ar/designs/book': typeof ArDesignsBookRoute
+  '/en/architecture_designs/$slug': typeof EnArchitecture_designsSlugRoute
+  '/en/architecture_designs/book': typeof EnArchitecture_designsBookRoute
   '/en/designs/$slug': typeof EnDesignsSlugRoute
   '/en/designs/book': typeof EnDesignsBookRoute
+  '/ar/architecture_designs/': typeof ArArchitecture_designsIndexRoute
   '/ar/designs/': typeof ArDesignsIndexRoute
+  '/en/architecture_designs/': typeof EnArchitecture_designsIndexRoute
   '/en/designs/': typeof EnDesignsIndexRoute
 }
 export interface FileRouteTypes {
@@ -333,6 +423,8 @@ export interface FileRouteTypes {
     | '/ar/portfolio'
     | '/ar/services'
     | '/ar/team'
+    | '/architecture_designs/$slug'
+    | '/architecture_designs/book'
     | '/designs/$slug'
     | '/designs/book'
     | '/en/about'
@@ -343,13 +435,20 @@ export interface FileRouteTypes {
     | '/en/services'
     | '/en/team'
     | '/ar/'
+    | '/architecture_designs/'
     | '/designs/'
     | '/en/'
+    | '/ar/architecture_designs/$slug'
+    | '/ar/architecture_designs/book'
     | '/ar/designs/$slug'
     | '/ar/designs/book'
+    | '/en/architecture_designs/$slug'
+    | '/en/architecture_designs/book'
     | '/en/designs/$slug'
     | '/en/designs/book'
+    | '/ar/architecture_designs/'
     | '/ar/designs/'
+    | '/en/architecture_designs/'
     | '/en/designs/'
   fileRoutesByTo: FileRoutesByTo
   to:
@@ -368,6 +467,8 @@ export interface FileRouteTypes {
     | '/ar/portfolio'
     | '/ar/services'
     | '/ar/team'
+    | '/architecture_designs/$slug'
+    | '/architecture_designs/book'
     | '/designs/$slug'
     | '/designs/book'
     | '/en/about'
@@ -378,13 +479,20 @@ export interface FileRouteTypes {
     | '/en/services'
     | '/en/team'
     | '/ar'
+    | '/architecture_designs'
     | '/designs'
     | '/en'
+    | '/ar/architecture_designs/$slug'
+    | '/ar/architecture_designs/book'
     | '/ar/designs/$slug'
     | '/ar/designs/book'
+    | '/en/architecture_designs/$slug'
+    | '/en/architecture_designs/book'
     | '/en/designs/$slug'
     | '/en/designs/book'
+    | '/ar/architecture_designs'
     | '/ar/designs'
+    | '/en/architecture_designs'
     | '/en/designs'
   id:
     | '__root__'
@@ -403,6 +511,8 @@ export interface FileRouteTypes {
     | '/ar/portfolio'
     | '/ar/services'
     | '/ar/team'
+    | '/architecture_designs/$slug'
+    | '/architecture_designs/book'
     | '/designs/$slug'
     | '/designs/book'
     | '/en/about'
@@ -413,13 +523,20 @@ export interface FileRouteTypes {
     | '/en/services'
     | '/en/team'
     | '/ar/'
+    | '/architecture_designs/'
     | '/designs/'
     | '/en/'
+    | '/ar/architecture_designs/$slug'
+    | '/ar/architecture_designs/book'
     | '/ar/designs/$slug'
     | '/ar/designs/book'
+    | '/en/architecture_designs/$slug'
+    | '/en/architecture_designs/book'
     | '/en/designs/$slug'
     | '/en/designs/book'
+    | '/ar/architecture_designs/'
     | '/ar/designs/'
+    | '/en/architecture_designs/'
     | '/en/designs/'
   fileRoutesById: FileRoutesById
 }
@@ -439,6 +556,8 @@ export interface RootRouteChildren {
   ArPortfolioRoute: typeof ArPortfolioRoute
   ArServicesRoute: typeof ArServicesRoute
   ArTeamRoute: typeof ArTeamRoute
+  Architecture_designsSlugRoute: typeof Architecture_designsSlugRoute
+  Architecture_designsBookRoute: typeof Architecture_designsBookRoute
   DesignsSlugRoute: typeof DesignsSlugRoute
   DesignsBookRoute: typeof DesignsBookRoute
   EnAboutRoute: typeof EnAboutRoute
@@ -449,13 +568,20 @@ export interface RootRouteChildren {
   EnServicesRoute: typeof EnServicesRoute
   EnTeamRoute: typeof EnTeamRoute
   ArIndexRoute: typeof ArIndexRoute
+  Architecture_designsIndexRoute: typeof Architecture_designsIndexRoute
   DesignsIndexRoute: typeof DesignsIndexRoute
   EnIndexRoute: typeof EnIndexRoute
+  ArArchitecture_designsSlugRoute: typeof ArArchitecture_designsSlugRoute
+  ArArchitecture_designsBookRoute: typeof ArArchitecture_designsBookRoute
   ArDesignsSlugRoute: typeof ArDesignsSlugRoute
   ArDesignsBookRoute: typeof ArDesignsBookRoute
+  EnArchitecture_designsSlugRoute: typeof EnArchitecture_designsSlugRoute
+  EnArchitecture_designsBookRoute: typeof EnArchitecture_designsBookRoute
   EnDesignsSlugRoute: typeof EnDesignsSlugRoute
   EnDesignsBookRoute: typeof EnDesignsBookRoute
+  ArArchitecture_designsIndexRoute: typeof ArArchitecture_designsIndexRoute
   ArDesignsIndexRoute: typeof ArDesignsIndexRoute
+  EnArchitecture_designsIndexRoute: typeof EnArchitecture_designsIndexRoute
   EnDesignsIndexRoute: typeof EnDesignsIndexRoute
 }
 
@@ -573,6 +699,27 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof ArTeamRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/architecture_designs/': {
+      id: '/architecture_designs/'
+      path: '/architecture_designs'
+      fullPath: '/architecture_designs/'
+      preLoaderRoute: typeof Architecture_designsIndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/architecture_designs/$slug': {
+      id: '/architecture_designs/$slug'
+      path: '/architecture_designs/$slug'
+      fullPath: '/architecture_designs/$slug'
+      preLoaderRoute: typeof Architecture_designsSlugRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/architecture_designs/book': {
+      id: '/architecture_designs/book'
+      path: '/architecture_designs/book'
+      fullPath: '/architecture_designs/book'
+      preLoaderRoute: typeof Architecture_designsBookRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/designs/': {
       id: '/designs/'
       path: '/designs'
@@ -650,6 +797,27 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof EnTeamRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/ar/architecture_designs/': {
+      id: '/ar/architecture_designs/'
+      path: '/ar/architecture_designs'
+      fullPath: '/ar/architecture_designs/'
+      preLoaderRoute: typeof ArArchitecture_designsIndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/ar/architecture_designs/$slug': {
+      id: '/ar/architecture_designs/$slug'
+      path: '/ar/architecture_designs/$slug'
+      fullPath: '/ar/architecture_designs/$slug'
+      preLoaderRoute: typeof ArArchitecture_designsSlugRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/ar/architecture_designs/book': {
+      id: '/ar/architecture_designs/book'
+      path: '/ar/architecture_designs/book'
+      fullPath: '/ar/architecture_designs/book'
+      preLoaderRoute: typeof ArArchitecture_designsBookRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/ar/designs/': {
       id: '/ar/designs/'
       path: '/ar/designs'
@@ -669,6 +837,27 @@ declare module '@tanstack/react-router' {
       path: '/ar/designs/book'
       fullPath: '/ar/designs/book'
       preLoaderRoute: typeof ArDesignsBookRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/en/architecture_designs/': {
+      id: '/en/architecture_designs/'
+      path: '/en/architecture_designs'
+      fullPath: '/en/architecture_designs/'
+      preLoaderRoute: typeof EnArchitecture_designsIndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/en/architecture_designs/$slug': {
+      id: '/en/architecture_designs/$slug'
+      path: '/en/architecture_designs/$slug'
+      fullPath: '/en/architecture_designs/$slug'
+      preLoaderRoute: typeof EnArchitecture_designsSlugRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/en/architecture_designs/book': {
+      id: '/en/architecture_designs/book'
+      path: '/en/architecture_designs/book'
+      fullPath: '/en/architecture_designs/book'
+      preLoaderRoute: typeof EnArchitecture_designsBookRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/en/designs/': {
@@ -711,6 +900,8 @@ const rootRouteChildren: RootRouteChildren = {
   ArPortfolioRoute: ArPortfolioRoute,
   ArServicesRoute: ArServicesRoute,
   ArTeamRoute: ArTeamRoute,
+  Architecture_designsSlugRoute: Architecture_designsSlugRoute,
+  Architecture_designsBookRoute: Architecture_designsBookRoute,
   DesignsSlugRoute: DesignsSlugRoute,
   DesignsBookRoute: DesignsBookRoute,
   EnAboutRoute: EnAboutRoute,
@@ -721,13 +912,20 @@ const rootRouteChildren: RootRouteChildren = {
   EnServicesRoute: EnServicesRoute,
   EnTeamRoute: EnTeamRoute,
   ArIndexRoute: ArIndexRoute,
+  Architecture_designsIndexRoute: Architecture_designsIndexRoute,
   DesignsIndexRoute: DesignsIndexRoute,
   EnIndexRoute: EnIndexRoute,
+  ArArchitecture_designsSlugRoute: ArArchitecture_designsSlugRoute,
+  ArArchitecture_designsBookRoute: ArArchitecture_designsBookRoute,
   ArDesignsSlugRoute: ArDesignsSlugRoute,
   ArDesignsBookRoute: ArDesignsBookRoute,
+  EnArchitecture_designsSlugRoute: EnArchitecture_designsSlugRoute,
+  EnArchitecture_designsBookRoute: EnArchitecture_designsBookRoute,
   EnDesignsSlugRoute: EnDesignsSlugRoute,
   EnDesignsBookRoute: EnDesignsBookRoute,
+  ArArchitecture_designsIndexRoute: ArArchitecture_designsIndexRoute,
   ArDesignsIndexRoute: ArDesignsIndexRoute,
+  EnArchitecture_designsIndexRoute: EnArchitecture_designsIndexRoute,
   EnDesignsIndexRoute: EnDesignsIndexRoute,
 }
 export const routeTree = rootRouteImport
