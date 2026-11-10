@@ -188,15 +188,16 @@ export const DESIGNS: Design[] = [
 ]
 
 export function getBookingUrl(options?: {
-  slug?: string
-  path?: "same" | "modified" | "idea"
-  locale?: "ar" | "en"
+  slug?: string;
+  path?: "same" | "modified" | "idea";
+  locale?: "ar" | "en";
 }): string {
-  const params = new URLSearchParams()
-  if (options?.slug) params.set("design", options.slug)
-  if (options?.path && options.path !== "idea") params.set("path", options.path)
-  if (options?.locale === "en") params.set("lang", "en")
-  const query = params.toString()
-  return `https://app.bonyanec.com/designs/book${query ? `?${query}` : ""}`
+  const isEn = options?.locale === "en";
+  const base = isEn ? "/en/architecture_designs/book" : "/architecture_designs/book";
+  const params = new URLSearchParams();
+  if (options?.slug) params.set("design", options.slug);
+  if (options?.path && options.path !== "idea") params.set("path", options.path);
+  const query = params.toString();
+  return `${base}${query ? `?${query}` : ""}`;
 }
 
