@@ -3,7 +3,7 @@ import { ArrowLeft, ArrowRight, MessageCircle } from "lucide-react";
 import { Link } from "@tanstack/react-router";
 import { useT } from "@/i18n";
 import { SiteLayout } from "../SiteLayout";
-import { DESIGNS, DESIGN_CATEGORIES, getBookingUrl, type Design } from "@/data/designs";
+import { DESIGN_CATEGORIES, getBookingUrl, type Design } from "@/data/designs";
 import { fetchPublicDesign } from "@/lib/supabase";
 import { cn } from "@/lib/utils";
 
@@ -13,24 +13,83 @@ export function DesignDetailPage({ slug }: { slug: string }) {
   const isAr = locale === "ar";
   const BackIcon = isAr ? ArrowRight : ArrowLeft;
 
-  const [design, setDesign] = useState<Design>(() => {
-    return DESIGNS.find((d) => d.slug === slug) ?? DESIGNS[0]!;
-  });
+  const [design, setDesign] = useState<Design | null>(null);
+  const [loading, setLoading] = useState(true);
   const [activeImageUrl, setActiveImageUrl] = useState<string>("");
 
   useEffect(() => {
     let active = true;
-    fetchPublicDesign(slug).then((d) => {
-      if (!active || !d) return;
-      setDesign(d);
-      if (d.images && d.images.length > 0) {
-        setActiveImageUrl(d.images[0]?.url || d.imageUrl);
-      }
-    });
+    fetchPublicDesign(slug)
+      .then((d) => {
+        if (!active) return;
+        setDesign(d);
+        if (d?.images && d.images.length > 0) {
+          setActiveImageUrl(d.images[0]?.url || d.imageUrl);
+        }
+      })
+      .finally(() => {
+        if (active) setLoading(false);
+      });
     return () => {
       active = false;
     };
   }, [slug]);
+
+  if (loading) {
+    return (
+      <SiteLayout>
+        <div className="container-site py-10 lg:py-16" dir={dir}>
+          <div className="mb-8 h-5 w-32 rounded-xs bg-muted/40 animate-pulse" />
+          <div className="grid gap-10 lg:grid-cols-12 lg:items-start animate-pulse">
+            <div className="order-last flex flex-col gap-6 lg:order-first lg:col-span-5">
+              <div className="h-6 w-24 rounded-xs bg-primary/20" />
+              <div className="h-10 w-3/4 rounded-xs bg-muted/50" />
+              <div className="space-y-2">
+                <div className="h-4 w-full rounded-xs bg-muted/30" />
+                <div className="h-4 w-5/6 rounded-xs bg-muted/30" />
+              </div>
+              <div className="grid grid-cols-2 gap-3 pt-4">
+                <div className="h-16 rounded-xs bg-card/60" />
+                <div className="h-16 rounded-xs bg-card/60" />
+                <div className="h-16 rounded-xs bg-card/60" />
+                <div className="h-16 rounded-xs bg-card/60" />
+              </div>
+              <div className="flex flex-col gap-3 pt-2">
+                <div className="h-11 rounded-xs bg-primary/20" />
+                <div className="h-11 rounded-xs bg-card/60" />
+              </div>
+            </div>
+            <div className="order-first flex flex-col gap-3 lg:order-last lg:col-span-7">
+              <div className="aspect-[4/3] w-full rounded-xs bg-card/80" />
+            </div>
+          </div>
+        </div>
+      </SiteLayout>
+    );
+  }
+
+  if (!design) {
+    return (
+      <SiteLayout>
+        <div className="container-site py-20 text-center" dir={dir}>
+          <h1 className="font-display text-2xl font-bold text-foreground">
+            {isAr ? "التصميم غير موجود" : "Design not found"}
+          </h1>
+          <p className="mt-2 text-sm text-muted-foreground">
+            {isAr
+              ? "لم يتم العثور على هذا التصميم أو قد يكون غير متاح."
+              : "This design could not be found or may be unavailable."}
+          </p>
+          <Link
+            to={isAr ? "/architecture_designs" : "/en/architecture_designs"}
+            className="mt-6 inline-flex min-h-11 items-center justify-center rounded-xs bg-primary px-6 text-sm font-semibold text-primary-foreground transition-all hover:brightness-110"
+          >
+            {dg.back}
+          </Link>
+        </div>
+      </SiteLayout>
+    );
+  }
 
   const title = isAr ? design.titleAr : design.titleEn;
   const description = isAr ? design.descriptionAr : design.descriptionEn;

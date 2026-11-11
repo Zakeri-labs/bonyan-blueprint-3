@@ -79,9 +79,7 @@ export function BookingPage({
   const topRef = useRef<HTMLDivElement>(null);
   const BackIcon = isAr ? ArrowRight : ArrowLeft;
 
-  const [design, setDesign] = useState<Design | null>(() => {
-    return designSlug ? DESIGNS.find((d) => d.slug === designSlug) ?? null : null;
-  });
+  const [design, setDesign] = useState<Design | null>(null);
 
   useEffect(() => {
     if (!designSlug) return;
