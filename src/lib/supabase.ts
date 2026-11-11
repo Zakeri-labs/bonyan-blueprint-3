@@ -235,3 +235,76 @@ export async function fetchPublicDesign(slug: string): Promise<DynamicDesign | n
     return null;
   }
 }
+
+export type MeetingBookingPayload = {
+  requestKey?: string;
+  clientName: string;
+  whatsappPhone: string;
+  email?: string;
+  projectType: string;
+  landStatus: string;
+  wilayat?: string;
+  landAreaSqm?: string;
+  startTimeline: string;
+  ideaText?: string;
+  meetingMode: string;
+  slotStart?: string | null;
+  slotEnd?: string | null;
+  designSlug?: string | null;
+  designCode?: string | null;
+  designTitleAr?: string | null;
+  designTitleEn?: string | null;
+  path: "same" | "modified" | "idea";
+  locale: "ar" | "en";
+};
+
+export async function submitMeetingBooking(payload: MeetingBookingPayload): Promise<{
+  ok: boolean;
+  id?: string;
+  error?: string;
+}> {
+  try {
+    const base = SUPABASE_URL.replace(/\/+$/, "");
+
+    // 1. Try Supabase RPC submit_design_meeting_booking
+    const rpcRes = await fetch(`${base}/rest/v1/rpc/submit_design_meeting_booking`, {
+      method: "POST",
+      headers: {
+        apikey: SUPABASE_ANON_KEY,
+        Authorization: `Bearer ${SUPABASE_ANON_KEY}`,
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({ payload }),
+    });
+
+    if (rpcRes.ok) {
+      const data = await rpcRes.json();
+      if (data && typeof data === "object" && data.ok) {
+        return { ok: true, id: data.id };
+      }
+      if (data?.error) {
+        return { ok: false, error: data.error };
+      }
+    }
+
+    // 2. Fallback: app endpoint if deployed
+    const apiRes = await fetch("https://app.bonyanec.com/api/designs/booking", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(payload),
+    }).catch(() => null);
+
+    if (apiRes && apiRes.ok) {
+      const data = await apiRes.json();
+      if (data && data.ok) {
+        return { ok: true, id: data.data?.id };
+      }
+    }
+
+    return { ok: false, error: "Booking submission failed" };
+  } catch (error) {
+    console.error("submitMeetingBooking exception:", error);
+    return { ok: false, error: error instanceof Error ? error.message : "Network error" };
+  }
+}
+

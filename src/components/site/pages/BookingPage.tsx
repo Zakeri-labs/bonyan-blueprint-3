@@ -19,7 +19,7 @@ import {
 import { useT, CONTACT } from "@/i18n";
 import { SiteLayout } from "../SiteLayout";
 import { DESIGNS, type Design } from "@/data/designs";
-import { fetchPublicGallery, fetchPublicDesign } from "@/lib/supabase";
+import { fetchPublicGallery, fetchPublicDesign, submitMeetingBooking } from "@/lib/supabase";
 import {
   DEFAULT_BOOKING_SETTINGS,
   generateAvailableDays,
@@ -135,6 +135,7 @@ export function BookingPage({
   const [selectedDay, setSelectedDay] = useState<string>("");
   const [selectedSlot, setSelectedSlot] = useState<string>("");
   const [submitting, setSubmitting] = useState(false);
+  const [submitError, setSubmitError] = useState<string | null>(null);
   const [confirmed, setConfirmed] = useState(false);
 
   // Available days & slots from live booking settings
@@ -264,6 +265,7 @@ export function BookingPage({
     if (!validateStepTwo()) return;
 
     setSubmitting(true);
+    setSubmitError(null);
 
     const wilayatLabel =
       fields.wilayatKey === OTHER
@@ -277,38 +279,45 @@ export function BookingPage({
             (Number(c) ^ (Math.random() * 16 >> (Number(c) / 4))).toString(16),
           );
 
+    const chosenSlot = activeDay?.slots.find((s) => s.start === selectedSlot);
+    const cleanPhone = fields.whatsappPhone.replace(/[\s\-+]/g, "");
+
     const bookingPayload = {
       requestKey,
-      clientName: fields.clientName,
-      whatsappPhone: fields.whatsappPhone,
-      email: fields.email,
+      clientName: fields.clientName.trim(),
+      whatsappPhone: cleanPhone,
+      email: fields.email ? fields.email.trim() : undefined,
       projectType: fields.projectType,
       landStatus: fields.landStatus,
       wilayat: wilayatLabel,
-      landAreaSqm: fields.landAreaSqm,
+      landAreaSqm: fields.landAreaSqm.trim() || undefined,
       startTimeline: fields.startTimeline,
-      ideaText: fields.ideaText,
+      ideaText: fields.ideaText ? fields.ideaText.trim() : undefined,
       meetingMode: mode,
       slotStart: mode === "call_me" ? null : selectedSlot,
+      slotEnd: mode === "call_me" ? null : chosenSlot?.end || null,
       designSlug: design?.slug || null,
+      designCode: design?.code || null,
+      designTitleAr: design?.titleAr || null,
+      designTitleEn: design?.titleEn || null,
       path,
       locale,
     };
 
-    // Send to central API on app.bonyanec.com
-    try {
-      await fetch("https://app.bonyanec.com/api/designs/booking", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(bookingPayload),
-      }).catch(() => null);
-    } catch {
-      // Graceful fallback to client confirmation
-    }
-
+    const res = await submitMeetingBooking(bookingPayload);
     setSubmitting(false);
-    setConfirmed(true);
-    scrollTop();
+
+    if (res.ok) {
+      setConfirmed(true);
+      scrollTop();
+    } else {
+      setSubmitError(
+        res.error ||
+          (isAr
+            ? "تعذر حفظ الموعد في الوقت الحالي. يرجى المحاولة مرة أخرى أو مراسلتنا مباشرة عبر واتساب."
+            : "Unable to schedule your appointment right now. Please try again or chat with us directly on WhatsApp.")
+      );
+    }
   };
 
   // WhatsApp confirmation text generator
@@ -812,6 +821,22 @@ export function BookingPage({
                     </div>
                   ) : null}
 
+                  {/* Submit Error */}
+                  {submitError ? (
+                    <div className="rounded-xs border border-destructive/40 bg-destructive/10 p-4 text-xs text-destructive">
+                      <p className="font-semibold">{submitError}</p>
+                      <a
+                        href={getWhatsAppConfirmationHref()}
+                        target="_blank"
+                        rel="noreferrer"
+                        className="mt-2 inline-flex items-center gap-1.5 font-bold underline cursor-pointer text-foreground hover:text-primary"
+                      >
+                        <MessageCircle className="size-3.5 text-emerald-400" />
+                        <span>{isAr ? "التواصل عبر واتساب بدلاً من ذلك" : "Contact via WhatsApp instead"}</span>
+                      </a>
+                    </div>
+                  ) : null}
+
                   {/* Buttons */}
                   <div className="mt-4 flex flex-col-reverse gap-3 sm:flex-row sm:justify-between">
                     <Link
@@ -980,6 +1005,22 @@ export function BookingPage({
                       <p>{b.callMeNote}</p>
                     </div>
                   )}
+
+                  {/* Submit Error */}
+                  {submitError ? (
+                    <div className="rounded-xs border border-destructive/40 bg-destructive/10 p-4 text-xs text-destructive">
+                      <p className="font-semibold">{submitError}</p>
+                      <a
+                        href={getWhatsAppConfirmationHref()}
+                        target="_blank"
+                        rel="noreferrer"
+                        className="mt-2 inline-flex items-center gap-1.5 font-bold underline cursor-pointer text-foreground hover:text-primary"
+                      >
+                        <MessageCircle className="size-3.5 text-emerald-400" />
+                        <span>{isAr ? "التواصل عبر واتساب بدلاً من ذلك" : "Contact via WhatsApp instead"}</span>
+                      </a>
+                    </div>
+                  ) : null}
 
                   {/* Buttons */}
                   <div className="mt-4 flex flex-col-reverse gap-3 sm:flex-row sm:justify-between">
