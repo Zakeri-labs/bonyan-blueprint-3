@@ -19,7 +19,7 @@ import {
 import { useT, CONTACT } from "@/i18n";
 import { SiteLayout } from "../SiteLayout";
 import { DESIGNS, type Design } from "@/data/designs";
-import { fetchPublicGallery, fetchPublicDesign, submitMeetingBooking } from "@/lib/supabase";
+import { fetchPublicGallery, fetchPublicDesign, submitMeetingBooking, fetchBusySlots } from "@/lib/supabase";
 import {
   DEFAULT_BOOKING_SETTINGS,
   generateAvailableDays,
@@ -135,11 +135,18 @@ export function BookingPage({
   const [submitting, setSubmitting] = useState(false);
   const [submitError, setSubmitError] = useState<string | null>(null);
   const [confirmed, setConfirmed] = useState(false);
+  const [busySlots, setBusySlots] = useState<{ start: string; end: string }[]>([]);
 
-  // Available days & slots from live booking settings
+  useEffect(() => {
+    fetchBusySlots().then((slots) => {
+      if (slots && slots.length > 0) setBusySlots(slots);
+    });
+  }, []);
+
+  // Available days & slots from live booking settings (excluding already booked slots)
   const availableDays = useMemo(() => {
-    return generateAvailableDays(bookingSettings);
-  }, [bookingSettings]);
+    return generateAvailableDays(bookingSettings, new Date(), busySlots);
+  }, [bookingSettings, busySlots]);
 
   const activeDay = useMemo(() => {
     if (selectedDay) {

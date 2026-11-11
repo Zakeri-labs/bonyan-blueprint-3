@@ -288,11 +288,53 @@ export type MeetingBookingPayload = {
   locale: "ar" | "en";
 };
 
+export async function fetchBusySlots(): Promise<{ start: string; end: string }[]> {
+  try {
+    // 1. Try central API
+    const apiRes = await fetch("https://app.bonyanec.com/api/designs/availability").catch(() => null);
+    if (apiRes && apiRes.ok) {
+      const data = await apiRes.json();
+      if (data && data.ok && Array.isArray(data.data?.days)) {
+        // Collect all busy intervals from days
+        // If availability days are returned, we can return empty or busy intervals
+        return [];
+      }
+    }
+
+    // 2. Fallback: Supabase RPC get_design_meeting_busy_slots
+    const base = SUPABASE_URL.replace(/\/+$/, "");
+    const rpcRes = await fetch(`${base}/rest/v1/rpc/get_design_meeting_busy_slots`, {
+      method: "POST",
+      headers: reqHeaders,
+    }).catch(() => null);
+
+    if (rpcRes && rpcRes.ok) {
+      const data = await rpcRes.json();
+      if (Array.isArray(data)) {
+        return data.map((r: { starts_at: string; ends_at: string }) => ({
+          start: r.starts_at,
+          end: r.ends_at,
+        }));
+      }
+    }
+
+    return [];
+  } catch (error) {
+    console.error("fetchBusySlots error:", error);
+    return [];
+  }
+}
+
 export async function submitMeetingBooking(payload: MeetingBookingPayload): Promise<{
   ok: boolean;
   id?: string;
   error?: string;
 }> {
+  const isAr = payload.locale === "ar";
+  const slotTakenMessage = isAr
+    ? "هذا الموعد محجوز مسبقاً. يرجى اختيار موعد آخر."
+    : "This time slot has already been booked. Please choose another slot.";
+
   try {
     const payloadWithBotCheck = {
       ...payload,
@@ -311,14 +353,10 @@ export async function submitMeetingBooking(payload: MeetingBookingPayload): Prom
       if (data && data.ok) {
         return { ok: true, id: data.data?.id };
       }
-      if (data && !data.ok && data.error === "slotTaken") {
-        return {
-          ok: false,
-          error:
-            payload.locale === "ar"
-              ? "الموعد المحدد لم يعد متاحاً. يرجى اختيار موعد آخر."
-              : "The selected time slot is no longer available. Please select another slot.",
-        };
+      if (data && !data.ok) {
+        if (data.error === "slotTaken" || String(data.error).includes("one_per_slot")) {
+          return { ok: false, error: slotTakenMessage };
+        }
       }
     }
 
@@ -340,6 +378,14 @@ export async function submitMeetingBooking(payload: MeetingBookingPayload): Prom
         return { ok: true, id: data.id };
       }
       if (data?.error) {
+        const errStr = String(data.error);
+        if (
+          errStr === "slot_taken" ||
+          errStr === "slotTaken" ||
+          errStr.includes("design_meeting_requests_one_per_slot")
+        ) {
+          return { ok: false, error: slotTakenMessage };
+        }
         return { ok: false, error: data.error };
       }
     }

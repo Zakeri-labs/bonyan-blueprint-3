@@ -103,9 +103,12 @@ export function addDays(date: string, days: number): string {
   return `${next.getUTCFullYear()}-${String(next.getUTCMonth() + 1).padStart(2, "0")}-${String(next.getUTCDate()).padStart(2, "0")}`;
 }
 
+export type BusyInterval = { start: string | Date; end: string | Date };
+
 export function generateAvailableDays(
   settings: BookingSettings = DEFAULT_BOOKING_SETTINGS,
   now = new Date(),
+  busy: BusyInterval[] = [],
 ): BookingDay[] {
   const today = zonedParts(now, settings.timeZone).date;
   const earliest = now.getTime() + settings.minNoticeHours * 3600_000;
@@ -131,7 +134,17 @@ export function generateAvailableDays(
       const seen = zonedParts(start, settings.timeZone);
       if (seen.date !== date || seen.time !== hhmm(minute)) continue;
       const end = new Date(start.getTime() + settings.slotMinutes * 60_000);
-      if (start.getTime() < earliest) continue;
+      const startMs = start.getTime();
+      const endMs = end.getTime();
+      if (startMs < earliest) continue;
+
+      const isBusy = busy.some((b) => {
+        const bStart = new Date(b.start).getTime();
+        const bEnd = new Date(b.end).getTime();
+        return startMs < bEnd && endMs > bStart;
+      });
+      if (isBusy) continue;
+
       slots.push({
         start: start.toISOString(),
         end: end.toISOString(),
