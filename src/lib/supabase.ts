@@ -294,9 +294,36 @@ export async function submitMeetingBooking(payload: MeetingBookingPayload): Prom
   error?: string;
 }> {
   try {
-    const base = SUPABASE_URL.replace(/\/+$/, "");
+    const payloadWithBotCheck = {
+      ...payload,
+      elapsedMs: 5000,
+    };
 
-    // 1. Try Supabase RPC submit_design_meeting_booking
+    // 1. Primary: Central backend on app.bonyanec.com (sends Zoho Calendar .ics & confirmation emails)
+    const apiRes = await fetch("https://app.bonyanec.com/api/designs/booking", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(payloadWithBotCheck),
+    }).catch(() => null);
+
+    if (apiRes && apiRes.ok) {
+      const data = await apiRes.json();
+      if (data && data.ok) {
+        return { ok: true, id: data.data?.id };
+      }
+      if (data && !data.ok && data.error === "slotTaken") {
+        return {
+          ok: false,
+          error:
+            payload.locale === "ar"
+              ? "الموعد المحدد لم يعد متاحاً. يرجى اختيار موعد آخر."
+              : "The selected time slot is no longer available. Please select another slot.",
+        };
+      }
+    }
+
+    // 2. Fallback: Supabase RPC submit_design_meeting_booking directly
+    const base = SUPABASE_URL.replace(/\/+$/, "");
     const rpcRes = await fetch(`${base}/rest/v1/rpc/submit_design_meeting_booking`, {
       method: "POST",
       headers: {
@@ -314,20 +341,6 @@ export async function submitMeetingBooking(payload: MeetingBookingPayload): Prom
       }
       if (data?.error) {
         return { ok: false, error: data.error };
-      }
-    }
-
-    // 2. Fallback: app endpoint if deployed
-    const apiRes = await fetch("https://app.bonyanec.com/api/designs/booking", {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify(payload),
-    }).catch(() => null);
-
-    if (apiRes && apiRes.ok) {
-      const data = await apiRes.json();
-      if (data && data.ok) {
-        return { ok: true, id: data.data?.id };
       }
     }
 
