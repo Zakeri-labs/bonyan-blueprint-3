@@ -38,7 +38,7 @@ export function DesignDetailPage({ slug }: { slug: string }) {
   if (loading) {
     return (
       <SiteLayout>
-        <div className="container-site py-10 lg:py-16" dir={dir}>
+        <div className="container-site pt-28 pb-16 md:pt-36 lg:pt-40 md:pb-20" dir={dir}>
           <div className="mb-8 h-5 w-32 rounded-xs bg-muted/40 animate-pulse" />
           <div className="grid gap-10 lg:grid-cols-12 lg:items-start animate-pulse">
             <div className="order-last flex flex-col gap-6 lg:order-first lg:col-span-5">
@@ -71,7 +71,7 @@ export function DesignDetailPage({ slug }: { slug: string }) {
   if (!design) {
     return (
       <SiteLayout>
-        <div className="container-site py-20 text-center" dir={dir}>
+        <div className="container-site pt-28 pb-16 md:pt-36 lg:pt-40 md:pb-20 text-center" dir={dir}>
           <h1 className="font-display text-2xl font-bold text-foreground">
             {isAr ? "التصميم غير موجود" : "Design not found"}
           </h1>
@@ -136,7 +136,7 @@ export function DesignDetailPage({ slug }: { slug: string }) {
 
   return (
     <SiteLayout>
-      <div className="container-site py-10 lg:py-16" dir={dir}>
+      <div className="container-site pt-28 pb-16 md:pt-36 lg:pt-40 md:pb-20" dir={dir}>
         {/* Back button */}
         <Link
           to={isAr ? "/architecture_designs" : "/en/architecture_designs"}

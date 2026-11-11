@@ -388,7 +388,7 @@ export function BookingPage({
 
   return (
     <SiteLayout>
-      <div ref={topRef} className="container-site py-12 md:py-20" dir={dir}>
+      <div ref={topRef} className="container-site pt-28 pb-16 md:pt-36 lg:pt-40 md:pb-20" dir={dir}>
         <div className="mx-auto max-w-2xl">
           {/* Back link */}
           <Link

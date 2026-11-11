@@ -94,7 +94,7 @@ export function DesignsPage() {
 
   return (
     <SiteLayout>
-      <div className="container-site py-12 lg:py-16" dir={dir}>
+      <div className="container-site pt-28 pb-16 md:pt-36 lg:pt-40 md:pb-20" dir={dir}>
         {/* Header section */}
         <div className="flex flex-col gap-6 lg:flex-row lg:items-end lg:justify-between">
           <div className="max-w-2xl">
